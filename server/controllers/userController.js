@@ -89,7 +89,7 @@ router.post('/login', async (req, res) => {
 });
 
 router.get('/logout', (req, res) => {
-    res.clearCookies(COOKIE_TOKEN_NAME);
+    res.clearCookie(COOKIE_TOKEN_NAME);
     res.status(200).send({ message: 'Successful logged out' });
 });
 
