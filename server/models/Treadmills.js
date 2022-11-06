@@ -58,7 +58,17 @@ const treadMillsSchema = mongoose.Schema({
     description: {
         type: String,
         require: true
-    }
+    },
+    image: [
+        {
+            url: {
+                type: String
+            },
+            public_id: {
+                type: String
+            }
+        }
+    ]
 
 });
 
