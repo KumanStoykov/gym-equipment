@@ -35,7 +35,7 @@ router.post('/register', async (req, res) => {
 
         const hashPass = await bcrypt.hash(password, ROUND_SALT);
 
-        const user = await userService.createUser(email, hashPass);
+        const user = await userService.createUser({ email, hashPass, isAdmin: false });
 
         const token = await jwtUtil.createToken(user);
 
@@ -65,13 +65,13 @@ router.post('/login', async (req, res) => {
 
         const user = await userService.getByEmail(email);
 
-        if(!user) {
+        if (!user) {
             throw new Error('Email or password don\'t match!');
         }
 
-        const comparePassword =  await bcrypt.compare(password, user.password);
+        const comparePassword = await bcrypt.compare(password, user.password);
 
-        if(!comparePassword) {
+        if (!comparePassword) {
             throw new Error('Email or password don\'t match!');
         }
 

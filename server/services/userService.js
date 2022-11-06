@@ -5,4 +5,4 @@ exports.getById = (userId) => User.findById(userId);
 
 exports.getByEmail = (email) => User.find({ email: email });
 
-exports.createUser = (email, password) => User.create(email, password);
+exports.createUser = (user) => User.create(user);
