@@ -19,7 +19,7 @@ const bikeSchema = mongoose.Schema({
         type: String,
         require: true
     },
-    Length: {
+    lengthBike: {
         type: String,
         require: true
     },
@@ -48,10 +48,6 @@ const bikeSchema = mongoose.Schema({
         require: true
     },
     maxUserLength: {
-        type: Number,
-        require: true
-    },
-    maxUserWeight: {
         type: Number,
         require: true
     },
