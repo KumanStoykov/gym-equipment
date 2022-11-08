@@ -15,6 +15,10 @@ const rackSchema = mongoose.Schema({
         type: Number,
         require: true
     },
+    madeIn: {
+        type: String,
+        require: true
+    },
     material: {
         type: String,
         require: true
