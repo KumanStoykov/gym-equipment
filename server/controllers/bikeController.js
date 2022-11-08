@@ -5,6 +5,8 @@ const cloudinary = require('cloudinary').v2;
 
 const bikeService = require('../services/bikeService');
 const formidableParsePromise = require('../utils/formidableParsePromise');
+const loggedIn = require('../middlewares/loggedInMiddleware');
+const isAdmin = require('../middlewares/isAdminMiddleware');
 
 router.get('/', async (req, res) => {
 
@@ -21,7 +23,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', loggedIn(), isAdmin(), async (req, res) => {
     const form = formidable({ multiples: true });
     const imageUrl = [];
 
@@ -42,6 +44,7 @@ router.post('/', async (req, res) => {
             brand: formData.brand,
             price: formData.price,
             promoPrice: formData.promoPrice,
+            madeIn: formData.madeIn,
             material: formData.material,
             lengthBike: formData.lengthBike,
             equipmentWeight: formData.equipmentWeight,
@@ -65,6 +68,9 @@ router.post('/', async (req, res) => {
         }
         if (Number(bikeData.promoPrice) < 0) {
             throw new Error('Promo price should be positive number!');
+        }
+        if (bikeData.madeIn.length <= 3) {
+            throw new Error('Made in should be at least 3 characters long!');
         }
         if (bikeData.material.length <= 3) {
             throw new Error('Material should be at least 3 characters long!');
@@ -112,7 +118,7 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.delete('/:bikeId', async (req, res) => {
+router.delete('/:bikeId', loggedIn(), isAdmin(), async (req, res) => {
     const bikeId = req.body.bikeId;
 
     try {
