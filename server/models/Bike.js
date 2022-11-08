@@ -19,6 +19,10 @@ const bikeSchema = mongoose.Schema({
         type: String,
         require: true
     },
+    material: {
+        type: String,
+        require: true
+    },
     lengthBike: {
         type: String,
         require: true
