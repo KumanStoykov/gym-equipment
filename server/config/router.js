@@ -5,13 +5,13 @@ const benchController = require('../controllers/benchController');
 const bikeController = require('../controllers/bikeController');
 const dumbbellController = require('../controllers/dumbbellController');
 const rackController = require('../controllers/rackController');
-const treadmillsController = require('../controllers/treadmillsController');
+const treadmillController = require('../controllers/treadmillController');
 
 router.use('/user', userController);
 router.use('/bench', benchController);
 router.use('/bike', bikeController);
 router.use('/dumbbell', dumbbellController);
 router.use('/rack', rackController);
-router.use('/treadmill', treadmillsController);
+router.use('/treadmill', treadmillController);
 
 module.exports = router;
