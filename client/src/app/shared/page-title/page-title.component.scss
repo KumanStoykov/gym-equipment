@@ -1,0 +1,23 @@
+@import "/src/app/shared/variables.scss";
+
+.title-wrap {
+    display: flex;
+    justify-content: center;
+    padding-top: 3rem;
+}
+.title {
+    color: $clr-font-desc;
+    font-size: 2.5rem;
+    border-top: 2px solid $clr-font-desc;
+    border-bottom: 2px solid $clr-font-desc;
+}
+
+@media all and (max-width: 768px) {
+    .title-wrap {
+        margin: 0 1rem;
+        text-align: center;
+    }
+    .title {
+        font-size: 2rem;
+    }
+}
