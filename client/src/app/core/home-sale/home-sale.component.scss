@@ -1,0 +1,117 @@
+@import "/src/app/shared/variables.scss";
+
+.sale-title-wrap {
+    text-align: center;
+}
+.sale-title {
+    color: $clr-dark;
+    margin-bottom: 0;
+    letter-spacing: 2px;
+    font-size: 1.5rem;
+}
+
+.sale-sub-title {
+    display: inline-block;
+    padding: 1rem;
+    font-family: "Dosis", sans-serif;
+    font-size: 1.25rem;
+    color: $clr-with;
+    background: #f55e5e;
+    font-weight: bold;
+    border-radius: 81% 19% 85% 15% / 76% 30% 70% 24%;
+}
+
+.cards-wrap {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+.card {
+    position: relative;
+    text-align: center;
+    border: 1px solid $clr-gray-light;
+    padding: 1rem;
+}
+
+.sale-img-wrap {
+    overflow: hidden;
+}
+
+.sale-image {
+    width: 100%;
+
+    transition: all 0.4s ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+      filter: sepia(40%);
+    }
+}
+
+.btn-screen-all-wrap {
+    display: flex;
+    justify-content: center;
+    margin: 2rem;
+}
+
+.btn-screen-all {
+    display: inline-block;
+    letter-spacing: 1px;
+    color: $clr-with;
+    font-size: 1.35rem;
+    font-weight: 600;
+    background: $clr-orange-light;
+    border: none;
+    padding: 12px 80px;
+
+    &:hover {
+        background: $clr-orange-solid;
+    }
+
+    .faDumbbell {
+        display: inline-block;
+        justify-content: center;
+        align-items: center;
+        color: $clr-with;
+        font-size: 1.5rem;
+        transform: rotate(30deg);
+        transition: all 0.5s ease-in-out;
+    }
+    &:hover .faDumbbell {
+        transform: rotate(0deg);
+    }
+}
+
+@media all and (max-width: 1200px) {
+    .btn-screen-all {
+        padding: 10px 54px;
+    }
+}
+
+@media all and (max-width: 1000px) {
+    .btn-screen-all {
+        padding: 12px 24px;
+        font-size: 1.5rem;
+    }
+
+    // -------------------------
+    //     Card
+    // -------------------------
+    .cards-wrap {
+        flex-direction: column;
+        margin: 1rem;
+    }
+    .card {
+        margin: 0 1rem;
+    }
+}
+
+@media all and (max-width: 768px) {
+    .btn-screen-all {
+        font-size: 1rem;
+
+        .faDumbbell {
+            font-size: 1rem;
+        }
+    }
+}
