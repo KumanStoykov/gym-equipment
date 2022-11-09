@@ -1,0 +1,34 @@
+<app-page-hero [heroPageTitle]="heroTitle"></app-page-hero>
+
+<section class="register container">
+    <div class="form-wrap">
+        <app-page-title [pageTitle]="pageTitle"></app-page-title>
+
+        <form class="form" action="">
+            <div class="input-row">
+                <input placeholder="Email *" type="text" class="input-field" />
+            </div>
+            <div class="input-row">
+                <input
+                    placeholder="Password *"
+                    type="password"
+                    class="input-field"
+                />
+            </div>
+            <div class="input-row">
+                <input
+                    placeholder="Re-password *"
+                    type="password"
+                    class="input-field"
+                />
+            </div>
+            <button type="submit" class="btn">Register</button>
+        </form>
+        <div class="have-account">
+            <p>
+                You all ready have registration?
+                <a routerLink="/auth/login">Sign in</a>
+            </p>
+        </div>
+    </div>
+</section>
