@@ -1,0 +1,104 @@
+@import "/src/app/shared/variables.scss";
+.footer {
+    display: flex;
+    flex-direction: column;
+    background: $clr-dark;
+    color: $clr-with;
+    padding-top: 1rem;
+}
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-info-section {
+    display: flex;
+    flex-direction: column;
+    min-height: 182px;
+}
+
+.title-section {
+    font-size: 1.25rem;
+    letter-spacing: 1px;
+    font-family: "Dosis", sans-serif;
+    margin: 1rem 0;
+}
+
+.footer-list-item a {
+    color: $clr-with;
+    text-decoration: underline;
+    transition: all 0.3s;
+
+    &:hover {
+        color: $clr-orange-light;
+    }
+}
+
+.connect-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-list-horizontal {
+    display: flex;
+    gap: 1rem;
+}
+
+.connect-link {
+    color: $clr-with;
+    background: inherit;
+    font-size: 1.35rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        scale: 1.1;
+        color: $clr-orange-light;
+    }
+}
+
+.footer-logo .logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: $clr-with;
+}
+.logo-img {
+    margin: auto;
+    margin-top: -20px;
+    filter: invert(75%);
+}
+
+.reserved {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+@media all and (max-width: 1000px) {
+    .footer-wrap {
+        padding: 0 2rem;
+    }
+
+    .footer-info-section:nth-child(4),
+    .footer-info-section:nth-child(2) {
+        display: none;
+    }
+}
+@media all and (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+    }
+    .footer-info-section {
+        text-align: center;
+    }
+    .footer-info-section:nth-child(1) {
+        display: none;
+    }
+
+    .reserved {
+        font-size: 0.8rem;
+    }
+}
