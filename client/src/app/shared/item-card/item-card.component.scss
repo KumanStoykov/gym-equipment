@@ -1,0 +1,60 @@
+@import "/src/app/shared/variables.scss";
+
+.card {
+    position: relative;
+    text-align: center;
+    border: 1px solid $clr-gray-light;
+    padding: 1rem;
+}
+
+.sale-img-wrap {
+    overflow: hidden;
+}
+
+.sale-image {
+    width: 100%;
+
+    transition: all 0.4s ease-in-out;
+
+    &:hover {
+        transform: scale(1.05);
+        filter: sepia(40%);
+    }
+}
+
+.sale-card-title {
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background-color: $clr-gray-light;
+        bottom: -12px;
+        left: 0;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background-color: $clr-gray-light;
+        bottom: -9px;
+        left: 0;
+    }
+}
+
+.sale-card-price-old {
+    text-decoration: line-through;
+}
+
+.sale-card-price-new {
+    color: #f55e5e;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
