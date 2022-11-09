@@ -1,1 +1,196 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@400;500;600;700;800&display=swap");
+@import "./app/shared/variables.scss";
+
+//--------------------------
+// Reset
+//--------------------------
+
+// Box sizing rules
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+// Remove default margin
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+    margin: 0;
+}
+
+// Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed
+ul[role="list"],
+ol[role="list"] {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+// Set core root defaults
+html:focus-within {
+    scroll-behavior: smooth;
+}
+
+// Set core body defaults
+body {
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+}
+
+// A elements that don't have a class get default styles
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+}
+a {
+    text-decoration: none;
+}
+
+// Make images easier to work with
+img,
+picture {
+    max-width: 100%;
+    display: block;
+}
+
+// Inherit fonts for inputs and buttons
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+// Remove all animations, transitions and smooth scroll for people that prefer not to see them
+@media (prefers-reduced-motion: reduce) {
+    html:focus-within {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+//--------------------------
+//Global Utils
+//--------------------------
+html {
+    height: 100%;
+    position: relative;
+}
+body {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+}
+
+button {
+    cursor: pointer;
+}
+
+.container {
+    width: 1180px;
+    margin: 0 auto;
+}
+
+.input-row {
+    position: relative;
+    width: 100%;
+    max-width: 30rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2.5rem;
+}
+
+.input-field {
+    width: 100%;
+    padding: 12px 10px;
+    border: 1px solid $clr-gray-light;
+    outline: none;
+    border-radius: 3px;
+
+    &:hover {
+        border: 1px solid $clr-dark;
+    }
+
+    &:focus {
+        box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.47);
+        border: 1px solid $clr-dark;
+    }
+}
+
+.btn {
+    padding: 8px 5rem;
+    background-color: $clr-orange-light;
+    color: $clr-with;
+    border: none;
+    font-size: 1.25rem;
+
+    &:hover {
+        background: $clr-orange-solid;
+    }
+}
+
+//--------------------------
+//Responsive
+//--------------------------
+
+@media all and (max-width: 1200px) {
+    .container {
+        width: 970px;
+    }
+}
+
+@media all and (max-width: 1000px) {
+    .container {
+        width: 750px;
+    }
+}
+
+@media all and (max-width: 768px) {
+    .container {
+        width: 100%;
+    }
+}
+
+//--------------------------
+//Animation
+//--------------------------
+
+@keyframes showFromTop {
+    0% {
+        transform: translateY(-50%);
+        opacity: 0.1;
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes showFromBottom {
+    0% {
+        transform: translateY(50%);
+        opacity: 0.1;
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
