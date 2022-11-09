@@ -1,0 +1,30 @@
+<app-page-hero [heroPageTitle]="heroTitle"></app-page-hero>
+
+<section class="login container">
+    <div class="form-wrap">
+        <app-page-title [pageTitle]="pageTitle"></app-page-title>
+
+        <form class="form" action="">
+            <div class="input-row">
+                <input
+                    placeholder="Email *"
+                    id="email"
+                    type="text"
+                    class="input-field"
+                />
+            </div>
+            <div class="input-row">
+                <input
+                    placeholder="Password *"
+                    id="password"
+                    type="password"
+                    class="input-field"
+                />
+            </div>
+            <button type="submit" class="btn">Login</button>
+        </form>
+        <div class="have-account">
+            <p>Don't have an account? <a routerLink="/auth/register">Sign up</a></p>
+        </div>
+    </div>
+</section>

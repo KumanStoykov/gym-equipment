@@ -1,0 +1,55 @@
+@import "/src/app/shared/variables.scss";
+
+.form-wrap {
+    background: $clr-with;
+    margin: -3rem auto 12rem auto;
+}
+
+.border-line {
+    padding-top: 3rem;
+
+    &::before {
+        content: "";
+        position: absolute;
+        bottom: 2px;
+        left: 0;
+        height: 1px;
+        width: 100%;
+        transform: scaleX(0.45);
+        background-color: $clr-font-desc;
+    }
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 1px;
+        width: 100%;
+        transform: scale(0.45);
+        background-color: $clr-font-desc;
+    }
+}
+
+.form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+    padding: 0 1rem;
+}
+.have-account {
+    text-align: center;
+    margin: 1rem;
+
+    a {
+        color: $clr-dark;
+        font-weight: bold;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            color: $clr-orange-light;
+        }
+    }
+}
