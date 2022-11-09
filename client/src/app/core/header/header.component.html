@@ -1,0 +1,123 @@
+<header class="header">
+    <div class="nav-wrap container" [ngClass]="menuIsToggle ? 'menu-open' : ''">
+        <div class="logo-wrap">
+            <a routerLink="/" class="logo"
+                >GYM
+                <img
+                    class="logo-img"
+                    src="../../../assets/809670_body building_fitness_sports_weight_icon.png"
+                    alt=""
+                />
+            </a>
+        </div>
+        <nav
+            class="nav"
+            appClickOutside
+            (clickOutside)="handleOutsideClick()"
+        >
+            <div class="hamburger-menu" (click)="menuToggle()">
+                <span class="bar bar1"></span>
+                <span class="bar bar2"></span>
+                <span class="bar bar3"></span>
+                <span class="bar bar4"></span>
+            </div>
+            <ul class="nav-list" role="list">
+                <li>
+                    <a
+                        class="nav-link"
+                        routerLink="/treadmills"
+                        (click)="menuToggle()"
+                        >TREADMILLS</a
+                    >
+                </li>
+                <li>
+                    <a
+                        class="nav-link"
+                        routerLink="/shop"
+                        (click)="menuToggle()"
+                        >BIKE</a
+                    >
+                </li>
+                <li
+                    class="nav-list-item dropdown"
+                    [ngClass]="
+                        shopIsToggle ? 'dropdown-open' : 'dropdown-close'
+                    "
+                >
+                    <button
+                        class="nav-link dropdown-btn"
+                        (click)="dropdownToggle('shop')"
+                    >
+                        STRENGTH
+                    </button>
+                    <ul class="dropdown-content" role="list">
+                        <li>
+                            <a
+                                class="nav-link"
+                                routerLink="/shop"
+                                (click)="menuToggle()"
+                                >Rack</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                class="nav-link"
+                                routerLink="/shop"
+                                (click)="menuToggle()"
+                                >Bench</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                class="nav-link"
+                                routerLink="/shop"
+                                (click)="menuToggle()"
+                                >Dumbbell</a
+                            >
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-list-item">
+                    <a
+                        routerLink="/checkout"
+                        class="nav-link"
+                        (click)="menuToggle()"
+                        >CHECKOUT
+                    </a>
+                </li>
+                <li
+                    class="nav-list-item dropdown"
+                    [ngClass]="
+                        loginIsToggle ? 'dropdown-open' : 'dropdown-close'
+                    "
+                >
+                    <button
+                        class="nav-link dropdown-btn"
+                        (click)="dropdownToggle('login')"
+                    >
+                        ACCOUNT
+                    </button>
+
+                    <ul class="dropdown-content" role="list">
+                        <li class="nav-list-item">
+                            <a
+                                routerLink="/auth/login"
+                                class="nav-link"
+                                (click)="menuToggle()"
+                                >Login
+                            </a>
+                        </li>
+                        <li class="nav-list-item">
+                            <a
+                                routerLink="/auth/register"
+                                class="nav-link"
+                                (click)="menuToggle()"
+                                >Register
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
