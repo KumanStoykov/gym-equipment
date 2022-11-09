@@ -1,0 +1,43 @@
+@import "/src/app/shared/variables.scss";
+
+.hero {
+    position: relative;
+    background: url("../../../assets/hero-background.jpg") center no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -10;
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-color: rgb(42, 39, 42, 0.3);
+    }
+}
+.hero-title-wrap {
+    position: relative;
+    color: $clr-with;
+    font-family: "Dosis", sans-serif;
+    text-align: center;
+    z-index: 1;
+}
+.hero-title {
+    margin: 0;
+    animation: showFromTop 1.5s 0s 1 normal forwards;
+    font-size: 5rem;
+}
+
+@media all and (max-width: 1000px) {
+    .hero-title {
+        font-size: 4rem;
+    }
+}
+
+@media all and (max-width: 768px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+}
