@@ -1,0 +1,56 @@
+@import "/src/app/shared/variables.scss";
+
+.support {
+    margin: 5rem auto;
+}
+
+.cards-wrap {
+    display: flex;
+    gap: 1rem;
+}
+.card {
+    position: relative;
+    text-align: center;
+    border: 1px solid $clr-gray-light;
+    padding: 1rem;
+}
+.support-icons {
+    font-size: 2.2rem;
+    color: $clr-orange-light;
+    position: absolute;
+    top: -25px;
+    left: 43%;
+    background: $clr-with;
+    padding: 0 10px;
+}
+
+.support-card-title {
+    text-transform: uppercase;
+    margin: 1.5rem 0;
+}
+
+.support-card-desc {
+    margin: 1rem 0;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.75;
+    text-align: center;
+    color: $clr-font-desc;
+}
+
+.support-card-link {
+    position: relative;
+    transition: color 0.3s;
+    &:hover {
+        color: $clr-orange-light;
+    }
+}
+
+@media all and (max-width: 1000px) {
+    .cards-wrap {
+        flex-direction: column;
+    }
+    .card {
+        margin: 0 1rem;
+    }
+}
