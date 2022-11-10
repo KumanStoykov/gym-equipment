@@ -1,0 +1,21 @@
+<div class="slider">
+    <div class="thumbnail">
+        <div class="thumb-img-wrap" *ngFor="let image of images; let i = index">
+            <img
+                [ngClass]="imgIndex === i ? 'img-border' : ''"
+                (click)="imageClick(i)"
+                src="{{ image }}"
+                alt="image.jpg"
+            />
+        </div>
+    </div>
+    <div class="img-wrap">
+        <img src="{{ images[imgIndex] }}" alt="image.jpg" />
+        <button class="next-btn" (click)="indexPreview()">
+            <fa-icon class="icon-btn" [icon]="icons.faAngleLeft"></fa-icon>
+        </button>
+        <button class="prev-btn" (click)="indexNext()">
+            <fa-icon class="icon-btn" [icon]="icons.faAngleRight"></fa-icon>
+        </button>
+    </div>
+</div>
