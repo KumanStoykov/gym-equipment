@@ -1,0 +1,39 @@
+@import "/src/app/shared/variables.scss";
+
+.comment {
+    border-bottom: 2px solid $clr-font-desc;
+}
+
+.comment-content {
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.user-rating {
+    min-width: 100px;
+
+    .username {
+        font-weight: 500;
+    }
+}
+
+.comment-text {
+    padding: 0 1rem;
+}
+
+@media all and (max-width: 768px) {
+    .user-rating {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .comment-content {
+        flex-direction: column;
+    }
+
+    .comment-text {
+        text-align: center;
+        padding: 0 1rem;
+    }
+}
