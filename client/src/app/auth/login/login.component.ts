@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-    heroTitle = 'LOG IN';
+    heroTitle = 'ACCOUNT';
     pageTitle = 'LOGIN';
 
   constructor() { }
