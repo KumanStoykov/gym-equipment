@@ -1,0 +1,40 @@
+@import "/src/app/shared/variables.scss";
+
+.comments {
+    margin-bottom: 3rem;
+}
+
+.comments-title {
+    font-size: 1.5rem;
+}
+.review-count {
+    background: $clr-gray-light;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0.5rem;
+
+    p {
+        font-weight: 400;
+    }
+
+    button {
+        border: none;
+        background: $clr-font-desc;
+        color: $clr-with;
+        padding: 4px 8px;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            background: $clr-dark;
+            color: $clr-gray-light;
+        }
+    }
+}
+
+@media all and (max-width: 768px) {
+    .comments {
+        margin: 0 1rem 3rem 1rem;
+    }
+}
