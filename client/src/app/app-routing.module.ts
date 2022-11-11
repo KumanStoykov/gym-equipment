@@ -10,8 +10,12 @@ const routes: Routes = [
         component: HomeComponent
     },
     {
-        path: 'treadmills',
+        path: 'treadmill',
         loadChildren: () => import('./treadmill/treadmill.module').then(m => m.TreadmillModule)
+    },
+    {
+        path: 'bike',
+        loadChildren: () => import('./bike/bike.module').then(m => m.BikeModule)
     },
     {
         path: 'auth',
