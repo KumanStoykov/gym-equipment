@@ -106,7 +106,7 @@ button {
 }
 
 .container {
-    width: 1180px;
+    width: 1400px;
     margin: 0 auto;
 }
 
@@ -148,9 +148,22 @@ button {
     }
 }
 
+.cards-wrap {
+    margin: 2rem auto;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+}
+
 //--------------------------
 //Responsive
 //--------------------------
+
+@media all and (max-width: 1500px) {
+    .container {
+        width: 1100px;
+    }
+}
 
 @media all and (max-width: 1200px) {
     .container {
@@ -162,11 +175,20 @@ button {
     .container {
         width: 750px;
     }
+
+    .cards-wrap {
+        flex-direction: column;
+        margin: 2rem 1rem;
+    }
 }
 
 @media all and (max-width: 768px) {
     .container {
         width: 100%;
+    }
+
+    .cards-wrap {
+        grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
     }
 }
 
