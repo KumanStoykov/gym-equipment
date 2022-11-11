@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TreadmillCatalogComponent } from './treadmill-catalog/treadmill-catalog.component';
+import { TreadmillListComponent } from './treadmill-list/treadmill-list.component';
+import { TreadmillDetailsComponent } from './treadmill-details/treadmill-details.component';
 
 
 const routes: Routes = [
@@ -10,9 +11,12 @@ const routes: Routes = [
         {
             path: '',
             pathMatch: 'full',
-            component: TreadmillCatalogComponent
+            component: TreadmillListComponent
         },
-
+        {
+            path: 'details',
+            component: TreadmillDetailsComponent
+        }
     ]
   }
 ];
