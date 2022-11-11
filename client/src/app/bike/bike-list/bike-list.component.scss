@@ -1,0 +1,19 @@
+@import "/src/app/shared/variables.scss";
+
+.content-wrap {
+    background: $clr-with;
+    margin-top: -3rem;
+    position: relative;
+}
+
+.page-content-wrap {
+    display: flex;
+    gap: 1rem;
+}
+
+@media all and (max-width: 768px) {
+    .page-content-wrap {
+        flex-direction: column;
+        gap: 0;
+    }
+}
