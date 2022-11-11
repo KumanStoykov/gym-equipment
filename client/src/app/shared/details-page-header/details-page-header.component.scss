@@ -1,0 +1,136 @@
+@import "/src/app/shared/variables.scss";
+
+.page-header-wrap {
+    display: flex;
+    gap: 3rem;
+
+    .page-header-info {
+        padding-right: 2rem;
+        flex: 0 0 40%;
+        margin: 3rem 0 0 0;
+    }
+}
+
+.rating-price-wrap {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid $clr-font-desc;
+}
+
+.price-wrap {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.normal-price {
+    text-decoration: line-through;
+    margin-right: 1rem;
+}
+
+.sale {
+    color: $clr-red;
+}
+
+.product-definition-wrap {
+    margin-top: 1rem;
+}
+
+.page-header-list-wrap {
+    margin-top: 1rem;
+    font-weight: 500;
+    line-height: 2;
+
+    .page-header-title {
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+    }
+
+    .page-header-list-item {
+        padding-left: 1rem;
+    }
+
+    .check-icon {
+        color: $clr-red;
+    }
+}
+
+.btn-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.btn-detail {
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.btn-add {
+    background-color: $clr-orange-light;
+    color: $clr-with;
+    border: none;
+    transition: color 0.3s ease-in-out;
+    &:hover {
+        color: $clr-dark;
+    }
+}
+
+.btn-buy {
+    background-color: transparent;
+    border: 1px solid $clr-dark;
+    color: $clr-dark;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        color: $clr-orange-light;
+        border: 1px solid $clr-orange-light;
+    }
+}
+
+
+@media all and (max-width: 1000px) {
+    .page-header-wrap {
+        flex-direction: column;
+        .page-header-info {
+            padding-right: unset;
+            margin: 0 1rem;
+        }
+    }
+
+    .page-header-info {
+        text-align: center;
+    }
+
+    .lists-wrap {
+        display: flex;
+        justify-content: space-around;
+    }
+}
+
+@media all and (max-width: 768px) {
+    .btn-wrap {
+        flex-direction: column;
+    }
+
+    .page-header-list-wrap {
+        max-width: 150px;
+        margin: 0 auto;
+        text-align: left;
+        .page-header-list-item {
+            padding: 0;
+        }
+    }
+
+    .rating-price-wrap {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+}
+
+@media all and (max-width: 450px) {
+    .lists-wrap {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}

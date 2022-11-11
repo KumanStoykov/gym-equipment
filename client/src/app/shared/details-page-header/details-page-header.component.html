@@ -1,0 +1,87 @@
+<div class="page-header-wrap">
+    <app-slider [images]="images"></app-slider>
+
+    <div class="page-header-info">
+        <div class="rating-price-wrap">
+            <app-rating [showCount]="true"></app-rating>
+
+            <p class="price-wrap">
+                <span class="normal-price">$920</span>
+                <span class="sale">$700</span>
+            </p>
+        </div>
+        <div class="product-definition-wrap">
+            <h3 class="product-definition">ADAPTIVE RUNNING SURFACE</h3>
+            <p>
+                Easy on the joints, ready for your sprints. Treadmill with
+                incline for running at home.
+            </p>
+        </div>
+        <div class="lists-wrap">
+            <div class="page-header-list-wrap">
+                <p class="page-header-title">Delivery</p>
+                <ul class="page-header-list" role="list">
+                    <li class="page-header-list-item">
+                        <fa-icon
+                            class="check-icon"
+                            [icon]="icons.faCheck"
+                        ></fa-icon>
+                        Inclusive
+                    </li>
+                    <li class="page-header-list-item">
+                        <fa-icon
+                            class="check-icon"
+                            [icon]="icons.faCheck"
+                        ></fa-icon>
+                        1-2 Weeks
+                    </li>
+                    <li class="page-header-list-item">
+                        <fa-icon
+                            class="check-icon"
+                            [icon]="icons.faCheck"
+                        ></fa-icon>
+                        Worldwide
+                    </li>
+                    <li class="page-header-list-item">
+                        <fa-icon
+                            class="check-icon"
+                            [icon]="icons.faCheck"
+                        ></fa-icon>
+                        30-Day Returns
+                    </li>
+                </ul>
+            </div>
+
+            <div class="page-header-list-wrap">
+                <p class="page-header-title">Warranty</p>
+                <ul class="page-header-list" role="list">
+                    <li class="page-header-list-item">
+                        <fa-icon
+                            class="check-icon"
+                            [icon]="icons.faCheck"
+                        ></fa-icon>
+                        5 Years
+                    </li>
+                    <li class="page-header-list-item">
+                        <fa-icon
+                            class="check-icon"
+                            [icon]="icons.faCheck"
+                        ></fa-icon>
+                        Express Warranty
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="btn-wrap">
+            <button class="btn-detail btn-add">
+                Add To Cart
+                <fa-icon class="btn-icon" [icon]="icons.faCartPlus"></fa-icon>
+            </button>
+            <button class="btn-detail btn-buy">
+                Watch This Item
+                <fa-icon class="btn-icon" [icon]="icons.faHeart"></fa-icon>
+            </button>
+        </div>
+    </div>
+</div>
