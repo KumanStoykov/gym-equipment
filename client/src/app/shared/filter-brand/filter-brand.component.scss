@@ -1,0 +1,16 @@
+@import "/src/app/shared/variables.scss";
+
+.filter-product {
+    width: 103.5px;
+    margin: 0 auto;
+}
+.title-filter {
+    margin: 0.6rem 0;
+    font-size: 1.2rem;
+}
+.checkbox-wrap {
+    text-align: left;
+    input {
+        cursor: pointer;
+    }
+}
