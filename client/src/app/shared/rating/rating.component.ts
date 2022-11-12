@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
 
@@ -8,6 +8,8 @@ import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
     styleUrls: ['./rating.component.scss']
 })
 export class RatingComponent implements OnInit {
+
+    @Input() showCount: boolean = false;
 
     icons = {
         faStar,
