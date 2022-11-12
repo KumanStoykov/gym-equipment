@@ -1,0 +1,57 @@
+@import "/src/app/shared/variables.scss";
+
+.filter-price {
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background-color: $clr-gray-light;
+        bottom: -12px;
+        left: 0;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background-color: $clr-gray-light;
+        bottom: -9px;
+        left: 0;
+    }
+}
+
+.row-wrap:first-child {
+    margin-bottom: 0.3rem;
+}
+.title-filter {
+    margin: 0.6rem 0 0.3rem 0;
+    font-size: 1.2rem;
+    position: relative;
+}
+
+.price {
+    padding: 0.1rem 0.2rem;
+}
+
+.btn-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.3rem;
+}
+
+.filter-btn {
+    margin-top: 0.3rem;
+    padding: 4px 12px;
+    font-size: 1rem;
+    width: 100%;
+}
+
+@media all and (max-width: 768px) {
+    .filter-price {
+        text-align: center;
+    }
+}
