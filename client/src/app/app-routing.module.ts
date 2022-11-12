@@ -18,6 +18,22 @@ const routes: Routes = [
         loadChildren: () => import('./bike/bike.module').then(m => m.BikeModule)
     },
     {
+        path: 'strength',
+        loadChildren: () => import('./rack/rack.module').then(m => m.RackModule)
+    },
+    {
+        path: 'strength',
+        loadChildren: () => import('./bench/bench.module').then(m => m.BenchModule)
+    },
+    {
+        path: 'strength',
+        loadChildren: () => import('./dumbbell/dumbbell.module').then(m => m.DumbbellModule)
+    },
+    {
+        path: 'user',
+        loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+    },
+    {
         path: 'auth',
         loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
     },
