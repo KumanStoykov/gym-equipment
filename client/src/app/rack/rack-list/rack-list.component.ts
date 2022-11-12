@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RackListComponent implements OnInit {
 
+    heroTitle = 'RACKS';
+    pageTitle = 'SUPREME RUNNING PERFORMANCE';
+
   constructor() { }
 
   ngOnInit(): void {
