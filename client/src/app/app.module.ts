@@ -11,6 +11,7 @@ import { DumbbellModule } from './dumbbell/dumbbell.module';
 import { RackModule } from './rack/rack.module';
 import { SharedModule } from './shared/shared.module';
 import { TreadmillModule } from './treadmill/treadmill.module';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { TreadmillModule } from './treadmill/treadmill.module';
     BrowserModule,
     CoreModule,
     SharedModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot({}, {})
   ],
   providers: [],
   bootstrap: [AppComponent]
