@@ -1,18 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TreadmillCatalogComponent } from './treadmill-catalog/treadmill-catalog.component';
+import { TreadmillListComponent } from './treadmill-list/treadmill-list.component';
 import { SharedModule } from '../shared/shared.module';
 import { TreadmillRoutingModule } from './treadmill-routing.module';
+import { TreadmillDetailsComponent } from './treadmill-details/treadmill-details.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { TreadmillInfoComponent } from './treadmill-info/treadmill-info.component';
 
 
 
 @NgModule({
   declarations: [
-    TreadmillCatalogComponent
+    TreadmillListComponent,
+    TreadmillDetailsComponent,
+    TreadmillInfoComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
+    FontAwesomeModule,
     TreadmillRoutingModule
   ],
 
