@@ -1,0 +1,41 @@
+@import "/src/app/shared/variables.scss";
+
+.form-container {
+    max-width: 600px;
+    margin: 3rem auto;
+}
+
+.form {
+    border: 1px solid $clr-gray-light;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2rem;
+    position: relative;
+}
+
+.title {
+    position: absolute;
+    top: -20px;
+    background: $clr-with;
+    padding: 0 7rem;
+    font-size: 1.5rem;
+    border-bottom: 1px solid $clr-gray-light;
+    font-weight: 400;
+}
+
+.btn-wrap {
+    margin-bottom: 1rem;
+}
+
+@media all and (max-width: 768px) {
+    .form {
+        margin: 3rem 1rem;
+        padding: 2rem 1rem;
+    }
+
+    .title {
+        padding: 0 3rem;
+        font-size: 1.2rem;
+    }
+}
