@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BenchDetailsComponent implements OnInit {
 
+    heroTitle = 'DETAILS';
+
   constructor() { }
 
   ngOnInit(): void {

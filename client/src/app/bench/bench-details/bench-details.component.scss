@@ -1,0 +1,12 @@
+@import "/src/app/shared/variables.scss";
+
+.details {
+    margin: -3rem auto 12rem auto;
+    background: $clr-with;
+}
+
+.page-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
