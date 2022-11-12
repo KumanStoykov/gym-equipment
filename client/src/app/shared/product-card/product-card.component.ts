@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
 
@@ -13,6 +13,8 @@ export class ProductCardComponent implements OnInit {
         faStar,
         faStarHalf
     }
+
+    @Input() cardType!: string;
 
     constructor() { }
 
