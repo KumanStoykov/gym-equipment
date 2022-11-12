@@ -1,0 +1,22 @@
+<app-page-hero [heroPageTitle]="heroTitle"></app-page-hero>
+
+<section class="catalog container">
+    <div class="content-wrap">
+        <app-page-title [pageTitle]="pageTitle"></app-page-title>
+
+        <div class="products-container">
+            <div class="products-heading">
+                <h4>ORDER</h4>
+            </div>
+
+            <app-user-product-checkout></app-user-product-checkout>
+            <app-user-product-checkout></app-user-product-checkout>
+            <app-user-product-checkout></app-user-product-checkout>
+        </div>
+        <div class="purchase-total">
+            <p class="delivery">Delivery: $0</p>
+            <p class="total-price">Total price: $2300</p>
+        </div>
+        <app-user-form-checkout></app-user-form-checkout>
+    </div>
+</section>
