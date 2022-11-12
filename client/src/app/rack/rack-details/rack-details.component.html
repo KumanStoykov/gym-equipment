@@ -1,1 +1,14 @@
-<p>rack-details works!</p>
+<app-page-hero [heroPageTitle]="heroTitle"></app-page-hero>
+
+<section class="details container">
+    <app-page-title
+        [pageTitle]="'ROGUE KG COMPETITION PLATES'"
+    ></app-page-title>
+
+    <div class="page-wrap">
+        <app-details-page-header></app-details-page-header>
+
+        <app-rack-info></app-rack-info>
+    </div>
+    <app-comment-list></app-comment-list>
+</section>
