@@ -25,7 +25,7 @@
                 <li>
                     <a
                         class="nav-link"
-                        routerLink="/treadmills"
+                        routerLink="/treadmill"
                         (click)="menuToggle()"
                         >TREADMILLS</a
                     >
@@ -33,20 +33,20 @@
                 <li>
                     <a
                         class="nav-link"
-                        routerLink="/shop"
+                        routerLink="/bike"
                         (click)="menuToggle()"
-                        >BIKE</a
+                        >BIKES</a
                     >
                 </li>
                 <li
                     class="nav-list-item dropdown"
                     [ngClass]="
-                        shopIsToggle ? 'dropdown-open' : 'dropdown-close'
+                        strengthIsToggle ? 'dropdown-open' : 'dropdown-close'
                     "
                 >
                     <button
                         class="nav-link dropdown-btn"
-                        (click)="dropdownToggle('shop')"
+                        (click)="dropdownToggle('strength')"
                     >
                         STRENGTH
                     </button>
@@ -54,32 +54,32 @@
                         <li>
                             <a
                                 class="nav-link"
-                                routerLink="/shop"
+                                routerLink="/strength/rack"
                                 (click)="menuToggle()"
-                                >Rack</a
+                                >Racks</a
                             >
                         </li>
                         <li>
                             <a
                                 class="nav-link"
-                                routerLink="/shop"
+                                routerLink="/strength/bench"
                                 (click)="menuToggle()"
-                                >Bench</a
+                                >Benches</a
                             >
                         </li>
                         <li>
                             <a
                                 class="nav-link"
-                                routerLink="/shop"
+                                routerLink="/strength/dumbbell"
                                 (click)="menuToggle()"
-                                >Dumbbell</a
+                                >Dumbbells</a
                             >
                         </li>
                     </ul>
                 </li>
                 <li class="nav-list-item">
                     <a
-                        routerLink="/checkout"
+                        routerLink="/user/checkout"
                         class="nav-link"
                         (click)="menuToggle()"
                         >CHECKOUT
@@ -88,12 +88,12 @@
                 <li
                     class="nav-list-item dropdown"
                     [ngClass]="
-                        loginIsToggle ? 'dropdown-open' : 'dropdown-close'
+                    accountIsToggle ? 'dropdown-open' : 'dropdown-close'
                     "
                 >
                     <button
                         class="nav-link dropdown-btn"
-                        (click)="dropdownToggle('login')"
+                        (click)="dropdownToggle('account')"
                     >
                         ACCOUNT
                     </button>
