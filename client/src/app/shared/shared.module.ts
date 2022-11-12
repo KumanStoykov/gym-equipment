@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-import { ItemCardComponent } from './item-card/item-card.component';
+import { ProductCardComponent } from './product-card/product-card.component';
 import { RatingComponent } from './rating/rating.component';
 import { LoaderComponent } from './loader/loader.component';
 import { ClickOutsideDirective } from './directives/click-outside.directive';
@@ -11,14 +11,18 @@ import { PageTitleComponent } from './page-title/page-title.component';
 import { SearchComponent } from './search/search.component';
 import { FilterBrandComponent } from './filter-brand/filter-brand.component';
 import { FilterPriceComponent } from './filter-price/filter-price.component';
-import { FilterProductComponent } from './filter-product/filter-product.component';
 import { FilterOrderComponent } from './filter-order/filter-order.component';
+import { CommentComponent } from './comment/comment.component';
+import { SliderComponent } from './slider/slider.component';
+import { RouterModule } from '@angular/router';
+import { DetailsPageHeaderComponent } from './details-page-header/details-page-header.component';
+import { CommentListComponent } from './comment-list/comment-list.component';
 
 
 
 @NgModule({
   declarations: [
-    ItemCardComponent,
+    ProductCardComponent,
     RatingComponent,
     LoaderComponent,
     ClickOutsideDirective,
@@ -27,21 +31,29 @@ import { FilterOrderComponent } from './filter-order/filter-order.component';
     SearchComponent,
     FilterBrandComponent,
     FilterPriceComponent,
-    FilterProductComponent,
-    FilterOrderComponent
+    FilterOrderComponent,
+    CommentComponent,
+    SliderComponent,
+    DetailsPageHeaderComponent,
+    CommentListComponent,
   ],
   imports: [
     CommonModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    RouterModule
   ],
   exports: [
-    ItemCardComponent,
+    ProductCardComponent,
     RatingComponent,
     LoaderComponent,
     PageHeroComponent,
     PageTitleComponent,
     SearchComponent,
-    ClickOutsideDirective
+    CommentComponent,
+    SliderComponent,
+    ClickOutsideDirective,
+    DetailsPageHeaderComponent,
+    CommentListComponent,
   ]
 })
 export class SharedModule { }
