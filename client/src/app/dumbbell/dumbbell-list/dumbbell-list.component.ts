@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DumbbellListComponent implements OnInit {
 
+    heroTitle = 'DUMBBELLS';
+    pageTitle = 'SUPREME RUNNING PERFORMANCE';
+
   constructor() { }
 
   ngOnInit(): void {
