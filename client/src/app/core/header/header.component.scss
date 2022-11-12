@@ -100,7 +100,7 @@
 }
 
 .dropdown-open .dropdown-content {
-    animation: slide-down 0.2s linear;
+    animation: slide-down 0.3s linear;
     display: block;
 }
 .dropdown-close .dropdown-content {
@@ -259,7 +259,7 @@
 
 @keyframes slide-down {
     0% {
-        transform: translateY(-1rem);
+        transform: translateY(-15%);
         opacity: 0;
     }
 
