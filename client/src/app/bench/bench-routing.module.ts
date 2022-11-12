@@ -6,7 +6,7 @@ import { BenchListComponent } from './bench-list/bench-list.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'bench',
     children: [
         {
             path: '',
