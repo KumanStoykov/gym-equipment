@@ -3,15 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthModule } from './auth/auth.module';
-import { BenchModule } from './bench/bench.module';
-import { BikeModule } from './bike/bike.module';
 import { CoreModule } from './core/core.module';
-import { DumbbellModule } from './dumbbell/dumbbell.module';
-import { RackModule } from './rack/rack.module';
 import { SharedModule } from './shared/shared.module';
-import { TreadmillModule } from './treadmill/treadmill.module';
 import { StoreModule } from '@ngrx/store';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,6 +16,7 @@ import { StoreModule } from '@ngrx/store';
     BrowserModule,
     CoreModule,
     SharedModule,
+    HttpClientModule,
     AppRoutingModule,
     StoreModule.forRoot({}, {})
   ],
