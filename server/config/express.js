@@ -12,9 +12,11 @@ module.exports = (app) => {
 
     app.use(cors(config.CORS));
 
+    app.use(express.urlencoded({ extended: true }));
+
     app.use(express.json());
 
     app.use(cookieParser());
 
-    app.use(router.use('/api'));
+    app.use(router);
 }
