@@ -7,7 +7,7 @@ const dumbbellController = require('../controllers/dumbbellController');
 const rackController = require('../controllers/rackController');
 const treadmillController = require('../controllers/treadmillController');
 
-router.use('/user', userController);
+router.use('/api/user', userController);
 router.use('/bench', benchController);
 router.use('/bike', bikeController);
 router.use('/dumbbell', dumbbellController);

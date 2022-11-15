@@ -3,11 +3,11 @@ const envConfig = {
                 PORT: process.env.PORT || 3000,
                 DB_CONNECTION_STRING: 'mongodb://localhost:27017/gymEquipment',
                 COOKIE_TOKEN_NAME: 'X-Authorization',
-                SECRET: process.env.SECRET,
+                SECRET: 'fasdf;j34erj23221342fdsf2342',
                 ROUND_SALT: 9,
                 CORS: {
-                        origin: ['http://localhost:3000'],
-                        credential: true
+                        origin: ['http://localhost:4200'],
+                        credentials: true
                 },
                 CLOUDINARY: {
                         api_key: process.env.CLOUDINARY_API_KEY,
@@ -22,8 +22,8 @@ const envConfig = {
                 SECRET: process.env.SECRET,
                 ROUND_SALT: 9,
                 CORS: {
-                        origin: ['http://localhost:3000'],
-                        credential: true
+                        origin: [''],
+                        credentials: true
                 },
                 CLOUDINARY: {
                         api_key: process.env.CLOUDINARY_API_KEY,
