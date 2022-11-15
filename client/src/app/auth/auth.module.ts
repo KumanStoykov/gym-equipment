@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { AuthRoutingModule } from './auth-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -18,6 +19,7 @@ import { AuthRoutingModule } from './auth-routing.module';
         CommonModule,
         RouterModule,
         SharedModule,
+        ReactiveFormsModule,
         AuthRoutingModule
     ]
 })
