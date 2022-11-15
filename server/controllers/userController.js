@@ -13,7 +13,6 @@ router.post('/register', async (req, res) => {
     try {
         const email = req.body.email.trim();
         const password = req.body.password.trim();
-        const repeatPassword = req.body.repeatPassword.trim();
 
         if (!validators.isEmail(email)) {
             throw new Error('The email should be in correct format!');
@@ -21,10 +20,6 @@ router.post('/register', async (req, res) => {
 
         if (!password.length > 6) {
             throw new Error('Password should be at last 6 characters long!');
-        }
-
-        if (!password === repeatPassword) {
-            throw new Error('Repeat password should be equal to password!');
         }
 
         const emailIsTaken = await userService.getByEmail(email);
@@ -35,12 +30,12 @@ router.post('/register', async (req, res) => {
 
         const hashPass = await bcrypt.hash(password, ROUND_SALT);
 
-        const user = await userService.createUser({ email, hashPass, isAdmin: false });
+        const user = await userService.createUser({ email, password: hashPass, isAdmin: false });
 
         const token = await jwtUtil.createToken(user);
-
+        
         res.cookie(COOKIE_TOKEN_NAME, token, { httpOnly: true });
-
+        
         const userData = userPayload(user);
 
         res.status(200).send({ userData });
