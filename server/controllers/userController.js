@@ -7,6 +7,31 @@ const { userPayload } = require('../utils/userPayload');
 const { ROUND_SALT, COOKIE_TOKEN_NAME } = require('../config');
 const validators = require('../validators');
 
+const checkCredential = require('../middlewares/checkCredentialMiddleware');
+
+
+router.get('/check-user', checkCredential(), async (req, res) => {
+    try {
+        let user = {}; 
+        console.log(req?.user)
+        if (req?.user) {
+            user = await userService.getById(req.user._id);
+        }
+
+        if(!req?.user) {
+            throw new Error('User token is invalid!');
+        }
+
+        const userData = userPayload(user);
+
+        res.status(200).send(userData);
+
+    } catch (error) {
+        res.status(400).send({ message: error.message });
+    }
+});
+
+
 
 router.post('/register', async (req, res) => {
 
@@ -38,7 +63,7 @@ router.post('/register', async (req, res) => {
         
         const userData = userPayload(user);
 
-        res.status(200).send({ userData });
+        res.status(200).send(userData);
 
     } catch (err) {
         res.status(400).send({ message: err.message });
@@ -76,7 +101,7 @@ router.post('/login', async (req, res) => {
 
         const userData = userPayload(user);
 
-        res.status(200).send({ userData });
+        res.status(200).send(userData);
 
     } catch (err) {
         res.status(400).send({ message: err.message });
