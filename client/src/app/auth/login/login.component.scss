@@ -39,6 +39,19 @@
     margin-top: 5rem;
     padding: 0 1rem;
 }
+
+.input-err {
+    border: 1px solid $clr-red;
+
+    &:focus {
+        box-shadow: 0px 0px 3px 1px rgba(221, 30, 49, 0.47);
+    }
+}
+
+.error {
+    color: $clr-red;
+}
+
 .have-account {
     text-align: center;
     margin: 1rem;
