@@ -4,14 +4,42 @@
     <div class="form-wrap">
         <app-page-title [pageTitle]="pageTitle"></app-page-title>
 
-        <form class="form" action="">
+        <app-loader *ngIf="isLoading"></app-loader>
+
+        <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()" *ngIf="!isLoading">
             <div class="input-row">
                 <input
                     placeholder="Email *"
                     id="email"
                     type="text"
                     class="input-field"
+                    formControlName="email"
+                    [ngClass]="
+                        loginForm.get('email')?.invalid &&
+                        loginForm.get('email')?.touched
+                            ? 'input-err'
+                            : null
+                    "
                 />
+                <ng-container
+                    *ngIf="
+                        loginForm.get('email')?.invalid &&
+                        loginForm.get('email')?.touched
+                    "
+                >
+                    <p
+                        class="error"
+                        *ngIf="loginForm.get('email')?.errors?.['required']"
+                    >
+                        Email is required!
+                    </p>
+                    <p
+                        class="error"
+                        *ngIf="loginForm.get('email')?.errors?.['invalidEmail']"
+                    >
+                        Email is invalid!
+                    </p>
+                </ng-container>
             </div>
             <div class="input-row">
                 <input
@@ -19,12 +47,41 @@
                     id="password"
                     type="password"
                     class="input-field"
+                    formControlName="password"
+                    [ngClass]="
+                        loginForm.get('password')?.invalid &&
+                        loginForm.get('password')?.touched
+                            ? 'input-err'
+                            : null
+                    "
                 />
+                <ng-container
+                    *ngIf="
+                        loginForm.get('password')?.invalid &&
+                        loginForm.get('password')?.touched
+                    "
+                >
+                    <p
+                        class="error"
+                        *ngIf="loginForm.get('password')?.errors?.['required']"
+                    >
+                        Password is required!
+                    </p>
+                    <p
+                        class="error"
+                        *ngIf="loginForm.get('password')?.errors?.['minLength']"
+                    >
+                        Password must be at least 6 character!
+                    </p>
+                </ng-container>
             </div>
             <button type="submit" class="btn">Login</button>
         </form>
         <div class="have-account">
-            <p>Don't have an account? <a routerLink="/auth/register">Sign up</a></p>
+            <p>
+                Don't have an account?
+                <a routerLink="/auth/register">Sign up</a>
+            </p>
         </div>
     </div>
 </section>
