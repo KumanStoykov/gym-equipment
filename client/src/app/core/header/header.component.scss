@@ -41,6 +41,7 @@
     transition: color 0.4s;
 
     &:hover {
+        cursor: pointer;
         color: $clr-orange-light;
     }
 }

@@ -1,4 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import { AuthService } from 'src/app/auth/auth.service';
+import * as authSelectors from '../../+store/selector';
+import * as authActions from '../../+store/actions';
+import { Observable } from 'rxjs';
+import { IUser } from 'src/app/shared/interfaces';
+import { IAuthState } from 'src/app/+store/reducers';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-header',
@@ -11,24 +20,31 @@ export class HeaderComponent implements OnInit {
     strengthIsToggle: boolean = false;
     accountIsToggle: boolean = false;
 
-    constructor() { }
+    user$: Observable<IUser | null> = this.store.select(authSelectors.selectUser);
+
+
+    constructor(
+       private authService: AuthService,
+       private store: Store<IAuthState>,
+       private router: Router
+    ) { }
 
     ngOnInit(): void {
     }
 
-    public menuToggle(): void {
+    menuToggle(): void {
         this.menuIsToggle = !this.menuIsToggle;
         this.strengthIsToggle = false;
         this.accountIsToggle = false;
     }
 
-    public handleOutsideClick(): void {
+    handleOutsideClick(): void {
         this.menuIsToggle = false;
         this.strengthIsToggle = false;
         this.accountIsToggle = false;
     }
 
-    public dropdownToggle(btnName: string): void {
+    dropdownToggle(btnName: string): void {
 
         if (btnName === 'account') {
             this.accountIsToggle = !this.accountIsToggle;
@@ -38,6 +54,16 @@ export class HeaderComponent implements OnInit {
             this.strengthIsToggle = !this.strengthIsToggle;
             this.accountIsToggle = false;
         }
+    }
+
+    logout():void {
+        this.authService.logout().subscribe({
+            next: () => {
+                this.store.dispatch(authActions.auth_logout());
+                this.router.navigate(['/']);
+                this.menuToggle();
+            }
+        })
     }
 
 }

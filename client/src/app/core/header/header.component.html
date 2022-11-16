@@ -10,11 +10,7 @@
                 />
             </a>
         </div>
-        <nav
-            class="nav"
-            appClickOutside
-            (clickOutside)="handleOutsideClick()"
-        >
+        <nav class="nav" appClickOutside (clickOutside)="handleOutsideClick()">
             <div class="hamburger-menu" (click)="menuToggle()">
                 <span class="bar bar1"></span>
                 <span class="bar bar2"></span>
@@ -88,8 +84,9 @@
                 <li
                     class="nav-list-item dropdown"
                     [ngClass]="
-                    accountIsToggle ? 'dropdown-open' : 'dropdown-close'
+                        accountIsToggle ? 'dropdown-open' : 'dropdown-close'
                     "
+                    *ngIf="!(user$ | async)"
                 >
                     <button
                         class="nav-link dropdown-btn"
@@ -116,6 +113,13 @@
                             </a>
                         </li>
                     </ul>
+                </li>
+                <li class="nav-list-item" *ngIf="(user$ | async)">
+                    <a
+                        class="nav-link"
+                        (click)="logout()"
+                        >LOGOUT
+                    </a>
                 </li>
             </ul>
         </nav>
