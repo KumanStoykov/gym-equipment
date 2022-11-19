@@ -6,5 +6,6 @@ exports.userPayload = (user) => {
         lastName: user.lastName || '',
         phone: user.phone || '',
         address: user.address || '',
+        isAdmin: user.isAdmin
     };
 };
