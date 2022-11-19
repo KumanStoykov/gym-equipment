@@ -1,0 +1,41 @@
+@import "/src/app/shared/variables.scss";
+
+.nav-wrap {
+    height: 5rem;
+    background: $clr-with;
+    margin-top: -3rem;
+    margin-bottom: 2rem;
+}
+
+.nav {
+    padding-top: 3rem;
+    width: 80%;
+    margin: auto;
+}
+
+.nav-list {
+    border-top: 2px solid $clr-font-desc;
+    border-bottom: 2px solid $clr-font-desc;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem 0;
+}
+
+.nav-link {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: $clr-font-desc;
+    transition: all 0.4s;
+    font-family: "Dosis", sans-serif;
+    text-transform: uppercase;
+
+    &:hover {
+        cursor: pointer;
+        color: $clr-orange-light;
+    }
+}
+
+.active {
+    color: $clr-orange-light;
+}
