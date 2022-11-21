@@ -47,15 +47,19 @@ const treadMillSchema = mongoose.Schema({
         type: Number,
         require: true
     },
-    InclineMin: {
+    inclineMin: {
         type: Number,
         require: true
     },
-    InclineMax: {
+    inclineMax: {
         type: Number,
         require: true
     },
     availableLanguages: {
+        type: String,
+        require: true
+    },
+    display: {
         type: String,
         require: true
     },
