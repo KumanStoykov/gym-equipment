@@ -13,7 +13,7 @@ const checkCredential = require('../middlewares/checkCredentialMiddleware');
 router.get('/check-user', checkCredential(), async (req, res) => {
     try {
         let user = {}; 
-        console.log(req?.user)
+        
         if (req?.user) {
             user = await userService.getById(req.user._id);
         }
@@ -27,6 +27,7 @@ router.get('/check-user', checkCredential(), async (req, res) => {
         res.status(200).send(userData);
 
     } catch (error) {
+        res.clearCookie(COOKIE_TOKEN_NAME);
         res.status(400).send({ message: error.message });
     }
 });
