@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.post('/', loggedIn(), isAdmin(), async (req, res) => {
+router.post('/create', async (req, res) => {
     const form = formidable({ multiples: true });
     const imageUrl = [];
 
@@ -35,7 +35,7 @@ router.post('/', loggedIn(), isAdmin(), async (req, res) => {
         const enterableValue = valueIncFile[0]?.length > 1 ? valueIncFile[0] : valueIncFile;
 
         for (let image of enterableValue) {
-            const res = await cloudinary.uploader.upload(image._writeStream.path);
+            const res = await cloudinary.uploader.upload(image.filepath);
 
             imageUrl.push({ url: res.url, public_id: res.public_id });
         }
