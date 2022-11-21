@@ -18,5 +18,5 @@ module.exports = (app) => {
 
     app.use(cookieParser());
 
-    app.use(router);
+    app.use('/api', router);
 }
