@@ -40,12 +40,22 @@
         </div>
         <div class="row-wrap">
             <div class="input-row">
-                <input #minUserWeightInput="ngModel" placeholder="Min User Weight *" type="number" class="input-field" name="minUserWeight" [ngModel]="rack?.minUserWeight" required />
-                <p class="error" *ngIf="minUserWeightInput.touched && minUserWeightInput.errors?.['required']">Field is required!</p>
+                <input #maximumUserWeightInput="ngModel" placeholder="Maximum User Weight *" type="number" class="input-field" name="maximumUserWeight" [ngModel]="rack?.maximumUserWeight" required />
+                <p class="error" *ngIf="maximumUserWeightInput.touched && maximumUserWeightInput.errors?.['required']">Field is required!</p>
             </div>
             <div class="input-row">
-                <input #maxUserWeightInput="ngModel" placeholder="Max User Weight *" type="number" class="input-field" name="maxUserWeight" [ngModel]="rack?.maxUserWeight" required />
-                <p class="error" *ngIf="maxUserWeightInput.touched && maxUserWeightInput.errors?.['required']">Field is required!</p>
+                <input #maximumLoadUseableInput="ngModel" placeholder="Maximum Load Useable *" type="number" class="input-field" name="maximumLoadUseable" [ngModel]="rack?.maximumLoadUseable" required />
+                <p class="error" *ngIf="maximumLoadUseableInput.touched && maximumLoadUseableInput.errors?.['required']">Field is required!</p>
+            </div>
+        </div>
+        <div class="row-wrap">
+            <div class="input-row">
+                <input #transportWheelsInput="ngModel" placeholder="Transport Wheels *" type="number" class="input-field" name="transportWheels" [ngModel]="rack?.transportWheels" required />
+                <p class="error" *ngIf="transportWheelsInput.touched && transportWheelsInput.errors?.['required']">Field is required!</p>
+            </div>
+            <div class="input-row">
+                <input #netWeightInput="ngModel" placeholder="Net Weight *" type="number" class="input-field" name="netWeight" [ngModel]="rack?.netWeight" required />
+                <p class="error" *ngIf="netWeightInput.touched && netWeightInput.errors?.['required']">Field is required!</p>
             </div>
         </div>
 
