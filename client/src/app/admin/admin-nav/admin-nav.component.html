@@ -26,13 +26,52 @@
                     >Create Bike</a
                 >
             </li>
-            <li class="nav-list-item">
-                <a
-                    class="nav-link"
-                    routerLink="/admin/create/strength"
-                    routerLinkActive="active"
-                    >Create Strength</a
+            <li
+                class="nav-list-item dropdown"
+                [ngClass]="
+                    dropdownIsToggle ? 'dropdown-open' : 'dropdown-close'
+                "
+            >
+                <button
+                    class="nav-link dropdown-btn"
+                    (click)="dropdownToggle()"
+                    [ngClass]="dropdownIsActive.isActive ? 'active' : ''"
                 >
+                    Create Strength
+                </button>
+                <ul
+                    class="dropdown-content"
+                    role="list"
+                    (click)="dropdownToggle()"
+                >
+                    <li>
+                        <a
+                            class="nav-link"
+                            routerLink="/admin/create/rack"
+                            routerLinkActive="ac"
+                            #dropdownIsActive="routerLinkActive"
+                            >Rack</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            class="nav-link"
+                            routerLink="/admin/create/bench"
+                            routerLinkActive="ac"
+                            #dropdownIsActive="routerLinkActive"
+                            >Bench</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            class="nav-link"
+                            routerLink="/admin/create/dumbbell"
+                            routerLinkActive="ac"
+                            #dropdownIsActive="routerLinkActive"
+                            >Dumbbell</a
+                        >
+                    </li>
+                </ul>
             </li>
             <li class="nav-list-item">
                 <a
