@@ -1,1 +1,98 @@
-<p>create-bike works!</p>
+<section class="bike container">
+    <div class="form-wrap">
+
+        <app-loader *ngIf="isLoading"></app-loader>
+
+        <form
+            class="form"
+            #form="ngForm"
+            (ngSubmit)="onSubmit()"
+            enctype="multipart/form-data"
+        >
+        <div class="row-wrap">
+            <div class="input-row">
+                <input #brandInput="ngModel" placeholder="Brand *" type="text" class="input-field" name="brand" [ngModel]="bike?.brand" required />
+                <p class="error" *ngIf="brandInput.touched && brandInput.errors?.['required']">Field is required!</p>
+            </div>
+            <div class="input-row">
+                <input #madeInInput="ngModel" placeholder="Made in *" type="text" class="input-field" name="madeIn" [ngModel]="bike?.madeIn" required />
+                <p class="error" *ngIf="madeInInput.touched && madeInInput.errors?.['required']">Field is required!</p>
+            </div>
+        </div>
+        <div class="row-wrap">
+            <div class="input-row">
+                <input #priceInput="ngModel" placeholder="Price *" type="number" class="input-field" name="price" [ngModel]="bike?.price" required />
+                <p class="error" *ngIf="priceInput.touched && priceInput.errors?.['required']">Field is required!</p>
+            </div>
+            <div class="input-row">
+                <input #promoPriceInput="ngModel" placeholder="Promo Price*" type="number" class="input-field" name="promoPrice" [ngModel]="bike?.promoPrice" required />
+                <p class="error" *ngIf="promoPriceInput.touched && promoPriceInput.errors?.['required']">Field is required!</p>
+            </div>
+        </div>
+        <div class="row-wrap">
+            <div class="input-row">
+                <input #materialInput="ngModel" placeholder="Material *" type="text" class="input-field" name="material" [ngModel]="bike?.material" required />
+                <p class="error" *ngIf="materialInput.touched && materialInput.errors?.['required']">Field is required!</p>
+            </div>
+            <div class="input-row">
+                <input #lengthBikeInput="ngModel" placeholder="Length Bike *" type="text" class="input-field" name="lengthBike" [ngModel]="bike?.lengthBike" required />
+                <p class="error" *ngIf="lengthBikeInput.touched && lengthBikeInput.errors?.['required']">Field is required!</p>
+            </div>
+        </div>
+        <div class="row-wrap">
+            <div class="input-row">
+                <input placeholder="Equipment Weight *" type="number" class="input-field" name="equipmentWeight" [ngModel]="bike?.equipmentWeight" required />
+            </div>
+            <div class="input-row">
+                <input #adjustableLevelingFeetInput="ngModel" placeholder="Adjustable Leveling Feet *" type="number" class="input-field" name="adjustableLevelingFeet" [ngModel]="bike?.adjustableLevelingFeet" required />
+                <p class="error" *ngIf="adjustableLevelingFeetInput.touched && adjustableLevelingFeetInput.errors?.['required']">Field is required!</p>
+            </div>
+        </div>
+        <div class="row-wrap">
+            <div class="input-row">
+                <input #resistanceSystemInput="ngModel" placeholder="Resistance System *" type="string" class="input-field" name="resistanceSystem" [ngModel]="bike?.resistanceSystem" required />
+                <p class="error" *ngIf="resistanceSystemInput.touched && resistanceSystemInput.errors?.['required']">Field is required!</p>
+            </div>
+            <div class="input-row">
+                <input #transportWheelsInput="ngModel" placeholder="Transport Wheels *" type="number" class="input-field" name="transportWheels" [ngModel]="bike?.transportWheels" required />
+                <p class="error" *ngIf="transportWheelsInput.touched && transportWheelsInput.errors?.['required']">Field is required!</p>
+            </div>
+        </div>
+        <div class="row-wrap">
+            <div class="input-row">
+                <input #connectivityInput="ngModel" placeholder="Connectivity *" type="number" class="input-field" name="connectivity" [ngModel]="bike?.connectivity" required />
+                <p class="error" *ngIf="connectivityInput.touched && connectivityInput.errors?.['required']">Field is required!</p>
+            </div>
+            <div class="input-row">
+                <input #displayInput="ngModel" placeholder="Display *" type="number" class="input-field" name="display" [ngModel]="bike?.display" required />
+                <p class="error" *ngIf="displayInput.touched && displayInput.errors?.['required']">Field is required!</p>
+            </div>
+        </div>
+        <div class="row-wrap">
+            <div class="input-row">
+                <input #minUserLengthInput="ngModel" placeholder="Min User Length *" type="number" class="input-field" name="minUserLength" [ngModel]="bike?.minUserLength" required />
+                <p class="error" *ngIf="minUserLengthInput.touched && minUserLengthInput.errors?.['required']">Field is required!</p>
+            </div>
+            <div class="input-row">
+                <input #maxUserLengthInput="ngModel" placeholder="Max User Length *" type="number" class="input-field" name="maxUserLength" [ngModel]="bike?.maxUserLength" required />
+                <p class="error" *ngIf="maxUserLengthInput.touched && maxUserLengthInput.errors?.['required']">Field is required!</p>
+            </div>
+        </div>
+        <div class="row-wrap">
+            <div class="input-row">
+                <textarea #descriptionInput="ngModel" rows="1" cols="3" placeholder="Description *" type="" class="input-field" name="description" [ngModel]="bike?.description" required ></textarea>
+                <p class="error" *ngIf="descriptionInput.touched && descriptionInput.errors?.['required']">Field is required!</p>
+            </div>
+            <div class="input-row input-image-row">
+                <input id="image-field" type="file" (change)="onFileSelect($event)" name="image" multiple  required />
+                <label for="image-field">Choose File</label>
+                <span *ngIf="!fileIsChose" class="file-chose">No File chose</span>
+                <span *ngIf="fileIsChose" class="file-chose">{{filesCount}} files</span>
+            </div>
+        </div>
+            <button type="submit" class="btn" [disabled]="form.invalid">
+                Create
+            </button>
+        </form>
+    </div>
+</section>
