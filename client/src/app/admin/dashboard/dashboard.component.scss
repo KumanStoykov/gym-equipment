@@ -1,1 +1,8 @@
 @import "/src/app/shared/variables.scss";
+
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
