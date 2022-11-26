@@ -23,10 +23,6 @@ const rackSchema = mongoose.Schema({
         type: String,
         require: true
     },
-    knurl: {
-        type: String,
-        require: true
-    },
     maximumUserWeight: {
         type: Number,
         require: true
@@ -37,6 +33,10 @@ const rackSchema = mongoose.Schema({
     },
     dimensions: {
         type: String,
+        require: true
+    },
+    transportWheels: {
+        type: Number,
         require: true
     },
     netWeight: {
