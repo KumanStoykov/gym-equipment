@@ -31,6 +31,8 @@
                 [ngClass]="
                     dropdownIsToggle ? 'dropdown-open' : 'dropdown-close'
                 "
+                appClickOutside
+                (clickOutside)="handleOutsideClick()"
             >
                 <button
                     class="nav-link dropdown-btn"
@@ -48,7 +50,7 @@
                         <a
                             class="nav-link"
                             routerLink="/admin/create/rack"
-                            routerLinkActive="ac"
+                            routerLinkActive="acb"
                             #dropdownIsActive="routerLinkActive"
                             >Rack</a
                         >
@@ -57,7 +59,7 @@
                         <a
                             class="nav-link"
                             routerLink="/admin/create/bench"
-                            routerLinkActive="ac"
+                            routerLinkActive="aca"
                             #dropdownIsActive="routerLinkActive"
                             >Bench</a
                         >

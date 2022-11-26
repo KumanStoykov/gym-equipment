@@ -17,4 +17,8 @@ export class AdminNavComponent implements OnInit {
     dropdownToggle(): void {
      this.dropdownIsToggle = !this.dropdownIsToggle;
     }
+
+    handleOutsideClick(): void {
+        this.dropdownIsToggle = false;
+    }
 }

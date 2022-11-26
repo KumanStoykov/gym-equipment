@@ -37,16 +37,16 @@
 }
 
 .active {
-    border-top: 2px solid $clr-orange-light;
-    border-bottom: 2px solid $clr-orange-light;
+    border-top: 2px solid $clr-orange-light !important;
+    border-bottom: 2px solid $clr-orange-light !important;
     color: $clr-orange-light;
+
 }
 
 .dropdown {
     position: relative;
 
     .dropdown-btn {
-        position: relative;
         border: none;
         padding: 0;
         background: transparent;
