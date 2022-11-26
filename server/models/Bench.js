@@ -23,20 +23,20 @@ const benchSchema = mongoose.Schema({
         type: String,
         require: true
     },
-    knurl: {
-        type: String,
-        require: true
-    },
-    maximumUserWeight: {
+    maximumLoadUseable: {
         type: Number,
         require: true
     },
-    maximumLoadUseable: {
+    threeSeatAngleSettings: {
         type: Number,
         require: true
     },
     dimensions: {
         type: String,
+        require: true
+    },
+    transportWheels: {
+        type: Number,
         require: true
     },
     netWeight: {
