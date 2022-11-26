@@ -1,0 +1,66 @@
+@import "/src/app/shared/variables.scss";
+
+.not-wrap {
+    animation: showFromRight 0.7s 0s 1 normal forwards;
+}
+
+.message-wrap {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    background: $clr-red;
+    border: 1px solid rgb(221, 30, 49, 0.3);
+    border-radius: 3px;
+    width: 18rem;
+    z-index: 100;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.not-error {
+    color: $clr-with;
+    font-weight: 400;
+    padding: 1rem;
+}
+
+.toast-progress {
+    background: #222222;
+    opacity: 0.4;
+    height: 4px;
+    transform-origin: left center;
+    position: relative;
+    top: 1px;
+    margin-left: 0;
+}
+
+.my-fixed-progress {
+    animation: xScale linear 5s forwards;
+}
+
+@media all and (max-width: 300px) {
+    .message-wrap {
+        width: 15rem;
+    }
+
+    .not-error {
+        padding: 0.75rem;
+    }
+}
+
+@keyframes showFromRight {
+    0% {
+        transform: scale(0);
+        opacity: 0.1;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes xScale {
+    0% {
+        transform: scaleX(0);
+    }
+    100% {
+    }
+}
