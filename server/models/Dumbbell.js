@@ -51,14 +51,6 @@ const dumbbellSchema = mongoose.Schema({
         type: Number,
         require: true
     },
-    cylinderDiameterFrom: {
-        type: Number,
-        require: true
-    },
-    cylinderDiameterTo: {
-        type: Number,
-        require: true
-    },
     description: {
         type: String,
         require: true
