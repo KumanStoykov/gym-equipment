@@ -1,10 +1,9 @@
 export interface ITreadmill {
     _id: string;
     brand: string;
-    madeIn: string;
     price: number;
     promoPrice: number;
-    modeIn: string;
+    madeIn: string;
     material: string;
     dimensions: string;
     equipmentWeight: number;
@@ -15,6 +14,7 @@ export interface ITreadmill {
     InclineMin: number;
     InclineMax: number;
     availableLanguages: string;
+    display: string;
     description: string;
     images: string[];
 }

@@ -12,8 +12,6 @@ export interface IDumbbell {
     rangeOfDumbbellLengthsTo: number;
     handleDiameterFrom: number;
     handleDiameterTo: number;
-    cylinderDiameterFrom: number;
-    cylinderDiameterTo: number;
     description: string;
     images: string[];
 }

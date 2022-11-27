@@ -5,8 +5,8 @@ export interface IBench {
     promoPrice: number;
     madeIn: string;
     material: string;
-    minUserWeight: number;
-    maxUserWeight: number;
+    maximumLoadUseable: number;
+    threeSeatAngleSettings: number;
     dimensions: string;
     transportWheels: number;
     netWeight: number;

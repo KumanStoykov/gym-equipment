@@ -5,9 +5,10 @@ export interface IRack {
     promoPrice: number;
     madeIn: string;
     material: string;
-    minUserWeight: number;
-    maxUserWeight: number;
+    maximumUserWeight: number;
+    maximumLoadUseable: number;
     dimensions: string;
+    transportWheels: number;
     netWeight: number;
     description: string;
     images: string[];
