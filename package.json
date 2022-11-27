@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "start": "npm start --prefix server",
+    "install-client": "cd client && npm install && npm run build && cd ..",
+    "install-server": "cd server && npm install && cd .. ",
+    "production": "npm run install-client && npm run install-server"
+  }
+}

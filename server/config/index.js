@@ -22,7 +22,7 @@ const envConfig = {
                 SECRET: process.env.SECRET,
                 ROUND_SALT: 9,
                 CORS: {
-                        origin: [''],
+                        origin: ['https://gym-equipment.onrender.com/'],
                         credentials: true
                 },
                 CLOUDINARY: {
