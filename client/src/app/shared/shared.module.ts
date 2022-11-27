@@ -17,6 +17,7 @@ import { SliderComponent } from './slider/slider.component';
 import { RouterModule } from '@angular/router';
 import { DetailsPageHeaderComponent } from './details-page-header/details-page-header.component';
 import { CommentListComponent } from './comment-list/comment-list.component';
+import { NotificationComponent } from './notification/notification.component';
 
 
 
@@ -36,6 +37,7 @@ import { CommentListComponent } from './comment-list/comment-list.component';
     SliderComponent,
     DetailsPageHeaderComponent,
     CommentListComponent,
+    NotificationComponent,
   ],
   imports: [
     CommonModule,
@@ -54,6 +56,7 @@ import { CommentListComponent } from './comment-list/comment-list.component';
     ClickOutsideDirective,
     DetailsPageHeaderComponent,
     CommentListComponent,
+    NotificationComponent
   ]
 })
 export class SharedModule { }
