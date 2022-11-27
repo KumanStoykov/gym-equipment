@@ -17,6 +17,6 @@ export class RackService {
     ) { }
 
     create(rackData: any): Observable<IRack> {
-        return this.http.post<IRack>(`${API_URL}/treadmill/create`, rackData, { withCredentials: true });
+        return this.http.post<IRack>(`${API_URL}/rack/create`, rackData, { withCredentials: true });
     }
 }
