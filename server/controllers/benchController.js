@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.post('/', loggedIn(), isAdmin(), async (req, res) => {
+router.post('/create', loggedIn(), isAdmin(), async (req, res) => {
     const form = formidable({ multiples: true });
     const imageUrl = [];
 
@@ -46,48 +46,15 @@ router.post('/', loggedIn(), isAdmin(), async (req, res) => {
             promoPrice: formData.promoPrice,
             madeIn: formData.madeIn,
             material: formData.material,
-            knurl: formData.knurl,
-            maximumUserWeight: formData.maximumUserWeight,
             maximumLoadUseable: formData.maximumLoadUseable,
+            threeSeatAngleSettings: formData.threeSeatAngleSettings,
             dimensions: formData.dimensions,
+            transportWheels: formData.transportWheels,
             netWeight: formData.netWeight,
             description: formData.description,
             image: imageUrl,
         };
 
-        if (benchData.brand.length <= 3) {
-            throw new Error('Brand should be at least 3 characters long!');
-        }
-        if (Number(benchData.price) < 0) {
-            throw new Error('Price should be positive number!');
-        }
-        if (Number(benchData.promoPrice) < 0) {
-            throw new Error('Promo price should be positive number!');
-        }
-        if (benchData.madeIn.length <= 3) {
-            throw new Error('Made in should be at least 3 characters long!');
-        }
-        if (benchData.material.length <= 3) {
-            throw new Error('Material should be at least 3 characters long!');
-        }
-        if (benchData.knurl.length <= 3) {
-            throw new Error('Knurl should be at least 3 characters long!');
-        }
-        if (Number(benchData.maximumUserWeight) < 0) {
-            throw new Error('Maximum user weight  should be positive number!');
-        }
-        if (Number(benchData.maximumLoadUseable) < 0) {
-            throw new Error('Maximum load useable  should be positive number!');
-        }
-        if (benchData.dimensions.length <= 5) {
-            throw new Error('Dimension should be at least 5 characters long!');
-        }
-        if (Number(benchData.netWeight) < 0) {
-            throw new Error('Net Weight should be positive number!');
-        }
-        if (benchData.description.length <= 20) {
-            throw new Error('Description should be at least 20 characters long!');
-        }
 
         const bench = await benchService.create(benchData);
 

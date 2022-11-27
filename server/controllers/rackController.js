@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.post('/', loggedIn(), isAdmin(), async (req, res) => {
+router.post('/create', loggedIn(), isAdmin(), async (req, res) => {
     const form = formidable({ multiples: true });
     const imageUrl = [];
 
@@ -46,48 +46,15 @@ router.post('/', loggedIn(), isAdmin(), async (req, res) => {
             promoPrice: formData.promoPrice,
             madeIn: formData.madeIn,
             material: formData.material,
-            knurl: formData.knurl,
             maximumUserWeight: formData.maximumUserWeight,
             maximumLoadUseable: formData.maximumLoadUseable,
             dimensions: formData.dimensions,
+            transportWheels: formData.transportWheels,
             netWeight: formData.netWeight,
             description: formData.description,
             image: imageUrl,
         };
 
-        if (rackData.brand.length <= 3) {
-            throw new Error('Brand should be at least 3 characters long!');
-        }
-        if (Number(rackData.price) < 0) {
-            throw new Error('Price should be positive number!');
-        }
-        if (Number(rackData.promoPrice) < 0) {
-            throw new Error('Promo price should be positive number!');
-        }
-        if (rackData.madeIn.length <= 3) {
-            throw new Error('Made in should be at least 3 characters long!');
-        }
-        if (rackData.material.length <= 3) {
-            throw new Error('Material should be at least 3 characters long!');
-        }
-        if (rackData.knurl.length <= 3) {
-            throw new Error('Knurl should be at least 3 characters long!');
-        }
-        if (Number(rackData.maximumUserWeight) < 0) {
-            throw new Error('Maximum user weight  should be positive number!');
-        }
-        if (Number(rackData.maximumLoadUseable) < 0) {
-            throw new Error('Maximum load useable  should be positive number!');
-        }
-        if (rackData.dimensions.length <= 5) {
-            throw new Error('Dimension should be at least 5 characters long!');
-        }
-        if (Number(rackData.netWeight) < 0) {
-            throw new Error('Net Weight should be positive number!');
-        }
-        if (rackData.description.length <= 20) {
-            throw new Error('Description should be at least 20 characters long!');
-        }
 
         const rack = await rackService.create(rackData);
 

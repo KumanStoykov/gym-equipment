@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.post('/create', async (req, res) => {
+router.post('/create', loggedIn(), isAdmin(), async (req, res) => {
     const form = formidable({ multiples: true });
     const imageUrl = [];
 
@@ -59,55 +59,6 @@ router.post('/create', async (req, res) => {
             description: formData.description,
             image: imageUrl,
         };
-
-        if (bikeData.brand.length <- 3) {
-            throw new Error('Brand should be at least 3 characters long!');
-        }
-        if (Number(bikeData.price) < 0) {
-            throw new Error('Price should be positive number!');
-        }
-        if (Number(bikeData.promoPrice) < 0) {
-            throw new Error('Promo price should be positive number!');
-        }
-        if (bikeData.madeIn.length <= 3) {
-            throw new Error('Made in should be at least 3 characters long!');
-        }
-        if (bikeData.material.length <= 3) {
-            throw new Error('Material should be at least 3 characters long!');
-        }
-        if (bikeData.lengthBike.length <= 3) {
-            throw new Error('Length should be at least 3 characters long!');
-        }
-        if (Number(bikeData.equipmentWeight) < 0) {
-            throw new Error('Equipment weight should be positive number!');
-        }
-        if (Number(bikeData.adjustableLevelingFeet) < 0) {
-            throw new Error('Adjustable leveling feet should be positive number!');
-        }
-        if (bikeData.resistanceSystem.length <= 3) {
-            throw new Error('Resistance system should be at least 3 characters long!');
-        }
-        if (Number(bikeData.transportWheels) < 0) {
-            throw new Error('Transport wheels should be positive number!');
-        }
-        if (Number(bikeData.connectivity) < 0) {
-            throw new Error('Connectivity should be positive number!');
-        }
-        if (Number(bikeData.minUserLength) < 0) {
-            throw new Error('Min user length should be positive number!');
-        }
-        if (Number(bikeData.maxUserLength) < 0) {
-            throw new Error('Max user length should be positive number!');
-        }
-        if (Number(bikeData.display) < 3) {
-            throw new Error('Display should be at 3 characters long!');
-        }
-        if (Number(availableLanguages.display) < 6) {
-            throw new Error('Display should be at 6 characters long!');
-        }
-        if (bikeData.description.length <= 20) {
-            throw new Error('Description should be at least 20 characters long!');
-        }
 
         const bike = await bikeService.create(bikeData);
 
