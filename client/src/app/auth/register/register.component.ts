@@ -69,7 +69,10 @@ export class RegisterComponent implements OnDestroy {
                 this.router.navigate(['/']);
             },
             error: (err) => {
-                console.log(err);
+                this.registerForm.get('password')?.reset();
+                this.registerForm.get('repeatPassword')?.reset();
+                this.isLoading = false;
+                this.error = err.error.message;
             }
         })
     }

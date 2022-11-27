@@ -58,7 +58,9 @@ export class LoginComponent {
                 this.router.navigate(['/']);
             },
             error: (err) => {
-                console.log(err);
+                this.loginForm.get('password')?.reset();
+                this.isLoading = false;
+                this.error = err.error.message;
             }
         })
     }

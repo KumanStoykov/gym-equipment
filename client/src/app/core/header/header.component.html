@@ -114,6 +114,13 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-list-item" *ngIf="(user$ | async)?.isAdmin">
+                    <a
+                        routerLink="/admin"
+                        class="nav-link"
+                        >ADMIN
+                    </a>
+                </li>
                 <li class="nav-list-item" *ngIf="(user$ | async)">
                     <a
                         class="nav-link"

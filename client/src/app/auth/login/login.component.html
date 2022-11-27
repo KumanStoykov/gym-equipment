@@ -1,5 +1,6 @@
 <app-page-hero [heroPageTitle]="heroTitle"></app-page-hero>
 
+<app-notification *ngIf="error" [errorMessage]="error"></app-notification>
 <section class="login container">
     <div class="form-wrap">
         <app-page-title [pageTitle]="pageTitle"></app-page-title>
