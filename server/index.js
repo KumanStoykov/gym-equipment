@@ -23,7 +23,7 @@ databaseInit(config.DB_CONNECTION_STRING)
             if(formats.filter(ext => req.url.indexOf(ext) > 0).length > 0) {
                 res.sendFile(path.join(`public/${req.url}`));
             } else {
-                res.sendFile(path.join(__dirname, '..', 'dist', 'index.html'));
+                res.sendFile(path.join(__dirname, '..', 'dist', 'gym-equipment', 'index.html'));
             }
         })
 
