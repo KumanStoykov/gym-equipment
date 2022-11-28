@@ -33,6 +33,23 @@
     position: relative;
 }
 
+.input-field {
+    width: 100%;
+    padding: 12px 10px;
+    border: 1px solid $clr-gray-light;
+    outline: none;
+    border-radius: 3px;
+
+    &:hover {
+        border: 1px solid $clr-dark;
+    }
+
+    &:focus {
+        box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.47);
+        border: 1px solid $clr-dark;
+    }
+}
+
 .price {
     padding: 0.1rem 0.2rem;
 }
