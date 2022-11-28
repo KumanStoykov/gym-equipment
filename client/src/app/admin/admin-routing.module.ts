@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CreateBenchComponent } from './create-bench/create-bench.component';
-import { CreateBikeComponent } from './create-bike/create-bike.component';
-import { CreateDumbbellComponent } from './create-dumbbell/create-dumbbell.component';
-import { CreateRackComponent } from './create-rack/create-rack.component';
-import { CreateTreadmillComponent } from './create-treadmill/create-treadmill.component';
+import { CreateBenchComponent } from './create/create-bench/create-bench.component';
+import { CreateBikeComponent } from './create/create-bike/create-bike.component';
+import { CreateDumbbellComponent } from './create/create-dumbbell/create-dumbbell.component';
+import { CreateRackComponent } from './create/create-rack/create-rack.component';
+import { CreateTreadmillComponent } from './create/create-treadmill/create-treadmill.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { StatisticComponent } from './statistic/statistic.component';
 

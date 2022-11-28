@@ -7,13 +7,12 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { StatisticComponent } from './statistic/statistic.component';
 import { AdminNavComponent } from './admin-nav/admin-nav.component';
 import { SalesVolumeComponent } from './sales-volume/sales-volume.component';
-import { CreateStrengthComponent } from './create-strength/create-strength.component';
-import { CreateTreadmillComponent } from './create-treadmill/create-treadmill.component';
-import { CreateBikeComponent } from './create-bike/create-bike.component';
+import { CreateTreadmillComponent } from './create/create-treadmill/create-treadmill.component';
+import { CreateBikeComponent } from './create/create-bike/create-bike.component';
 import { FormsModule } from '@angular/forms';
-import { CreateRackComponent } from './create-rack/create-rack.component';
-import { CreateBenchComponent } from './create-bench/create-bench.component';
-import { CreateDumbbellComponent } from './create-dumbbell/create-dumbbell.component';
+import { CreateRackComponent } from './create/create-rack/create-rack.component';
+import { CreateBenchComponent } from './create/create-bench/create-bench.component';
+import { CreateDumbbellComponent } from './create/create-dumbbell/create-dumbbell.component';
 
 
 
@@ -24,7 +23,6 @@ import { CreateDumbbellComponent } from './create-dumbbell/create-dumbbell.compo
         StatisticComponent,
         AdminNavComponent,
         SalesVolumeComponent,
-        CreateStrengthComponent,
         CreateTreadmillComponent,
         CreateBikeComponent,
         CreateRackComponent,
