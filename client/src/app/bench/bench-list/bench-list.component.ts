@@ -10,6 +10,8 @@ export class BenchListComponent implements OnInit {
     heroTitle = 'BENCHES';
     pageTitle = 'SUPREME RUNNING PERFORMANCE';
 
+    isLoading: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
