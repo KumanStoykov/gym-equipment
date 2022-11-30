@@ -1,6 +1,6 @@
 <app-page-hero [heroPageTitle]="heroTitle"></app-page-hero>
 
-<app-notification *ngIf="error" [errorMessage]="error"></app-notification>
+<app-notification (notDestroy)="onCloseNot()" *ngIf="error?.length !== 0" [errorMessage]="error"></app-notification>
 
 <section class="register container">
     <div class="form-wrap">
@@ -120,8 +120,11 @@
                 </ng-container>
             </div>
 
-            <button type="submit" class="btn" [disabled]="registerForm.pending">
+            <button *ngIf="!isLoading" type="submit" class="btn register-btn" [disabled]="registerForm.pending">
                 Register
+            </button>
+            <button *ngIf="isLoading" type="submit" class="btn register-btn">
+                <app-loader size="small"></app-loader>
             </button>
         </form>
         <div class="have-account">

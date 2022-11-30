@@ -77,6 +77,11 @@ export class RegisterComponent implements OnDestroy {
         })
     }
 
+
+    onCloseNot(): void {
+        this.error = '';
+    }
+
     ngOnDestroy(): void {
         this.killSubscription.next();
         this.killSubscription.complete();
