@@ -20,6 +20,7 @@ export class LoginComponent {
     error: string = '';
     isLoading: boolean = false;
     registerForm: any;
+    notIsOpen: boolean = false;
 
     constructor(
         private fb: FormBuilder,
@@ -64,4 +65,9 @@ export class LoginComponent {
             }
         })
     }
+
+    onCloseNot(): void {
+        this.error = '';
+    }
+
 }
