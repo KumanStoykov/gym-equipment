@@ -10,6 +10,8 @@ export class BikeListComponent implements OnInit {
     heroTitle = 'BIKES';
     pageTitle = 'SUPREME BIKE PERFORMANCE';
 
+    isLoading: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
