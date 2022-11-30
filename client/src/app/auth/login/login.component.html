@@ -1,13 +1,11 @@
 <app-page-hero [heroPageTitle]="heroTitle"></app-page-hero>
 
-<app-notification *ngIf="error" [errorMessage]="error"></app-notification>
+<app-notification (notDestroy)="onCloseNot()" *ngIf="error?.length !== 0" [errorMessage]="error"></app-notification>
 <section class="login container">
     <div class="form-wrap">
         <app-page-title [pageTitle]="pageTitle"></app-page-title>
 
-        <app-loader *ngIf="isLoading"></app-loader>
-
-        <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()" *ngIf="!isLoading">
+        <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
             <div class="input-row">
                 <input
                     placeholder="Email *"
@@ -76,7 +74,10 @@
                     </p>
                 </ng-container>
             </div>
-            <button type="submit" class="btn">Login</button>
+            <button *ngIf="!isLoading" type="submit" class="btn login-btn" [disabled]="loginForm.invalid">Login</button>
+            <button *ngIf="isLoading" type="submit" class="btn login-btn" [disabled]="isLoading">
+                <app-loader size="small"></app-loader>
+            </button>
         </form>
         <div class="have-account">
             <p>
