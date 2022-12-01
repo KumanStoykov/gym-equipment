@@ -75,7 +75,7 @@
                 </ng-container>
             </div>
             <button *ngIf="!isLoading" type="submit" class="btn login-btn" [disabled]="loginForm.invalid">Login</button>
-            <button *ngIf="isLoading" type="submit" class="btn login-btn" [disabled]="isLoading">
+            <button *ngIf="isLoading" type="button" class="btn login-btn" [disabled]="isLoading">
                 <app-loader size="small"></app-loader>
             </button>
         </form>

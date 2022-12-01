@@ -123,7 +123,7 @@
             <button *ngIf="!isLoading" type="submit" class="btn register-btn" [disabled]="registerForm.pending">
                 Register
             </button>
-            <button *ngIf="isLoading" type="submit" class="btn register-btn">
+            <button *ngIf="isLoading" type="button" class="btn register-btn">
                 <app-loader size="small"></app-loader>
             </button>
         </form>
