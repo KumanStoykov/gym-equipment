@@ -8,6 +8,7 @@ const { ROUND_SALT, COOKIE_TOKEN_NAME } = require('../config');
 const validators = require('../validators');
 
 const checkCredential = require('../middlewares/checkCredentialMiddleware');
+const loggedIn = require('../middlewares/loggedInMiddleware');
 
 
 router.get('/check-user', checkCredential(), async (req, res) => {
@@ -28,7 +29,7 @@ router.get('/check-user', checkCredential(), async (req, res) => {
 
     } catch (error) {
         res.clearCookie(COOKIE_TOKEN_NAME);
-        res.status(400).send({ message: error.message });
+        res.status(401).send({ message: error.message });
     }
 });
 
