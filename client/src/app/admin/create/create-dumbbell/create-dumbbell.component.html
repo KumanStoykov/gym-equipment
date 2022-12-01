@@ -81,8 +81,9 @@
                 <span *ngIf="fileIsChose" class="file-chose">{{filesCount}} files</span>
             </div>
         </div>
-            <button type="submit" class="btn" [disabled]="form.invalid">
-                Create
+            <button *ngIf="!isLoading" type="submit" class="btn create-btn" [disabled]="form.invalid">Create</button>
+            <button *ngIf="isLoading" type="button" class="btn create-btn" [disabled]="form.invalid" [disabled]="isLoading">
+                <app-loader size="small"></app-loader>
             </button>
         </form>
     </div>
