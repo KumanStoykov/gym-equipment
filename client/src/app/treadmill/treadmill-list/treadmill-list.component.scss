@@ -5,11 +5,15 @@
     background: $clr-with;
     margin-top: -3rem;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .page-content-wrap {
     display: flex;
     gap: 1rem;
+    width: 100%;
 }
 
 @media all and (max-width: 768px) {
