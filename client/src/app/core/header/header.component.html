@@ -21,7 +21,7 @@
                 <li>
                     <a
                         class="nav-link"
-                        routerLink="/treadmill"
+                        [routerLink]="'/treadmill'" [queryParams]="{page: 1}"
                         (click)="menuToggle()"
                         >TREADMILLS</a
                     >
@@ -29,7 +29,7 @@
                 <li>
                     <a
                         class="nav-link"
-                        routerLink="/bike"
+                        [routerLink]="'/bike'" [queryParams]="{page: 1}"
                         (click)="menuToggle()"
                         >BIKES</a
                     >
@@ -50,7 +50,7 @@
                         <li>
                             <a
                                 class="nav-link"
-                                routerLink="/strength/rack"
+                                [routerLink]="'/strength/rack'" [queryParams]="{page: 1}"
                                 (click)="menuToggle()"
                                 >Racks</a
                             >
@@ -58,7 +58,7 @@
                         <li>
                             <a
                                 class="nav-link"
-                                routerLink="/strength/bench"
+                                [routerLink]="'/strength/bench'" [queryParams]="{page: 1}"
                                 (click)="menuToggle()"
                                 >Benches</a
                             >
@@ -66,7 +66,7 @@
                         <li>
                             <a
                                 class="nav-link"
-                                routerLink="/strength/dumbbell"
+                                [routerLink]="'/strength/dumbbell'" [queryParams]="{page: 1}"
                                 (click)="menuToggle()"
                                 >Dumbbells</a
                             >
