@@ -52,7 +52,7 @@ router.post('/create', loggedIn(), isAdmin(), async (req, res) => {
             transportWheels: formData.transportWheels,
             netWeight: formData.netWeight,
             description: formData.description,
-            image: imageUrl,
+            images: imageUrl,
         };
 
 

@@ -56,7 +56,7 @@ router.post('/create', loggedIn(), isAdmin(), async (req, res) => {
             cylinderDiameterFrom: formData.cylinderDiameterFrom,
             cylinderDiameterTo: formData.cylinderDiameterTo,
             description: formData.description,
-            image: imageUrl,
+            images: imageUrl,
         };
 
         if (dumbbellData.brand.length <- 3) {
