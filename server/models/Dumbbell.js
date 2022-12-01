@@ -55,7 +55,7 @@ const dumbbellSchema = mongoose.Schema({
         type: String,
         require: true
     },
-    image: [
+    images: [
         {
             url: {
                 type: String
