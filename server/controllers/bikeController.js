@@ -22,6 +22,17 @@ router.get('/', async (req, res) => {
         res.status(400).send({ message: err.message });
     }
 });
+router.get('/:id', async (req, res) => {
+
+    try {
+        const id = req.params.id
+        const bike = await bikeService.getById(id);
+
+        res.status(200).send(bike);
+    } catch (err) {
+        res.status(400).send({ message: err.message });
+    }
+});
 
 router.post('/create', loggedIn(), isAdmin(), async (req, res) => {
     const form = formidable({ multiples: true });
@@ -51,13 +62,12 @@ router.post('/create', loggedIn(), isAdmin(), async (req, res) => {
             adjustableLevelingFeet: formData.adjustableLevelingFeet,
             resistanceSystem: formData.resistanceSystem,
             transportWheels: formData.transportWheels,
-            connectivity: formData.connectivity,
             minUserLength: formData.minUserLength,
             maxUserLength: formData.maxUserLength,
             display: formData.display,
             availableLanguages: formData.availableLanguages,
             description: formData.description,
-            image: imageUrl,
+            images: imageUrl,
         };
 
         const bike = await bikeService.create(bikeData);
