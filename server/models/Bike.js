@@ -43,10 +43,6 @@ const bikeSchema = mongoose.Schema({
         type: Number,
         require: true
     },
-    connectivity: {
-        type: Number,
-        require: true
-    },
     minUserLength: {
         type: Number,
         require: true
@@ -67,7 +63,7 @@ const bikeSchema = mongoose.Schema({
         type: String,
         require: true
     },
-    image: [
+    images: [
         {
             url: {
                 type: String
