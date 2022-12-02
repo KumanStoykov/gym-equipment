@@ -76,6 +76,13 @@ const treadMillSchema = mongoose.Schema({
                 type: String
             }
         }
+    ],
+    comments: [
+        {
+            type: mongoose.SchemaTypes.ObjectId,
+            ref: 'Comment'
+
+        }
     ]
 
 });

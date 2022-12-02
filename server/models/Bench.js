@@ -56,6 +56,13 @@ const benchSchema = mongoose.Schema({
                 type: String
             }
         }
+    ],
+    comments: [
+        {
+            type: mongoose.SchemaTypes.ObjectId,
+            ref: 'Comment'
+
+        }
     ]
 });
 
