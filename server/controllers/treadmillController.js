@@ -69,6 +69,7 @@ router.post('/create', async (req, res) => {
             availableLanguages: formData.availableLanguages,
             description: formData.description,
             images: imageUrl,
+            comments: []
         };
 
         const treadmill = await treadmillService.create(treadmillData);

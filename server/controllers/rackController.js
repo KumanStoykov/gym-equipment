@@ -65,6 +65,7 @@ router.post('/create', loggedIn(), isAdmin(), async (req, res) => {
             netWeight: formData.netWeight,
             description: formData.description,
             images: imageUrl,
+            comments: []
         };
 
 

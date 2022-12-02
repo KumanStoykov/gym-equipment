@@ -68,6 +68,7 @@ router.post('/create', loggedIn(), isAdmin(), async (req, res) => {
             availableLanguages: formData.availableLanguages,
             description: formData.description,
             images: imageUrl,
+            comments: []
         };
 
         const bike = await bikeService.create(bikeData);
