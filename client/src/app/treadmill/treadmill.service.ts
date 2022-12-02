@@ -16,6 +16,10 @@ export class TreadmillService {
         private http: HttpClient,
     ) { }
 
+    getAll(query?: string): Observable<{ treadmills: ITreadmill[], treadmillsCount: number }> {
+        return this.http.get<{ treadmills: ITreadmill[], treadmillsCount: number }>(`${API_URL}/treadmill?${query || ''}`, { withCredentials: true });
+    }
+
     create(treadmillData: any): Observable<ITreadmill> {
         return this.http.post<ITreadmill>(`${API_URL}/treadmill/create`, treadmillData, { withCredentials: true });
     }
