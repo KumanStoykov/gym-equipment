@@ -23,6 +23,18 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/:id', async (req, res) => {
+
+    try {
+        const id = req.params.id
+        const treadmill = await treadmillService.getById(id);
+
+        res.status(200).send(treadmill);
+    } catch (err) {
+        res.status(400).send({ message: err.message });
+    }
+});
+
 router.post('/create', async (req, res) => {
     const form = formidable({ multiples: true });
     const imageUrl = [];

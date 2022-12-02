@@ -23,6 +23,18 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/:id', async (req, res) => {
+
+    try {
+        const id = req.params.id
+        const rack = await rackService.getById(id);
+
+        res.status(200).send(rack);
+    } catch (err) {
+        res.status(400).send({ message: err.message });
+    }
+});
+
 router.post('/create', loggedIn(), isAdmin(), async (req, res) => {
     const form = formidable({ multiples: true });
     const imageUrl = [];
