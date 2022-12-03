@@ -14,7 +14,7 @@ const routes: Routes = [
             component: TreadmillListComponent
         },
         {
-            path: 'details',
+            path: ':id',
             component: TreadmillDetailsComponent
         }
     ]

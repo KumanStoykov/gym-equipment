@@ -14,7 +14,7 @@ const routes: Routes = [
             component: DumbbellListComponent
         },
         {
-            path: 'details',
+            path: ':id',
             component: DumbbellDetailsComponent
         }
     ]

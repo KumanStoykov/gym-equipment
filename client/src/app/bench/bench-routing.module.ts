@@ -14,7 +14,7 @@ const routes: Routes = [
             component: BenchListComponent
         },
         {
-            path: 'details',
+            path: ':id',
             component: BenchDetailsComponent
         }
     ]

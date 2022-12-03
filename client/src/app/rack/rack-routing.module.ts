@@ -14,7 +14,7 @@ const routes: Routes = [
             component: RackListComponent
         },
         {
-            path: 'details',
+            path: ':id',
             component: RackDetailsComponent
         }
     ]
