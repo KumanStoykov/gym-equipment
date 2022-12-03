@@ -31,10 +31,6 @@ const treadMillSchema = mongoose.Schema({
         type: Number,
         require: true
     },
-    runningSurface: {
-        type: String,
-        require: true
-    },
     motorPower: {
         type: String,
         require: true
