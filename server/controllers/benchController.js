@@ -42,6 +42,12 @@ router.post('/create', loggedIn(), isAdmin(), async (req, res) => {
     try {
         const [formData, incFiles] = await formidableParsePromise(req, form);
 
+        const requiredFields = Object.entries(formData).filter(([k, v]) => v === '');
+        
+        if(requiredFields.length > 0) {
+            throw new Error('All fields is required!')
+        } 
+
         const valueIncFile = Object.values(incFiles);
 
         const enterableValue = valueIncFile[0]?.length > 1 ? valueIncFile[0] : valueIncFile;
@@ -67,6 +73,11 @@ router.post('/create', loggedIn(), isAdmin(), async (req, res) => {
             image: imageUrl,
             comments: []
         };
+
+        
+        if(benchData.promoPrice > 0) {
+            await benchService.createPromo({ productType: 'Bench'});
+        }
 
 
         const bench = await benchService.create(benchData);

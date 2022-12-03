@@ -42,6 +42,12 @@ router.post('/create', loggedIn(), isAdmin(), async (req, res) => {
     try {
         const [formData, incFiles] = await formidableParsePromise(req, form);
 
+        const requiredFields = Object.entries(formData).filter(([k, v]) => v === '');
+        
+        if(requiredFields.length > 0) {
+            throw new Error('All fields is required!')
+        } 
+
         const valueIncFile = Object.values(incFiles);
 
         const enterableValue = valueIncFile[0]?.length > 1 ? valueIncFile[0] : valueIncFile;
@@ -65,60 +71,13 @@ router.post('/create', loggedIn(), isAdmin(), async (req, res) => {
             rangeOfDumbbellLengthsTo: formData.rangeOfDumbbellLengthsTo,
             handleDiameterFrom: formData.handleDiameterFrom,
             handleDiameterTo: formData.handleDiameterTo,
-            cylinderDiameterFrom: formData.cylinderDiameterFrom,
-            cylinderDiameterTo: formData.cylinderDiameterTo,
             description: formData.description,
             images: imageUrl,
             comments: []
         };
 
-        if (dumbbellData.brand.length <- 3) {
-            throw new Error('Brand should be at least 3 characters long!');
-        }
-        if (Number(dumbbellData.price) < 0) {
-            throw new Error('Price should be positive number!');
-        }
-        if (Number(dumbbellData.promoPrice) < 0) {
-            throw new Error('Promo price should be positive number!');
-        }
-        if (dumbbellData.madeIn.length <= 3) {
-            throw new Error('Made in should be at least 3 characters long!');
-        }
-        if (dumbbellData.material.length <= 3) {
-            throw new Error('Material should be at least 3 characters long!');
-        }
-        if (dumbbellData.knurl.length <= 3) {
-            throw new Error('Knurl should be at least 3 characters long!');
-        }
-        if (Number(dumbbellData.rangeOfAvailableWeightsFrom) < 0) {
-            throw new Error('Range Of Available Weights From should be positive number!');
-        }
-        if (Number(dumbbellData.rangeOfAvailableWeightsTo) < 0) {
-            throw new Error('Range Of Available Weights To should be positive number!');
-        }
-        if (Number(dumbbellData.rangeOfDumbbellLengthsFrom) < 0) {
-            throw new Error('Range Of Dumbbell Lengths From should be positive number!');
-        }
-        if (Number(dumbbellData.rangeOfDumbbellLengthsTo) < 0) {
-            throw new Error('Range Of Dumbbell Lengths To should be positive number!');
-        }
-
-        if (dumbbellData.handleDiameterFrom.length < 0) {
-            throw new Error('Handle Diameter From should be positive number!');
-        }
-        if (Number(dumbbellData.handleDiameterTo) < 0) {
-            throw new Error('Handle Diameter to should be positive number!');
-        }
-
-        if (Number(dumbbellData.cylinderDiameterFrom) < 0) {
-            throw new Error('Cylinder Diameter From should be positive number!');
-        }
-        if (Number(dumbbellData.cylinderDiameterTo) < 0) {
-            throw new Error('Cylinder Diameter to should be positive number!');
-        }
-
-        if (dumbbellData.description.length <= 20) {
-            throw new Error('Description should be at least 20 characters long!');
+        if(dumbbellData.promoPrice > 0) {
+            await dumbbellService.createPromo({ productType: 'Dumbbell'});
         }
 
         const dumbbell = await dumbbellService.create(dumbbellData);

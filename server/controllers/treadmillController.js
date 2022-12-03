@@ -40,6 +40,12 @@ router.post('/create', async (req, res) => {
     const imageUrl = [];
     try {
         const [formData, incFiles] = await formidableParsePromise(req, form);
+
+        const requiredFields = Object.entries(formData).filter(([k, v]) => v === '');
+        
+        if(requiredFields.length > 0) {
+            throw new Error('All fields is required!')
+        } 
         
         const valueIncFile = Object.values(incFiles);
         
@@ -52,6 +58,8 @@ router.post('/create', async (req, res) => {
             imageUrl.push({ url: res.url, public_id: res.public_id });
         }
 
+        
+
         const treadmillData = {
             brand: formData.brand,
             price: formData.price,
@@ -60,17 +68,21 @@ router.post('/create', async (req, res) => {
             madeIn: formData.madeIn,
             dimensions: formData.dimensions,
             equipmentWeight: formData.equipmentWeight,
-            runningSurface: formData.runningSurface,
             motorPower: formData.motorPower,
             minSpeed: formData.minSpeed,
             maxSpeed: formData.maxSpeed,
-            InclineMin: formData.InclineMin,
-            InclineMax: formData.InclineMax,
+            inclineMin: formData.inclineMin,
+            inclineMax: formData.inclineMax,
             availableLanguages: formData.availableLanguages,
+            display: formData.display,
             description: formData.description,
             images: imageUrl,
             comments: []
-        };
+        };        
+
+        if(treadmillData.promoPrice > 0) {
+            await treadmillService.createPromo({ productType: 'Treadmill'});
+        }
 
         const treadmill = await treadmillService.create(treadmillData);
 
