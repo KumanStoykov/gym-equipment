@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 
 import { Router } from '@angular/router';
 import { BikeService } from 'src/app/bike/bike.service';
-import { IBIke } from 'src/app/shared/interfaces';
+import { IBike } from 'src/app/shared/interfaces';
 
 @Component({
     selector: 'app-create-bike',
@@ -17,8 +17,8 @@ export class CreateBikeComponent implements OnInit {
     files: [] = [];
     fileIsChose: boolean = false;
 
-    bike: IBIke | undefined;
-    error: string | undefined;
+    bike: IBike | undefined;
+    error!: string;
     isLoading: boolean = false;
     filesCount: number | undefined;
 
@@ -71,6 +71,14 @@ export class CreateBikeComponent implements OnInit {
             }
         })
 
+    }
+
+    onCloseNot(): void {
+        this.error = '';
+        if(this.error.includes('Something went wrong')) {
+            console.log('')
+            this.router.navigate(['/'])
+        }
     }
 
 }

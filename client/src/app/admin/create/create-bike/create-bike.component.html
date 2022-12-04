@@ -1,3 +1,6 @@
+<app-notification (notDestroy)="onCloseNot()" *ngIf="error?.length !== 0" [errorMessage]="error"></app-notification>
+
+
 <section class="bike container">
     <div class="form-wrap">
 
@@ -60,11 +63,11 @@
         </div>
         <div class="row-wrap">
             <div class="input-row">
-                <input #connectivityInput="ngModel" placeholder="Connectivity *" type="number" class="input-field" name="connectivity" [ngModel]="bike?.connectivity" required />
-                <p class="error" *ngIf="connectivityInput.touched && connectivityInput.errors?.['required']">Field is required!</p>
+                <input #availableLanguagesInput="ngModel" placeholder="Available Languages *" type="text" class="input-field" name="availableLanguages" [ngModel]="bike?.availableLanguages" required />
+                <p class="error" *ngIf="availableLanguagesInput.touched && availableLanguagesInput.errors?.['required']">Field is required!</p>
             </div>
             <div class="input-row">
-                <input #displayInput="ngModel" placeholder="Display *" type="number" class="input-field" name="display" [ngModel]="bike?.display" required />
+                <input #displayInput="ngModel" placeholder="Display *" type="text" class="input-field" name="display" [ngModel]="bike?.display" required />
                 <p class="error" *ngIf="displayInput.touched && displayInput.errors?.['required']">Field is required!</p>
             </div>
         </div>
