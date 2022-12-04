@@ -1,11 +1,12 @@
 <app-page-hero [heroPageTitle]="heroTitle"></app-page-hero>
 
-<app-notification (notDestroy)="onCloseNot()" *ngIf="error?.length !== 0" [errorMessage]="error"></app-notification>
 
 <section class="container">
     <div class="content-wrap">
 
         <app-page-title [pageTitle]="pageTitle"></app-page-title>
+
+        <app-notification (notDestroy)="onCloseNot()" *ngIf="error?.length !== 0" [errorMessage]="error"></app-notification>
 
         <app-loader *ngIf="isLoading" size="medium"></app-loader>
 
@@ -14,7 +15,7 @@
 
             <ul class="cards-wrap">
                 <li *ngFor="let treadmill of treadmills">
-                    <app-product-card [product]="treadmill" [cardType]="'treadmill'"></app-product-card>
+                    <app-product-card [product]="treadmill" cardType="treadmill"></app-product-card>
                 </li>
 
             </ul>

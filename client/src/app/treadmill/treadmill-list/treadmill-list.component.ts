@@ -46,7 +46,7 @@ export class TreadmillListComponent implements OnInit {
             },
             error: err => {
                 this.isLoading = false;
-                this.error = err.error.message || 'Something went wrong. Please try again.'
+                this.error = err.error.message || 'Something went wrong. Please try again later.'
             }
         })
 
