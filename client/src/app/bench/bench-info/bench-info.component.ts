@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IBench } from 'src/app/shared/interfaces';
 
 @Component({
   selector: 'app-bench-info',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./bench-info.component.scss']
 })
 export class BenchInfoComponent implements OnInit {
+    @Input() bench!: IBench;
 
   constructor() { }
 
