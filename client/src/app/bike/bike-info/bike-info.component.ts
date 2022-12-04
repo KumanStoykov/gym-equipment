@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IBike } from 'src/app/shared/interfaces';
 
 @Component({
   selector: 'app-bike-info',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./bike-info.component.scss']
 })
 export class BikeInfoComponent implements OnInit {
+    @Input() bike!: IBike;
 
   constructor() { }
 

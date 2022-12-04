@@ -1,15 +1,19 @@
 <app-page-hero [heroPageTitle]="heroTitle"></app-page-hero>
 
-<section class="details container">
+<app-notification (notDestroy)="onCloseNot()" *ngIf="error?.length !== 0" [errorMessage]="error"></app-notification>
+
+<app-loader *ngIf="isLoading" size="medium"></app-loader>
+
+<section *ngIf="!isLoading" class="details container">
     <app-page-title
-        [pageTitle]="'ROGUE KG COMPETITION PLATES'"
+        [pageTitle]="bike.brand"
     ></app-page-title>
 
     <div class="page-wrap">
 
-       <app-details-page-header></app-details-page-header>
+       <app-details-page-header [product]="bike"></app-details-page-header>
 
-        <app-bike-info></app-bike-info>
+        <app-bike-info [bike]="bike"></app-bike-info>
 
     </div>
    <app-comment-list></app-comment-list>
