@@ -16,7 +16,7 @@ export class CreateRackComponent implements OnInit {
     fileIsChose: boolean = false;
 
     rack: IRack | undefined;
-    error: string | undefined;
+    error!: string;
     isLoading: boolean = false;
     filesCount: number | undefined;
 
@@ -68,6 +68,14 @@ export class CreateRackComponent implements OnInit {
             }
         })
 
+    }
+
+    onCloseNot(): void {
+        this.error = '';
+        if(this.error.includes('Something went wrong')) {
+            console.log('')
+            this.router.navigate(['/'])
+        }
     }
 
 }
