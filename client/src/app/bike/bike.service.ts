@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../environments/environment';
-import { IBIke } from '../shared/interfaces';
+import { IBike } from '../shared/interfaces';
 
 const API_URL = environment.API_URL;
 
@@ -16,7 +16,13 @@ export class BikeService {
         private http: HttpClient,
     ) { }
 
-    create(treadmillData: any): Observable<IBIke> {
-        return this.http.post<IBIke>(`${API_URL}/bike/create`, treadmillData, { withCredentials: true });
+    getAll(query?:  string): Observable<{ bikes: IBike[], bikesCount: number }> {
+        return this.http.get<{ bikes: IBike[], bikesCount: number }>(`${API_URL}/bike?${query || ''}`, { withCredentials: true });
+    }
+    getOne(id: string): Observable<IBike> {
+        return this.http.get<IBike>(`${API_URL}/bike/${id}`, { withCredentials: true });
+    }
+    create(bikeData: any): Observable<IBike> {
+        return this.http.post<IBike>(`${API_URL}/bike/create`, bikeData, { withCredentials: true });
     }
 }

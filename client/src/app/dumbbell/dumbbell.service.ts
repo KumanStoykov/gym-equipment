@@ -16,6 +16,13 @@ export class DumbbellService {
         private http: HttpClient
     ) { }
 
+    getAll(query?: string): Observable<{ dumbbells: IDumbbell[], dumbbellsCount: number }> {
+        return this.http.get<{ dumbbells: IDumbbell[], dumbbellsCount: number }>(`${API_URL}/dumbbell?${query || ''}`, { withCredentials: true });
+    }
+    getOne(id: string): Observable<IDumbbell> {
+        return this.http.get<IDumbbell>(`${API_URL}/dumbbell/${id}`, { withCredentials: true });
+    }
+
     create(dumbbellData: any): Observable<IDumbbell> {
         return this.http.post<IDumbbell>(`${API_URL}/dumbbell/create`, dumbbellData, { withCredentials: true });
     }

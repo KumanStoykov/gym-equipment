@@ -16,6 +16,13 @@ export class RackService {
         private http: HttpClient
     ) { }
 
+    getAll(query?: string): Observable<{ rack: IRack[], rackCount: number }> {
+        return this.http.get<{ rack: IRack[], rackCount: number }>(`${API_URL}/rack?${query || ''}`, { withCredentials: true });
+    }
+    getOne(id: string): Observable<IRack> {
+        return this.http.get<IRack>(`${API_URL}/rack/${id}`, { withCredentials: true });
+    }
+
     create(rackData: any): Observable<IRack> {
         return this.http.post<IRack>(`${API_URL}/rack/create`, rackData, { withCredentials: true });
     }
