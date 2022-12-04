@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ITreadmill } from 'src/app/shared/interfaces';
 
 @Component({
   selector: 'app-treadmill-info',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./treadmill-info.component.scss']
 })
 export class TreadmillInfoComponent implements OnInit {
+    @Input() treadmill!: ITreadmill;
 
   constructor() { }
 
