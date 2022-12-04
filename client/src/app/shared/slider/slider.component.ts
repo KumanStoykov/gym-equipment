@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { IImage } from '../interfaces';
 
 @Component({
     selector: 'app-slider',
@@ -9,7 +10,7 @@ import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 })
 export class SliderComponent implements OnInit {
 
-    @Input() images!: string[];
+    @Input() images: IImage[] = [];
 
     imgIndex = 0;
 

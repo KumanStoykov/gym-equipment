@@ -4,13 +4,13 @@
             <img
                 [ngClass]="imgIndex === i ? 'img-border' : ''"
                 (click)="imageClick(i)"
-                src="{{ image }}"
+                src="{{ image.url }}"
                 alt="image.jpg"
             />
         </div>
     </div>
     <div class="img-wrap">
-        <img src="{{ images[imgIndex] }}" alt="image.jpg" />
+        <img src="{{ images[imgIndex].url }}" alt="image.jpg" />
         <button class="next-btn" (click)="indexPreview()">
             <fa-icon class="icon-btn" [icon]="icons.faAngleLeft"></fa-icon>
         </button>
