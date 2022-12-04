@@ -7,12 +7,11 @@ export interface ITreadmill {
     material: string;
     dimensions: string;
     equipmentWeight: number;
-    runningSurface: number;
     motorPower: string;
     minSpeed: number;
     maxSpeed: number;
-    InclineMin: number;
-    InclineMax: number;
+    inclineMin: number;
+    inclineMax: number;
     availableLanguages: string;
     display: string;
     description: string;
