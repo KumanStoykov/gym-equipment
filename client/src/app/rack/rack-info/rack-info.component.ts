@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IRack } from 'src/app/shared/interfaces';
 
 @Component({
   selector: 'app-rack-info',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./rack-info.component.scss']
 })
 export class RackInfoComponent implements OnInit {
+    @Input() rack!: IRack;
 
   constructor() { }
 

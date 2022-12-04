@@ -3,24 +3,19 @@
 <section class="container">
     <div class="content-wrap">
         <app-page-title [pageTitle]="pageTitle"></app-page-title>
-        <div class="page-content-wrap">
+
+        <app-notification (notDestroy)="onCloseNot()" *ngIf="error.length !== 0" [errorMessage]="error"></app-notification>
+
+        <app-loader *ngIf="isLoading" size="medium"></app-loader>
+
+        <div *ngIf="!isLoading" class="page-content-wrap">
             <app-search></app-search>
-            <div class="cards-wrap">
-                <app-product-card [cardType]="'strength/rack'"></app-product-card>
-                <app-product-card [cardType]="'strength/rack'"></app-product-card>
-                <app-product-card [cardType]="'strength/rack'"></app-product-card>
-                <app-product-card [cardType]="'strength/rack'"></app-product-card>
-                <app-product-card [cardType]="'strength/rack'"></app-product-card>
-                <app-product-card [cardType]="'strength/rack'"></app-product-card>
-                <app-product-card [cardType]="'strength/rack'"></app-product-card>
-                <app-product-card [cardType]="'strength/rack'"></app-product-card>
-                <app-product-card [cardType]="'strength/rack'"></app-product-card>
-                <app-product-card [cardType]="'strength/rack'"></app-product-card>
-                <app-product-card [cardType]="'strength/rack'"></app-product-card>
-                <app-product-card [cardType]="'strength/rack'"></app-product-card>
-                <app-product-card [cardType]="'strength/rack'"></app-product-card>
-                <app-product-card [cardType]="'strength/rack'"></app-product-card>
-            </div>
+
+            <ul class="cards-wrap">
+                <li *ngFor="let rack of racks">
+                    <app-product-card [product]="rack" cardType="rack"></app-product-card>
+                </li>
+            </ul>
         </div>
     </div>
 </section>
