@@ -16,7 +16,7 @@ export class CreateDumbbellComponent implements OnInit {
     fileIsChose: boolean = false;
 
     rack: IDumbbell | undefined;
-    error: string | undefined;
+    error!: string;
     isLoading: boolean = false;
     filesCount: number | undefined;
 
@@ -68,6 +68,14 @@ export class CreateDumbbellComponent implements OnInit {
             }
         })
 
+    }
+
+    onCloseNot(): void {
+        this.error = '';
+        if(this.error.includes('Something went wrong')) {
+            console.log('')
+            this.router.navigate(['/'])
+        }
     }
 
 }
