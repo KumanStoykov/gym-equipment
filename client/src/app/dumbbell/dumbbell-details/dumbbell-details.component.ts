@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { IDumbbell } from 'src/app/shared/interfaces';
+import { DumbbellService } from '../dumbbell.service';
 
 @Component({
   selector: 'app-dumbbell-details',
@@ -9,9 +12,37 @@ export class DumbbellDetailsComponent implements OnInit {
 
     heroTitle = 'DETAILS';
 
-  constructor() { }
+    dumbbell!: IDumbbell;
+    isLoading: boolean = false;
+    error: string = '';
 
-  ngOnInit(): void {
-  }
+    id = this.router.url.split('/')[2];
+
+    constructor(
+        private dumbbellService: DumbbellService,
+        private router: Router
+    ) { }
+
+    ngOnInit(): void {
+        this.isLoading = true;
+        this.dumbbellService.getOne(this.id).subscribe({
+            next: dumbbell => {
+                this.dumbbell = dumbbell;
+                this.isLoading = false;
+            },
+            error: err => {
+                console.log(err)
+                this.isLoading = false;
+                this.error = err.error.message || 'Something went wrong, Please try again later.';
+            }
+        })
+    }
+
+    onCloseNot(): void {
+        this.error = '';
+        if(this.error.includes('Something went wrong')) {
+            this.router.navigate(['/'])
+        }
+    }
 
 }
