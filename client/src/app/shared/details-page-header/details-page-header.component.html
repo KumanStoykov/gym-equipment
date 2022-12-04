@@ -1,13 +1,13 @@
 <div class="page-header-wrap">
-    <app-slider [images]="images"></app-slider>
+    <app-slider [images]="product.images"></app-slider>
 
     <div class="page-header-info">
         <div class="rating-price-wrap">
             <app-rating [showCount]="true"></app-rating>
 
             <p class="price-wrap">
-                <span class="normal-price">$920</span>
-                <span class="sale">$700</span>
+                <span [ngClass]="hasPromo ? 'normal-price' : 'out-promo'">${{product.price}}</span>
+                <span *ngIf="hasPromo" class="sale">${{product.promoPrice}}</span>
             </p>
         </div>
         <div class="product-definition-wrap">
@@ -73,7 +73,7 @@
             </div>
         </div>
 
-        <div class="btn-wrap">
+        <div *ngIf="!(user$ | async)?.isAdmin" class="btn-wrap">
             <button class="btn-detail btn-add">
                 Add To Cart
                 <fa-icon class="btn-icon" [icon]="icons.faCartPlus"></fa-icon>
@@ -81,6 +81,11 @@
             <button class="btn-detail btn-buy">
                 Watch This Item
                 <fa-icon class="btn-icon" [icon]="icons.faHeart"></fa-icon>
+            </button>
+        </div>
+        <div *ngIf="(user$ | async)?.isAdmin" class="btn-wrap">
+            <button class="btn-detail btn-add">
+                EDIT
             </button>
         </div>
     </div>

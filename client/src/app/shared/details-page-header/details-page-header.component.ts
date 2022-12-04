@@ -1,6 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { IUser } from 'src/app/shared/interfaces';
+import { IAuthState } from 'src/app/+store/reducers';
+import * as authSelectors from '../../+store/selector';
+
 
 import { faHeart, faCartPlus, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { Store } from '@ngrx/store';
 
 
 @Component({
@@ -10,22 +16,24 @@ import { faHeart, faCartPlus, faCheck } from '@fortawesome/free-solid-svg-icons'
 })
 export class DetailsPageHeaderComponent implements OnInit {
 
+    @Input() product: any;
+
+    hasPromo: boolean = false;
+
     icons = {
         faHeart,
         faCartPlus,
         faCheck
     };
 
-    images = [
-        '../../../assets/gallery1.jpg',
-        '../../../assets/gallery2.jpg',
-        '../../../assets/gallery3.jpg',
-        '../../../assets/gallery4.jpg',
-    ]
+    user$: Observable<IUser | null> = this.store.select(authSelectors.selectUser);
 
-  constructor() { }
+  constructor(
+    private store: Store<IAuthState>,
+  ) { }
 
   ngOnInit(): void {
+    this.hasPromo = this.product.promoPrice > 0;
   }
 
 }
