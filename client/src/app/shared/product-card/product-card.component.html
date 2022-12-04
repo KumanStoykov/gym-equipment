@@ -1,17 +1,17 @@
 <article class="card">
-    <div class="sale-img-wrap">
-        <a routerLink="/{{cardType}}/details">
+    <div class="card-img-wrap">
+        <a routerLink="/{{cardType}}/{{product._id}}">
             <img
-                src="../../../assets/ambitious-creative-co-rick-barrett-LevAqvZuM00-unsplash.jpg"
+                src="{{product.images[0].url}}"
                 alt="image"
-                class="sale-image"
+                class="card-image"
             />
         </a>
     </div>
 
     <app-rating [showCount]="true"></app-rating>
 
-    <h4 class="sale-card-title">Training Lorem</h4>
-    <p class="sale-card-price-old">$870.00</p>
-    <p class="sale-card-price-new">$800.00</p>
+    <h4 class="card-title">{{product.brand}}</h4>
+    <p [ngClass]="hasPromo ? 'card-price-old' : 'out-promo'">${{product.price}}</p>
+    <p *ngIf="hasPromo" class="card-price-new">${{product.promoPrice}}</p>
 </article>

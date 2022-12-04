@@ -7,13 +7,14 @@
     padding: 1rem;
 }
 
-.sale-img-wrap {
+.card-img-wrap {
+    position: relative;
+    max-height: 210px;
     overflow: hidden;
 }
 
-.sale-image {
-    width: 100%;
-
+.card-image {
+    object-fit: cover;
     transition: all 0.4s ease-in-out;
 
     &:hover {
@@ -22,7 +23,7 @@
     }
 }
 
-.sale-card-title {
+.card-title {
     margin-bottom: 1.5rem;
     font-size: 1.25rem;
     text-transform: uppercase;
@@ -49,11 +50,18 @@
     }
 }
 
-.sale-card-price-old {
+.card-price-old {
     text-decoration: line-through;
 }
 
-.sale-card-price-new {
+.out-promo {
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+    padding: 0.75rem 0;
+}
+
+.card-price-new {
     color: #f55e5e;
     font-size: 1.25rem;
     font-weight: bold;
