@@ -16,7 +16,7 @@ export class CreateBenchComponent implements OnInit {
     fileIsChose: boolean = false;
 
     rack: IBench | undefined;
-    error: string | undefined;
+    error!: string;
     isLoading: boolean = false;
     filesCount: number | undefined;
 
@@ -70,4 +70,11 @@ export class CreateBenchComponent implements OnInit {
 
     }
 
+    onCloseNot(): void {
+        this.error = '';
+        if(this.error.includes('Something went wrong')) {
+            console.log('')
+            this.router.navigate(['/'])
+        }
+    }
 }

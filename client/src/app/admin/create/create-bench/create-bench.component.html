@@ -1,3 +1,6 @@
+<app-notification (notDestroy)="onCloseNot()" *ngIf="error?.length !== 0" [errorMessage]="error"></app-notification>
+
+
 <section class="rack container">
     <div class="form-wrap">
 
