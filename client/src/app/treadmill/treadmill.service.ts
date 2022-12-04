@@ -19,6 +19,9 @@ export class TreadmillService {
     getAll(query?: string): Observable<{ treadmills: ITreadmill[], treadmillsCount: number }> {
         return this.http.get<{ treadmills: ITreadmill[], treadmillsCount: number }>(`${API_URL}/treadmill?${query || ''}`, { withCredentials: true });
     }
+    getOne(id: string): Observable<ITreadmill> {
+        return this.http.get<ITreadmill>(`${API_URL}/treadmill/${id}`, { withCredentials: true });
+    }
 
     create(treadmillData: any): Observable<ITreadmill> {
         return this.http.post<ITreadmill>(`${API_URL}/treadmill/create`, treadmillData, { withCredentials: true });
