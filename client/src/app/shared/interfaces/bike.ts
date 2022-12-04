@@ -1,4 +1,4 @@
-export interface IBIke {
+export interface IBike {
     _id: string;
     brand: string;
     price: number;
@@ -10,7 +10,6 @@ export interface IBIke {
     adjustableLevelingFeet: number;
     resistanceSystem: string;
     transportWheels: number;
-    connectivity: number;
     minUserLength: number;
     maxUserLength: number;
     display: string;
