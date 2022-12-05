@@ -1,0 +1,23 @@
+<app-page-hero [heroPageTitle]="heroTitle"></app-page-hero>
+
+
+<section class="treadmill-list container">
+    <div class="content-wrap">
+        <app-page-title [pageTitle]="pageTitle"></app-page-title>
+
+        <app-notification (notDestroy)="onCloseNot()" *ngIf="error.length !== 0" [errorMessage]="error"></app-notification>
+
+        <app-loader *ngIf="isLoading" size="medium"></app-loader>
+
+        <div *ngIf="!isLoading" class="page-content-wrap">
+            <app-search></app-search>
+
+            <ul class="cards-wrap">
+                <li *ngFor="let promotion of promotions">
+                    <app-product-card [product]="promotion.product" [cardType]="promotion.productType"></app-product-card>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
