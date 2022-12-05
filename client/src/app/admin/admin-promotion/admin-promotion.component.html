@@ -1,0 +1,18 @@
+<app-notification (notDestroy)="onCloseNot()" *ngIf="error.length !== 0" [errorMessage]="error"></app-notification>
+
+
+<section class="catalog container">
+    <div class="content-wrap">
+
+        <div class="products-container">
+            <div class="products-heading">
+               <ul class="list-preders" role="list">
+                <li *ngFor="let product of promotions">
+                    <app-admin-product-card [product]="product" [cardType]="product.productType"></app-admin-product-card>
+                </li>
+               </ul>
+            </div>
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,19 @@
+@import "/src/app/shared/variables.scss";
+
+.content-wrap {
+    width: 90%;
+    background: $clr-with;
+    margin: 3rem auto;
+    position: relative;
+}
+
+.products-container {
+    margin-top: 3rem;
+}
+
+
+@media all and (max-width: 768px) {
+    .products-container {
+        margin: 3rem 1rem 0 1rem;
+    }
+}
