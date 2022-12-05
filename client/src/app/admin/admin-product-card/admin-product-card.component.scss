@@ -1,0 +1,45 @@
+@import "/src/app/shared/variables.scss";
+
+.checkout-card {
+    margin: 1rem auto;
+    padding-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 400;
+    border-bottom: 2px solid $clr-font-desc;
+}
+
+.img-wrap {
+    width: 150px;
+
+    .card-image{
+        height: 150px;
+        object-fit: cover;
+    }
+}
+
+.price-wrap {
+    font-weight: 500;
+    display: flex;
+    gap: 0.4rem;
+}
+
+.price-old {
+    text-decoration: line-through;
+}
+
+.price-new {
+    color: $clr-red;
+}
+
+
+
+@media all and (max-width: 1000px) {
+    .checkout-card {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+

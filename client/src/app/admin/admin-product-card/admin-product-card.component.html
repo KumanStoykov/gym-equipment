@@ -1,0 +1,20 @@
+<article class="checkout-card">
+    <div class="img-wrap">
+        <a routerLink="/{{cardType}}/{{product.product._id}}">
+            <img
+                src="{{product.product.images[0].url}}"
+                alt="image"
+                class="card-image"
+            />
+        </a>
+    </div>
+    <div>
+        <p class="name"> Brand: {{product.product.brand}}</p>
+        <p class="name"> Sale start: {{product.updatedAt | date}}</p>
+
+    </div>
+    <div class="price-wrap">
+        <p class="price-old">${{product.product.price}}</p>
+        <p class="price-new">${{product.product.promoPrice}}</p>
+    </div>
+</article>
