@@ -1,0 +1,31 @@
+@import "/src/app/shared/variables.scss";
+
+.btn-wrap {
+    position: fixed;
+    z-index: 1200;
+    right: 2rem;
+    bottom: 5rem;
+
+    button {
+        width: 2.75rem;
+        height: 2.75rem;
+        font-size: 1.25rem;
+        border-radius: 2px;
+        border: 1px solid $clr-dark;
+        color: $clr-dark;
+        background: $clr-with;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            border: 1px solid $clr-orange-light;
+            color: $clr-orange-light;
+        }
+
+    }
+}
+
+@media all and (max-width: 768px) {
+    .btn-wrap {
+        right: 1rem;
+    }
+}
