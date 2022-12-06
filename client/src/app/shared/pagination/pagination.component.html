@@ -1,0 +1,19 @@
+<div class="btn-wrap" *ngIf="pages.length > 1">
+    <a class="btn-pag" routerLink="./" [queryParams]="{page: 1}">
+        <fa-icon class="faAngelsUp" [icon]="icons.faAngleLeft"></fa-icon>
+    </a>
+    <div class="count-wrap">
+        <a
+            class="page"
+            routerLink="./"
+            [queryParams]="params[i + 1]"
+            *ngFor="let page of pages;
+            let i = index"
+            [class.active-page]="currentPage == i + currentStarPage"
+            >{{ page }}</a
+        >
+    </div>
+    <a class="btn-pag" routerLink="./" [queryParams]="{page: totalPages}" >
+        <fa-icon class="faAngelsUp" [icon]="icons.faAngleRight"></fa-icon>
+    </a>
+</div>

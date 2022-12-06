@@ -1,0 +1,75 @@
+@import "/src/app/shared/variables.scss";
+
+.btn-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 2rem 0;
+
+    a{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+.btn-pag {
+    font-size: 1.25rem;
+    background: transparent;
+    width: 42px;
+    height: 42px;
+    border: 1px solid $clr-gray-opacity;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        color: $clr-orange-light;
+        border: 1px solid $clr-orange-light;
+    }
+}
+.count-wrap {
+    display: flex;
+    gap: 0.5rem;
+}
+.page {
+    font-size: 1.25rem;
+    width: 42px;
+    height: 42px;
+    border: 1px solid $clr-gray-opacity;
+    text-align: center;
+    font-weight: 300;
+    transition: all 0.2s ease-in-out;
+
+    &:hover:not(.active-page) {
+        color: $clr-orange-light;
+        border: 1px solid $clr-orange-light;
+        font-weight: bold;
+    }
+}
+
+.active-page {
+    font-weight: bold;
+    border: 2px solid $clr-dark;
+}
+
+
+@media all and (max-width: 768px) {
+    .btn-wrap {
+        button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    .btn-pag {
+        width: 32px;
+        height: 32px;
+    }
+
+    .count {
+        font-size: 1.5rem;
+        width: 52px;
+        height: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
