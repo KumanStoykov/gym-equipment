@@ -13,6 +13,7 @@ import { HomeServicesComponent } from './home-services/home-services.component';
 import { HomeSupportComponent } from './home-support/home-support.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
+import { BtnScrollTopComponent } from './btn-scroll-top/btn-scroll-top.component';
 
 
 
@@ -25,7 +26,8 @@ import { SharedModule } from '../shared/shared.module';
         HomeGalleryComponent,
         HomeSaleComponent,
         HomeServicesComponent,
-        HomeSupportComponent
+        HomeSupportComponent,
+        BtnScrollTopComponent
     ],
     imports: [
         CommonModule,
@@ -36,7 +38,8 @@ import { SharedModule } from '../shared/shared.module';
     exports: [
         HeaderComponent,
         FooterComponent,
-        HomeComponent
+        HomeComponent,
+        BtnScrollTopComponent
     ]
 })
 export class CoreModule { }
