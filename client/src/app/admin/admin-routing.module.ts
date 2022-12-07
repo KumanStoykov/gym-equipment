@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminPromotionComponent } from './admin-promotion/admin-promotion.component';
 import { CreateBenchComponent } from './create/create-bench/create-bench.component';
 import { CreateBikeComponent } from './create/create-bike/create-bike.component';
 import { CreateDumbbellComponent } from './create/create-dumbbell/create-dumbbell.component';
@@ -43,6 +44,10 @@ const routes: Routes = [
         {
             path: 'create/dumbbell',
             component: CreateDumbbellComponent
+        },
+        {
+            path: 'promotion',
+            component: AdminPromotionComponent
         },
         {
             path: '**',
