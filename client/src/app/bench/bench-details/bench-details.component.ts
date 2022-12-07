@@ -16,7 +16,7 @@ export class BenchDetailsComponent implements OnInit {
     isLoading: boolean = false;
     error: string = '';
 
-    id = this.router.url.split('/')[2];
+    id = this.router.url.split('/')[3];
 
     constructor(
         private benchService: BenchService,

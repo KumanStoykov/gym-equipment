@@ -22,12 +22,12 @@ export class TreadmillListComponent implements OnInit {
 
     constructor(
         private treadmillService: TreadmillService,
-        private activateRouter: ActivatedRoute
+        private activateRoute: ActivatedRoute
     ) { }
 
     ngOnInit(): void {
 
-        this.activateRouter.queryParams.pipe(
+        this.activateRoute.queryParams.pipe(
             switchMap(params => {
                 let query = '';
                 Object.entries(params).forEach(([k, v]) => {
