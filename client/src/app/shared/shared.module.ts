@@ -18,6 +18,7 @@ import { RouterModule } from '@angular/router';
 import { DetailsPageHeaderComponent } from './details-page-header/details-page-header.component';
 import { CommentListComponent } from './comment-list/comment-list.component';
 import { NotificationComponent } from './notification/notification.component';
+import { PaginationComponent } from './pagination/pagination.component';
 
 
 
@@ -38,6 +39,7 @@ import { NotificationComponent } from './notification/notification.component';
     DetailsPageHeaderComponent,
     CommentListComponent,
     NotificationComponent,
+    PaginationComponent,
   ],
   imports: [
     CommonModule,
@@ -56,7 +58,8 @@ import { NotificationComponent } from './notification/notification.component';
     ClickOutsideDirective,
     DetailsPageHeaderComponent,
     CommentListComponent,
-    NotificationComponent
+    NotificationComponent,
+    PaginationComponent
   ]
 })
 export class SharedModule { }

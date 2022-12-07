@@ -4,9 +4,10 @@
 <section class="bike container">
     <div class="form-wrap">
 
-        <app-loader *ngIf="isLoading"></app-loader>
+        <app-loader *ngIf="isLoading" size="medium"></app-loader>
 
         <form
+            *ngIf="!isLoading"
             class="form"
             #form="ngForm"
             (ngSubmit)="onSubmit()"

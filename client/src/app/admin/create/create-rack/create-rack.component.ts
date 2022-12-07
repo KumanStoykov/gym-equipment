@@ -16,7 +16,7 @@ export class CreateRackComponent implements OnInit {
     fileIsChose: boolean = false;
 
     rack: IRack | undefined;
-    error!: string;
+    error: string = '';
     isLoading: boolean = false;
     filesCount: number | undefined;
 

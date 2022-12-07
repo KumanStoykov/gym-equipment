@@ -16,7 +16,7 @@ export class CreateDumbbellComponent implements OnInit {
     fileIsChose: boolean = false;
 
     rack: IDumbbell | undefined;
-    error!: string;
+    error: string = '';
     isLoading: boolean = false;
     filesCount: number | undefined;
 

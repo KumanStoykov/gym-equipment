@@ -16,7 +16,7 @@ export class CreateBenchComponent implements OnInit {
     fileIsChose: boolean = false;
 
     rack: IBench | undefined;
-    error!: string;
+    error: string = '';
     isLoading: boolean = false;
     filesCount: number | undefined;
 

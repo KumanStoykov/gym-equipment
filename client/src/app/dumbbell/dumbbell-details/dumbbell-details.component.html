@@ -1,5 +1,9 @@
 <app-page-hero [heroPageTitle]="heroTitle"></app-page-hero>
 
+<app-notification (notDestroy)="onCloseNot()" *ngIf="error?.length !== 0" [errorMessage]="error"></app-notification>
+
+<app-loader *ngIf="isLoading" size="medium"></app-loader>
+
 <section class="details container">
     <app-page-title [pageTitle]="dumbbell.brand"></app-page-title>
 

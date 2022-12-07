@@ -65,7 +65,6 @@ export class CreateTreadmillComponent implements OnInit {
             error: err => {
                 this.error = err.error.message;
                 this.isLoading = false;
-                console.log(err.error)
             }
         })
 
@@ -73,7 +72,6 @@ export class CreateTreadmillComponent implements OnInit {
     onCloseNot(): void {
         this.error = '';
         if(this.error.includes('Something went wrong')) {
-            console.log('')
             this.router.navigate(['/'])
         }
     }

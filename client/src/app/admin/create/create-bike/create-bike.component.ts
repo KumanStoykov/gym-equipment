@@ -18,7 +18,7 @@ export class CreateBikeComponent implements OnInit {
     fileIsChose: boolean = false;
 
     bike: IBike | undefined;
-    error!: string;
+    error: string = '';
     isLoading: boolean = false;
     filesCount: number | undefined;
 
@@ -67,7 +67,6 @@ export class CreateBikeComponent implements OnInit {
             error: err => {
                 this.error = err.error.message;
                 this.isLoading = false;
-                console.log(err.error)
             }
         })
 
@@ -76,7 +75,6 @@ export class CreateBikeComponent implements OnInit {
     onCloseNot(): void {
         this.error = '';
         if(this.error.includes('Something went wrong')) {
-            console.log('')
             this.router.navigate(['/'])
         }
     }
