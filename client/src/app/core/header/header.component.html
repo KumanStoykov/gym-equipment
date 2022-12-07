@@ -18,10 +18,26 @@
                 <span class="bar bar4"></span>
             </div>
             <ul class="nav-list" role="list">
+                <li class="list-item-icon">
+                    <img
+                        class="sale-icon"
+                        src="../../../assets/sale-icon.ico"
+                        alt="sale-icon"
+                    />
+
+                    <a
+                        class="nav-link"
+                        [routerLink]="'/promotion'"
+                        [queryParams]="{ page: 1 }"
+                        (click)="menuToggle()"
+                        >SALES</a
+                    >
+                </li>
                 <li>
                     <a
                         class="nav-link"
-                        [routerLink]="'/treadmill'" [queryParams]="{page: 1}"
+                        [routerLink]="'/treadmill'"
+                        [queryParams]="{ page: 1 }"
                         (click)="menuToggle()"
                         >TREADMILLS</a
                     >
@@ -29,7 +45,8 @@
                 <li>
                     <a
                         class="nav-link"
-                        [routerLink]="'/bike'" [queryParams]="{page: 1}"
+                        [routerLink]="'/bike'"
+                        [queryParams]="{ page: 1 }"
                         (click)="menuToggle()"
                         >BIKES</a
                     >
@@ -50,7 +67,8 @@
                         <li>
                             <a
                                 class="nav-link"
-                                [routerLink]="'/strength/rack'" [queryParams]="{page: 1}"
+                                [routerLink]="'/strength/rack'"
+                                [queryParams]="{ page: 1 }"
                                 (click)="menuToggle()"
                                 >Racks</a
                             >
@@ -58,7 +76,8 @@
                         <li>
                             <a
                                 class="nav-link"
-                                [routerLink]="'/strength/bench'" [queryParams]="{page: 1}"
+                                [routerLink]="'/strength/bench'"
+                                [queryParams]="{ page: 1 }"
                                 (click)="menuToggle()"
                                 >Benches</a
                             >
@@ -66,7 +85,8 @@
                         <li>
                             <a
                                 class="nav-link"
-                                [routerLink]="'/strength/dumbbell'" [queryParams]="{page: 1}"
+                                [routerLink]="'/strength/dumbbell'"
+                                [queryParams]="{ page: 1 }"
                                 (click)="menuToggle()"
                                 >Dumbbells</a
                             >
@@ -115,18 +135,10 @@
                     </ul>
                 </li>
                 <li class="nav-list-item" *ngIf="(user$ | async)?.isAdmin">
-                    <a
-                        routerLink="/admin"
-                        class="nav-link"
-                        >ADMIN
-                    </a>
+                    <a routerLink="/admin" class="nav-link">ADMIN </a>
                 </li>
-                <li class="nav-list-item" *ngIf="(user$ | async)">
-                    <a
-                        class="nav-link"
-                        (click)="logout()"
-                        >LOGOUT
-                    </a>
+                <li class="nav-list-item" *ngIf="user$ | async">
+                    <a class="nav-link" (click)="logout()">LOGOUT </a>
                 </li>
             </ul>
         </nav>

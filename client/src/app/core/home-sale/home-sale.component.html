@@ -4,13 +4,19 @@
         <span class="sale-sub-title">UP TO -70%</span>
     </div>
 
-    <div class="cards-wrap">
-       <app-product-card></app-product-card>
-       <app-product-card></app-product-card>
-       <app-product-card></app-product-card>
-    </div>
+    <ul class="cards-wrap">
+        <li *ngFor="let promo of promotions">
+            <app-product-card
+                [cardType]="promo.productType"
+                [product]="promo.product"
+            ></app-product-card>
+        </li>
+    </ul>
     <div class="btn-screen-all-wrap">
-        <a class="btn-screen-all" href="#"
+        <a
+            class="btn-screen-all"
+            [routerLink]="'/promotion'"
+            [queryParams]="{ page: 1 }"
             >Screen All
             <fa-icon class="faDumbbell" [icon]="icons.faDumbbell"></fa-icon>
         </a>
