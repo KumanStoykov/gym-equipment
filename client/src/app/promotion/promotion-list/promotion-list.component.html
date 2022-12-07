@@ -18,6 +18,7 @@
                 </li>
             </ul>
         </div>
+        <app-pagination *ngIf="!isLoading" [countPages]="6" [productCount]="count"></app-pagination>
     </div>
 </section>
 

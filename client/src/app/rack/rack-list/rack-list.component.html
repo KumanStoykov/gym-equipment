@@ -1,5 +1,9 @@
 <app-page-hero [heroPageTitle]="heroTitle"></app-page-hero>
 
+<app-notification (notDestroy)="onCloseNot()" *ngIf="error?.length !== 0" [errorMessage]="error"></app-notification>
+
+<app-loader *ngIf="isLoading" size="medium"></app-loader>
+
 <section class="container">
     <div class="content-wrap">
         <app-page-title [pageTitle]="pageTitle"></app-page-title>
@@ -17,5 +21,6 @@
                 </li>
             </ul>
         </div>
+        <app-pagination *ngIf="!isLoading" [countPages]="6" [productCount]="count"></app-pagination>
     </div>
 </section>
