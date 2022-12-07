@@ -10,6 +10,10 @@ const routes: Routes = [
         component: HomeComponent
     },
     {
+        path: 'promotion',
+        loadChildren: () => import('./promotion/promotion.module').then(m => m.PromotionModule)
+    },
+    {
         path: 'treadmill',
         loadChildren: () => import('./treadmill/treadmill.module').then(m => m.TreadmillModule)
     },
