@@ -1,0 +1,35 @@
+<div class="form-container">
+    <app-notification (notDestroy)="onCloseNot()" *ngIf="error?.length !== 0" [errorMessage]="error"></app-notification>
+    
+    <button type="button" (click)="formClose()" class="btn-icon">
+        <fa-icon class="faAngelsUp" [icon]="faXmark"></fa-icon>
+    </button>
+
+    <form class="form" [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+        <div class="rating">
+            <input type="radio" id="rating-five" formControlName="rating" value="5" />
+            <label for="rating-five"></label>
+            <input type="radio" id="rating-four" formControlName="rating" value="4" />
+            <label for="rating-four"></label>
+            <input type="radio" id="rating-three" formControlName="rating" value="3" />
+            <label for="rating-three"></label>
+            <input type="radio" id="rating-two" formControlName="rating" value="2" />
+            <label for="rating-two"></label>
+            <input type="radio" id="rating-one" formControlName="rating" value="1" />
+            <label for="rating-one"></label>
+        </div>
+        <div>
+            <label for="name" class="name">Name:</label>
+            <input type="text" id="name" formControlName="name" class="name-input" />
+        </div>
+
+            <label for="name" class="name">Comment:</label>
+            <textarea
+                class="post-input"
+                cols="8"
+                rows="3"
+                formControlName="comment"
+            ></textarea>
+        <button type="submit" (click)="('')" class="btn btn-post">Add</button>
+    </form>
+</div>

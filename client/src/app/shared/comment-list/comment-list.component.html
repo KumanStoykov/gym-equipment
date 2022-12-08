@@ -1,15 +1,17 @@
 <div class="comments">
     <h3 class="comments-title">REVIEWS</h3>
 
+
     <div class="review-count">
-        <p><span>15</span> Reviews</p>
-        <button>Add Comment</button>
+        <p><span>{{comments.length}}</span> Reviews</p>
+        <button *ngIf="!commentFormIsOpen" (click)="closeFormHandel()">Add Comment</button>
     </div>
+    <app-comment-create (closeForm)="closeFormHandel()" [productName]="productName" [productId]="productId" *ngIf="commentFormIsOpen"></app-comment-create>
 
-    <app-comment></app-comment>
-    <app-comment></app-comment>
-    <app-comment></app-comment>
-    <app-comment></app-comment>
-    <app-comment></app-comment>
-
+    <ul role="list" *ngIf="comments.length > 0">
+        <li *ngFor="let comment of comments">
+            <app-comment [comment]="comment"></app-comment>
+        </li>
+    </ul>
+    <h4 *ngIf="comments.length == 0"  class="no-reviews">No reviews yet.</h4>
 </div>

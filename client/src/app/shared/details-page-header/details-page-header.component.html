@@ -3,7 +3,7 @@
 
     <div class="page-header-info">
         <div class="rating-price-wrap">
-            <app-rating [showCount]="true"></app-rating>
+            <app-rating [showCount]="true" [product]="product"></app-rating>
 
             <p class="price-wrap">
                 <span [ngClass]="hasPromo ? 'normal-price' : 'out-promo'">${{product.price}}</span>

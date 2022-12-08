@@ -40,7 +40,7 @@ export class RackListComponent implements OnInit {
             })
         ).subscribe({
             next: data => {
-                this.racks = data.rack;
+                this.racks = data.racks;
                 this.count = data.rackCount;
                 this.isLoading = false;
             },

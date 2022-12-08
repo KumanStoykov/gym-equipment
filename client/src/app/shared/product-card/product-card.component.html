@@ -9,7 +9,7 @@
         </a>
     </div>
 
-    <app-rating [showCount]="true"></app-rating>
+    <app-rating [showCount]="true" [product]="product"></app-rating>
 
     <h4 class="card-title">{{product.brand}}</h4>
     <p [ngClass]="hasPromo ? 'card-price-old' : 'out-promo'">${{product.price}}</p>

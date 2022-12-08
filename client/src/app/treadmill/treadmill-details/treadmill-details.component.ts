@@ -17,7 +17,7 @@ export class TreadmillDetailsComponent implements OnInit {
     isLoading: boolean = false;
     error: string = '';
 
-    id = this.router.url.split('/')[2];
+    productId = this.router.url.split('/')[2];
 
     constructor(
         private treadmillService: TreadmillService,
@@ -26,7 +26,7 @@ export class TreadmillDetailsComponent implements OnInit {
 
     ngOnInit(): void {
         this.isLoading = true;
-        this.treadmillService.getOne(this.id).subscribe({
+        this.treadmillService.getOne(this.productId).subscribe({
             next: treadmill => {
                 this.treadmill = treadmill;
                 this.isLoading = false;
@@ -41,7 +41,9 @@ export class TreadmillDetailsComponent implements OnInit {
 
     onCloseNot(): void {
         this.error = '';
+        if(this.error.includes('Something went wrong')) {
+            this.router.navigate(['/'])
+        }
     }
-
 
 }

@@ -2,14 +2,11 @@
     <article class="comment">
         <div class="comment-content">
             <div class="user-rating">
-                <p class="username">Joe Doe</p>
-                <app-rating></app-rating>
+                <p class="username">{{comment.name}}</p>
+                <app-rating [showCount]="false" [comment]="comment"></app-rating>
+
             </div>
-            <p class="comment-text">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Explicabo unde magni eveniet facere est qui dolorem mollitia,
-                consequatur facilis perspiciatis!
-            </p>
+            <p class="comment-text">{{comment.comment}}</p>
         </div>
     </article>
 </div>

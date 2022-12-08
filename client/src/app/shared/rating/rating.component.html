@@ -1,9 +1,8 @@
 <div class="rating-wrap">
-    <fa-icon class="star" [icon]="icons.faStar"></fa-icon>
-    <fa-icon class="star" [icon]="icons.faStar"></fa-icon>
-    <fa-icon class="star" [icon]="icons.faStar"></fa-icon>
-    <fa-icon class="star" [icon]="icons.faStar"></fa-icon>
-    <fa-icon class="star" [icon]="icons.faStarHalf"></fa-icon>
-    <span *ngIf="showCount">(15 Reviews)</span>
+    <ng-container *ngFor="let star of starsRating">
+        <fa-icon *ngIf="star" class="star" [icon]="icons.faStar"></fa-icon>
+        <fa-icon *ngIf="!star" class="star" [icon]="icons.faStarEmpty"></fa-icon>
+    </ng-container>
+    <span *ngIf="showCount">({{countComments}} Reviews)</span>
 </div>
 

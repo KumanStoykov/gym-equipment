@@ -16,7 +16,7 @@ export class BenchDetailsComponent implements OnInit {
     isLoading: boolean = false;
     error: string = '';
 
-    id = this.router.url.split('/')[3];
+    productId = this.router.url.split('/')[3];
 
     constructor(
         private benchService: BenchService,
@@ -25,7 +25,7 @@ export class BenchDetailsComponent implements OnInit {
 
     ngOnInit(): void {
         this.isLoading = true;
-        this.benchService.getOne(this.id).subscribe({
+        this.benchService.getOne(this.productId).subscribe({
             next: bench => {
                 this.bench = bench;
                 this.isLoading = false;

@@ -1,7 +1,7 @@
 @import "/src/app/shared/variables.scss";
 
 .not-wrap {
-    animation: showFromRight 0.7s 0s 1 normal forwards;
+    animation: show 0.7s 0s 1 normal forwards;
 }
 
 .message-wrap {
@@ -47,7 +47,7 @@
     }
 }
 
-@keyframes showFromRight {
+@keyframes show {
     0% {
         transform: scale(0);
         opacity: 0.1;

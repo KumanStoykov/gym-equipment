@@ -17,7 +17,7 @@ export class BikeDetailsComponent implements OnInit {
     isLoading: boolean = false;
     error: string = '';
 
-    id = this.router.url.split('/')[2];
+    productId = this.router.url.split('/')[2];
 
     constructor(
         private bikeService: BikeService,
@@ -26,7 +26,7 @@ export class BikeDetailsComponent implements OnInit {
 
     ngOnInit(): void {
         this.isLoading = true;
-        this.bikeService.getOne(this.id).subscribe({
+        this.bikeService.getOne(this.productId).subscribe({
             next: bike => {
                 this.bike = bike;
                 this.isLoading = false;

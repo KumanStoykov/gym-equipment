@@ -4,7 +4,7 @@
 
 <app-loader *ngIf="isLoading" size="medium"></app-loader>
 
-<section class="details container">
+<section *ngIf="!isLoading" class="details container">
     <app-page-title [pageTitle]="dumbbell.brand"></app-page-title>
 
     <div class="page-wrap">
@@ -12,5 +12,5 @@
 
         <app-dumbbell-info [dumbbell]="dumbbell"></app-dumbbell-info>
     </div>
-    <app-comment-list></app-comment-list>
+    <app-comment-list [productId]="productId" productName="Treadmill"></app-comment-list>
 </section>

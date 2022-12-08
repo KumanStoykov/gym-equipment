@@ -5,3 +5,4 @@ export * from './bench';
 export * from './dumbbell';
 export * from './rack';
 export * from './image';
+export * from './comment';

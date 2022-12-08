@@ -1,5 +1,4 @@
 @import "/src/app/shared/variables.scss";
-
 .comments {
     margin-bottom: 3rem;
 }
@@ -13,7 +12,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 0.5rem; 
+    padding: 0 0.5rem;
 
     p {
         font-weight: 400;
@@ -36,8 +35,18 @@
     }
 }
 
+.no-reviews{
+    text-align: center;
+    font-size: 2rem;
+    margin: 1rem 0;
+}
+
 @media all and (max-width: 768px) {
     .comments {
         margin: 0 1rem 3rem 1rem;
+    }
+
+    .no-reviews{
+        font-size: 1.25rem;
     }
 }

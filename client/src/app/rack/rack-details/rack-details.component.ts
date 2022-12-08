@@ -16,7 +16,7 @@ export class RackDetailsComponent implements OnInit {
     isLoading: boolean = false;
     error: string = '';
 
-    id = this.router.url.split('/')[3];
+    productId = this.router.url.split('/')[3];
 
     constructor(
         private rackService: RackService,
@@ -25,7 +25,7 @@ export class RackDetailsComponent implements OnInit {
 
     ngOnInit(): void {
         this.isLoading = true;
-        this.rackService.getOne(this.id).subscribe({
+        this.rackService.getOne(this.productId).subscribe({
             next: rack => {
                 this.rack = rack;
                 this.isLoading = false;
