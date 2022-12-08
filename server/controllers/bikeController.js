@@ -4,6 +4,7 @@ const cloudinary = require('cloudinary').v2;
 
 
 const bikeService = require('../services/bikeService');
+const promotionService = require('../services/promotionService');
 const formidableParsePromise = require('../utils/formidableParsePromise');
 const loggedIn = require('../middlewares/loggedInMiddleware');
 const isAdmin = require('../middlewares/isAdminMiddleware');
@@ -77,11 +78,11 @@ router.post('/create', loggedIn(), isAdmin(), async (req, res) => {
             comments: []
         };
 
-        if(bikeData.promoPrice > 0) {
-            await bikeService.createPromo({ productType: 'Bike'});
-        }
-
         const bike = await bikeService.create(bikeData);
+
+        if(bikeData.promoPrice > 0) {
+            await promotionService.create({ productType: 'Bike', product: bike._id });
+        }
 
         res.status(200).send({ bike });
 

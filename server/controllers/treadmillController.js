@@ -4,6 +4,7 @@ const cloudinary = require('cloudinary').v2;
 
 
 const treadmillService = require('../services/treadmillService');
+const promotionService = require('../services/promotionService');
 const formidableParsePromise = require('../utils/formidableParsePromise');
 const loggedIn = require('../middlewares/loggedInMiddleware');
 const isAdmin = require('../middlewares/isAdminMiddleware');
@@ -56,9 +57,7 @@ router.post('/create', async (req, res) => {
             const res = await cloudinary.uploader.upload(image.filepath);
 
             imageUrl.push({ url: res.url, public_id: res.public_id });
-        }
-
-        
+        }       
 
         const treadmillData = {
             brand: formData.brand,
@@ -80,12 +79,12 @@ router.post('/create', async (req, res) => {
             comments: []
         };        
 
-        if(treadmillData.promoPrice > 0) {
-            await treadmillService.createPromo({ productType: 'Treadmill'});
-        }
-
+        
         const treadmill = await treadmillService.create(treadmillData);
-
+        
+        if(treadmillData.promoPrice > 0) {
+            await promotionService.create({ productType: 'Treadmill', product: treadmill._id });
+        }
         res.status(200).send(treadmill);
 
     } catch (err) {

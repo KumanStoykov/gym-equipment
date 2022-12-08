@@ -1,13 +1,21 @@
 const Treadmill = require('../models/Treadmill');
-const Promotion = require('../models/Promotion');
 
-exports.getAll = (page, sort) => Treadmill.find({}).sort({ createdAt: sort }).skip(page * 9).limit(9);
+exports.getAll = (page, sort) => Treadmill.find({})
+                                .sort({ createdAt: sort })
+                                .skip(page * 6)
+                                .limit(6)
+                                .populate({
+                                    path: 'comments',
+                                    model: 'Comment'
+                                });
 
-exports.getById = (treadmillId) => Treadmill.findById(treadmillId);
+exports.getById = (treadmillId) => Treadmill.findById(treadmillId)
+                                            .populate({
+                                                path: 'comments',
+                                                model: 'Comment'
+                                            });
 
 exports.create = (treadmillData) => Treadmill.create(treadmillData);
-
-exports.createPromo = (promoType) => Promotion.create(promoType);
 
 exports.deleteTreadmill = (treadmillId) => Treadmill.findByIdAndDelete(treadmillId);
 

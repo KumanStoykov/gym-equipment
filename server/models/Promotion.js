@@ -9,8 +9,9 @@ const promotionSchema = mongoose.Schema({
         enum: enumProducts
     },
     product: {
-        type: mongoose.SchemaTypes.ObjectId,
-        refPath: 'productType'
+        type: mongoose.Types.ObjectId,
+        refPath: 'productType',
+        require: true
     }
 });
 

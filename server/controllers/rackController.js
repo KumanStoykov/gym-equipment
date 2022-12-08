@@ -4,6 +4,7 @@ const cloudinary = require('cloudinary').v2;
 
 
 const rackService = require('../services/rackService');
+const promotionService = require('../services/promotionService');
 const formidableParsePromise = require('../utils/formidableParsePromise');
 const loggedIn = require('../middlewares/loggedInMiddleware');
 const isAdmin = require('../middlewares/isAdminMiddleware');
@@ -74,12 +75,12 @@ router.post('/create', loggedIn(), isAdmin(), async (req, res) => {
             comments: []
         };
 
-        if(rackData.promoPrice > 0) {
-            await rackService.createPromo({ productType: 'Rack'});
-        }
-
+        
         const rack = await rackService.create(rackData);
-
+        
+        if(rackData.promoPrice > 0) {
+            await promotionService.create({ productType: 'Rack', product: rack._id });
+        }
         res.status(200).send({ rack });
 
     } catch (err) {

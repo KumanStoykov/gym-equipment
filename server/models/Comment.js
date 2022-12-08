@@ -1,7 +1,12 @@
 const mongoose = require('mongoose');
 
+const enumProducts = ['Treadmill', 'Bike', 'Rack', 'Bench', 'Dumbbell'];
 
 const commentSchema = mongoose.Schema({
+    name:{
+        type: String,
+        require: true
+    },
     comment: {
         type: String,
         require: true
@@ -10,9 +15,15 @@ const commentSchema = mongoose.Schema({
         type: Number,
         require: true
     },
-    itemId: {
+    productName: {
         type: String,
-        require: true
+        require: true,
+        enum: enumProducts
+    },  
+    productId: {
+        type: mongoose.SchemaTypes.ObjectId,
+        require: true,
+        refPath: 'enumProduct'
     },  
     creator: {
         type: mongoose.SchemaTypes.ObjectId,

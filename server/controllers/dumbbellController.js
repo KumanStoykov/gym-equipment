@@ -4,6 +4,7 @@ const cloudinary = require('cloudinary').v2;
 
 
 const dumbbellService = require('../services/dumbbellService');
+const promotionService = require('../services/promotionService');
 const formidableParsePromise = require('../utils/formidableParsePromise');
 const loggedIn = require('../middlewares/loggedInMiddleware');
 const isAdmin = require('../middlewares/isAdminMiddleware');
@@ -76,12 +77,12 @@ router.post('/create', loggedIn(), isAdmin(), async (req, res) => {
             comments: []
         };
 
-        if(dumbbellData.promoPrice > 0) {
-            await dumbbellService.createPromo({ productType: 'Dumbbell'});
-        }
-
+        
         const dumbbell = await dumbbellService.create(dumbbellData);
-
+        
+        if(dumbbellData.promoPrice > 0) {
+            await promotionService.create({ productType: 'Dumbbell', product: dumbbell._id });
+        }
         res.status(200).send({ dumbbell });
 
     } catch (err) {

@@ -4,6 +4,7 @@ const cloudinary = require('cloudinary').v2;
 
 
 const benchService = require('../services/benchService');
+const promotionService = require('../services/promotionService');
 const formidableParsePromise = require('../utils/formidableParsePromise');
 const loggedIn = require('../middlewares/loggedInMiddleware');
 const isAdmin = require('../middlewares/isAdminMiddleware');
@@ -72,15 +73,14 @@ router.post('/create', loggedIn(), isAdmin(), async (req, res) => {
             description: formData.description,
             image: imageUrl,
             comments: []
-        };
-
+        };        
         
-        if(benchData.promoPrice > 0) {
-            await benchService.createPromo({ productType: 'Bench'});
-        }
-
-
+        
         const bench = await benchService.create(benchData);
+
+        if(benchData.promoPrice > 0) {
+            await promotionService.create({ productType: 'Bench', product: bench._id });
+        }
 
         res.status(200).send({ bench });
 

@@ -5,12 +5,20 @@ exports.getAll = (page, sort) => Promotion.find({})
     .sort({ createdAt: sort })
     .skip(page * 9)
     .limit(9)
-    .populate('product');
+    .populate('product')
+    .populate({
+        path: 'product.comments',
+        model: 'Comment'
+    });
 
 exports.getThreeLatest = () => Promotion.find({})
     .sort({ createdAt: 'desc' })
     .limit(3)
-    .populate('product');
+    .populate('product')
+    .populate({
+        path: 'product.comments',
+        model: 'Comment'
+    });
 
 
 exports.getById = (promotionId) => Promotion.findById(promotionId).populate('product');
