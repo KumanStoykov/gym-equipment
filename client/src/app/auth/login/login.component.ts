@@ -19,7 +19,6 @@ export class LoginComponent {
     loginForm!: FormGroup;
     error: string = '';
     isLoading: boolean = false;
-    registerForm: any;
     notIsOpen: boolean = false;
 
     constructor(
@@ -58,7 +57,7 @@ export class LoginComponent {
                 this.loginForm.reset();
                 this.router.navigate(['/']);
             },
-            error: (err) => {
+            error: err => {
                 this.loginForm.get('password')?.reset();
                 this.isLoading = false;
                 this.error = err.error.message;

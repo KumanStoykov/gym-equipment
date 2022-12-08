@@ -19,6 +19,8 @@ import { DetailsPageHeaderComponent } from './details-page-header/details-page-h
 import { CommentListComponent } from './comment-list/comment-list.component';
 import { NotificationComponent } from './notification/notification.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { CommentCreateComponent } from './comment-create/comment-create.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -40,10 +42,12 @@ import { PaginationComponent } from './pagination/pagination.component';
     CommentListComponent,
     NotificationComponent,
     PaginationComponent,
+    CommentCreateComponent,
   ],
   imports: [
     CommonModule,
     FontAwesomeModule,
+    ReactiveFormsModule,
     RouterModule
   ],
   exports: [

@@ -2,6 +2,7 @@
 
 .search {
     margin-top: 2rem;
+    margin-bottom: 10rem;
     width: 230px;
 }
 
@@ -16,7 +17,7 @@
 
 @media all and (max-width: 768px) {
     .search {
-        margin-top: 2rem;
+        margin-bottom: 0;
         width: 100%;
     }
     .search-content-wrap {

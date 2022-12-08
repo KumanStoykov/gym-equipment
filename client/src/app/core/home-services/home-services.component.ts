@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { faCartShopping, faGift, faDollar } from '@fortawesome/free-solid-svg-icons';
+import { faCartShopping, faGift, faTruckFast } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -13,7 +13,7 @@ export class HomeServicesComponent implements OnInit {
     icons = {
         faCartShopping,
         faGift,
-        faDollar
+        faTruckFast
     }
 
     constructor() { }
