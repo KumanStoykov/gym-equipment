@@ -3,7 +3,6 @@ const router = require('express').Router();
 
 const commentService = require('../services/commentService');
 const loggedIn = require('../middlewares/loggedInMiddleware'); 
-const isAdmin = require('../middlewares/isAdminMiddleware');
 
 router.get('/', async (req, res) => {
 
@@ -27,6 +26,18 @@ router.get('/:id', async (req, res) => {
         const comments = await commentService.getAllCurrentItem(id);
 
         res.status(200).send({ comments });
+    } catch (err) {
+        res.status(400).send({ message: err.message });
+    }
+});
+
+router.get('/current/:id', async (req, res) => {
+
+    try {
+        const commentId = req.params.id
+        const comment = await commentService.getById(commentId);
+
+        res.status(200).send(comment);
     } catch (err) {
         res.status(400).send({ message: err.message });
     }
@@ -60,7 +71,37 @@ router.post('/create', loggedIn(), async (req, res) => {
 
         await commentService.updateComments(comment);
 
-        res.status(200).send({ comment });
+        res.status(200).send(comment);
+
+    } catch (err) {
+        res.status(400).send({ message: err.message });
+    }
+});
+router.put('/edit', loggedIn(), async (req, res) => { 
+    try {
+
+        const commentData = {
+            name: req.body.comment.name,
+            comment: req.body.comment.comment,
+            rating: req.body.comment.rating,
+        };
+
+
+        if (!commentData.name.length > 0) {
+            throw new Error('Field is required!');
+        }
+        if (!commentData.comment.length > 0) {
+            throw new Error('Field is required!');
+        }
+        if (!commentData.rating > 0) {
+            throw new Error('Field is required!'); 
+        }     
+
+
+        const comment = await commentService.update(req.body.commentId, commentData);
+
+
+        res.status(200).send(comment);
 
     } catch (err) {
         res.status(400).send({ message: err.message });
@@ -74,7 +115,7 @@ router.delete('/:commentId', loggedIn(), async (req, res) => {
         const comment = await commentService.delete(commentId);
 
 
-        res.status(200).send({ comment });
+        res.status(200).send(comment);
 
     } catch (err) {
         res.status(400).send({ message: err.message });

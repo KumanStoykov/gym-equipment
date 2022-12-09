@@ -1,12 +1,25 @@
 <div class="container">
-    <article class="comment">
+    <ng-container *ngIf="isEditForm">
+        <app-comment-create (closeForm)="editCommentHandler()" [editCommentId]="comment._id"></app-comment-create>
+    </ng-container>
+    <article *ngIf="!isEditForm" class="comment">
         <div class="comment-content">
             <div class="user-rating">
-                <p class="username">{{comment.name}}</p>
-                <app-rating [showCount]="false" [comment]="comment"></app-rating>
-
+                <p class="username">{{ comment.name }}</p>
+                <app-rating
+                    [showCount]="false"
+                    [comment]="comment"
+                ></app-rating>
             </div>
-            <p class="comment-text">{{comment.comment}}</p>
+            <p class="comment-text">{{ comment.comment }}</p>
+        </div>
+        <div *ngIf="isOwner && !formIsOpen"  class="btn-wrap">
+            <button (click)="editCommentHandler()" type="button" class="comment-btn edit-btn">
+                <fa-icon class="faDumbbell" [icon]="icons.faFilePen"></fa-icon>
+            </button>
+            <button type="button" class="comment-btn trash-btn">
+                <fa-icon class="faDumbbell" [icon]="icons.faTrashCan"></fa-icon>
+            </button>
         </div>
     </article>
 </div>

@@ -1,5 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IComment } from '../interfaces';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+
+import * as authSelectors from '../../+store/authStore/selector';
+import { IComment, IUser } from '../interfaces';
 import { SharedService } from '../shared.service';
 
 @Component({
@@ -12,8 +17,11 @@ export class CommentListComponent implements OnInit {
     @Input() productName: string = '';
     @Input() commentFormIsOpen: boolean = false;
 
+    user$: Observable<IUser | null> = this.store.select(authSelectors.selectUser);
+
     count: number = 0;
     comments: IComment[] = [];
+    isEditForm: boolean = false;
     isLoading: boolean = false;
     error: string = '';
 
@@ -21,7 +29,9 @@ export class CommentListComponent implements OnInit {
 
 
     constructor(
-        private sharedService: SharedService
+        private sharedService: SharedService,
+        private store: Store,
+        private router: Router
     ) { }
 
     ngOnInit(): void {
@@ -39,7 +49,21 @@ export class CommentListComponent implements OnInit {
     }
 
     closeFormHandel(): void {
-        this.commentFormIsOpen = !this.commentFormIsOpen;
+        this.user$.subscribe({
+            next: user => {
+                if(user) {
+                    this.commentFormIsOpen = !this.commentFormIsOpen;
+                } else {
+                    this.router.navigate(['/auth/login'])
+                }
+            }
+        })
+
+    }
+
+    editForm(isOpen: boolean):void {
+        this.isEditForm = isOpen;
+        this.commentFormIsOpen= isOpen;
     }
 
 }

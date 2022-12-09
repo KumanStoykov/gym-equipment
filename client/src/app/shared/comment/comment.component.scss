@@ -2,6 +2,9 @@
 
 .comment {
     border-bottom: 2px solid $clr-font-desc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .comment-content {
@@ -21,7 +24,35 @@
     padding: 0 1rem;
 }
 
+.btn-wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-btn {
+    border: none;
+    background: inherit;
+    font-size: 1.3rem;
+}
+
+.edit-btn {
+    color: rgb(5, 121, 5);
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+.trash-btn {
+    color: $clr-red;
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
 @media all and (max-width: 768px) {
+    .comment {
+        flex-direction: column;
+    }
     .user-rating {
         display: flex;
         align-items: center;
@@ -34,5 +65,11 @@
     .comment-text {
         text-align: center;
         padding: 0 1rem;
+    }
+
+    .btn-wrap {
+        flex-direction: row;
+        margin-top: 1rem;
+        gap: 1rem
     }
 }

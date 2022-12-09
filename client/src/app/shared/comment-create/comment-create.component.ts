@@ -1,8 +1,8 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { IComment } from '../interfaces';
 import { SharedService } from '../shared.service';
-import { minLengthValidator } from '../validators';
 
 @Component({
     selector: 'app-comment-create',
@@ -10,58 +10,85 @@ import { minLengthValidator } from '../validators';
     styleUrls: ['./comment-create.component.scss']
 })
 export class CommentCreateComponent implements OnInit {
+    @ViewChild('form') form!: NgForm;
 
     @Input() productId: string = '';
     @Input() productName: string = '';
-    @Input() showForm: boolean = false;
-    @Output('closeForm') closeForm: EventEmitter<boolean> = new EventEmitter();
+    @Input() editCommentId: string = '';
+    @Output('closeForm') closeForm: EventEmitter<boolean> = new EventEmitter(true);
 
-    commentForm!: FormGroup;
+    comment!: IComment | undefined;
+    commentId: string = '';
     isLoading: boolean = false;
     error: string = '';
+    isEdit: boolean = false;
 
     faXmark = faXmark;
 
     constructor(
-        private fb: FormBuilder,
         private sharedService: SharedService
-    ) {
-        this.commentForm = this.fb.group({
-            rating: ['', [Validators.required]],
-            name: ['', [Validators.required]],
-            comment: ['', [Validators.required], minLengthValidator(6)],
-        })
-     }
+    ) {  }
 
     ngOnInit(): void {
+        if (this.editCommentId) {
+            this.isLoading = true;
+            this.sharedService.getById(this.editCommentId).subscribe({
+                next: comment => {
+                    this.comment = comment;
+                    this.isLoading = false;
+                    this.isEdit = true;
+                    this.commentId = comment._id;
+                },
+                error: err => {
+                    this.isLoading = false;
+                    this.error = err.error.message;
+                }
+            })
+
+        }
+
     }
 
     onSubmit() {
-        if (this.commentForm.invalid || this.commentForm.pending) { return; }
-        const comment = this.commentForm.value;
-        console.log(comment)
+        const comment = this.form.value;
         this.isLoading = true;
 
-        this.sharedService.cratePost(comment, this.productId, this.productName).subscribe({
-            next: comment => {
-                this.isLoading = false;
-                this.commentForm.reset();
-                this.formClose();
-            },
-            error: err => {
-                this.isLoading = false;
-                this.error = err.error.message;
-            }
-        })
+        if(!this.isEdit) {
+            this.sharedService.cratePost(comment, this.productId, this.productName).subscribe({
+                next: comment => {
+                    this.isLoading = false;
+                    this.form.reset();
+                    this.closeFormHandler();
+                },
+                error: err => {
+                    this.isLoading = false;
+                    this.error = err.error.message;
+                }
+            });
+        } else {
+            this.sharedService.editPost(comment, this.commentId).subscribe({
+                next: comment => {
+                    this.isLoading = false;
+                    this.form.reset();
+                    this.closeFormHandler();
+                },
+                error: err => {
+                    this.isLoading = false;
+                    this.error = err.error.message;
+                }
+            });
+        }
+
 
     }
 
-    formClose(): void {
-        this.showForm = false;
-        this.closeForm.emit(false);
+    closeFormHandler(): void {
+        this.closeForm.emit(true);
     }
 
     onCloseNot(): void {
         this.error = '';
     }
 }
+
+

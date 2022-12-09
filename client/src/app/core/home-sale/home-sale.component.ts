@@ -17,9 +17,7 @@ export class HomeSaleComponent implements OnInit {
     count: number = 0;
     error: string = '';
 
-    icons = {
-        faDumbbell
-    }
+    faDumbbell = faDumbbell
 
     constructor(
         private promotionService: PromotionService,

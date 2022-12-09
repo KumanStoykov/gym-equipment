@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IUser } from 'src/app/shared/interfaces';
-import { IAuthState } from 'src/app/+store/reducers';
-import * as authSelectors from '../../+store/selector';
+import { IAuthState } from 'src/app/+store/authStore/reducers';
+import * as authSelectors from '../../+store/authStore/selector';
 
 
 import { faHeart, faCartPlus, faCheck } from '@fortawesome/free-solid-svg-icons';

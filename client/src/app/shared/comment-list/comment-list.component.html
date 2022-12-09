@@ -6,11 +6,14 @@
         <p><span>{{comments.length}}</span> Reviews</p>
         <button *ngIf="!commentFormIsOpen" (click)="closeFormHandel()">Add Comment</button>
     </div>
-    <app-comment-create (closeForm)="closeFormHandel()" [productName]="productName" [productId]="productId" *ngIf="commentFormIsOpen"></app-comment-create>
+    <ng-container *ngIf="!isEditForm">
+
+        <app-comment-create (closeForm)="closeFormHandel()" [productName]="productName" [productId]="productId" *ngIf="commentFormIsOpen"></app-comment-create>
+    </ng-container>
 
     <ul role="list" *ngIf="comments.length > 0">
         <li *ngFor="let comment of comments">
-            <app-comment [comment]="comment"></app-comment>
+            <app-comment (isOpenEdit)="editForm($event)" [comment]="comment" [formIsOpen]="commentFormIsOpen"></app-comment>
         </li>
     </ul>
     <h4 *ngIf="comments.length == 0"  class="no-reviews">No reviews yet.</h4>

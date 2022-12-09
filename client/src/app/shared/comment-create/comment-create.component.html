@@ -1,35 +1,95 @@
 <div class="form-container">
-    <app-notification (notDestroy)="onCloseNot()" *ngIf="error?.length !== 0" [errorMessage]="error"></app-notification>
-    
-    <button type="button" (click)="formClose()" class="btn-icon">
+    <app-notification
+        (notDestroy)="onCloseNot()"
+        *ngIf="error?.length !== 0"
+        [errorMessage]="error"
+    ></app-notification>
+
+    <button type="button" (click)="closeFormHandler()" class="btn-icon">
         <fa-icon class="faAngelsUp" [icon]="faXmark"></fa-icon>
     </button>
 
-    <form class="form" [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+    <form class="form" #form="ngForm" (ngSubmit)="onSubmit()">
         <div class="rating">
-            <input type="radio" id="rating-five" formControlName="rating" value="5" />
+            <input
+                type="radio"
+                id="rating-five"
+                #ratingInput="ngModel"
+                name="rating"
+                ngModel
+                value="5"
+                [checked]="comment?.rating == 5"
+                required
+            />
             <label for="rating-five"></label>
-            <input type="radio" id="rating-four" formControlName="rating" value="4" />
+            <input
+                type="radio"
+                id="rating-four"
+                #ratingInput="ngModel"
+                name="rating"
+                ngModel
+                value="4"
+                [checked]="comment?.rating == 4"
+                required
+            />
             <label for="rating-four"></label>
-            <input type="radio" id="rating-three" formControlName="rating" value="3" />
+            <input
+                type="radio"
+                id="rating-three"
+                #ratingInput="ngModel"
+                name="rating"
+                ngModel
+                value="3"
+                [checked]="comment?.rating == 3"
+                required
+            />
             <label for="rating-three"></label>
-            <input type="radio" id="rating-two" formControlName="rating" value="2" />
+            <input
+                type="radio"
+                id="rating-two"
+                #ratingInput="ngModel"
+                name="rating"
+                ngModel
+                value="2"
+                [checked]="comment?.rating == 2"
+                required
+            />
             <label for="rating-two"></label>
-            <input type="radio" id="rating-one" formControlName="rating" value="1" />
+            <input
+                type="radio"
+                id="rating-one"
+                #ratingInput="ngModel"
+                name="rating"
+                ngModel
+                value="1"
+                [checked]="comment?.rating == 1"
+                required
+            />
             <label for="rating-one"></label>
         </div>
+
         <div>
             <label for="name" class="name">Name:</label>
-            <input type="text" id="name" formControlName="name" class="name-input" />
+            <input
+                type="text"
+                id="name"
+                name="name"
+                #nameInput="ngModel"
+                [ngModel]="comment?.name"
+                class="name-input"
+                required
+            />
         </div>
-
-            <label for="name" class="name">Comment:</label>
-            <textarea
-                class="post-input"
-                cols="8"
-                rows="3"
-                formControlName="comment"
-            ></textarea>
+        <label for="name" class="name">Comment:</label>
+        <textarea
+            name="comment"
+            class="post-input"
+            cols="8"
+            rows="3"
+            required
+            #commentInput="ngModel"
+            [ngModel]="comment?.comment"
+        ></textarea>
         <button type="submit" (click)="('')" class="btn btn-post">Add</button>
     </form>
 </div>

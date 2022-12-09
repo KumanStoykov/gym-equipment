@@ -20,7 +20,7 @@ import { CommentListComponent } from './comment-list/comment-list.component';
 import { NotificationComponent } from './notification/notification.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { CommentCreateComponent } from './comment-create/comment-create.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -48,6 +48,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     FontAwesomeModule,
     ReactiveFormsModule,
+    FormsModule,
     RouterModule
   ],
   exports: [
