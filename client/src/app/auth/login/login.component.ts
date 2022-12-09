@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { auth_success } from 'src/app/+store/actions';
+import { auth_success } from 'src/app/+store/authStore/actions';
 import { emailValidator, minLengthValidator } from 'src/app/shared/validators';
 import { AuthService } from '../auth.service';
 

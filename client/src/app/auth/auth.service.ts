@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
-import * as AuthActions from '../+store/actions';
+import * as AuthActions from '../+store/authStore/actions';
 
 import { IUser } from '../shared/interfaces';
 import { Store } from '@ngrx/store';
-import { IAuthState } from '../+store/reducers';
+import { IAuthState } from '../+store/authStore/reducers';
 import { Observable } from 'rxjs';
 
 const API_URL = environment.API_URL;

@@ -10,7 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 
-import * as authReducer from './+store/reducers';
+import * as authReducer from './+store/authStore/reducers';
 import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
