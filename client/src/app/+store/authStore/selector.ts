@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { IUser } from '../shared/interfaces';
+import { IUser } from '../../shared/interfaces';
 import { IAuthState } from './reducers';
 
 

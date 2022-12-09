@@ -1,6 +1,6 @@
 import { createReducer, on, Action } from '@ngrx/store';
 
-import { IUser } from '../shared/interfaces';
+import { IUser } from '../../shared/interfaces';
 
 import * as AuthActions from './actions';
 
