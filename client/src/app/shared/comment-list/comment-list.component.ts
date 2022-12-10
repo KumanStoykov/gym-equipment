@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 import * as authSelectors from '../../+store/authStore/selector';
 import { IComment, IUser } from '../interfaces';
@@ -12,7 +12,7 @@ import { SharedService } from '../shared.service';
     templateUrl: './comment-list.component.html',
     styleUrls: ['./comment-list.component.scss']
 })
-export class CommentListComponent implements OnInit {
+export class CommentListComponent implements OnInit, OnDestroy {
     @Input() productId: string = '';
     @Input() productName: string = '';
     @Input() commentFormIsOpen: boolean = false;
@@ -25,7 +25,7 @@ export class CommentListComponent implements OnInit {
     isLoading: boolean = false;
     error: string = '';
 
-
+    newCommentsSub: Subscription = new Subscription;
 
 
     constructor(
@@ -35,6 +35,20 @@ export class CommentListComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
+
+        this.newCommentsSub = this.sharedService.subCommentCreated$$.subscribe(comment => {
+            this.comments = [comment, ...this.comments];
+        });
+        this.newCommentsSub = this.sharedService.subCommentEdit$$.subscribe(comment => {
+            let currentComments = this.comments.filter(current => current._id != comment._id);
+            this.comments = [comment, ...currentComments];
+        });
+        this.newCommentsSub = this.sharedService.subCommentDelete$$.subscribe(comment => {
+            let currentComments = this.comments.filter(current => current._id != comment._id);
+            this.comments = currentComments;
+        });
+
+
         this.sharedService.getAllComments(this.productId).subscribe({
             next: data => {
                 this.comments = data.comments;
@@ -51,7 +65,7 @@ export class CommentListComponent implements OnInit {
     closeFormHandel(): void {
         this.user$.subscribe({
             next: user => {
-                if(user) {
+                if (user) {
                     this.commentFormIsOpen = !this.commentFormIsOpen;
                 } else {
                     this.router.navigate(['/auth/login'])
@@ -61,9 +75,13 @@ export class CommentListComponent implements OnInit {
 
     }
 
-    editForm(isOpen: boolean):void {
+    editForm(isOpen: boolean): void {
         this.isEditForm = isOpen;
-        this.commentFormIsOpen= isOpen;
+        this.commentFormIsOpen = isOpen;
+    }
+
+    ngOnDestroy(): void {
+        this.newCommentsSub.unsubscribe();
     }
 
 }

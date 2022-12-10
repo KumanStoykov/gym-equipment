@@ -50,15 +50,14 @@ export class CommentCreateComponent implements OnInit {
     }
 
     onSubmit() {
-        const comment = this.form.value;
+        const commentValue = this.form.value;
         this.isLoading = true;
 
         if(!this.isEdit) {
-            this.sharedService.cratePost(comment, this.productId, this.productName).subscribe({
+            this.sharedService.crateComment(commentValue, this.productId, this.productName).subscribe({
                 next: comment => {
                     this.isLoading = false;
                     this.form.reset();
-                    this.closeFormHandler();
                 },
                 error: err => {
                     this.isLoading = false;
@@ -66,11 +65,14 @@ export class CommentCreateComponent implements OnInit {
                 }
             });
         } else {
-            this.sharedService.editPost(comment, this.commentId).subscribe({
+
+            if(commentValue.rating == '') {
+                commentValue.rating = this.comment?.rating;
+            }
+            this.sharedService.editPost(commentValue, this.commentId).subscribe({
                 next: comment => {
                     this.isLoading = false;
                     this.form.reset();
-                    this.closeFormHandler();
                 },
                 error: err => {
                     this.isLoading = false;
