@@ -76,7 +76,7 @@
             </div>
         </div>
             <button *ngIf="!isLoading" type="submit" class="btn create-btn" [disabled]="form.invalid">Create</button>
-            <button *ngIf="isLoading" type="button" class="btn create-btn" [disabled]="form.invalid" [disabled]="isLoading">
+            <button *ngIf="isLoading" type="button" class="btn create-btn" [disabled]="form.invalid">
                 <app-loader size="small"></app-loader>
             </button>
         </form>
