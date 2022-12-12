@@ -80,7 +80,15 @@
             </button>
             <button class="btn-detail btn-buy">
                 Watch This Item
-                <fa-icon class="btn-icon" [icon]="icons.faHeart"></fa-icon>
+                <fa-icon class="btn-icon" [icon]="icons.faHeartRegular"></fa-icon>
+            </button>
+            <button (mouseover)="hoverHandle(true)" (mouseout)="hoverHandle(false)"  class="btn-detail btn-buy">
+                <span>
+                    <ng-container *ngIf="isHover">Unwatch </ng-container>
+                    <ng-container *ngIf="!isHover">Watching </ng-container>
+                    <fa-icon class="btn-icon" [icon]="icons.faHeart"></fa-icon>
+                </span>
+
             </button>
         </div>
         <div *ngIf="(user$ | async)?.isAdmin" class="btn-wrap">

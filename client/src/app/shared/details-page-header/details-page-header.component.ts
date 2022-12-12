@@ -6,34 +6,41 @@ import * as authSelectors from '../../+store/authStore/selector';
 
 
 import { faHeart, faCartPlus, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
 import { Store } from '@ngrx/store';
 
 
 @Component({
-  selector: 'app-details-page-header',
-  templateUrl: './details-page-header.component.html',
-  styleUrls: ['./details-page-header.component.scss']
+    selector: 'app-details-page-header',
+    templateUrl: './details-page-header.component.html',
+    styleUrls: ['./details-page-header.component.scss']
 })
 export class DetailsPageHeaderComponent implements OnInit {
 
     @Input() product: any;
 
     hasPromo: boolean = false;
+    isHover: boolean = false;
 
     icons = {
         faHeart,
         faCartPlus,
-        faCheck
+        faCheck,
+        faHeartRegular
     };
 
     user$: Observable<IUser | null> = this.store.select(authSelectors.selectUser);
 
-  constructor(
-    private store: Store<IAuthState>,
-  ) { }
+    constructor(
+        private store: Store<IAuthState>,
+    ) { }
 
-  ngOnInit(): void {
-    this.hasPromo = this.product.promoPrice > 0;
-  }
+    ngOnInit(): void {
+        this.hasPromo = this.product.promoPrice > 0;
+    }
 
+    hoverHandle(over: boolean): void {
+
+        this.isHover = over;
+    }
 }
