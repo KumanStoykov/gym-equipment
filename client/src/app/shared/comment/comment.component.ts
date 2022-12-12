@@ -6,6 +6,7 @@ import * as authSelectors from '../../+store/authStore/selector';
 import { IUser } from '../interfaces';
 import { faTrashCan, faFilePen } from '@fortawesome/free-solid-svg-icons';
 import { IComment } from '../interfaces';
+import { SharedService } from '../shared.service';
 
 @Component({
     selector: 'app-comment',
@@ -20,6 +21,9 @@ export class CommentComponent implements OnInit {
     user$: Observable<IUser | null> = this.store.select(authSelectors.selectUser);
     isOwner: boolean = false;
     isEditForm: boolean = false;
+    isLoading: boolean = false;
+    isDelete: boolean = false;
+
 
     icons = {
         faTrashCan,
@@ -27,7 +31,8 @@ export class CommentComponent implements OnInit {
     };
 
     constructor(
-        private store: Store
+        private store: Store,
+        private sharedService: SharedService,
     ) { }
 
     ngOnInit(): void {
@@ -36,7 +41,6 @@ export class CommentComponent implements OnInit {
                 this.isOwner = user?._id == this.comment.creator.toString();
             }
         });
-
     }
 
     editCommentHandler(): void {
@@ -45,4 +49,19 @@ export class CommentComponent implements OnInit {
         this.isOpenEdit.emit(this.isEditForm);
     }
 
+    clickDelete(): void {
+        this.isDelete = !this.isDelete;
+    }
+
+    deleteCommentHandler(): void {
+        this.isLoading = true;
+        this.sharedService.deletePost(this.comment._id).subscribe({
+            next: comment => {
+                this.isLoading = false;
+            },
+            error: err => {
+                console.log(err)
+            }
+        })
+    }
 }

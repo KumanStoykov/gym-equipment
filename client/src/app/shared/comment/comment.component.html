@@ -1,8 +1,15 @@
-<div class="container">
+<div class="container comment-wrap">
     <ng-container *ngIf="isEditForm">
         <app-comment-create (closeForm)="editCommentHandler()" [editCommentId]="comment._id"></app-comment-create>
     </ng-container>
-    <article *ngIf="!isEditForm" class="comment">
+    <div *ngIf="isDelete && !formIsOpen" class="delete-confirm-wrap">
+        <p>You are sure?</p>
+        <div class="delete-btn-wrap">
+            <button (click)="clickDelete()" class="btn-cancel">Cancel</button>
+            <button (click)="deleteCommentHandler()" class="btn-delete">Delete</button>
+        </div>
+    </div>
+    <article *ngIf="!isEditForm && !isDelete" class="comment">
         <div class="comment-content">
             <div class="user-rating">
                 <p class="username">{{ comment.name }}</p>
@@ -17,7 +24,7 @@
             <button (click)="editCommentHandler()" type="button" class="comment-btn edit-btn">
                 <fa-icon class="faDumbbell" [icon]="icons.faFilePen"></fa-icon>
             </button>
-            <button type="button" class="comment-btn trash-btn">
+            <button (click)="clickDelete()" type="button" class="comment-btn trash-btn">
                 <fa-icon class="faDumbbell" [icon]="icons.faTrashCan"></fa-icon>
             </button>
         </div>

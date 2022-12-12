@@ -1,7 +1,9 @@
 @import "/src/app/shared/variables.scss";
 
-.comment {
+.comment-wrap {
     border-bottom: 2px solid $clr-font-desc;
+}
+.comment {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -49,6 +51,42 @@
     }
 }
 
+.delete-confirm-wrap {
+    text-align: center;
+    font-weight: 400;
+    p {
+        margin-top: 0.5rem;
+        font-size: 1.2rem;
+    }
+}
+
+.delete-btn-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin: 1rem 0 2rem 0;
+
+    button {
+        border: none;
+        padding: 4px 8px;
+        letter-spacing: 2px;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    .btn-cancel {
+        background-color: #369729;
+        color: $clr-with;
+    }
+    .btn-delete {
+        background-color: $clr-red;
+        color: $clr-with;
+    }
+}
+
 @media all and (max-width: 768px) {
     .comment {
         flex-direction: column;
@@ -70,6 +108,6 @@
     .btn-wrap {
         flex-direction: row;
         margin-top: 1rem;
-        gap: 1rem
+        gap: 1rem;
     }
 }

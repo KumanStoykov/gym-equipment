@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { IComment } from '../interfaces';
@@ -15,19 +15,20 @@ export class CommentCreateComponent implements OnInit {
     @Input() productId: string = '';
     @Input() productName: string = '';
     @Input() editCommentId: string = '';
-    @Output('closeForm') closeForm: EventEmitter<boolean> = new EventEmitter(true);
+    @Output('closeForm') closeForm: EventEmitter<boolean> = new EventEmitter(false);
 
     comment!: IComment | undefined;
     commentId: string = '';
     isLoading: boolean = false;
     error: string = '';
     isEdit: boolean = false;
+    ratingIsValid: boolean = false;
 
     faXmark = faXmark;
 
     constructor(
         private sharedService: SharedService
-    ) {  }
+    ) { }
 
     ngOnInit(): void {
         if (this.editCommentId) {
@@ -50,29 +51,43 @@ export class CommentCreateComponent implements OnInit {
     }
 
     onSubmit() {
+
         const commentValue = this.form.value;
         this.isLoading = true;
 
-        if(!this.isEdit) {
+        if (!this.isEdit && commentValue.rating === '') {
+            this.ratingIsValid = true;
+            return;
+        }
+
+        if (commentValue.rating == '') {
+            commentValue.rating = this.comment?.rating;
+        }
+
+        // if(!this.isEdit && this.form.invalid) { return; }
+
+        if (!this.isEdit) {
+
+            this.ratingIsValid = false;
+
             this.sharedService.crateComment(commentValue, this.productId, this.productName).subscribe({
                 next: comment => {
                     this.isLoading = false;
                     this.form.reset();
+                    this.closeFormHandler()
                 },
                 error: err => {
                     this.isLoading = false;
-                    this.error = err.error.message;
+                    this.error = "All Fields is required!";
                 }
             });
         } else {
-
-            if(commentValue.rating == '') {
-                commentValue.rating = this.comment?.rating;
-            }
             this.sharedService.editPost(commentValue, this.commentId).subscribe({
                 next: comment => {
                     this.isLoading = false;
                     this.form.reset();
+                    this.isEdit = false;
+                    this.closeFormHandler();
                 },
                 error: err => {
                     this.isLoading = false;
@@ -85,7 +100,7 @@ export class CommentCreateComponent implements OnInit {
     }
 
     closeFormHandler(): void {
-        this.closeForm.emit(true);
+        this.closeForm.emit(false);
     }
 
     onCloseNot(): void {

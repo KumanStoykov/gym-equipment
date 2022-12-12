@@ -40,11 +40,11 @@ export class CommentListComponent implements OnInit, OnDestroy {
             this.comments = [comment, ...this.comments];
         });
         this.newCommentsSub = this.sharedService.subCommentEdit$$.subscribe(comment => {
-            let currentComments = this.comments.filter(current => current._id != comment._id);
+            let currentComments = this.comments.filter(current => current._id !== comment._id);
             this.comments = [comment, ...currentComments];
         });
         this.newCommentsSub = this.sharedService.subCommentDelete$$.subscribe(comment => {
-            let currentComments = this.comments.filter(current => current._id != comment._id);
+            let currentComments = this.comments.filter(current => current._id !== comment._id);
             this.comments = currentComments;
         });
 
@@ -61,6 +61,7 @@ export class CommentListComponent implements OnInit, OnDestroy {
             }
         })
     }
+
 
     closeFormHandel(): void {
         this.user$.subscribe({
