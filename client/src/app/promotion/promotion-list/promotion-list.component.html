@@ -12,11 +12,13 @@
         <div *ngIf="!isLoading" class="page-content-wrap">
             <app-search></app-search>
 
-            <ul class="cards-wrap">
+            <ul *ngIf="promotions.length !== 0" class="cards-wrap">
                 <li *ngFor="let promotion of promotions">
                     <app-product-card [product]="promotion.product" [cardType]="promotion.productType"></app-product-card>
                 </li>
             </ul>
+            <h3 class="empty" *ngIf="promotions.length === 0">NO PRODUCTS</h3>
+
         </div>
         <app-pagination *ngIf="!isLoading" [countPages]="6" [productCount]="count"></app-pagination>
     </div>

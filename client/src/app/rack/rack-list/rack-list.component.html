@@ -15,11 +15,13 @@
         <div *ngIf="!isLoading" class="page-content-wrap">
             <app-search></app-search>
 
-            <ul class="cards-wrap">
+            <ul *ngIf="racks.length !== 0" class="cards-wrap">
                 <li *ngFor="let rack of racks">
                     <app-product-card [product]="rack" cardType="rack"></app-product-card>
                 </li>
             </ul>
+            <h3 class="empty" *ngIf="racks.length === 0">NO PRODUCTS</h3>
+
         </div>
         <app-pagination *ngIf="!isLoading" [countPages]="6" [productCount]="count"></app-pagination>
     </div>

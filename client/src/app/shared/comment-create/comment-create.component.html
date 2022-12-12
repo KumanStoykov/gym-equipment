@@ -67,6 +67,9 @@
             />
             <label for="rating-one"></label>
         </div>
+        <p class="error" *ngIf="ratingIsValid">Rating is required!</p>
+        <div *ngIf="ratingIsValid" class="error-rating">
+        </div>
 
         <div>
             <label for="name" class="name">Name:</label>
@@ -79,6 +82,7 @@
                 class="name-input"
                 required
             />
+            <p class="error" *ngIf="nameInput.touched && nameInput.errors?.['required']">Field is required!</p>
         </div>
         <label for="name" class="name">Comment:</label>
         <textarea
@@ -89,7 +93,11 @@
             required
             #commentInput="ngModel"
             [ngModel]="comment?.comment"
+            required
         ></textarea>
-        <button type="submit" (click)="closeFormHandler()" class="btn btn-post">Add</button>
+        <p class="error" *ngIf="commentInput.touched && commentInput.errors?.['required']">Field is required!</p>
+
+        <button *ngIf="!isEdit" type="submit"  class="btn btn-post">Add</button>
+        <button *ngIf="isEdit" type="submit" class="btn btn-post">Edit</button>
     </form>
 </div>

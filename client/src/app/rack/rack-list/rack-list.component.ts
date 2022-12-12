@@ -11,8 +11,8 @@ import { RackService } from '../rack.service';
 })
 export class RackListComponent implements OnInit {
 
-    heroTitle = 'RACKS';
-    pageTitle = 'SUPREME RUNNING PERFORMANCE';
+    heroTitle: string = 'RACKS';
+    pageTitle: string = 'SUPREME RUNNING PERFORMANCE';
 
     racks: IRack[] = [];
     page: number = 1;

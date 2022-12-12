@@ -10,7 +10,7 @@ import { DumbbellService } from '../dumbbell.service';
 })
 export class DumbbellDetailsComponent implements OnInit {
 
-    heroTitle = 'DETAILS';
+    heroTitle: string = 'DETAILS';
 
     dumbbell!: IDumbbell;
     isLoading: boolean = false;

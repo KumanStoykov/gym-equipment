@@ -11,8 +11,8 @@ import { BenchService } from '../bench.service';
 })
 export class BenchListComponent implements OnInit {
 
-    heroTitle = 'BENCHES';
-    pageTitle = 'SUPREME PERFORMANCE';
+    heroTitle: string = 'BENCHES';
+    pageTitle: string = 'SUPREME PERFORMANCE';
 
     benches: IBench[] = [];
     page: number = 1;

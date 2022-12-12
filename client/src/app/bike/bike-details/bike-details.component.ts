@@ -11,7 +11,7 @@ import { BikeService } from '../bike.service';
 })
 export class BikeDetailsComponent implements OnInit {
 
-    heroTitle = 'DETAILS';
+    heroTitle: string = 'DETAILS';
 
     bike!: IBike;
     isLoading: boolean = false;

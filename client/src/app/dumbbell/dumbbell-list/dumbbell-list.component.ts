@@ -11,8 +11,8 @@ import { DumbbellService } from '../dumbbell.service';
 })
 export class DumbbellListComponent implements OnInit {
 
-    heroTitle = 'DUMBBELLS';
-    pageTitle = 'SUPREME RUNNING PERFORMANCE';
+    heroTitle: string = 'DUMBBELLS';
+    pageTitle: string = 'SUPREME RUNNING PERFORMANCE';
 
     dumbbells: IDumbbell[] = [];
     page: number = 1;

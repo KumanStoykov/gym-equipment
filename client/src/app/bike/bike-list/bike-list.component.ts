@@ -11,8 +11,8 @@ import { BikeService } from '../bike.service';
 })
 export class BikeListComponent implements OnInit {
 
-    heroTitle = 'BIKES';
-    pageTitle = 'SUPREME BIKE PERFORMANCE';
+    heroTitle: string = 'BIKES';
+    pageTitle: string = 'SUPREME BIKE PERFORMANCE';
 
     bikes: IBike[] = [];
     page: number = 1;

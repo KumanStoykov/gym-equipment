@@ -10,7 +10,7 @@ import { RackService } from '../rack.service';
 })
 export class RackDetailsComponent implements OnInit {
 
-    heroTitle = 'DETAILS';
+    heroTitle: string = 'DETAILS';
 
     rack!: IRack;
     isLoading: boolean = false;

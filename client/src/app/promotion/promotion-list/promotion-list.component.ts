@@ -11,8 +11,8 @@ import { PromotionService } from '../promotion.service';
 })
 export class PromotionListComponent implements OnInit {
 
-    heroTitle = 'SALES';
-    pageTitle = 'SALE FOR ALL';
+    heroTitle: string = 'SALES';
+    pageTitle: string = 'SALE FOR ALL';
 
     promotions: IPromotion[] = [];
     page: number = 1;
