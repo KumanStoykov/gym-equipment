@@ -17,8 +17,8 @@ import { auth_success } from 'src/app/+store/authStore/actions';
 })
 export class RegisterComponent implements OnDestroy {
 
-    heroTitle = 'ACCOUNT';
-    pageTitle = 'REGISTER';
+    heroTitle: string = 'ACCOUNT';
+    pageTitle: string = 'REGISTER';
 
     registerForm!: FormGroup;
     killSubscription = new Subject<void>();

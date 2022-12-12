@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-    heroTitle = 'ADMIN';
+    heroTitle: string = 'ADMIN';
 
   constructor() { }
 

@@ -13,8 +13,8 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent {
 
-    heroTitle = 'ACCOUNT';
-    pageTitle = 'LOGIN';
+    heroTitle: string = 'ACCOUNT';
+    pageTitle: string = 'LOGIN';
 
     loginForm!: FormGroup;
     error: string = '';

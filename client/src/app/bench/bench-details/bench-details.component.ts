@@ -10,7 +10,7 @@ import { BenchService } from '../bench.service';
 })
 export class BenchDetailsComponent implements OnInit {
 
-    heroTitle = 'DETAILS';
+    heroTitle: string = 'DETAILS';
 
     bench!: IBench;
     isLoading: boolean = false;

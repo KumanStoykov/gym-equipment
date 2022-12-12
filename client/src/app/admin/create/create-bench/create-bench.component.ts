@@ -59,12 +59,10 @@ export class CreateBenchComponent implements OnInit {
             next: data => {
                 this.router.navigateByUrl('/');
                 this.isLoading = false;
-
             },
             error: err => {
                 this.error = err.error.message;
                 this.isLoading = false;
-                console.log(err.error)
             }
         })
 
