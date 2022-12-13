@@ -1,0 +1,74 @@
+@import "/src/app/shared/variables.scss";
+.content-wrap {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.confirm-wrap {
+    animation: show 0.7s 0s 1 normal forwards;
+    position: fixed;
+    margin: auto;
+    background: #f3f2f2;
+    border: 4px double $clr-gray-opacity;
+    width: 18rem;
+    z-index: 1000;
+    text-align: center;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.confirm-question {
+    color: $clr-font-desc;
+    font-weight: 400;
+    padding: 1rem;
+}
+
+.btn-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin: 1rem 0 2rem 0;
+
+    button {
+        border: none;
+        padding: 4px 8px;
+        letter-spacing: 2px;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    .btn-cancel {
+        background-color: #369729;
+        color: $clr-with;
+    }
+    .btn-delete {
+        background-color: $clr-red;
+        color: $clr-with;
+    }
+}
+
+
+@media all and (max-width: 300px) {
+    .confirm-wrap {
+        width: 15rem;
+    }
+
+    .confirm-question {
+        padding: 0.75rem;
+    }
+}
+
+@keyframes show {
+    0% {
+        transform: scale(0);
+        opacity: 0.1;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
