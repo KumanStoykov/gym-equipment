@@ -1,0 +1,12 @@
+<div class="filter-product">
+    <h4 class="title-filter">PRODUCT</h4>
+    <ul role="list" *ngIf="!isLoading">
+        <li class="checkbox-wrap" *ngFor="let type of productsType">
+            <input id="{{type}}" [value]="type" name="{{type}}" type="checkbox"
+            [checked]="selectedTypes.includes(type)"  (click)="onCheckClick($event)"/>
+            <label for="{{type}}">{{type}}</label>
+        </li>
+
+    </ul>
+</div>
+
