@@ -1,0 +1,13 @@
+<div class="content-wrap">
+    <app-loader *ngIf="isLoading" size="medium" ></app-loader>
+
+    <div *ngIf="!isLoading" class="confirm-wrap">
+        <div class="message-wrap">
+            <p class="confirm-question">You are sure?</p>
+        </div>
+        <div class="btn-wrap">
+            <button (click)="cancelHandler()" class="btn-cancel">Cancel</button>
+            <button (click)="deleteHandler()" class="btn-delete">Delete</button>
+        </div>
+    </div>
+</div>
