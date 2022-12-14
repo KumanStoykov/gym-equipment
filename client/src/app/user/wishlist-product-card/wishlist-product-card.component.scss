@@ -1,0 +1,54 @@
+@import "/src/app/shared/variables.scss";
+
+.wishlist-card {
+    margin: 1rem auto;
+    padding-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 400;
+    border-bottom: 2px solid $clr-font-desc;
+}
+.img-wrap {
+    max-width: 150px;
+}
+
+.price-wrap {
+    font-weight: 500;
+    display: flex;
+    gap: 0.4rem;
+}
+
+.price-old {
+    text-decoration: line-through;
+}
+
+.price-new {
+    color: $clr-red;
+}
+.btn-watch {
+    border: none;
+    background: inherit;
+    font-size: 2rem;
+    padding: 0;
+    color: $clr-font-desc;
+}
+
+
+
+@media all and (max-width: 1000px) {
+    .wishlist-card {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+@media all and (max-width: 768px) {
+    .btn-wrap {
+        button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
