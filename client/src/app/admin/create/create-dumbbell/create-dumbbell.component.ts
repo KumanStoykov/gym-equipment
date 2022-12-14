@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DumbbellService } from 'src/app/dumbbell/dumbbell.service';
 import { IDumbbell } from 'src/app/shared/interfaces';
 
@@ -15,17 +15,36 @@ export class CreateDumbbellComponent implements OnInit {
     files: [] = [];
     fileIsChose: boolean = false;
 
-    rack: IDumbbell | undefined;
+    dumbbell: IDumbbell | undefined;
     error: string = '';
     isLoading: boolean = false;
     filesCount: number | undefined;
+    isEdit: boolean = false;
 
     constructor(
         private dumbbellService: DumbbellService,
+        private activateRoute: ActivatedRoute,
         private router: Router
     ) { }
 
     ngOnInit(): void {
+        const urlIsEdit = this.activateRoute.snapshot.url[0] && this.activateRoute.snapshot.url[0].path === 'edit';
+
+        if(urlIsEdit) {
+            this.isLoading = true;
+
+            this.dumbbellService.getOne(this.activateRoute.snapshot.url[2].path).subscribe({
+                next: dumbbell => {
+                    this.dumbbell = dumbbell;
+                    this.isEdit = true;
+                    this.isLoading = false;
+                },
+                error: err => {
+                    this.isEdit = false;
+                    this.isLoading = false;
+                }
+            })
+        }
     }
 
 
@@ -55,19 +74,33 @@ export class CreateDumbbellComponent implements OnInit {
 
         this.isLoading = true;
 
-        this.dumbbellService.create(formData).subscribe({
-            next: data => {
-                this.router.navigateByUrl('/');
-                this.isLoading = false;
+        if(this.isEdit) {
+            const id = this.activateRoute.snapshot.url[2].path;
+            this.dumbbellService.edit(formData, id).subscribe({
+                next: data => {
+                    this.router.navigateByUrl('/');
+                    this.isLoading = false;
+                },
+                error: err => {
+                    this.error = err.error.message;
+                    this.isLoading = false;
+                }
+            });
 
-            },
-            error: err => {
-                this.error = err.error.message;
-                this.isLoading = false;
-                console.log(err.error)
-            }
-        })
+        } else {
+            this.dumbbellService.create(formData).subscribe({
+                next: data => {
+                    this.router.navigateByUrl('/');
+                    this.isLoading = false;
 
+                },
+                error: err => {
+                    this.error = err.error.message;
+                    this.isLoading = false;
+                    console.log(err.error)
+                }
+            });
+        }
     }
 
     onCloseNot(): void {

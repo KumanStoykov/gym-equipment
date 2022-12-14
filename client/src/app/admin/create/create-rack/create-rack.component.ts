@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RackService } from 'src/app/rack/rack.service';
 import { IRack } from 'src/app/shared/interfaces';
 
@@ -19,13 +19,32 @@ export class CreateRackComponent implements OnInit {
     error: string = '';
     isLoading: boolean = false;
     filesCount: number | undefined;
+    isEdit: boolean = false;
 
     constructor(
         private rackService: RackService,
+        private activateRoute: ActivatedRoute,
         private router: Router
     ) { }
 
     ngOnInit(): void {
+        const urlIsEdit = this.activateRoute.snapshot.url[0] && this.activateRoute.snapshot.url[0].path === 'edit';
+
+        if(urlIsEdit) {
+            this.isLoading = true;
+
+            this.rackService.getOne(this.activateRoute.snapshot.url[2].path).subscribe({
+                next: rack => {
+                    this.rack = rack;
+                    this.isEdit = true;
+                    this.isLoading = false;
+                },
+                error: err => {
+                    this.isEdit = false;
+                    this.isLoading = false;
+                }
+            })
+        }
     }
 
 
@@ -55,18 +74,34 @@ export class CreateRackComponent implements OnInit {
 
         this.isLoading = true;
 
-        this.rackService.create(formData).subscribe({
-            next: data => {
-                this.router.navigateByUrl('/');
-                this.isLoading = false;
+        if(this.isEdit) {
+            const id = this.activateRoute.snapshot.url[2].path;
+            this.rackService.edit(formData, id).subscribe({
+                next: data => {
+                    this.router.navigateByUrl('/');
+                    this.isLoading = false;
+                },
+                error: err => {
+                    this.error = err.error.message;
+                    this.isLoading = false;
+                }
+            });
 
-            },
-            error: err => {
-                this.error = err.error.message;
-                this.isLoading = false;
-                console.log(err.error)
-            }
-        })
+        } else {
+            this.rackService.create(formData).subscribe({
+                next: data => {
+                    this.router.navigateByUrl('/');
+                    this.isLoading = false;
+
+                },
+                error: err => {
+                    this.error = err.error.message;
+                    this.isLoading = false;
+                    console.log(err.error)
+                }
+            });
+        }
+
 
     }
 

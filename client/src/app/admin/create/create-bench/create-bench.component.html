@@ -1,7 +1,7 @@
 <app-notification (notDestroy)="onCloseNot()" *ngIf="error?.length !== 0" [errorMessage]="error"></app-notification>
 
 
-<section class="rack container">
+<section class="bench container">
     <div class="form-wrap">
 
         <app-loader *ngIf="isLoading" size="medium"></app-loader>
@@ -14,58 +14,58 @@
         >
         <div class="row-wrap">
             <div class="input-row">
-                <input #brandInput="ngModel" placeholder="Brand *" type="text" class="input-field" name="brand" [ngModel]="rack?.brand" required />
+                <input #brandInput="ngModel" placeholder="Brand *" type="text" class="input-field" name="brand" [ngModel]="bench?.brand" required />
                 <p class="error" *ngIf="brandInput.touched && brandInput.errors?.['required']">Field is required!</p>
             </div>
             <div class="input-row">
-                <input #madeInInput="ngModel" placeholder="Made in *" type="text" class="input-field" name="madeIn" [ngModel]="rack?.madeIn" required />
+                <input #madeInInput="ngModel" placeholder="Made in *" type="text" class="input-field" name="madeIn" [ngModel]="bench?.madeIn" required />
                 <p class="error" *ngIf="madeInInput.touched && madeInInput.errors?.['required']">Field is required!</p>
             </div>
         </div>
         <div class="row-wrap">
             <div class="input-row">
-                <input #priceInput="ngModel" placeholder="Price *" type="number" class="input-field" name="price" [ngModel]="rack?.price" required />
+                <input #priceInput="ngModel" placeholder="Price *" type="number" class="input-field" name="price" [ngModel]="bench?.price" required />
                 <p class="error" *ngIf="priceInput.touched && priceInput.errors?.['required']">Field is required!</p>
             </div>
             <div class="input-row">
-                <input #promoPriceInput="ngModel" placeholder="Promo Price*" type="number" class="input-field" name="promoPrice" [ngModel]="rack?.promoPrice" required />
+                <input #promoPriceInput="ngModel" placeholder="Promo Price*" type="number" class="input-field" name="promoPrice" [ngModel]="bench?.promoPrice" required />
                 <p class="error" *ngIf="promoPriceInput.touched && promoPriceInput.errors?.['required']">Field is required!</p>
             </div>
         </div>
         <div class="row-wrap">
             <div class="input-row">
-                <input #materialInput="ngModel" placeholder="Material *" type="text" class="input-field" name="material" [ngModel]="rack?.material" required />
+                <input #materialInput="ngModel" placeholder="Material *" type="text" class="input-field" name="material" [ngModel]="bench?.material" required />
                 <p class="error" *ngIf="materialInput.touched && materialInput.errors?.['required']">Field is required!</p>
             </div>
             <div class="input-row">
-                <input #dimensionInput="ngModel" placeholder="Dimensions *" type="text" class="input-field" name="dimensions" [ngModel]="rack?.dimensions" required />
+                <input #dimensionInput="ngModel" placeholder="Dimensions *" type="text" class="input-field" name="dimensions" [ngModel]="bench?.dimensions" required />
                 <p class="error" *ngIf="dimensionInput.touched && dimensionInput.errors?.['required']">Field is required!</p>
             </div>
         </div>
         <div class="row-wrap">
             <div class="input-row">
-                <input #maximumLoadUseableInput="ngModel" placeholder="Maximum Load Useable *" type="number" class="input-field" name="maximumLoadUseable" [ngModel]="rack?.maximumLoadUseable" required />
+                <input #maximumLoadUseableInput="ngModel" placeholder="Maximum Load Useable *" type="number" class="input-field" name="maximumLoadUseable" [ngModel]="bench?.maximumLoadUseable" required />
                 <p class="error" *ngIf="maximumLoadUseableInput.touched && maximumLoadUseableInput.errors?.['required']">Field is required!</p>
             </div>
             <div class="input-row">
-                <input #threeSeatAngleSettingsInput="ngModel" placeholder="3 Seat Angle Settings *" type="text" class="input-field" name="threeSeatAngleSettings" [ngModel]="rack?.threeSeatAngleSettings" required />
+                <input #threeSeatAngleSettingsInput="ngModel" placeholder="3 Seat Angle Settings *" type="text" class="input-field" name="threeSeatAngleSettings" [ngModel]="bench?.threeSeatAngleSettings" required />
                 <p class="error" *ngIf="threeSeatAngleSettingsInput.touched && threeSeatAngleSettingsInput.errors?.['required']">Field is required!</p>
             </div>
         </div>
         <div class="row-wrap">
             <div class="input-row">
-                <input #transportWheelsInput="ngModel" placeholder="Transport Wheels *" type="number" class="input-field" name="transportWheels" [ngModel]="rack?.transportWheels" required />
+                <input #transportWheelsInput="ngModel" placeholder="Transport Wheels *" type="number" class="input-field" name="transportWheels" [ngModel]="bench?.transportWheels" required />
                 <p class="error" *ngIf="transportWheelsInput.touched && transportWheelsInput.errors?.['required']">Field is required!</p>
             </div>
             <div class="input-row">
-                <input #netWeightInput="ngModel" placeholder="Net Weight *" type="number" class="input-field" name="netWeight" [ngModel]="rack?.netWeight" required />
+                <input #netWeightInput="ngModel" placeholder="Net Weight *" type="number" class="input-field" name="netWeight" [ngModel]="bench?.netWeight" required />
                 <p class="error" *ngIf="netWeightInput.touched && netWeightInput.errors?.['required']">Field is required!</p>
             </div>
         </div>
 
         <div class="row-wrap">
             <div class="input-row">
-                <textarea #descriptionInput="ngModel" rows="1" cols="3" placeholder="Description *" type="" class="input-field" name="description" [ngModel]="rack?.description" required ></textarea>
+                <textarea #descriptionInput="ngModel" rows="1" cols="3" placeholder="Description *" type="" class="input-field" name="description" [ngModel]="bench?.description" required ></textarea>
                 <p class="error" *ngIf="descriptionInput.touched && descriptionInput.errors?.['required']">Field is required!</p>
             </div>
             <div class="input-row input-image-row">
@@ -75,7 +75,8 @@
                 <span *ngIf="fileIsChose" class="file-chose">{{filesCount}} files</span>
             </div>
         </div>
-            <button *ngIf="!isLoading" type="submit" class="btn create-btn" [disabled]="form.invalid">Create</button>
+            <button *ngIf="!isLoading && !isEdit" type="submit" class="btn create-btn" [disabled]="form.invalid">Create</button>
+            <button *ngIf="!isLoading && isEdit" type="submit" class="btn create-btn" [disabled]="form.invalid">Edit</button>
             <button *ngIf="isLoading" type="button" class="btn create-btn" [disabled]="form.invalid">
                 <app-loader size="small"></app-loader>
             </button>

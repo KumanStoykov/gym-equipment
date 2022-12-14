@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BenchService } from 'src/app/bench/bench.service';
 import { IBench } from 'src/app/shared/interfaces';
 
@@ -15,17 +15,37 @@ export class CreateBenchComponent implements OnInit {
     files: [] = [];
     fileIsChose: boolean = false;
 
-    rack: IBench | undefined;
+    bench: IBench | undefined;
     error: string = '';
     isLoading: boolean = false;
     filesCount: number | undefined;
+    isEdit: boolean = false;
 
     constructor(
         private benchService: BenchService,
-        private router: Router
+        private router: Router,
+        private activateRoute: ActivatedRoute
     ) { }
 
     ngOnInit(): void {
+        const urlIsEdit = this.activateRoute.snapshot.url[0] && this.activateRoute.snapshot.url[0].path === 'edit';
+
+        if (urlIsEdit) {
+            this.isLoading = true;
+
+            this.benchService.getOne(this.activateRoute.snapshot.url[2].path).subscribe({
+                next: bench => {
+                    this.bench = bench;
+                    this.isEdit = true;
+                    this.isLoading = false;
+                },
+                error: err => {
+                    this.isEdit = false;
+                    this.isLoading = false;
+                }
+            })
+        }
+
     }
 
 
@@ -55,22 +75,38 @@ export class CreateBenchComponent implements OnInit {
 
         this.isLoading = true;
 
-        this.benchService.create(formData).subscribe({
-            next: data => {
-                this.router.navigateByUrl('/');
-                this.isLoading = false;
-            },
-            error: err => {
-                this.error = err.error.message;
-                this.isLoading = false;
-            }
-        })
+        if (this.isEdit) {
+            const id = this.activateRoute.snapshot.url[2].path;
+            this.benchService.edit(formData, id).subscribe({
+                next: data => {
+                    this.router.navigateByUrl('/');
+                    this.isLoading = false;
+                },
+                error: err => {
+                    this.error = err.error.message;
+                    this.isLoading = false;
+                }
+            })
+
+        } else {
+            this.benchService.create(formData).subscribe({
+                next: data => {
+                    this.router.navigateByUrl('/');
+                    this.isLoading = false;
+                },
+                error: err => {
+                    this.error = err.error.message;
+                    this.isLoading = false;
+                }
+            })
+        }
+
 
     }
 
     onCloseNot(): void {
         this.error = '';
-        if(this.error.includes('Something went wrong')) {
+        if (this.error.includes('Something went wrong')) {
             console.log('')
             this.router.navigate(['/'])
         }

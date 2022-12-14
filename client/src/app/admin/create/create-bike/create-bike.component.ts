@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BikeService } from 'src/app/bike/bike.service';
 import { IBike } from 'src/app/shared/interfaces';
 
@@ -21,15 +21,34 @@ export class CreateBikeComponent implements OnInit {
     error: string = '';
     isLoading: boolean = false;
     filesCount: number | undefined;
+    isEdit: boolean = false;
 
 
     constructor(
         private bikeService: BikeService,
-        private router: Router
+        private router: Router,
+        private activateRoute: ActivatedRoute
+
     ) { }
 
     ngOnInit(): void {
+        const urlIsEdit = this.activateRoute.snapshot.url[0] && this.activateRoute.snapshot.url[0].path === 'edit';
 
+        if(urlIsEdit) {
+            this.isLoading = true;
+
+            this.bikeService.getOne(this.activateRoute.snapshot.url[2].path).subscribe({
+                next: bench => {
+                    this.bike = bench;
+                    this.isEdit = true;
+                    this.isLoading = false;
+                },
+                error: err => {
+                    this.isEdit = false;
+                    this.isLoading = false;
+                }
+            })
+        }
     }
 
     onFileSelect(event: any): void {
@@ -58,17 +77,34 @@ export class CreateBikeComponent implements OnInit {
 
         this.isLoading = true;
 
-        this.bikeService.create(formData).subscribe({
-            next: data => {
-                this.router.navigateByUrl('/');
-                this.isLoading = false;
+        if(this.isEdit) {
+            const id = this.activateRoute.snapshot.url[2].path;
+            this.bikeService.edit(formData, id).subscribe({
+                next: data => {
+                    this.router.navigateByUrl('/');
+                    this.isLoading = false;
+                },
+                error: err => {
+                    this.error = err.error.message;
+                    this.isLoading = false;
+                }
+            })
 
-            },
-            error: err => {
-                this.error = err.error.message;
-                this.isLoading = false;
-            }
-        })
+        } else {
+
+            this.bikeService.create(formData).subscribe({
+                next: data => {
+                    this.router.navigateByUrl('/');
+                    this.isLoading = false;
+
+                },
+                error: err => {
+                    this.error = err.error.message;
+                    this.isLoading = false;
+                }
+            })
+        }
+
 
     }
 
