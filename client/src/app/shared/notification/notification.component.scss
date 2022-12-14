@@ -1,6 +1,8 @@
 @import "/src/app/shared/variables.scss";
 
 .not-wrap {
+    position: relative;
+    z-index: 1000;
     animation: show 0.7s 0s 1 normal forwards;
 }
 
