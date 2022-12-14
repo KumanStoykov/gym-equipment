@@ -21,6 +21,8 @@ import { NotificationComponent } from './notification/notification.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { CommentCreateComponent } from './comment-create/comment-create.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FilterProductsComponent } from './filter-products/filter-products.component';
+import { ConfirmComponent } from './confirm/confirm.component';
 
 
 
@@ -43,6 +45,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NotificationComponent,
     PaginationComponent,
     CommentCreateComponent,
+    FilterProductsComponent,
+    ConfirmComponent,
   ],
   imports: [
     CommonModule,
@@ -64,7 +68,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DetailsPageHeaderComponent,
     CommentListComponent,
     NotificationComponent,
-    PaginationComponent
+    PaginationComponent,
+    ConfirmComponent
   ]
 })
 export class SharedModule { }
