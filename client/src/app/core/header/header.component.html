@@ -93,7 +93,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-list-item">
+                <li class="nav-list-item" *ngIf="!(user$ | async)">
                     <a
                         routerLink="/user/wishlist"
                         class="nav-link"
@@ -101,12 +101,20 @@
                         >WISHLIST
                     </a>
                 </li>
-                <li class="nav-list-item">
+                <li class="nav-list-item" *ngIf="!(user$ | async)">
                     <a
                         routerLink="/user/checkout"
                         class="nav-link"
                         (click)="menuToggle()"
                         >CHECKOUT
+                    </a>
+                </li>
+                <li class="nav-list-item" *ngIf="(user$ | async)">
+                    <a
+                        routerLink="/user/{{(user$ | async)?._id}}"
+                        class="nav-link"
+                        (click)="menuToggle()"
+                        >PROFILE
                     </a>
                 </li>
                 <li

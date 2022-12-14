@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 
 import { AuthService } from 'src/app/auth/auth.service';
 import * as authSelectors from '../../+store/authStore/selector';
 import * as authActions from '../../+store/authStore/actions';
-import { Observable } from 'rxjs';
 import { IUser } from 'src/app/shared/interfaces';
 import { IAuthState } from 'src/app/+store/authStore/reducers';
-import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-header',
