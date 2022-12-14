@@ -2,7 +2,12 @@
 
 <section class="catalog container">
     <div class="content-wrap">
-        <app-page-title [pageTitle]="pageTitle"></app-page-title>
+        <ng-container *ngIf="user$ | async">
+            <app-user-nav></app-user-nav>
+        </ng-container>
+        <ng-container *ngIf="!(user$ | async)">
+            <app-page-title [pageTitle]="pageTitle"></app-page-title>
+        </ng-container>
 
         <div class="products-container">
             <div class="products-heading">
@@ -17,6 +22,6 @@
             <p class="delivery">Delivery: $0</p>
             <p class="total-price">Total price: $2300</p>
         </div>
-        <app-user-form-checkout></app-user-form-checkout>
+        <app-user-form></app-user-form>
     </div>
 </section>
