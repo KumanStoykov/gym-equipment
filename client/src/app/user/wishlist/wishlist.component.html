@@ -1,0 +1,15 @@
+<app-page-hero [heroPageTitle]="heroTitle"></app-page-hero>
+
+<section class="catalog container">
+    <div class="content-wrap">
+        <ng-container *ngIf="user$ | async">
+            <app-user-nav></app-user-nav>
+        </ng-container>
+        <ng-container *ngIf="!(user$ | async)">
+            <app-page-title [pageTitle]="pageTitle"></app-page-title>
+        </ng-container>
+        <div class="products-container">
+            <app-wishlist-product-card></app-wishlist-product-card>
+        </div>
+    </div>
+</section>
