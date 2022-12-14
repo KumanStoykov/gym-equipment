@@ -46,6 +46,26 @@ const routes: Routes = [
             component: CreateDumbbellComponent
         },
         {
+            path: 'edit/treadmill/:id',
+            component: CreateTreadmillComponent
+        },
+        {
+            path: 'edit/bike/:id',
+            component: CreateBikeComponent
+        },
+        {
+            path: 'edit/rack/:id',
+            component: CreateRackComponent
+        },
+        {
+            path: 'edit/bench/:id',
+            component: CreateBenchComponent
+        },
+        {
+            path: 'edit/dumbbell/:id',
+            component: CreateDumbbellComponent
+        },
+        {
             path: 'promotion',
             component: AdminPromotionComponent
         },
