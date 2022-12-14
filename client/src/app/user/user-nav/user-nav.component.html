@@ -1,0 +1,40 @@
+<section class="container nav-wrap">
+    <nav class="nav">
+        <ul class="nav-list" role="list">
+            <li class="nav-list-item">
+                <a
+                    class="nav-link"
+                    routerLink="/user/{{ (user$ | async)?._id }}"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                    >USER</a
+                >
+            </li>
+            <li class="nav-list-item">
+                <a
+                    class="nav-link"
+                    routerLink="/user/wishlist"
+                    routerLinkActive="active"
+                    >WISHLIST</a
+                >
+            </li>
+            <li class="nav-list-item">
+                <a
+                    class="nav-link"
+                    routerLink="/user/checkout"
+                    routerLinkActive="active"
+                    >CHECKOUT</a
+                >
+            </li>
+
+            <li class="nav-list-item">
+                <a
+                    class="nav-link"
+                    routerLink="/user/{{(user$ | async)?._id}}/orders"
+                    routerLinkActive="active"
+                    >ORDERS</a
+                >
+            </li>
+        </ul>
+    </nav>
+</section>
