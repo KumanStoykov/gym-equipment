@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { add_comment } from 'src/app/+store/authStore/actions';
 import { IBike } from 'src/app/shared/interfaces';
 import { BikeService } from '../bike.service';
 
@@ -21,13 +23,18 @@ export class BikeDetailsComponent implements OnInit {
 
     constructor(
         private bikeService: BikeService,
-        private router: Router
+        private router: Router,
+        private store: Store,
+
     ) { }
 
     ngOnInit(): void {
         this.isLoading = true;
         this.bikeService.getOne(this.productId).subscribe({
             next: bike => {
+                this.store.dispatch(add_comment({
+                    comments: bike.comments
+                }));
                 this.bike = bike;
                 this.isLoading = false;
             },
@@ -42,7 +49,7 @@ export class BikeDetailsComponent implements OnInit {
 
     onCloseNot(): void {
         this.error = '';
-        if(this.error.includes('Something went wrong')) {
+        if (this.error.includes('Something went wrong')) {
             this.router.navigate(['/'])
         }
     }

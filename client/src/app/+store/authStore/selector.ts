@@ -15,3 +15,8 @@ export const selectMessage = createSelector(
     selectorFeature,
     (state: IAuthState) => state.message
 );
+
+export const selectComment = createSelector(
+    selectorFeature,
+    (state: IAuthState) => state.comments
+);

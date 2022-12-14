@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { add_comment } from 'src/app/+store/authStore/actions';
 import { IDumbbell } from 'src/app/shared/interfaces';
 import { DumbbellService } from '../dumbbell.service';
 
@@ -20,13 +22,17 @@ export class DumbbellDetailsComponent implements OnInit {
 
     constructor(
         private dumbbellService: DumbbellService,
-        private router: Router
+        private router: Router,
+        private store: Store,
     ) { }
 
     ngOnInit(): void {
         this.isLoading = true;
         this.dumbbellService.getOne(this.productId).subscribe({
             next: dumbbell => {
+                this.store.dispatch(add_comment({
+                    comments: dumbbell.comments
+                }));
                 this.dumbbell = dumbbell;
                 this.isLoading = false;
             },

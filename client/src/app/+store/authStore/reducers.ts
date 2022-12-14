@@ -7,13 +7,15 @@ import * as AuthActions from './actions';
 export interface IAuthState {
     user: IUser | null;
     message: AuthActions.messageProps | null;
+    comments: AuthActions.commentProps | null;
 }
 
 export const featureKey = 'auth';
 
 const initialState: IAuthState = {
     user: null,
-    message: null
+    message: null,
+    comments: null,
 };
 
 
@@ -56,7 +58,19 @@ const _authReducer = createReducer(
             ...state,
             message: null
         }
-    })
+    }),
+    on(AuthActions.add_comment, (state, action) => {
+        return {
+            ...state,
+            comments: action
+        }
+    }),
+    on(AuthActions.clear_comment, (state) => {
+        return {
+            ...state,
+            comments: null
+        }
+    }),
 
 )
 

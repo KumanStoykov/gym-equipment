@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 
+import { add_comment, clear_comment } from 'src/app/+store/authStore/actions';
 import * as authSelectors from '../../+store/authStore/selector';
 import { IComment, IUser } from '../interfaces';
 import { SharedService } from '../shared.service';
@@ -38,14 +39,23 @@ export class CommentListComponent implements OnInit, OnDestroy {
 
         this.newCommentsSub = this.sharedService.subCommentCreated$$.subscribe(comment => {
             this.comments = [comment, ...this.comments];
+            this.store.dispatch(add_comment({
+                comments: this.comments
+            }));
         });
         this.newCommentsSub = this.sharedService.subCommentEdit$$.subscribe(comment => {
             let currentComments = this.comments.filter(current => current._id !== comment._id);
             this.comments = [comment, ...currentComments];
+            this.store.dispatch(add_comment({
+                comments: this.comments
+            }));
         });
         this.newCommentsSub = this.sharedService.subCommentDelete$$.subscribe(comment => {
             let currentComments = this.comments.filter(current => current._id !== comment._id);
             this.comments = currentComments;
+            this.store.dispatch(add_comment({
+                comments: this.comments
+            }));
         });
 
 
@@ -54,6 +64,7 @@ export class CommentListComponent implements OnInit, OnDestroy {
                 this.comments = data.comments;
                 this.count = data.commentsCount;
                 this.isLoading = false;
+
             },
             error: err => {
                 this.error = err;
