@@ -1,7 +1,7 @@
 const Treadmill = require('../models/Treadmill');
 
-exports.getAll = (page, sort) => Treadmill.find({})
-                                .sort({ createdAt: sort })
+exports.getAll = (page, sort, search) => Treadmill.find({...search})
+                                .sort({ currentPrice: sort })
                                 .skip(page * 6)
                                 .limit(6)
                                 .populate({
@@ -17,6 +17,10 @@ exports.getById = (treadmillId) => Treadmill.findById(treadmillId)
 
 exports.create = (treadmillData) => Treadmill.create(treadmillData);
 
+exports.edit = (treadmillId, treadmillData) => Treadmill.findByIdAndUpdate(treadmillId, treadmillData);
+
 exports.deleteTreadmill = (treadmillId) => Treadmill.findByIdAndDelete(treadmillId);
 
-exports.count = () => Treadmill.countDocuments({});
+exports.count = (search) => Treadmill.countDocuments({ ...search});
+
+exports.getBrands = (search) => Treadmill.find({ ...search }).select('brand').distinct('brand');

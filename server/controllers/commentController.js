@@ -2,16 +2,18 @@ const router = require('express').Router();
 
 
 const commentService = require('../services/commentService');
-const loggedIn = require('../middlewares/loggedInMiddleware'); 
+const loggedIn = require('../middlewares/loggedInMiddleware');
 
 router.get('/', async (req, res) => {
 
     try {
         const page = Number(req?.query?.page) - 1 || 0;
         const productId = req?.query?.product;
+        
 
         const comments = await commentService.getComments(page, productId);
         const commentsCount = await commentService.getCount(productId);
+
 
         res.status(200).send({ comments, commentsCount: commentsCount.length });
     } catch (err) {
@@ -43,7 +45,7 @@ router.get('/current/:id', async (req, res) => {
     }
 });
 
-router.post('/create', loggedIn(), async (req, res) => { 
+router.post('/create', loggedIn(), async (req, res) => {
     try {
 
         const commentData = {
@@ -51,7 +53,7 @@ router.post('/create', loggedIn(), async (req, res) => {
             comment: req.body.comment.comment,
             rating: req.body.comment.rating,
             productName: req.body.productName,
-            productId: req.body.productId, 
+            productId: req.body.productId,
             creator: req.user._id
         };
 
@@ -63,13 +65,12 @@ router.post('/create', loggedIn(), async (req, res) => {
             throw new Error('Field is required!');
         }
         if (!commentData.rating > 0) {
-            throw new Error('Field is required!'); 
-        }     
-
+            throw new Error('Field is required!');
+        }
 
         const comment = await commentService.create(commentData);
 
-        await commentService.updateComments(comment);
+        commentService.updateProductComments(comment);
 
         res.status(200).send(comment);
 
@@ -77,8 +78,9 @@ router.post('/create', loggedIn(), async (req, res) => {
         res.status(400).send({ message: err.message });
     }
 });
-router.put('/edit', loggedIn(), async (req, res) => { 
+router.put('/edit/:commentId', loggedIn(), async (req, res) => {
     try {
+        const commentId = req.params.commentId;
 
         const commentData = {
             name: req.body.comment.name,
@@ -94,12 +96,11 @@ router.put('/edit', loggedIn(), async (req, res) => {
             throw new Error('Field is required!');
         }
         if (!commentData.rating > 0) {
-            throw new Error('Field is required!'); 
-        }     
+            throw new Error('Field is required!');
+        }
 
 
-        const comment = await commentService.update(req.body.commentId, commentData);
-
+        const comment = await commentService.update(commentId, commentData);
 
         res.status(200).send(comment);
 
@@ -108,11 +109,13 @@ router.put('/edit', loggedIn(), async (req, res) => {
     }
 });
 
-router.delete('/:commentId', loggedIn(), async (req, res) => {
-    const commentId = req.body.commentId;
+router.delete('/delete/:commentId', loggedIn(), async (req, res) => {
+
+    const commentId = req.params.commentId;
 
     try {
-        const comment = await commentService.delete(commentId);
+        const comment = await commentService.deleteComment(commentId);
+        await commentService.deleteProductComments(comment);
 
 
         res.status(200).send(comment);

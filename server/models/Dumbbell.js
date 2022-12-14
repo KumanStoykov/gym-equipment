@@ -15,6 +15,10 @@ const dumbbellSchema = mongoose.Schema({
         type: Number,
         require: true
     },
+    currentPrice: {
+        type: Number,
+        require: true
+    },
     madeIn: {
         type: String,
         require: true

@@ -15,6 +15,10 @@ const benchSchema = mongoose.Schema({
         type: Number,
         require: true
     },
+    currentPrice: {
+        type: Number,
+        require: true
+    },
     madeIn: {
         type: String,
         require: true
@@ -28,7 +32,7 @@ const benchSchema = mongoose.Schema({
         require: true
     },
     threeSeatAngleSettings: {
-        type: Number,
+        type: String,
         require: true
     },
     dimensions: {
