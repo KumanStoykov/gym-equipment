@@ -1,3 +1,5 @@
+import { IComment } from './comment';
+
 export interface IDumbbell {
     _id: string;
     brand: string;
@@ -14,4 +16,5 @@ export interface IDumbbell {
     handleDiameterTo: number;
     description: string;
     images: string[];
+    comments: IComment[];
 }

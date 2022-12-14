@@ -26,4 +26,10 @@ export class RackService {
     create(rackData: any): Observable<IRack> {
         return this.http.post<IRack>(`${API_URL}/rack/create`, rackData, { withCredentials: true });
     }
+    edit(rackData: any, id: string): Observable<IRack> {
+        return this.http.put<IRack>(`${API_URL}/rack/edit/${id}`, rackData, { withCredentials: true });
+    }
+    delete(id: string): Observable<null> {
+        return this.http.delete<null>(`${API_URL}/rack/delete/${id}`, { withCredentials: true });
+    }
 }

@@ -1,3 +1,5 @@
+import { IComment } from './comment';
+
 export interface IBench {
     _id: string;
     brand: string;
@@ -12,4 +14,5 @@ export interface IBench {
     netWeight: number;
     description: string;
     images: string[];
+    comments: IComment[]
 }

@@ -1,3 +1,5 @@
+import { IComment } from './comment';
+
 export interface IBike {
     _id: string;
     brand: string;
@@ -16,4 +18,5 @@ export interface IBike {
     availableLanguages: string;
     description: string;
     images: string[];
+    comments: IComment[];
 }

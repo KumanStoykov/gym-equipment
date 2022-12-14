@@ -1,3 +1,5 @@
+import { IComment } from './comment';
+
 export interface ITreadmill {
     _id: string;
     brand: string;
@@ -16,4 +18,5 @@ export interface ITreadmill {
     display: string;
     description: string;
     images: string[];
+    comments: IComment[];
 }

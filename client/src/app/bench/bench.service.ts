@@ -25,4 +25,11 @@ export class BenchService {
     create(benchData: any): Observable<IBench> {
         return this.http.post<IBench>(`${API_URL}/bench/create`, benchData, { withCredentials: true });
     }
+
+    edit(benchData: any, id: string): Observable<IBench> {
+        return this.http.put<IBench>(`${API_URL}/bench/edit/${id}`, benchData, { withCredentials: true });
+    }
+    delete(id: string): Observable<null> {
+        return this.http.delete<null>(`${API_URL}/bench/delete/${id}`, { withCredentials: true });
+    }
 }

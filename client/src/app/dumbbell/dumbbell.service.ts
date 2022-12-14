@@ -26,4 +26,10 @@ export class DumbbellService {
     create(dumbbellData: any): Observable<IDumbbell> {
         return this.http.post<IDumbbell>(`${API_URL}/dumbbell/create`, dumbbellData, { withCredentials: true });
     }
+    edit(dumbbellData: any, id: string): Observable<IDumbbell> {
+        return this.http.put<IDumbbell>(`${API_URL}/dumbbell/edit/${id}`, dumbbellData, { withCredentials: true });
+    }
+    delete(id: string): Observable<null> {
+        return this.http.delete<null>(`${API_URL}/dumbbell/delete/${id}`, { withCredentials: true });
+    }
 }

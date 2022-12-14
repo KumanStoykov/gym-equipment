@@ -25,4 +25,10 @@ export class BikeService {
     create(bikeData: any): Observable<IBike> {
         return this.http.post<IBike>(`${API_URL}/bike/create`, bikeData, { withCredentials: true });
     }
+    edit(bikeData: any, id: string): Observable<IBike> {
+        return this.http.put<IBike>(`${API_URL}/bike/edit/${id}`, bikeData, { withCredentials: true });
+    }
+    delete(id: string): Observable<null> {
+        return this.http.delete<null>(`${API_URL}/bike/delete/${id}`, { withCredentials: true });
+    }
 }

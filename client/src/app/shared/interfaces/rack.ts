@@ -1,3 +1,5 @@
+import { IComment } from './comment';
+
 export interface IRack {
     _id: string;
     brand: string;
@@ -12,4 +14,5 @@ export interface IRack {
     netWeight: number;
     description: string;
     images: string[];
+    comments: IComment[];
 }
