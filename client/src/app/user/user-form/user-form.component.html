@@ -1,0 +1,73 @@
+<app-notification (notDestroy)="onCloseNot()" *ngIf="error?.length !== 0" [errorMessage]="error"></app-notification>
+
+
+<div class="form-container">
+    <form
+        class="form"
+        [formGroup]="userForm"
+        (ngSubmit)="onSubmit()"
+        *ngIf="!isLoading"
+    >
+        <p *ngIf="!isEdit" class="title">Personal Info</p>
+        <p *ngIf="isEdit" class="title">Edit Profile</p>
+
+        <div class="input-row">
+            <input *ngIf="isEdit" class="input-field" formControlName="firstName" type="text" placeholder="First Name" />
+            <input *ngIf="!isEdit" class="input-field" formControlName="firstName" type="text" placeholder="First Name *" />
+        </div>
+        <div class="input-row">
+            <input *ngIf="isEdit" class="input-field" formControlName="lastName" type="text" placeholder="Last Name" />
+            <input *ngIf="!isEdit" class="input-field" formControlName="lastName" type="text" placeholder="Last Name *" />
+        </div>
+        <div class="input-row">
+            <input class="input-field"
+            *ngIf="isEdit"
+            formControlName="email"
+            type="email"
+            placeholder="Email"
+            [ngClass]="
+                        userForm.get('email')?.invalid &&
+                        userForm.get('email')?.touched
+                            ? 'input-err'
+                            : null
+                    "
+        />
+        <input *ngIf="!isEdit" class="input-field" formControlName="email" type="text" placeholder="Email *" />
+        <ng-container
+                    *ngIf="
+                        userForm.get('email')?.invalid &&
+                        userForm.get('email')?.touched
+                    "
+                >
+                    <p
+                        class="error"
+                        *ngIf="userForm.get('email')?.errors?.['required']"
+                    >
+                        Email is required!
+                    </p>
+                    <p
+                        class="error"
+                        *ngIf="userForm.get('email')?.errors?.['invalidEmail']"
+                    >
+                        Email is invalid!
+                    </p>
+                </ng-container>
+        </div>
+        <div class="input-row">
+            <input *ngIf="isEdit" class="input-field" formControlName="phone" type="text" placeholder="Phone number" />
+            <input *ngIf="!isEdit" class="input-field" formControlName="phone" type="text" placeholder="Phone number *" />
+        </div>
+        <div class="input-row">
+            <input *ngIf="isEdit" class="input-field" formControlName="address" type="text" placeholder="Delivery address" />
+            <input *ngIf="!isEdit" class="input-field" formControlName="address" type="text" placeholder="Delivery address *" />
+        </div>
+
+        <div  *ngIf="!isEdit" class="btn-wrap">
+            <button type="submit"  class="btn btn-checkout">PURCHASE</button>
+        </div>
+        <div *ngIf="isEdit" class="btn-wrap-edit">
+            <button type="submit" class="btn-edit">EDIT</button>
+            <button type="button" (click)="cancelHandler()" class="btn-delete">CANCEL</button>
+        </div>
+    </form>
+</div>

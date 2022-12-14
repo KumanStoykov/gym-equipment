@@ -24,9 +24,7 @@
     font-weight: 400;
 }
 
-.btn-wrap {
-    margin-bottom: 1rem;
-}
+
 
 .input-row {
     position: relative;
@@ -57,6 +55,10 @@
 .input-err {
     border: 1px solid $clr-red;
 
+    &:hover {
+        border: 1px solid $clr-red;
+    }
+
     &:focus {
         box-shadow: 0px 0px 3px 1px rgba(221, 30, 49, 0.47);
     }
@@ -65,6 +67,48 @@
 .error {
     color: $clr-red;
 }
+
+.btn-wrap {
+    margin-bottom: 1rem;
+}
+
+.btn-wrap-edit {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+
+    .btn-delete {
+        border: none;
+        color: $clr-with;
+        width: 130px;
+        height: 36px;
+        background: $clr-red;
+        font-weight: 400;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            background: inherit;
+            color: $clr-red;
+            border: 1px solid $clr-red;
+        }
+    }
+    .btn-edit {
+        border: none;
+        color: white;
+        width: 130px;
+        height: 36px;
+        font-weight: 400;
+        background: #369729;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            background: inherit;
+            color: #369729;
+            border: 1px solid #369729;
+        }
+    }
+}
+
 
 @media all and (max-width: 768px) {
     .form {
@@ -75,5 +119,26 @@
     .title {
         padding: 0 3rem;
         font-size: 1.2rem;
+    }
+
+    .btn-checkout {
+        font-size: none;
+        padding: 8px 2rem;
+    }
+
+    .btn-wrap-edit {
+        .btn-delete {
+            width: 84px;
+            height: 32px;
+
+            transition: none;
+        }
+        .btn-edit {
+
+            width: 84px;
+            height: 32px;
+            transition: none;
+
+        }
     }
 }
