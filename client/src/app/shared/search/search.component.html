@@ -4,6 +4,11 @@
 
         <app-filter-price></app-filter-price>
 
-        <app-filter-brand></app-filter-brand>
+        <ng-container *ngIf="!isPromotion">
+            <app-filter-brand></app-filter-brand>
+        </ng-container>
+        <ng-container *ngIf="isPromotion">
+            <app-filter-products></app-filter-products>
+        </ng-container>
     </div>
 </div>

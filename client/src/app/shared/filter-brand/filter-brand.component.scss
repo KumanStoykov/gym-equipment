@@ -1,8 +1,8 @@
 @import "/src/app/shared/variables.scss";
 
 .filter-product {
-    width: 103.5px;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 }
 .title-filter {
     margin: 0.6rem 0;
@@ -14,3 +14,10 @@
         cursor: pointer;
     }
 }
+
+@media all and (max-width: 768px) {
+    .filter-product {
+        align-items: center;
+    }
+}
+

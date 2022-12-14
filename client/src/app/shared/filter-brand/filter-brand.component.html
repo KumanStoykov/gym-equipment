@@ -1,19 +1,11 @@
 <div class="filter-product">
     <h4 class="title-filter">BRAND</h4>
-    <div class="checkbox-wrap">
-        <input type="checkbox" />
-        <label for="barbells">Nike</label>
-    </div>
-    <div class="checkbox-wrap">
-        <input type="checkbox" />
-        <label for="plates">Rogue</label>
-    </div>
-    <div class="checkbox-wrap">
-        <input type="checkbox" />
-        <label for="rigs&racks">Reebok</label>
-    </div>
-    <div class="checkbox-wrap">
-        <input type="checkbox" />
-        <label for="dumbbell">Goruck</label>
-    </div>
+    <ul role="list" *ngIf="!isLoading">
+        <li class="checkbox-wrap" *ngFor="let brand of brands">
+            <input id="{{brand}}" [value]="brand" name="{{brand}}" type="checkbox"
+            [checked]="selectedBrands.includes(brand)"  (click)="onCheckClick($event)"/>
+            <label for="{{brand}}">{{brand}}</label>
+        </li>
+
+    </ul>
 </div>

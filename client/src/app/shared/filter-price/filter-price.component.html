@@ -1,16 +1,16 @@
 <div class="filter-price">
     <h4 class="title-filter">PRICE</h4>
-    <form class="form">
+    <form class="form" (ngSubmit)="onSubmit()" #form="ngForm">
         <div class="row-wrap">
             <label for="priceFrom">min</label>
-            <input class="input-field price" id="priceFrom" type="number" />
+            <input ngModel [(ngModel)]="priceFrom" name="priceFrom" class="input-field price" id="priceFrom" type="number" />
         </div>
         <div class="row-wrap">
             <label for="priceTo">max</label>
-            <input class="input-field price" id="priceTo" type="number" />
+            <input ngModel [(ngModel)]="priceTo" name="priceTo" class="input-field price" id="priceTo" type="number" />
         </div>
         <div class="btn-wrap">
-            <button class="btn filter-btn">Filter</button>
+            <button type="submit" class="btn filter-btn">Filter</button>
         </div>
     </form>
 </div>

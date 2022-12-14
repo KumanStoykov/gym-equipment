@@ -1,10 +1,8 @@
 <div class="filter-order">
     <h4 class="title-filter">ORDER</h4>
-    <select class="sort-criteria" name="sort-criteria" id="">
+    <select class="sort-criteria" name="sort-criteria" id="sort-criteria" (change)="onSelectChange($event)">
         <option value="">-------</option>
-        <option value="price-asc">Price ascending</option>
-        <option value="price-desc">Price descending</option>
-        <option value="rating-asc">Rating ascending</option>
-        <option value="rating-desc">Rating descending</option>
+        <option value="asc">Price ascending</option>
+        <option value="desc">Price descending</option>
     </select>
 </div>

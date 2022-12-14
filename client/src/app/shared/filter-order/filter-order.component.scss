@@ -47,11 +47,18 @@
 
 .title-filter {
     margin: 0.6rem 0;
-    position: relative;
+    width: 100%;
+    font-size: 1.2rem;
 }
 .checkbox-wrap {
     text-align: left;
     input {
         cursor: pointer;
+    }
+}
+
+@media all and (max-width: 768px) {
+    .title-filter {
+        text-align: center;
     }
 }
