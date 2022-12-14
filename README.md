@@ -48,13 +48,12 @@ Guest users may register with an email and password which allows them to view th
 | Login/ Register | ✔️      | ❌             | ❌    |
 | Home page       | ✔️      | ✔️              |  ✔️     |
 | Details         | ✔️      | ✔️              |  ✔️     |
-| Cart            | ✔️      | ✔️              |  ✔️     |
-| Favorites       | ✔️      | ✔️              |  ✔️     |
+| Wishlist        | ✔️      | ✔️              |  ✔️     |
 | Checkout        | ✔️      | ✔️              |  ✔️     |
 | Profile         | ❌     | ✔️              |  ✔️     |
 | My Orders       | ❌     | ✔️              |  ✔️     |
 | Create Product  | ❌     | ❌             |  ✔️    |
-| Admin Users     | ❌     | ❌             |  ✔️    |
+| Statistic       | ❌     | ❌             |  ✔️    |
 | Admin Orders    | ❌     | ❌             |  ✔️    |
 | Admin Products  | ❌     | ❌             |  ✔️    |
 
