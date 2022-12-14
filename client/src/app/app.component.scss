@@ -8,3 +8,10 @@
 .content {
     flex: 1;
 }
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgb(0, 0, 0, 0.3);
+}
