@@ -16,6 +16,15 @@
     width: 100%;
 }
 
+.empty {
+    text-align: center;
+    width: 100%;
+    margin: 3rem auto;
+    font-size: 2rem;
+    color: $clr-font-desc;
+    font-family: "Dosis", sans-serif;
+}
+
 @media all and (max-width: 768px) {
     .page-content-wrap {
         flex-direction: column;

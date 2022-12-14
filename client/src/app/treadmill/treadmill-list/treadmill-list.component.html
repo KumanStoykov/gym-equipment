@@ -10,15 +10,16 @@
 
         <app-loader *ngIf="isLoading" size="medium"></app-loader>
 
-        <div *ngIf="!isLoading" class="page-content-wrap"> 
+        <div *ngIf="!isLoading" class="page-content-wrap">
             <app-search></app-search>
 
-            <ul class="cards-wrap">
+            <ul *ngIf="treadmills.length !== 0" class="cards-wrap">
                 <li *ngFor="let treadmill of treadmills">
                     <app-product-card [product]="treadmill" cardType="treadmill"></app-product-card>
                 </li>
 
             </ul>
+            <h3 class="empty" *ngIf="treadmills.length === 0">NO PRODUCTS</h3>
         </div>
         <app-pagination *ngIf="!isLoading" [countPages]="6" [productCount]="count"></app-pagination>
     </div>

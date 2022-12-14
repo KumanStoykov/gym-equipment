@@ -11,8 +11,8 @@ import { TreadmillService } from '../treadmill.service';
 })
 export class TreadmillListComponent implements OnInit {
 
-    heroTitle = 'TREADMILLS';
-    pageTitle = 'SUPREME RUNNING PERFORMANCE';
+    heroTitle: string = 'TREADMILLS';
+    pageTitle: string = 'SUPREME RUNNING PERFORMANCE';
 
     treadmills: ITreadmill[] = [];
     page: number = 1;
