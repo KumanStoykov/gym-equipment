@@ -12,6 +12,7 @@ import { BikeService } from 'src/app/bike/bike.service';
 import { DumbbellService } from 'src/app/dumbbell/dumbbell.service';
 import { RackService } from 'src/app/rack/rack.service';
 import { TreadmillService } from 'src/app/treadmill/treadmill.service';
+import { UserService } from 'src/app/user/user.service';
 
 @Component({
     selector: 'app-confirm',
@@ -32,6 +33,7 @@ export class ConfirmComponent implements OnInit {
         bench: BenchService,
         dumbbell: DumbbellService,
         rack: RackService,
+        user: UserService,
     }
 
 
@@ -44,6 +46,7 @@ export class ConfirmComponent implements OnInit {
         private rackService: RackService,
         private benchService: BenchService,
         private dumbbellService: DumbbellService,
+        private userService: UserService,
 
     ) {
         this.deleteRequests = {
@@ -52,6 +55,7 @@ export class ConfirmComponent implements OnInit {
             'bench': this.benchService,
             'dumbbell': this.dumbbellService,
             'rack': this.rackService,
+            'user': this.userService,
         }
     }
 
@@ -77,6 +81,7 @@ export class ConfirmComponent implements OnInit {
             || this.productType == 'bench'
             || this.productType == 'rack'
             || this.productType == 'dumbbell'
+            || this.productType == 'user'
         ) {
             console.log(this.productId)
             this.deleteRequests[this.productType].delete(this.productId).subscribe({
@@ -92,12 +97,6 @@ export class ConfirmComponent implements OnInit {
                 }
             })
         }
-
-
-
-
-
-
     }
 
 }

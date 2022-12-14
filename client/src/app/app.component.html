@@ -1,4 +1,7 @@
-<router-outlet></router-outlet>
+<div *ngIf="(message$ | async)?.typeMsg === 'delete'" class="modal">
+    <app-confirm></app-confirm>
+</div>
+
 <app-header></app-header>
 
 <main class="content">
