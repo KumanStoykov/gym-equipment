@@ -92,10 +92,10 @@
             </button>
         </div>
         <div *ngIf="(user$ | async)?.isAdmin" class="btn-wrap">
-            <button class="btn-detail btn-add">
-                EDIT
-            </button>
-            <button class="btn-detail btn-buy">
+            <a routerLink="/admin/edit/{{productType}}/{{product._id}}" class="btn-detail btn-add">
+               EDIT
+            </a>
+            <button (click)="deleteConfirm()" class="btn-detail btn-buy">
                 DELETE
             </button>
         </div>
