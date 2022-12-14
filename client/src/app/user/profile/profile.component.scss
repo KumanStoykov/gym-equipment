@@ -1,0 +1,110 @@
+@import "/src/app/shared/variables.scss";
+.profile {
+    padding: 1rem;
+    margin-bottom: 3rem;
+    font-size: 1.25rem;
+
+}
+.content-wrap {
+    max-width: 600px;
+    margin: auto;
+    padding: 1rem;
+    border: 1px solid $clr-gray-light;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2rem;
+    position: relative;
+}
+
+.title {
+    position: absolute;
+    top: -20px;
+    background: $clr-with;
+    padding: 0 7rem;
+    font-size: 1.75rem;
+    border-bottom: 1px solid $clr-gray-light;
+    font-weight: 400;
+}
+
+.row-wrap {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    width: 100%;
+
+    &:not(:last-child) {
+        border-bottom: 1px solid $clr-gray-light;
+        margin-bottom: 2rem;
+    }
+}
+
+.info-row {
+    &:not(:nth-child(2)) {
+        font-weight: bold;
+    }
+}
+
+.btn-wrap {
+    display: flex;
+    gap: 1rem;
+
+    .btn-delete {
+        border: none;
+        color: $clr-with;
+        width: 130px;
+        height: 36px;
+        background: $clr-red;
+        font-weight: 400;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            background: inherit;
+            color: $clr-red;
+            border: 1px solid $clr-red;
+        }
+    }
+    .btn-edit {
+        border: none;
+        color: white;
+        width: 130px;
+        height: 36px;
+        font-weight: 400;
+        background: #369729;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            background: inherit;
+            color: #369729;
+            border: 1px solid #369729;
+        }
+    }
+}
+
+@media all and (max-width: 768px) {
+
+    .profile {
+        font-size: 1rem;
+
+    }
+    .title {
+        padding: 0 3rem;
+        font-size: 1.2rem;
+    }
+    .btn-wrap {
+        .btn-delete {
+            width: 84px;
+            height: 32px;
+
+            transition: none;
+        }
+        .btn-edit {
+
+            width: 84px;
+            height: 32px;
+            transition: none;
+
+        }
+    }
+}
+

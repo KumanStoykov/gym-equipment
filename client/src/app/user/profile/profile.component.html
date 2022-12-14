@@ -1,0 +1,35 @@
+<app-page-hero [heroPageTitle]="heroTitle"></app-page-hero>
+
+<section class="profile container">
+    <app-user-nav></app-user-nav>
+    <div *ngIf="!isEdit" class="content-wrap">
+        <p class="title">User Info</p>
+        <div class="row-wrap">
+            <p class="info-row">First Name:</p>
+            <p class="info-row">{{user?.firstName}}</p>
+        </div>
+        <div class="row-wrap">
+            <p class="info-row">Last Name:</p>
+            <p class="info-row">{{user?.lastName}}</p>
+        </div>
+        <div class="row-wrap">
+            <p class="info-row">Email:</p>
+            <p class="info-row">{{user?.email}}</p>
+        </div>
+        <div class="row-wrap">
+            <p class="info-row">Phone:</p>
+            <p class="info-row">{{user?.phone}}</p>
+        </div>
+        <div class="row-wrap">
+            <p class="info-row">Address:</p>
+            <p class="info-row">{{user?.address}}</p>
+        </div>
+        <div class="btn-wrap">
+            <button (click)="editClickHandler()" class="btn-edit">EDIT</button>
+            <button (click)="deleteConfirm()" class="btn-delete">DELETE</button>
+        </div>
+    </div>
+    <ng-container *ngIf="isEdit">
+        <app-user-form (cancelEdit)="editClickHandler()" [isEdit]="isEdit"></app-user-form>
+    </ng-container>
+</section>
