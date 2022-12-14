@@ -6,12 +6,14 @@ import * as AuthActions from './actions';
 
 export interface IAuthState {
     user: IUser | null;
+    message: AuthActions.messageProps | null;
 }
 
 export const featureKey = 'auth';
 
 const initialState: IAuthState = {
     user: null,
+    message: null
 };
 
 
@@ -31,16 +33,28 @@ const _authReducer = createReducer(
             }
         }
     }),
-    on(AuthActions.auth_fail, (state, action) => {
+    on(AuthActions.auth_fail, (state) => {
         return{
             ...state,
             user: null
         }
     }),
-    on(AuthActions.auth_logout, (state, action) => {
+    on(AuthActions.auth_logout, (state) => {
         return{
             ...state,
             user: null
+        }
+    }),
+    on(AuthActions.add_message, (state, action) => {
+        return {
+            ...state,
+            message: action
+        }
+    }),
+    on(AuthActions.clear_message, (state) => {
+        return {
+            ...state,
+            message: null
         }
     })
 

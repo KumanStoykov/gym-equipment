@@ -10,3 +10,8 @@ export const selectUser = createSelector(
     selectorFeature,
     (state: IAuthState) => <IUser>state.user
 );
+
+export const selectMessage = createSelector(
+    selectorFeature,
+    (state: IAuthState) => state.message
+);
