@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 import { IComment } from 'src/app/shared/interfaces';
 
-//user
+//Auth
 export const authSuccess = '[Auth] Auth Success';
 
 export const authFail = '[Auth] Auth Fail';
@@ -42,3 +42,16 @@ export const clear_comment = createAction(clearComment);
 
 
 export type commentProps = { comments: IComment[] };
+
+//wishlist
+
+export const addToWishlist = '[Auth] Add to Wishlist';
+export const removeFromWishlist = '[Auth] Remove from Wishlist';
+export const autoLoadFromWishlist = '[Auth] Auto load from Wishlist';
+
+export const add_wishlist = createAction(addToWishlist, props<wishlistProps>());
+export const remove_wishlist = createAction(removeFromWishlist, props<wishlistProps>());
+export const auto_load_wishlist = createAction(autoLoadFromWishlist, props<wishlistProps>());
+
+
+export type wishlistProps = { _id: string, productType: string };

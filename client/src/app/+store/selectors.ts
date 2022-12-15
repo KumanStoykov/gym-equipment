@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { IUser } from '../../shared/interfaces';
+import { IUser } from '../shared/interfaces';
 import { IAuthState } from './reducers';
 
 
@@ -19,4 +19,9 @@ export const selectMessage = createSelector(
 export const selectComment = createSelector(
     selectorFeature,
     (state: IAuthState) => state.comments
+);
+
+export const selectWishlist = createSelector(
+    selectorFeature,
+    (state: IAuthState) => state.wishlist
 );
