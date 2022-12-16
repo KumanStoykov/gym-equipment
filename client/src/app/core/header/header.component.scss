@@ -6,41 +6,6 @@
     box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
 }
 
-.top-nav {
-    background-color: $clr-gray-light;
-
-}
-.top-list-wrap {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.top-nav-list {
-    display: flex;
-    gap: 3rem;
-}
-.nav-link-top {
-    position: relative;
-    background: inherit;
-    border: none;
-    font-size: 1.25rem;
-    color: $clr-dark;
-
-    span{
-        position: absolute;
-        top: -10px;
-        right: -10px;
-        background: $clr-red;
-        color: $clr-with;
-        width: 16px;
-        height: 16px;
-        border-radius: 50%;
-        text-align: center;
-        font-size: 10px;
-        font-weight: bold;
-    }
-}
-
 .nav-wrap {
     display: flex;
     justify-content: center;
@@ -48,15 +13,7 @@
     align-items: center;
     font-family: "Dosis", sans-serif;
 }
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: $clr-dark;
-}
-.logo-img {
-    margin: auto;
-    margin-top: -20px;
-}
+
 
 .hamburger-menu {
     display: none;
@@ -92,14 +49,7 @@
         color: $clr-orange-light;
     }
 }
-.dropdown .dropdown-btn.user-icon{
-    &::before {
-        display: none;
-    }
-    &::after {
-        display: none;
-    }
-}
+
 .dropdown {
     position: relative;
 
@@ -151,15 +101,6 @@
             }
         }
     }
-
-    .user-dropdown {
-        top: 50px;
-        left: -2.3rem;
-        min-width: 110px;
-        a{
-            font-weight: 500
-        }
-    }
 }
 
 .dropdown-open .dropdown-content {
@@ -194,27 +135,7 @@
     }
 }
 
-@media all and (max-width: 1200px) {
-    .dropdown {
-
-        .user-dropdown {
-            left: -4.3rem;
-        }
-    }
-}
-
 @media all and (max-width: 1000px) {
-    .top-list-wrap {
-        padding: 0 1rem;
-    }
-
-    .logo {
-        font-size: 1.5rem;
-    }
-    .logo-img {
-        width: 2rem;
-        margin-top: -15px;
-    }
 
     .nav-wrap {
         justify-content: end;
@@ -336,15 +257,6 @@
             }
         }
 
-        .user-dropdown {
-            position: absolute;
-            top: 50px;
-            left: -3.3rem;
-            background: $clr-with;
-            a {
-                width: 100%;
-            }
-        }
     }
 
     .dropdown-open .dropdown-btn {
@@ -354,28 +266,6 @@
         }
     }
 }
-
-@media all and (max-width: 768px) {
-    .dropdown {
-
-        .user-dropdown {
-            left: -5rem;
-        }
-    }
-}
-
-@media all and (max-width: 468px) {
-    .top-nav-list {
-        gap: 1.25rem;
-    }
-    .dropdown {
-
-        .user-dropdown {
-            left: -5rem;
-        }
-    }
-}
-
 
 @keyframes slide-down {
     0% {

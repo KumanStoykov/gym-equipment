@@ -1,0 +1,90 @@
+<div class="top-nav">
+    <div class="top-list-wrap container">
+        <div class="logo-wrap">
+            <a routerLink="/" class="logo"
+                >GYM
+                <img
+                    class="logo-img"
+                    src="../../../assets/809670_body building_fitness_sports_weight_icon.png"
+                    alt=""
+                />
+            </a>
+        </div>
+        <ul role="list" class="top-nav-list">
+            <li class="nav-list-item">
+                <a routerLink="/user/wishlist" class="nav-link-top"
+                    ><fa-icon class="faHeart" [icon]="icons.faHeart"></fa-icon>
+                </a>
+            </li>
+            <li class="nav-list-item">
+                <a routerLink="/user/cart" class="nav-link-top"
+                    ><fa-icon
+                        class="faCartShopping"
+                        [icon]="icons.faCartShopping"
+                    ></fa-icon>
+                    <span
+                        *ngIf="(cart$ | async)?.length || 0 > 0"
+                        class="cart-count"
+                        >{{ (cart$ | async)?.length }}</span
+                    >
+                </a>
+            </li>
+            <li class="nav-list-item" *ngIf="user$ | async">
+                <a
+                    routerLink="/user/{{ (user$ | async)?._id }}"
+                    class="nav-link-top"
+                    ><fa-icon class="faUser" [icon]="icons.faUser"></fa-icon>
+                </a>
+            </li>
+            <li
+                appClickOutside
+                (clickOutside)="handleOutsideClick()"
+                class="nav-list-item dropdown"
+                [ngClass]="accountIsToggle ? 'dropdown-open' : 'dropdown-close'"
+                *ngIf="!(user$ | async)"
+            >
+                <button
+                    class="nav-link-top dropdown-btn user-icon"
+                    (click)="dropdownToggle()"
+                >
+                    <fa-icon
+                        class="faUser"
+                        [icon]="icons.faUseRegular"
+                    ></fa-icon>
+                </button>
+
+                <ul class="dropdown-content user-dropdown" role="list">
+                    <li class="nav-list-item">
+                        <a
+                            routerLink="/auth/login"
+                            class="nav-link-top"
+                            (click)="handleOutsideClick()"
+                            >Login
+                        </a>
+                    </li>
+                    <li class="nav-list-item">
+                        <a
+                            routerLink="/auth/register"
+                            class="nav-link-top"
+                            (click)="handleOutsideClick()"
+                            >Register
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-list-item" *ngIf="(user$ | async)?.isAdmin">
+                <a routerLink="/admin" class="nav-link-top">
+                    <fa-icon class="faUser" [icon]="icons.faGears"></fa-icon>
+                </a>
+            </li>
+            <li class="nav-list-item" *ngIf="user$ | async">
+                <button class="nav-link-top" (click)="logout()">
+                    <fa-icon
+                        class="faArrowRightFromBracket"
+                        [icon]="icons.faArrowRightFromBracket"
+                    ></fa-icon>
+                </button>
+            </li>
+        </ul>
+    </div>
+</div>

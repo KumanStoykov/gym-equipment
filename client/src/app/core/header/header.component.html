@@ -1,105 +1,8 @@
-<header class="header" appClickOutside (clickOutside)="handleOutsideClick()">
-    <div class="top-nav">
-        <div class="top-list-wrap container">
-            <div class="logo-wrap">
-                <a routerLink="/" class="logo"
-                    >GYM
-                    <img
-                        class="logo-img"
-                        src="../../../assets/809670_body building_fitness_sports_weight_icon.png"
-                        alt=""
-                    />
-                </a>
-            </div>
-            <ul role="list" class="top-nav-list">
-                <li class="nav-list-item">
-                    <a
-                        routerLink="/user/wishlist"
-                        class="nav-link-top"
-                        ><fa-icon
-                            class="faHeart"
-                            [icon]="icons.faHeart"
-                        ></fa-icon>
-                    </a>
-                </li>
-                <li class="nav-list-item">
-                    <a
-                        routerLink="/user/cart"
-                        class="nav-link-top"
-                        ><fa-icon
-                            class="faCartShopping"
-                            [icon]="icons.faCartShopping"
-                        ></fa-icon>
-                        <span *ngIf="(cart$ | async)?.length || 0 > 0" class="cart-count">{{(cart$ | async)?.length}}</span>
-                    </a>
-                </li>
-                <li class="nav-list-item" *ngIf="user$ | async">
-                    <a
-                        routerLink="/user/{{ (user$ | async)?._id }}"
-                        class="nav-link-top"
-                        ><fa-icon
-                            class="faUser"
-                            [icon]="icons.faUser"
-                        ></fa-icon>
-                    </a>
-                </li>
-                <li
-                    class="nav-list-item dropdown"
-                    [ngClass]="
-                        accountIsToggle ? 'dropdown-open' : 'dropdown-close'
-                    "
-                    *ngIf="!(user$ | async)"
-                >
-                    <button
-                        class="nav-link-top dropdown-btn user-icon"
-                        (click)="dropdownToggle('account')"
-                    >
-                        <fa-icon
-                            class="faUser"
-                            [icon]="icons.faUseRegular"
-                        ></fa-icon>
-                    </button>
+<header class="header">
+    <app-top-navigation></app-top-navigation>
 
-                    <ul class="dropdown-content user-dropdown" role="list">
-                        <li class="nav-list-item">
-                            <a
-                                routerLink="/auth/login"
-                                class="nav-link-top"
-                                (click)="handleOutsideClick()"
-                                >Login
-                            </a>
-                        </li>
-                        <li class="nav-list-item">
-                            <a
-                                routerLink="/auth/register"
-                                class="nav-link-top"
-                                (click)="handleOutsideClick()"
-                                >Register
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-list-item" *ngIf="(user$ | async)?.isAdmin">
-                    <a routerLink="/admin" class="nav-link-top">
-                        <fa-icon
-                            class="faUser"
-                            [icon]="icons.faGears"
-                        ></fa-icon>
-                    </a>
-                </li>
-                <li class="nav-list-item" *ngIf="user$ | async">
-                    <button class="nav-link-top" (click)="logout()">
-                        <fa-icon
-                            class="faArrowRightFromBracket"
-                            [icon]="icons.faArrowRightFromBracket"
-                        ></fa-icon>
-                    </button>
-                </li>
-            </ul>
-        </div>
-    </div>
     <div class="nav-wrap container" [ngClass]="menuIsToggle ? 'menu-open' : ''">
-        <nav class="nav">
+        <nav class="nav" appClickOutside (clickOutside)="handleOutsideClick()">
             <div class="hamburger-menu" (click)="menuToggle()">
                 <span class="bar bar1"></span>
                 <span class="bar bar2"></span>
@@ -148,7 +51,7 @@
                 >
                     <button
                         class="nav-link dropdown-btn"
-                        (click)="dropdownToggle('strength')"
+                        (click)="dropdownToggle()"
                     >
                         STRENGTH
                     </button>
