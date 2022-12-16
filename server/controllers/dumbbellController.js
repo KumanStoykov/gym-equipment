@@ -82,6 +82,7 @@ router.post('/create', loggedIn(), isAdmin(), async (req, res) => {
 
         const dumbbellData = {
             brand: formData.brand,
+            productType: 'dumbbell',
             price: formData.price,
             promoPrice: formData.promoPrice,
             currentPrice: currentPrice,
@@ -150,6 +151,7 @@ router.put('/edit/:dumbbellId', loggedIn(), isAdmin(), async (req, res) => {
 
         const dumbbellData = {
             brand: formData.brand,
+            productType: 'dumbbell',
             price: formData.price,
             promoPrice: formData.promoPrice,
             currentPrice: currentPrice,

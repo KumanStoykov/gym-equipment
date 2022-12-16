@@ -8,6 +8,7 @@ const rackController = require('../controllers/rackController');
 const treadmillController = require('../controllers/treadmillController');
 const promotionController = require('../controllers/promotionController');
 const commentController = require('../controllers/commentController');
+const orderController = require('../controllers/orderController');
 
 router.use('/user', userController);
 router.use('/bench', benchController);
@@ -17,5 +18,6 @@ router.use('/rack', rackController);
 router.use('/treadmill', treadmillController);
 router.use('/promotion', promotionController);
 router.use('/comment', commentController);
+router.use('/order', orderController);
 
 module.exports = router;

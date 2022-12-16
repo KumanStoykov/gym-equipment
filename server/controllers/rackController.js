@@ -81,6 +81,7 @@ router.post('/create', loggedIn(), isAdmin(), async (req, res) => {
 
         const rackData = {
             brand: formData.brand,
+            productType: 'rack',
             price: formData.price,
             promoPrice: formData.promoPrice,
             currentPrice: currentPrice,
@@ -147,6 +148,7 @@ router.put('/edit/:rackId', loggedIn(), isAdmin(), async (req, res) => {
 
         const rackData = {
             brand: formData.brand,
+            productType: 'rack',
             price: formData.price,
             promoPrice: formData.promoPrice,
             currentPrice: currentPrice,

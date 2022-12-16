@@ -81,6 +81,7 @@ router.post('/create', async (req, res) => {
 
         const treadmillData = {
             brand: formData.brand,
+            productType: 'treadmill',
             price: formData.price,
             promoPrice: formData.promoPrice,
             currentPrice: currentPrice,
@@ -151,6 +152,7 @@ router.put('/edit/:treadmillId', loggedIn(), isAdmin(), async (req, res) => {
 
         const treadmillData = {
             brand: formData.brand,
+            productType: 'treadmill',
             price: formData.price,
             promoPrice: formData.promoPrice,
             currentPrice: currentPrice,

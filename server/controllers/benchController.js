@@ -80,6 +80,7 @@ router.post('/create', loggedIn(), isAdmin(), async (req, res) => {
 
         const benchData = {
             brand: formData.brand,
+            productType: 'bench',
             price: formData.price,
             promoPrice: formData.promoPrice,
             currentPrice: currentPrice,
@@ -147,6 +148,7 @@ router.put('/edit/:benchId', loggedIn(), isAdmin(), async (req, res) => {
         const benchData = {
             brand: formData.brand,
             price: formData.price,
+            productType: 'bench',
             promoPrice: formData.promoPrice,
             currentPrice: currentPrice,
             madeIn: formData.madeIn,
