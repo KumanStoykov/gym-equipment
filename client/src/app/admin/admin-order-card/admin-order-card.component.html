@@ -1,0 +1,13 @@
+<article class="checkout-card" *ngFor="let product of order?.products">
+    <div class="img-wrap cell">
+        <img src="{{ product.product.images[0].url }}" alt="image" />
+    </div>
+    <div class="cell price-quantity">
+        <p class="name">Product Id: {{ product._id }}</p>
+        <p class="name">Price: {{ product.price }}</p>
+        <p class="name">Quantity: {{ product.quantity }}</p>
+    </div>
+    <div class="cell brand">
+        <p class="name">{{ product.product.brand }}</p>
+    </div>
+</article>
