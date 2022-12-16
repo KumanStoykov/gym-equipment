@@ -1,0 +1,33 @@
+<app-notification (notDestroy)="onCloseNot()" *ngIf="error.length !== 0" [errorMessage]="error"></app-notification>
+
+<app-page-hero [heroPageTitle]="heroTitle"></app-page-hero>
+
+
+<section class="catalog container">
+    <app-user-nav></app-user-nav>
+
+    <div class="content-wrap">
+
+        <div class="products-container">
+               <ul class="list-orders" role="list">
+                <li *ngFor="let order of orders">
+                    <app-user-order-card [order]="order"></app-user-order-card>
+                    <div class="info-wrap">
+                        <div class="order-info">
+                            <p class="info">Oder data: <span class="info-span">{{order.createdAt | date}}</span></p>
+                            <p class="info">Status: <span class="info-span">{{order.status}}</span></p>
+                        </div>
+                        <div class="price-info">
+                            <p class="info">Total Price: <span class="info-span">$ {{order.totalPrice}}</span></p>
+                            <p class="info">Delivery: <span class="info-span">$ {{order.deliveryPrice}}</span></p>
+                        </div>
+                    </div>
+                </li>
+               </ul>
+            <div>
+
+            </div>
+        </div>
+        <app-pagination *ngIf="!isLoading" [countPages]="6" [productCount]="count"></app-pagination>
+    </div>
+</section>

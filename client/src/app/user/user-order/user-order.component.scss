@@ -1,0 +1,44 @@
+@import "/src/app/shared/variables.scss";
+
+.content-wrap {
+    width: 90%;
+    background: $clr-with;
+    margin: 3rem auto;
+    position: relative;
+}
+
+.products-container {
+    margin-top: 3rem;
+
+}
+.list-orders {
+    li {
+        background: $clr-gray-light;
+
+        margin-bottom: 1rem;
+    }
+}
+.info-wrap {
+    margin-bottom: 1rem;
+    border-bottom: 2px solid $clr-red;
+    padding: 1rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.info {
+    font-weight: 400;
+    font-size: 1.25rem;
+    .info-span {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+}
+
+
+@media all and (max-width: 768px) {
+    .products-container {
+        margin: 3rem 1rem 0 1rem;
+    }
+}
