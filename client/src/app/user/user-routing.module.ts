@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../shared/guards/auth.guard';
 import { ProfileComponent } from './profile/profile.component';
-import { UserCheckoutComponent } from './user-checkout/user-checkout.component';
+import { UserCartComponent } from './user-cart/user-cart.component';
+import { UserOrderComponent } from './user-order/user-order.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 
 
@@ -12,9 +13,9 @@ const routes: Routes = [
         canActivateChild: [AuthGuard],
 		children: [
 			{
-				path: 'checkout',
+				path: 'cart',
                 pathMatch: 'full',
-				component: UserCheckoutComponent
+				component: UserCartComponent
 			},
 			{
 				path: 'wishlist',
@@ -24,6 +25,10 @@ const routes: Routes = [
             {
 				path: ':id',
 				component: ProfileComponent
+			},
+            {
+				path: ':id/orders',
+				component: UserOrderComponent
 			},
 
 		]

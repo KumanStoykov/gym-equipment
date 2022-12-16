@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 
-import { add_comment, clear_comment } from 'src/app/+store/authStore/actions';
-import * as authSelectors from '../../+store/authStore/selector';
+import { add_comment, clear_comment } from 'src/app/+store/actions';
+import * as authSelectors from '../../+store/selectors';
 import { IComment, IUser } from '../interfaces';
 import { SharedService } from '../shared.service';
 

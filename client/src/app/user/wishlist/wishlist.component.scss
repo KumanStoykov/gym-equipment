@@ -4,12 +4,21 @@
     background: $clr-with;
     margin-top: -3rem;
     position: relative;
+
 }
 
 .products-container {
+    min-height: 40vh;
     margin: 3rem auto;
 }
 
+.empty {
+    text-align: center;
+    width: 100%;
+    font-size: 2rem;
+    color: $clr-font-desc;
+    font-family: "Dosis", sans-serif;
+}
 
 @media all and (max-width: 768px) {
     .products-container {

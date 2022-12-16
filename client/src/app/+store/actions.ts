@@ -55,3 +55,21 @@ export const auto_load_wishlist = createAction(autoLoadFromWishlist, props<wishl
 
 
 export type wishlistProps = { _id: string, productType: string };
+
+//cart
+
+export const addToCart = '[Auth] Add to Cart';
+export const removeFromCart = '[Auth] Remove from Cart';
+export const decreaseQuantityCart = '[Auth] Decrease Quantity Cart';
+export const increaseQuantityCart = '[Auth] Increase Quantity Cart';
+export const autoLoadFromCart = '[Auth] Auto load from Cart';
+export const emptyCart = '[Auth] Empty Cart'
+
+export const add_cart = createAction(addToCart, props<cartProps>());
+export const remove_cart = createAction(removeFromCart, props<cartProps>());
+export const decrease_quantity_cart = createAction(decreaseQuantityCart, props<cartProps>());
+export const increase_quantity_cart = createAction(increaseQuantityCart, props<cartProps>());
+export const auto_load_cart = createAction(autoLoadFromCart, props<cartProps>());
+export const empty_cart = createAction(emptyCart);
+
+export type cartProps = { _id: string, productType: string, quantity: number };

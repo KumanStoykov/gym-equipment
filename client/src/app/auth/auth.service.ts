@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
-import * as AuthActions from '../+store/authStore/actions';
+import * as AuthActions from '../+store/actions';
 
+import * as userActions from '../+store/actions';
 import { IUser } from '../shared/interfaces';
 import { Store } from '@ngrx/store';
-import { IAuthState } from '../+store/authStore/reducers';
+import { IAuthState } from '../+store/reducers';
 import { Observable } from 'rxjs';
 
 const API_URL = environment.API_URL;
@@ -15,6 +16,8 @@ const API_URL = environment.API_URL;
     providedIn: 'root'
 })
 export class AuthService {
+
+    localStorage = localStorage;
 
     constructor(
         private http: HttpClient,
@@ -52,5 +55,22 @@ export class AuthService {
                    this.store.dispatch(AuthActions.auth_fail());
                 }
             })
+    }
+
+    fetchWishlist() {
+        let storage = this.localStorage.getItem('wishlist');
+        let currentStorage = [];
+        storage ? currentStorage = JSON.parse(this.localStorage.getItem('wishlist') || '') : null;
+        currentStorage.forEach((x: { _id: string, productType: string }) => {
+            this.store.dispatch(userActions.auto_load_wishlist({ _id: x._id, productType: x.productType }));
+        });
+    }
+    fetchCart() {
+        let storage = this.localStorage.getItem('cart');
+        let currentStorage = [];
+        storage ? currentStorage = JSON.parse(this.localStorage.getItem('cart') || '') : null;
+        currentStorage.forEach((x: { _id: string, productType: string, quantity: number }) => {
+            this.store.dispatch(userActions.auto_load_cart({ _id: x._id, productType: x.productType, quantity: x.quantity }));
+        });
     }
 }

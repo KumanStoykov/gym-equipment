@@ -19,4 +19,5 @@ export interface ITreadmill {
     description: string;
     images: string[];
     comments: IComment[];
+    createdAt: string;
 }

@@ -74,15 +74,22 @@
         </div>
 
         <div *ngIf="!(user$ | async)?.isAdmin" class="btn-wrap">
-            <button class="btn-detail btn-add">
+
+            <button *ngIf="!hasInCart" class="btn-detail btn-add" (click)="addToCartHandler()">
                 Add To Cart
                 <fa-icon class="btn-icon" [icon]="icons.faCartPlus"></fa-icon>
             </button>
-            <button class="btn-detail btn-buy">
+
+            <a routerLink="/user/cart" *ngIf="hasInCart" class="btn-detail btn-add">
+                Add To Cart
+                <fa-icon class="btn-icon" [icon]="icons.faCartPlus"></fa-icon>
+            </a>
+
+            <button *ngIf="!hasInWishlist" class="btn-detail btn-buy" (click)="addToWishlistHandler()">
                 Watch This Item
                 <fa-icon class="btn-icon" [icon]="icons.faHeartRegular"></fa-icon>
             </button>
-            <button (mouseover)="hoverHandle(true)" (mouseout)="hoverHandle(false)"  class="btn-detail btn-buy">
+            <button *ngIf="hasInWishlist" (click)="removeFromWishlistHandler(product)" (mouseover)="hoverHandle(true)" (mouseout)="hoverHandle(false)"  class="btn-detail btn-buy">
                 <span>
                     <ng-container *ngIf="isHover">Unwatch </ng-container>
                     <ng-container *ngIf="!isHover">Watching </ng-container>

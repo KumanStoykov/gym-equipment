@@ -4,8 +4,8 @@ import { Store } from '@ngrx/store';
 
 
 import { IUser } from 'src/app/shared/interfaces';
-import * as authSelectors from '../../+store/authStore/selector';
-import { IAuthState } from 'src/app/+store/authStore/reducers';
+import * as authSelectors from '../../+store/selectors';
+import { IAuthState } from 'src/app/+store/reducers';
 @Component({
   selector: 'app-user-nav',
   templateUrl: './user-nav.component.html',

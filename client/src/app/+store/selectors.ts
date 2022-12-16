@@ -25,3 +25,7 @@ export const selectWishlist = createSelector(
     selectorFeature,
     (state: IAuthState) => state.wishlist
 );
+export const selectCart = createSelector(
+    selectorFeature,
+    (state: IAuthState) => state.cart
+);

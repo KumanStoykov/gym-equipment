@@ -1,46 +1,61 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { IAuthState } from 'src/app/+store/authStore/reducers';
+import { IAuthState } from 'src/app/+store/reducers';
 
-import { IUser } from 'src/app/shared/interfaces';
+import * as authActions from '../../+store/actions';
+import { IProduct, IUser } from 'src/app/shared/interfaces';
 import { emailValidator } from '../../shared/validators';
 import { UserService } from '../user.service';
-import { auth_success } from 'src/app/+store/authStore/actions';
+import { auth_success } from 'src/app/+store/actions';
+import { Router } from '@angular/router';
 
 @Component({
-	selector: 'app-user-form',
-	templateUrl: './user-form.component.html',
-	styleUrls: ['./user-form.component.scss']
+    selector: 'app-user-form',
+    templateUrl: './user-form.component.html',
+    styleUrls: ['./user-form.component.scss']
 })
 export class UserFormComponent implements OnInit {
-	@Input() isEdit: boolean = false;
+    @Input() isEdit: boolean = false;
+    @Input() products: IProduct[] = [];
     @Output('cancelEdit') cancelEdit: EventEmitter<boolean> = new EventEmitter;
 
-	user: IUser | undefined;
-	userForm!: FormGroup;
-	error: string = '';
-	isLoading: boolean = false;
+    user: IUser | undefined;
+    userForm!: FormGroup;
+    error: string = '';
+    isLoading: boolean = false;
 
-	constructor(
-		private fb: FormBuilder,
-		private userService: UserService,
-		private router: Router,
-		private store: Store<IAuthState>
-	) {
-		this.userForm = this.fb.group({
-            firstName: [''],
-            lastName: [''],
-			email: ['', [Validators.required], emailValidator()],
-			phone: [''],
-			address: [''],
+    constructor(
+        private fb: FormBuilder,
+        private userService: UserService,
+        private store: Store<IAuthState>,
+        private router: Router
+    ) {
+        if (this.isEdit) {
+            this.userForm = this.fb.group({
+                firstName: [''],
+                lastName: [''],
+                email: ['', [Validators.required], emailValidator()],
+                phone: [''],
+                address: ['']
 
-		});
-	}
+            });
 
-	ngOnInit(): void {
-        if(this.isEdit) {
+        } else {
+            this.userForm = this.fb.group({
+                firstName: ['', [Validators.required]],
+                lastName: ['', [Validators.required]],
+                email: ['', [Validators.required], emailValidator()],
+                phone: ['', [Validators.required]],
+                address: ['', [Validators.required]]
+
+            });
+        }
+    }
+
+    ngOnInit(): void {
+
+        if (this.isEdit) {
             this.isLoading = true;
             this.userService.loadProfile().subscribe({
                 next: user => {
@@ -62,9 +77,9 @@ export class UserFormComponent implements OnInit {
 
 
         }
-	}
+    }
 
-	onSubmit(): void {
+    onSubmit(): void {
 
         if (this.userForm.invalid || this.userForm.pending) { return; }
 
@@ -72,33 +87,55 @@ export class UserFormComponent implements OnInit {
 
         this.isLoading = true;
 
-        this.userService.editUser(this.user?._id!, formValue).subscribe({
-            next: user => {
-                this.store.dispatch(auth_success({
-                    _id: user._id,
-                    email: user.email,
-                    firstName: user.firstName || '',
-                    lastName: user.lastName || '',
-                    phone: user.phone || '',
-                    address: user.address || '',
-                    isAdmin: user.isAdmin
-                }));
-                this.isLoading = false;
-                this.userForm.reset();
-                this.cancelEdit.emit(true);
+        if (this.isEdit) {
+            this.userService.editUser(this.user?._id!, formValue).subscribe({
+                next: user => {
+                    this.store.dispatch(auth_success({
+                        _id: user._id,
+                        email: user.email,
+                        firstName: user.firstName || '',
+                        lastName: user.lastName || '',
+                        phone: user.phone || '',
+                        address: user.address || '',
+                        isAdmin: user.isAdmin
+                    }));
+                    this.isLoading = false;
+                    this.userForm.reset();
+                    this.cancelEdit.emit(true);
 
-            },
-            error: (err) => {
-                this.isLoading = false;
-                this.error = err.error.message;
-            }
-        })
-	}
+                },
+                error: (err) => {
+                    this.isLoading = false;
+                    this.error = err.error.message;
+                }
+            })
+        } else {
+            formValue.products = [...this.products];
+
+            this.userService.createOrder(formValue).subscribe({
+                next: data => {
+                    this.isLoading = false;
+                    this.store.dispatch(authActions.empty_cart());
+
+                    if(this.user) {
+                        this.router.navigateByUrl('/')
+                    } else {
+                        this.router.navigateByUrl('/')
+                    }
+
+                },
+                error: err => {
+                    this.isLoading = false;
+                    this.error = err.error.message;
+                }
+            })
+        }
+    }
 
 
-	cancelHandler(): void {
+    cancelHandler(): void {
         this.cancelEdit.emit(true);
-	}
+    }
 
     onCloseNot(): void {
         this.error = '';

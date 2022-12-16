@@ -7,8 +7,8 @@ import { Store } from '@ngrx/store';
 
 import { AuthService } from '../auth.service';
 import { emailValidator, minLengthValidator, equalValueAsFactory } from '../../shared/validators';
-import { IAuthState } from 'src/app/+store/authStore/reducers';
-import { auth_success } from 'src/app/+store/authStore/actions';
+import { IAuthState } from 'src/app/+store/reducers';
+import { auth_success } from 'src/app/+store/actions';
 
 @Component({
     selector: 'app-register',

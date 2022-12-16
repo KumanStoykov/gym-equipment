@@ -6,3 +6,5 @@ export * from './dumbbell';
 export * from './rack';
 export * from './image';
 export * from './comment';
+export * from './product';
+export * from './order';

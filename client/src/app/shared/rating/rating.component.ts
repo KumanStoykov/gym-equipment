@@ -4,10 +4,10 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as faStarEmpty } from '@fortawesome/free-regular-svg-icons';
 import { IComment } from '../interfaces';
 import { Store } from '@ngrx/store';
-import * as authSelectors from '../../+store/authStore/selector';
+import * as authSelectors from '../../+store/selectors';
 import { Observable } from 'rxjs';
-import { IAuthState } from 'src/app/+store/authStore/reducers';
-import { commentProps } from 'src/app/+store/authStore/actions';
+import { IAuthState } from 'src/app/+store/reducers';
+import { commentProps } from 'src/app/+store/actions';
 import { Router } from '@angular/router';
 
 @Component({
@@ -40,7 +40,7 @@ export class RatingComponent implements OnInit {
     ngOnInit(): void {
         const urlPath = this.router.url.split('?').filter(x => x.includes('page'));
         const isHomePage = this.router.url.split('?')[0] === '/';
-        
+
         if (this.comment) {
             for (let i = 0; i < 5; i++) {
                 if (Math.floor(this.comment.rating) > i) {

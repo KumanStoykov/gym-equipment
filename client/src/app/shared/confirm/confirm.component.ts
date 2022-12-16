@@ -3,10 +3,10 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import * as authActions from '../../+store/authStore/actions';
-import * as authSelectors from '../../+store/authStore/selector';
+import * as authActions from '../../+store/actions';
+import * as authSelectors from '../../+store/selectors';
 
-import { clear_message } from 'src/app/+store/authStore/actions';
+import { clear_message } from 'src/app/+store/actions';
 import { BenchService } from 'src/app/bench/bench.service';
 import { BikeService } from 'src/app/bike/bike.service';
 import { DumbbellService } from 'src/app/dumbbell/dumbbell.service';

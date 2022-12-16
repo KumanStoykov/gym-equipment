@@ -16,6 +16,7 @@ import { CreateDumbbellComponent } from './create/create-dumbbell/create-dumbbel
 import { AdminProductCardComponent } from './admin-product-card/admin-product-card.component';
 import { AdminPromotionComponent } from './admin-promotion/admin-promotion.component';
 import { AdminOrderComponent } from './admin-order/admin-order.component';
+import { AdminOrderCardComponent } from './admin-order-card/admin-order-card.component';
 
 
 
@@ -34,6 +35,7 @@ import { AdminOrderComponent } from './admin-order/admin-order.component';
         AdminProductCardComponent,
         AdminPromotionComponent,
         AdminOrderComponent,
+        AdminOrderCardComponent,
     ],
     imports: [
         CommonModule,

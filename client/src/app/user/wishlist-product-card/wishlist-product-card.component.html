@@ -1,18 +1,23 @@
 <article class="wishlist-card">
-    <div class="img-wrap">
-        <a routerLink="/treadmill/details">
+    <div class="img-wrap cell">
+        <a routerLink="/{{product.productType}}/{{product._id}}">
             <img
-                src="../../../assets/ambitious-creative-co-rick-barrett-YiMP5EGR670-unsplash.jpg"
-                alt=""
+                src="{{product.images[0].url}}"
+                alt="image"
             />
         </a>
     </div>
-    <p class="name">Fitness Lorem</p>
-    <div class="price-wrap">
-        <p class="price-old">$900</p>
-        <p class="price-new">$700</p>
+    <p class="name cell">{{product.brand}}</p>
+    <div class="price-wrap cell">
+        <p [ngClass]="hasPromo ? 'price-old' : 'out-promo'">${{product.price}}</p>
+        <p *ngIf="hasPromo" class="price-new">${{product.promoPrice}}</p>
     </div>
-        <button class="btn-watch">
-            <fa-icon class="faDumbbell" [icon]="faXmark"></fa-icon>
+    <div class="btn-wrap cell">
+        <button (click)="onClickCart()" class="btn-wishlist">
+            <fa-icon class="faCartArrowDown" [icon]="icons.faCartArrowDown"></fa-icon>
         </button>
+        <button (click)="onClickRemove()" class="btn-wishlist">
+            <fa-icon class="faXmark" [icon]="icons.faXmark"></fa-icon>
+        </button>
+    </div>
 </article>

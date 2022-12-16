@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { CanActivate, Router, UrlTree } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { catchError, map, Observable, of } from 'rxjs';
-import { IAuthState } from 'src/app/+store/authStore/reducers';
+import { IAuthState } from 'src/app/+store/reducers';
 import { UserService } from 'src/app/user/user.service';
-import * as authActions from '../../+store/authStore/actions';
+import * as authActions from '../../+store/actions';
 
 @Injectable({
 	providedIn: 'root'

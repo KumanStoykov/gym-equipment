@@ -3,9 +3,9 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 
 import { AuthService } from './auth/auth.service';
-import * as authSelectors from './+store/authStore/selector';
-import * as authActions from './+store/authStore/actions';
-import { IAuthState } from './+store/authStore/reducers';
+import * as authSelectors from './+store/selectors';
+import * as authActions from './+store/actions';
+import { IAuthState } from './+store/reducers';
 
 @Component({
     selector: 'app-root',
@@ -24,5 +24,7 @@ export class AppComponent implements OnInit {
 
     ngOnInit(): void {
         this.authService.checkUser();
+        this.authService.fetchWishlist();
+        this.authService.fetchCart();
     }
 }

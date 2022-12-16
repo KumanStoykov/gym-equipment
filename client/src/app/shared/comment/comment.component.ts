@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import * as authSelectors from '../../+store/authStore/selector';
+import * as authSelectors from '../../+store/selectors';
 import { IUser } from '../interfaces';
 import { faTrashCan, faFilePen } from '@fortawesome/free-solid-svg-icons';
 import { IComment } from '../interfaces';

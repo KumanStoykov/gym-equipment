@@ -32,4 +32,49 @@ export class AuthEffects {
         )
 
     ));
+    addToCart$ = createEffect(() => this.actions$.pipe(
+        ofType(AuthActions.addToCart),
+        mergeMap((action: AuthActions.cartProps) => this.userService.addToCart({ _id: action._id, productType: action.productType, quantity: action.quantity })
+            .pipe(
+                map(() => ({ type: 'Success' }))
+            )
+        )
+
+    ));
+    removeFromCart$ = createEffect(() => this.actions$.pipe(
+        ofType(AuthActions.removeFromCart),
+        mergeMap((action: AuthActions.cartProps) => this.userService.removeFromCart({ _id: action._id, productType: action.productType, quantity: action.quantity })
+            .pipe(
+                map(() => ({ type: 'Success' }))
+            )
+        )
+
+    ));
+    increaseQuantityCart$ = createEffect(() => this.actions$.pipe(
+        ofType(AuthActions.increaseQuantityCart),
+        mergeMap((action: AuthActions.cartProps) => this.userService.increaseQuantityCart({ _id: action._id, productType: action.productType, quantity: action.quantity })
+            .pipe(
+                map(() => ({ type: 'Success' }))
+            )
+        )
+
+    ));
+    decreaseQuantityCart$ = createEffect(() => this.actions$.pipe(
+        ofType(AuthActions.decreaseQuantityCart),
+        mergeMap((action: AuthActions.cartProps) => this.userService.decreaseQuantityCart({ _id: action._id, productType: action.productType, quantity: action.quantity })
+            .pipe(
+                map(() => ({ type: 'Success' }))
+            )
+        )
+
+    ));
+    emptyCart$ = createEffect(() => this.actions$.pipe(
+        ofType(AuthActions.emptyCart),
+        mergeMap((action: AuthActions.cartProps) => this.userService.emptyCart()
+            .pipe(
+                map(() => ({ type: 'Success' }))
+            )
+        )
+
+    ));
 }

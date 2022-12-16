@@ -2,10 +2,10 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, of, Subscription } from 'rxjs';
 
-import { IAuthState } from 'src/app/+store/authStore/reducers';
+import { IAuthState } from 'src/app/+store/reducers';
 import { IUser } from 'src/app/shared/interfaces';
-import * as authSelectors from '../../+store/authStore/selector';
-import { add_message } from '../../+store/authStore/actions';
+import * as authSelectors from '../../+store/selectors';
+import { add_message } from '../../+store/actions';
 import { UserService } from '../user.service';
 
 
