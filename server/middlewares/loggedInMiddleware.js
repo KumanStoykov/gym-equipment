@@ -1,4 +1,4 @@
-const { jwtVerify, createToken } = require('../utils/jwtUtil');
+const { jwtVerify } = require('../utils/jwtUtil');
 
 const { COOKIE_TOKEN_NAME, SECRET } = require('../config');
 
@@ -8,7 +8,6 @@ module.exports = () => async (req, res, next) => {
 
     try {
         const user = await jwtVerify(token, SECRET);
-        // res.cookies(COOKIE_TOKEN_NAME, createToken({ id: user.id }), { httpOnly: true });
 
         req.user = user;
         next();
