@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { add_comment } from 'src/app/+store/authStore/actions';
+import { add_comment } from 'src/app/+store/actions';
 import { IDumbbell } from 'src/app/shared/interfaces';
 import { DumbbellService } from '../dumbbell.service';
 
