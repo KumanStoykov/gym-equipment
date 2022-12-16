@@ -1,0 +1,21 @@
+<article class="checkout-card">
+    <div class="img-wrap">
+        <a routerLink="/treadmill/details">
+            <img
+                src="{{product.images[0].url}}"
+                alt="image"
+            />
+        </a>
+    </div>
+    <p class="name">Fitness Lorem</p>
+    <div class="price-wrap">
+        <p [ngClass]="hasPromo ? 'price-old' : 'out-promo'">${{product.price}}</p>
+        <p *ngIf="hasPromo" class="price-new">${{product.promoPrice}}</p>
+    </div>
+    <div class="btn-wrap">
+        <button class="btn-more" (click)="onClickIncrease()">+</button>
+        <span class="count">{{product.quantity}}</span>
+        <button class="btn-less" (click)="onClickDecrease()">-</button>
+        <button class="btn-remove" (click)="onClickRemove()">Remove</button>
+    </div>
+</article>
