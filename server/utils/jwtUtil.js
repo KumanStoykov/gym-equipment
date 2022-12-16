@@ -5,7 +5,8 @@ const { SECRET } = require('../config');
 exports.createToken = (user) => {
     const payload = {
         _id: user._id,
-        email: user.email
+        email: user.email,
+        isAdmin: user.isAdmin
     };
 
     return new Promise((resolve, reject) => {

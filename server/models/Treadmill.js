@@ -1,9 +1,13 @@
 const mongoose = require('mongoose');
 
 
-const treadMillSchema = mongoose.Schema({
+const treadmillSchema = mongoose.Schema({
 
     brand: {
+        type: String,
+        require: true
+    },
+    productType: {
         type: String,
         require: true
     },
@@ -86,9 +90,9 @@ const treadMillSchema = mongoose.Schema({
 
 });
 
-treadMillSchema.set('timestamps', true);
+treadmillSchema.set('timestamps', true);
 
-const TreadMill = mongoose.model('TreadMill', treadMillSchema);
+const Treadmill = mongoose.model('Treadmill', treadmillSchema);
 
-module.exports = TreadMill;
+module.exports = Treadmill;
 

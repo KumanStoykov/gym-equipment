@@ -7,6 +7,10 @@ const dumbbellSchema = mongoose.Schema({
         type: String,
         require: true
     },
+    productType: {
+        type: String,
+        require: true
+    },
     price: {
         type: Number,
         require: true
