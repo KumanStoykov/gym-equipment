@@ -9,7 +9,6 @@ const rackService = require('../services/rackService');
 const loggedIn = require('../middlewares/loggedInMiddleware');
 const isAdmin = require('../middlewares/isAdminMiddleware');
 const checkCredential = require('../middlewares/checkCredentialMiddleware');
-const { queryParamsSearch } = require('../utils/queryPramsSearchUtil');
 
 const services = {
     'bike': bikeService,
@@ -20,16 +19,16 @@ const services = {
 }
 
 
-router.get('/user', loggedIn(), async (req, res) => {
+router.get('/user/:id', loggedIn(), async (req, res) => {
 
     try {
+        const userId = req.params.id;
         const page = Number(req?.query?.page) - 1 || 0;
         const sort = req?.query?.sort || 'desc';
 
-        const search = queryParamsSearch(req?.query);
 
-        const orders = await orderService.getAll(page, sort, search);
-        const ordersCount = await orderService.count();
+        const orders = await orderService.getByUserId(userId, page, sort);
+        const ordersCount = await orderService.countUser(userId);
 
         res.status(200).send({ orders, ordersCount });
     } catch (err) {
@@ -99,7 +98,7 @@ router.get('/admin', isAdmin(), async (req, res) => {
 
 
         const orders = await orderService.getAllAdmin(page, sort);
-        const ordersCount = await orderService.count();
+        const ordersCount = await orderService.countAdmin();
 
         orders.map(order => {
             let createdAt = new Date(order.createdAt);

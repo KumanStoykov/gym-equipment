@@ -10,25 +10,25 @@ import * as AuthActions from '../+store/actions';
 const API_URL = environment.API_URL;
 
 @Injectable({
-	providedIn: 'root'
+    providedIn: 'root'
 })
 export class UserService {
     localStorage = localStorage;
 
-	subUserData$$ = new Subject<IUser>();
+    subUserData$$ = new Subject<IUser>();
 
-	constructor(
-		private http: HttpClient
-	) { }
+    constructor(
+        private http: HttpClient
+    ) { }
 
-	loadProfile(): Observable<IUser> {
-		return this.http.get<IUser>(`${API_URL}/user/check-user`, { withCredentials: true });
-	}
-	checkUserCredential(id: string): Observable<IUser> {
-		return this.http.get<IUser>(`${API_URL}/user/check-user/${id}`, { withCredentials: true });
-	}
-	editUser(id: string, userData: IUser): Observable<IUser> {
-		return this.http.put<IUser>(`${API_URL}/user/edit/${id}`, userData, { withCredentials: true })
+    loadProfile(): Observable<IUser> {
+        return this.http.get<IUser>(`${API_URL}/user/check-user`, { withCredentials: true });
+    }
+    checkUserCredential(id: string): Observable<IUser> {
+        return this.http.get<IUser>(`${API_URL}/user/check-user/${id}`, { withCredentials: true });
+    }
+    editUser(id: string, userData: IUser): Observable<IUser> {
+        return this.http.put<IUser>(`${API_URL}/user/edit/${id}`, userData, { withCredentials: true })
             .pipe(
                 catchError((err: HttpErrorResponse) => {
                     return throwError(() => err);
@@ -37,10 +37,10 @@ export class UserService {
                     this.subUserData$$.next(user);
                 })
             );
-	}
-	delete(id: string): Observable<null> {
-		return this.http.delete<null>(`${API_URL}/user/delete/${id}`, { withCredentials: true });
-	}
+    }
+    delete(id: string): Observable<null> {
+        return this.http.delete<null>(`${API_URL}/user/delete/${id}`, { withCredentials: true });
+    }
 
     addToWishlist(product: AuthActions.wishlistProps): Observable<any> {
         let storage = this.localStorage.getItem('wishlist');
@@ -48,7 +48,7 @@ export class UserService {
         storage ? currentStorage = JSON.parse(this.localStorage.getItem('wishlist') || '') : null;
         const isInList = currentStorage.find((x: AuthActions.wishlistProps) => x._id === product._id);
 
-        if(!isInList) {
+        if (!isInList) {
             currentStorage.push(product);
         }
         this.localStorage.setItem('wishlist', JSON.stringify(currentStorage));
@@ -61,7 +61,7 @@ export class UserService {
         storage ? currentStorage = JSON.parse(this.localStorage.getItem('wishlist') || '') : null;
         const isInList = currentStorage.find((x: AuthActions.wishlistProps) => x._id === product._id);
 
-        if(isInList) {
+        if (isInList) {
             const index = currentStorage.indexOf(isInList);
             currentStorage.splice(index, 1);
         }
@@ -75,7 +75,7 @@ export class UserService {
         storage ? currentStorage = JSON.parse(this.localStorage.getItem('cart') || '') : null;
         const isInList = currentStorage.find((x: AuthActions.wishlistProps) => x._id === product._id);
 
-        if(isInList) {
+        if (isInList) {
             const index = currentStorage.indexOf(isInList);
             currentStorage[index].quantity = currentStorage[index].quantity + 1;
         } else {
@@ -91,7 +91,7 @@ export class UserService {
         storage ? currentStorage = JSON.parse(this.localStorage.getItem('cart') || '') : null;
         const isInList = currentStorage.find((x: AuthActions.wishlistProps) => x._id === product._id);
 
-        if(isInList) {
+        if (isInList) {
             const index = currentStorage.indexOf(isInList);
             currentStorage.splice(index, 1);
         }
@@ -105,7 +105,7 @@ export class UserService {
         storage ? currentStorage = JSON.parse(this.localStorage.getItem('cart') || '') : null;
         const isInList = currentStorage.find((x: AuthActions.wishlistProps) => x._id === product._id);
 
-        if(isInList) {
+        if (isInList) {
             isInList.quantity++;
             const index = currentStorage.indexOf(isInList);
             currentStorage.splice(index, 1, isInList);
@@ -120,7 +120,7 @@ export class UserService {
         storage ? currentStorage = JSON.parse(this.localStorage.getItem('cart') || '') : null;
         const isInList = currentStorage.find((x: AuthActions.wishlistProps) => x._id === product._id);
 
-        if(isInList) {
+        if (isInList) {
             isInList.quantity--;
             const index = currentStorage.indexOf(isInList);
             currentStorage.splice(index, 1, isInList);
@@ -137,5 +137,8 @@ export class UserService {
 
     createOrder(orderData: any): Observable<IOrder> {
         return this.http.post<IOrder>(`${API_URL}/order/create`, orderData, { withCredentials: true });
+    }
+    getUserOrders(userId: string): Observable<{ orders: IOrder[], ordersCount: number }> {
+        return this.http.get<{ orders: IOrder[], ordersCount: number }>(`${API_URL}/order/user/${userId}`, { withCredentials: true });
     }
 }

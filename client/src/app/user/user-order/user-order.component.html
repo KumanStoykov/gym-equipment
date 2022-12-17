@@ -9,7 +9,7 @@
     <div class="content-wrap">
 
         <div class="products-container">
-               <ul class="list-orders" role="list">
+               <ul *ngIf="orders.length !== 0" class="list-orders" role="list">
                 <li *ngFor="let order of orders">
                     <app-user-order-card [order]="order"></app-user-order-card>
                     <div class="info-wrap">
@@ -23,7 +23,8 @@
                         </div>
                     </div>
                 </li>
-               </ul>
+            </ul>
+            <h3 *ngIf="orders.length === 0" class="empty">NO ORDERS YET</h3>
             <div>
 
             </div>

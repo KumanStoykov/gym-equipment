@@ -5,18 +5,29 @@
     <div class="content-wrap">
 
         <div class="products-container">
-               <ul class="list-oreders" role="list">
+               <ul class="list-orders" role="list">
                 <li *ngFor="let order of orders">
                     <app-admin-order-card [order]="order"></app-admin-order-card>
                     <div class="info-wrap">
                         <div class="order-info">
                             <p class="info">Oder data: <span class="info-span">{{order.createdAt | date}}</span></p>
                             <p class="info">Status: <span class="info-span">{{order.status}}</span></p>
+                        </div>
+                        <div class="user-wrap">
+                            <p *ngIf="order.user" class="info">User Id: <span class="info-span">{{order.user}}</span></p>
+                            <ng-container *ngIf="!order.user">
+                                <p  class="info">User as Guest:
+                                    <span class="info-span">{{order.guest?.firstName}} </span>
+                                    <span class="info-span"> {{order.guest?.lastName}}</span>
+                                </p>
+                                <p class="info">Phone: <span class="info-span">{{order.guest?.phone}}</span></p>
+                                <p class="info">Email: <span class="info-span">{{order.guest?.email}}</span></p>
 
+                            </ng-container>
                         </div>
                         <div class="price-info">
-                            <p class="info">Total Price: <span class="info-span">$ {{order.totalPrice}}</span></p>
-                            <p class="info">Delivery: <span class="info-span">$ {{order.deliveryPrice}}</span></p>
+                            <p class="info">Total Price: <span class="info-span">${{order.totalPrice}}</span></p>
+                            <p class="info">Delivery: <span class="info-span">${{order.deliveryPrice}}</span></p>
                         </div>
                     </div>
                 </li>

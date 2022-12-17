@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminService } from 'src/app/admin/admin.service';
+import { Router } from '@angular/router';
 import { IOrder } from 'src/app/shared/interfaces';
+import { UserService } from '../user.service';
 
 @Component({
     selector: 'app-user-order',
@@ -17,17 +18,19 @@ export class UserOrderComponent implements OnInit {
     error: string = '';
 
     constructor(
-        private adminService: AdminService,
+        private userService: UserService,
+        private router: Router
     ) { }
 
     ngOnInit(): void {
+        const userId = this.router.url.split('/')[2]
+        
         this.isLoading = true;
-        this.adminService.getAllOrders().subscribe({
+        this.userService.getUserOrders(userId).subscribe({
             next: data => {
                 this.isLoading = false;
                 this.orders = data.orders;
                 this.count = data.ordersCount;
-                console.log(data)
             },
             error: err => {
                 this.error = err.error.message;

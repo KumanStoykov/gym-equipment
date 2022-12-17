@@ -18,6 +18,8 @@ export interface IOrder {
     guest?: {
         firstName: string;
         lastName: string;
+        phone: string;
+        email: string;
     },
     isVisible: boolean;
     deliveryPrice: number;

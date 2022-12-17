@@ -7,7 +7,7 @@
             />
         </a>
     </div>
-    <p class="name">Fitness Lorem</p>
+    <p class="name">{{product.brand}}</p>
     <div class="price-wrap">
         <p [ngClass]="hasPromo ? 'price-old' : 'out-promo'">${{product.price}}</p>
         <p *ngIf="hasPromo" class="price-new">${{product.promoPrice}}</p>
