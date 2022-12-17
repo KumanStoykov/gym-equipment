@@ -15,6 +15,8 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { BtnScrollTopComponent } from './btn-scroll-top/btn-scroll-top.component';
 import { TopNavigationComponent } from './top-navigation/top-navigation.component';
+import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
+import { AboutComponent } from './about/about.component';
 
 
 
@@ -29,7 +31,9 @@ import { TopNavigationComponent } from './top-navigation/top-navigation.componen
         HomeServicesComponent,
         HomeSupportComponent,
         BtnScrollTopComponent,
-        TopNavigationComponent
+        TopNavigationComponent,
+        TermsAndConditionsComponent,
+        AboutComponent
     ],
     imports: [
         CommonModule,

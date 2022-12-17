@@ -1,0 +1,45 @@
+@import "/src/app/shared/variables.scss";
+
+
+.terms-and-conditions {
+    margin-top: -3rem;
+    position: relative;
+    z-index: 100;
+}
+
+.heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    background: $clr-with;
+
+    &:first-child {
+        padding-top: 2rem;
+    }
+}
+
+.p-wrapper {
+    max-width: 80rem;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    .p-text {
+        margin: 2rem;
+    }
+
+    &:last-child {
+        padding-bottom: 3rem;
+    }
+}
+@media all and (max-width: 768px) {
+    .heading {
+        font-size: 2rem;
+    }
+    .p-wrapper {
+
+        .p-text {
+            margin: 2rem 1rem;
+        }
+    }
+}

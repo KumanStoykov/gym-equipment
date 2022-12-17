@@ -3,7 +3,7 @@
 
 <section class="treadmill-list container">
     <div class="content-wrap">
-        <app-page-title [pageTitle]="pageTitle"></app-page-title>
+        <app-page-title [pageTitle]="pageTitle"></app-page-title> 
 
         <app-notification (notDestroy)="onCloseNot()" *ngIf="error.length !== 0" [errorMessage]="error"></app-notification>
 

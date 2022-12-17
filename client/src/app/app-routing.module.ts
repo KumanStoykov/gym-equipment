@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './core/home/home.component';
+import { TermsAndConditionsComponent } from './core/terms-and-conditions/terms-and-conditions.component';
 import { AdminGuard } from './shared/guards/admin.guard';
 
 const routes: Routes = [
@@ -46,6 +47,10 @@ const routes: Routes = [
     {
         path: 'auth',
         loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+    },
+    {
+        path: 'terms-and-conditions',
+        component: TermsAndConditionsComponent
     },
     {
         path: '**',
