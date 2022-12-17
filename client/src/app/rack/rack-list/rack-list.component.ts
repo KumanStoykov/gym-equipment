@@ -32,7 +32,6 @@ export class RackListComponent implements OnInit {
                 Object.entries(params).forEach(([k, v]) => {
                     query += '&' + k + '=' + v;
                 });
-
                 this.page = params['page'];
                 this.isLoading = true;
 
@@ -41,7 +40,7 @@ export class RackListComponent implements OnInit {
         ).subscribe({
             next: data => {
                 this.racks = data.racks;
-                this.count = data.rackCount;
+                this.count = data.racksCount;
                 this.isLoading = false;
             },
             error: err => {
