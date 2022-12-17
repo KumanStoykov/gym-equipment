@@ -12,7 +12,6 @@ import { IAuthState } from 'src/app/+store/reducers';
 export class HeaderComponent implements OnInit {
 
     menuIsToggle: boolean = false;
-    strengthIsToggle: boolean = false;
 
 
 
@@ -23,18 +22,9 @@ export class HeaderComponent implements OnInit {
 
     menuToggle(): void {
         this.menuIsToggle = !this.menuIsToggle;
-        this.strengthIsToggle = false;
     }
 
     handleOutsideClick(): void {
         this.menuIsToggle = false;
-        this.strengthIsToggle = false;
     }
-
-    dropdownToggle(): void {
-        this.strengthIsToggle = !this.strengthIsToggle;
-    }
-
-
-
 }

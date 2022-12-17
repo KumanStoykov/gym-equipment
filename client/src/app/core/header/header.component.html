@@ -43,47 +43,33 @@
                         >BIKES</a
                     >
                 </li>
-                <li
-                    class="nav-list-item dropdown"
-                    [ngClass]="
-                        strengthIsToggle ? 'dropdown-open' : 'dropdown-close'
-                    "
-                >
-                    <button
-                        class="nav-link dropdown-btn"
-                        (click)="dropdownToggle()"
+
+                <li>
+                    <a
+                        class="nav-link"
+                        [routerLink]="'/strength/rack'"
+                        [queryParams]="{ page: 1 }"
+                        (click)="menuToggle()"
+                        >RACKS</a
                     >
-                        STRENGTH
-                    </button>
-                    <ul class="dropdown-content" role="list">
-                        <li>
-                            <a
-                                class="nav-link"
-                                [routerLink]="'/strength/rack'"
-                                [queryParams]="{ page: 1 }"
-                                (click)="menuToggle()"
-                                >Racks</a
-                            >
-                        </li>
-                        <li>
-                            <a
-                                class="nav-link"
-                                [routerLink]="'/strength/bench'"
-                                [queryParams]="{ page: 1 }"
-                                (click)="menuToggle()"
-                                >Benches</a
-                            >
-                        </li>
-                        <li>
-                            <a
-                                class="nav-link"
-                                [routerLink]="'/strength/dumbbell'"
-                                [queryParams]="{ page: 1 }"
-                                (click)="menuToggle()"
-                                >Dumbbells</a
-                            >
-                        </li>
-                    </ul>
+                </li>
+                <li>
+                    <a
+                        class="nav-link"
+                        [routerLink]="'/strength/bench'"
+                        [queryParams]="{ page: 1 }"
+                        (click)="menuToggle()"
+                        >BENCHES</a
+                    >
+                </li>
+                <li>
+                    <a
+                        class="nav-link"
+                        [routerLink]="'/strength/dumbbell'"
+                        [queryParams]="{ page: 1 }"
+                        (click)="menuToggle()"
+                        >DUMBBELLS</a
+                    >
                 </li>
             </ul>
         </nav>

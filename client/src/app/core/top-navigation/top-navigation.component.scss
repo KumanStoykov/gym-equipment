@@ -43,53 +43,19 @@
     margin-top: -20px;
 }
 
-.dropdown .dropdown-btn.user-icon{
-    &::before {
-        display: none;
-    }
-    &::after {
-        display: none;
-    }
-}
-
 .dropdown {
     position: relative;
-
-    .dropdown-btn {
-        border: none;
-        padding: 0;
-        background: transparent;
-        display: flex;
-        align-items: flex-end;
-
-        &::before {
-            content: "";
-            position: absolute;
-            right: -20px;
-            bottom: 12px;
-            width: 0;
-            height: 0;
-            border: solid $clr-dark;
-            border-width: 0 4px 4px 0;
-            padding: 4px;
-            transform: rotate(45deg);
-        }
-
-        &:hover::before {
-            border-bottom: 4px solid $clr-orange-light;
-            border-right: 4px solid $clr-orange-light;
-        }
-    }
 
     .dropdown-content {
         position: absolute;
         top: 50px;
-        left: -1rem;
+        left: -2.3rem;
+        min-width: 110px;
         background: $clr-with;
-        min-width: 180px;
         z-index: 1;
 
         a {
+            font-weight: 500;
             display: block;
             padding: 1rem;
             border-bottom: 1px solid #ccc;
@@ -101,15 +67,6 @@
             &:hover {
                 background: rgb(204, 204, 204, 0.1);
             }
-        }
-    }
-
-    .user-dropdown {
-        top: 50px;
-        left: -2.3rem;
-        min-width: 110px;
-        a {
-            font-weight: 500;
         }
     }
 }
@@ -124,8 +81,7 @@
 
 @media all and (max-width: 1200px) {
     .dropdown {
-
-        .user-dropdown {
+        .dropdown-content {
             left: -4.3rem;
         }
     }
@@ -143,7 +99,7 @@
         margin-top: -15px;
     }
 
-    .dropdown .user-dropdown {
+    .dropdown .dropdown-content {
         position: absolute;
         top: 50px;
         left: -3.3rem;
@@ -156,9 +112,8 @@
 
 @media all and (max-width: 768px) {
     .dropdown {
-
-        .user-dropdown {
-            left: -5rem;
+        .dropdown-content {
+            left: -4.5rem;
         }
     }
 }
@@ -166,12 +121,6 @@
 @media all and (max-width: 468px) {
     .top-nav-list {
         gap: 1.25rem;
-    }
-    .dropdown {
-
-        .user-dropdown {
-            left: -5rem;
-        }
     }
 }
 @keyframes slide-down {
