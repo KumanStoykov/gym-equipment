@@ -99,20 +99,58 @@ router.get('/admin', isAdmin(), async (req, res) => {
 
         const orders = await orderService.getAllAdmin(page, sort);
         const ordersCount = await orderService.countAdmin();
-
         orders.map(order => {
             let createdAt = new Date(order.createdAt);
-            let twoDay = createdAt.setDate() + 2;
-            let oneWeek = createdAt.setDate() + 7;
+            let twoDay = createdAt.setDate() + 1;
+            let oneWeek = createdAt.setDate() + 3;
 
             if (createdAt >= twoDay && createdAt < oneWeek) {
                 order.status = 'sent';
             } else if (createdAt >= oneWeek) {
                 order.status = 'complete';
+                order.completed = 'true';
             }
         })
 
         res.status(200).send({ orders, ordersCount });
+    } catch (err) {
+        res.status(400).send({ message: err.message });
+    }
+});
+router.get('/admin/products/sales', isAdmin(), async (req, res) => {
+
+    try {
+        const {sales, totalSales} = await orderService.getAllSalesAdmin();   
+
+     
+        res.status(200).send({ sales, totalSales });
+    } catch (err) {
+        res.status(400).send({ message: err.message });
+    }
+});
+router.get('/admin/products/volume', isAdmin(), async (req, res) => {
+
+    try {
+        const ordersReq = await orderService.volumeSales();
+        const labels = [];
+        const sales = [];
+        const productPerDay = [];
+
+        for(let i = 0; i < 10; i++) {
+
+            if(i < ordersReq.length){
+                const date = new Date(ordersReq[i].date);
+                labels.push(`Date: ${date.getDate()}/${date.getMonth() + 1} Products: ${ordersReq[i].countProducts}`);
+                sales.push(ordersReq[i].totalPrice);
+            } else {
+                const date = new Date(ordersReq[ordersReq.length - 1].date);
+                labels.push(`Date: ${date.getDate() - (i - 1)}/${date.getMonth() + 1} Products: ${0}`);
+                sales.push(0);
+            }
+        }
+        labels.reverse();
+        sales.reverse();
+        res.status(200).send({ labels, sales });
     } catch (err) {
         res.status(400).send({ message: err.message });
     }

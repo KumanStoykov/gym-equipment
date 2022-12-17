@@ -2,3 +2,10 @@
     display: flex;
     justify-content: space-around;
 }
+
+@media all and (max-width: 1500px) {
+    .statistic{
+        flex-direction: column;
+        align-items: center;
+    }
+}
