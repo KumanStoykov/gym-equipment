@@ -6,7 +6,11 @@
     margin: 3rem auto;
     position: relative;
 }
-
+.loader-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .products-container {
     margin-top: 3rem;
 }

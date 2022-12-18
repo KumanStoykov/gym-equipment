@@ -1,6 +1,9 @@
 <section class="catalog container">
     <div class="content-wrap">
+        <div class="loader-wrap" *ngIf="isLoading">
+            <app-loader size="medium"></app-loader>
 
+        </div>
         <div class="products-container">
             <div class="products-heading">
                <ul class="list-preders" role="list">

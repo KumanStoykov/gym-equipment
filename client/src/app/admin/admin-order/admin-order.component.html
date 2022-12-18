@@ -1,8 +1,13 @@
 <section class="catalog container">
     <div class="content-wrap">
 
-        <div class="products-container">
-               <ul class="list-orders" role="list">
+        <div class="loader-wrap" *ngIf="isLoading">
+            <app-loader size="medium"></app-loader>
+
+        </div>
+
+        <div *ngIf="!isLoading"  class="products-container">
+               <ul  class="list-orders" role="list">
                 <li *ngFor="let order of orders">
                     <app-admin-order-card [order]="order"></app-admin-order-card>
                     <div class="info-wrap">
