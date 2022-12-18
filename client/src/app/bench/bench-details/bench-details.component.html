@@ -1,6 +1,9 @@
 <app-page-hero [heroPageTitle]="heroTitle"></app-page-hero>
 
-<app-loader *ngIf="isLoading" size="medium"></app-loader>
+<div class="loader-wrap" *ngIf="isLoading">
+    <app-loader size="medium"></app-loader>
+
+</div>
 
 <section *ngIf="!isLoading" class="details container">
     <app-page-title [pageTitle]="bench.brand"></app-page-title>
