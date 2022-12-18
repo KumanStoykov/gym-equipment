@@ -12,12 +12,6 @@
     display: flex;
     gap: 3rem;
 }
-.nav-list-item {
-    transition: scale 0.4s ease-in-out;
-    &:hover {
-        scale: 1.2;
-    }
-}
 .nav-link-top {
     position: relative;
     background: inherit;

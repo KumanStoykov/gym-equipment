@@ -2,7 +2,7 @@
     <app-notification
         (notDestroy)="onCloseNot()"
         *ngIf="error?.length !== 0"
-        [errorMessage]="error"
+        [message]="error"
     ></app-notification>
 
     <button type="button" (click)="closeFormHandler()" class="btn-icon">

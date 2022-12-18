@@ -7,12 +7,17 @@ import { interval, map, Subscription } from 'rxjs';
     styleUrls: ['./notification.component.scss']
 })
 export class NotificationComponent implements OnDestroy, OnInit {
-    @Input() errorMessage: string = '';
+    @Input() message: string = '';
+    @Input() typeMsg: string = 'error';
     @Output('notDestroy') notDestroy: EventEmitter<boolean> = new EventEmitter;
 
     toastSubscription!: Subscription;
 
-    closeNotification$ = interval(5000).pipe(
+    closeNotificationFive$ = interval(5000).pipe(
+        map(() => this.notDestroy.emit(true))
+
+    );
+    closeNotificationTwo$ = interval(2000).pipe(
         map(() => this.notDestroy.emit(true))
 
     );
@@ -23,7 +28,11 @@ export class NotificationComponent implements OnDestroy, OnInit {
     }
 
     ngOnInit(): void {
-        this.toastSubscription = this.closeNotification$.subscribe(() => this.notDestroy);
+        if(this.typeMsg === 'successful') {
+            this.toastSubscription = this.closeNotificationTwo$.subscribe(() => this.notDestroy);
+        } else {
+            this.toastSubscription = this.closeNotificationFive$.subscribe(() => this.notDestroy);
+        }
     }
 
     ngOnDestroy(): void {

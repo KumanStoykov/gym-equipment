@@ -118,7 +118,7 @@ export class UserFormComponent implements OnInit {
                     this.store.dispatch(authActions.empty_cart());
 
                     if(this.user) {
-                        this.router.navigateByUrl('/')
+                        this.router.navigateByUrl(`user/${this.user._id}/orders`)
                     } else {
                         this.router.navigateByUrl('/')
                     }

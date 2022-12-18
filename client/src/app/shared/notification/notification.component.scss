@@ -18,6 +18,11 @@
     z-index: 1000;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
+.msg-successful-wrap {
+    border: 1px solid rgb(54, 151, 41, 0.3);
+    background: #369729;
+
+}
 
 .not-error {
     color: $clr-with;
@@ -37,6 +42,9 @@
 
 .my-fixed-progress {
     animation: xScale linear 5s forwards;
+}
+.my-fixed-progress-sec {
+    animation: xScale linear 2s forwards;
 }
 
 @media all and (max-width: 300px) {

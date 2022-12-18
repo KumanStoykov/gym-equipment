@@ -8,8 +8,8 @@ import { AuthService } from '../auth.service';
 import { RegisterComponent } from './register.component';
 
 const testStore = {
-    dispatck() {
-        
+    dispatch() {
+
     }
 }
 describe('RegisterComponent', () => {
