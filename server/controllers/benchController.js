@@ -72,7 +72,6 @@ router.post('/create', loggedIn(), isAdmin(), async (req, res) => {
 
         for (let image of enterableValue) {
             const res = await cloudinary.uploader.upload(image.filepath);
-            console.log({ url: res.url, public_id: res.public_id })
             imageUrl.push({ url: res.url, public_id: res.public_id });
         }
 

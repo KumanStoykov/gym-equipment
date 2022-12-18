@@ -44,7 +44,6 @@ export class FilterProductsComponent implements OnInit {
           },
           error: err => {
               this.isLoading = false;
-              console.log(err.error.message);
           }
       })
   }

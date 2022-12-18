@@ -83,7 +83,6 @@ export class ConfirmComponent implements OnInit {
             || this.productType == 'dumbbell'
             || this.productType == 'user'
         ) {
-            console.log(this.productId)
             this.deleteRequests[this.productType].delete(this.productId).subscribe({
                 next: () => {
                     this.isLoading = false;
@@ -93,7 +92,6 @@ export class ConfirmComponent implements OnInit {
                 error: err => {
                     this.isLoading = false;
                     this.store.dispatch(clear_message());
-                    console.log(err.error.message);
                 }
             })
         }

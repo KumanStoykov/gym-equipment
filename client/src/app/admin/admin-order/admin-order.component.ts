@@ -30,7 +30,6 @@ export class AdminOrderComponent implements OnInit {
                 this.isLoading = false;
                 this.orders = data.orders;
                 this.count = data.ordersCount;
-                console.log(data)
             },
             error: err => {
                 this.isLoading = false;

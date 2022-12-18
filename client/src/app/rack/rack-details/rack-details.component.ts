@@ -39,7 +39,6 @@ export class RackDetailsComponent implements OnInit {
                 this.isLoading = false;
             },
             error: err => {
-                console.log(err)
                 this.isLoading = false;
                 this.store.dispatch(authActions.add_message({typeMsg: 'error', text: err.error.message || 'Something went wrong, Please try again later.'}));
             }

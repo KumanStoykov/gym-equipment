@@ -17,7 +17,6 @@ export class AdminProductCardComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        console.log(this.cardType)
         this.cardType = this.cardType.toLowerCase();
 
         if(this.strengthTypes.includes(this.cardType)) {
