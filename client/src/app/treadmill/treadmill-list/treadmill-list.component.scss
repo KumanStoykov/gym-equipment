@@ -9,7 +9,11 @@
     flex-direction: column;
     align-items: center;
 }
-
+.loader-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .page-content-wrap {
     display: flex;
     gap: 1rem;

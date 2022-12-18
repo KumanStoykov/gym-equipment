@@ -5,7 +5,11 @@
     <div class="content-wrap">
         <app-page-title [pageTitle]="pageTitle"></app-page-title>
 
-        <app-loader *ngIf="isLoading" size="medium"></app-loader>
+        <div class="loader-wrap" *ngIf="isLoading">
+            <app-loader size="medium"></app-loader>
+
+        </div>
+
 
         <div *ngIf="!isLoading" class="page-content-wrap">
             <app-search></app-search>

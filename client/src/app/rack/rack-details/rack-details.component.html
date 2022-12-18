@@ -1,10 +1,10 @@
 <app-page-hero [heroPageTitle]="heroTitle"></app-page-hero>
 
+
 <div class="loader-wrap" *ngIf="isLoading">
     <app-loader size="medium"></app-loader>
 
 </div>
-
 <section *ngIf="!isLoading" class="details container">
     <app-page-title
         [pageTitle]="rack.brand"
