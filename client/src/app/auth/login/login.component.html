@@ -3,10 +3,12 @@
 <section class="login container">
     <div class="form-wrap">
         <app-page-title [pageTitle]="pageTitle"></app-page-title>
+        <app-loader *ngIf="isLoading" size="medium"></app-loader>
 
         <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
             <div class="input-row">
                 <input
+                    *ngIf="!isLoading"
                     placeholder="Email *"
                     id="email"
                     type="text"

@@ -134,7 +134,6 @@ router.get('/admin/products/volume', isAdmin(), async (req, res) => {
         const ordersReq = await orderService.volumeSales();
         const labels = [];
         const sales = [];
-        const productPerDay = [];
 
         for(let i = 0; i < 10; i++) {
 
@@ -144,7 +143,7 @@ router.get('/admin/products/volume', isAdmin(), async (req, res) => {
                 sales.push(ordersReq[i].totalPrice);
             } else {
                 const date = new Date(ordersReq[ordersReq.length - 1].date);
-                labels.push(`Date: ${date.getDate() - (i - 1)}/${date.getMonth() + 1} Products: ${0}`);
+                labels.push(`Date: ${date.getDate() - i }/${date.getMonth() + 1} Products: ${0}`);
                 sales.push(0);
             }
         }

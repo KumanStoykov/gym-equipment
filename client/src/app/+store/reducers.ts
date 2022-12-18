@@ -42,7 +42,8 @@ const _authReducer = createReducer(
     on(AuthActions.auth_fail, (state) => {
         return {
             ...state,
-            user: null
+            user: null,
+            message: null
         }
     }),
     on(AuthActions.auth_logout, (state) => {
