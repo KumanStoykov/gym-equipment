@@ -4,7 +4,11 @@
     background: $clr-with;
     margin: -3rem auto 12rem auto;
 }
-
+.loader-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .border-line {
     padding-top: 3rem;
 

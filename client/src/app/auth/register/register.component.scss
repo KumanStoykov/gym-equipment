@@ -14,7 +14,11 @@
     margin-top: 5rem;
     padding: 0 1rem;
 }
-
+.loader-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .input-row {
     position: relative;
     width: 100%;
