@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AboutComponent } from './core/about/about.component';
 
 import { HomeComponent } from './core/home/home.component';
 import { TermsAndConditionsComponent } from './core/terms-and-conditions/terms-and-conditions.component';
@@ -51,6 +52,10 @@ const routes: Routes = [
     {
         path: 'terms-and-conditions',
         component: TermsAndConditionsComponent
+    },
+    {
+        path: 'about-us',
+        component: AboutComponent
     },
     {
         path: '**',

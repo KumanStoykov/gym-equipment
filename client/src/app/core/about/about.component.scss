@@ -1,0 +1,84 @@
+@import "/src/app/shared/variables.scss";
+
+.title-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Doris';
+    &:first-child {
+        margin-top: 8rem;
+    }
+
+    &:nth-child(3) {
+        margin-bottom: 4rem;
+    }
+}
+
+.title {
+    font-size: 3.6rem;
+    font-weight: 300;
+}
+
+.p-wrapper {
+    max-width: 80rem;
+    display: flex;
+    margin: 0 auto;
+}
+
+.p-text {
+    margin: 2rem 5rem;
+    text-align: center;
+}
+.info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.address-card {
+    margin-right: 3rem;
+    margin-bottom: 3rem;
+}
+.map-wrapper,
+.address-card {
+    flex: 0 0 40%;
+    margin-bottom: 7rem;
+}
+.p-info {
+    margin: 1rem;
+}
+.bold-text {
+    font-weight: bold;
+    font-size: 1.75rem;
+    letter-spacing: 1px;
+}
+
+@media all and (max-width: 768px) {
+    .title {
+        font-size: 2.6rem;
+    }
+
+    .info {
+        justify-content: center;
+        flex-direction: column;
+
+    }
+    .address-card {
+        margin: 0;
+    }
+    .p-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+@media all and (max-width: 468px) {
+    .title {
+        font-size: 2.6rem;
+    }
+
+    .info {
+        justify-content: center;
+    }
+}
