@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+
 import { add_comment } from 'src/app/+store/actions';
 import { IBike } from 'src/app/shared/interfaces';
 import { BikeService } from '../bike.service';
-
+import * as authActions from '../../+store/actions';
+import { IAuthState } from 'src/app/+store/reducers';
 
 @Component({
     selector: 'app-bike-details',
@@ -17,7 +19,6 @@ export class BikeDetailsComponent implements OnInit {
 
     bike!: IBike;
     isLoading: boolean = false;
-    error: string = '';
 
     productId = this.router.url.split('/')[2];
 
@@ -41,17 +42,9 @@ export class BikeDetailsComponent implements OnInit {
             error: err => {
                 console.log(err)
                 this.isLoading = false;
-                this.error = err.error.message || 'Something went wrong, Please try again later.';
+                this.store.dispatch(authActions.add_message({typeMsg: 'error', text: err.error.message || 'Something went wrong, Please try again later.'}));
             }
         })
 
     }
-
-    onCloseNot(): void {
-        this.error = '';
-        if (this.error.includes('Something went wrong')) {
-            this.router.navigate(['/'])
-        }
-    }
-
 }

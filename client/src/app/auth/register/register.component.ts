@@ -9,6 +9,7 @@ import { AuthService } from '../auth.service';
 import { emailValidator, minLengthValidator, equalValueAsFactory } from '../../shared/validators';
 import { IAuthState } from 'src/app/+store/reducers';
 import { auth_success } from 'src/app/+store/actions';
+import * as authActions from '../../+store/actions';
 
 @Component({
     selector: 'app-register',
@@ -22,7 +23,6 @@ export class RegisterComponent implements OnDestroy {
 
     registerForm!: FormGroup;
     killSubscription = new Subject<void>();
-    error: string = '';
     isLoading: boolean = false;
 
 
@@ -72,14 +72,10 @@ export class RegisterComponent implements OnDestroy {
                 this.registerForm.get('password')?.reset();
                 this.registerForm.get('repeatPassword')?.reset();
                 this.isLoading = false;
-                this.error = err.error.message;
+                this.store.dispatch(authActions.add_message({typeMsg: 'error', text: err.error.message}));
+
             }
         })
-    }
-
-
-    onCloseNot(): void {
-        this.error = '';
     }
 
     ngOnDestroy(): void {

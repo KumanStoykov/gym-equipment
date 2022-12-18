@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs';
+import { Store } from '@ngrx/store';
+
 import { ITreadmill } from 'src/app/shared/interfaces';
 import { TreadmillService } from '../treadmill.service';
-
+import * as authActions from '../../+store/actions';
+import { IAuthState } from 'src/app/+store/reducers';
 @Component({
     selector: 'app-treadmill-list',
     templateUrl: './treadmill-list.component.html',
@@ -18,11 +21,12 @@ export class TreadmillListComponent implements OnInit {
     page: number = 1;
     count: number = 0;
     isLoading: boolean = false;
-    error: string = '';
 
     constructor(
         private treadmillService: TreadmillService,
-        private activateRoute: ActivatedRoute
+        private activateRoute: ActivatedRoute,
+        private store: Store<IAuthState>,
+
     ) { }
 
     ngOnInit(): void {
@@ -46,16 +50,11 @@ export class TreadmillListComponent implements OnInit {
             },
             error: err => {
                 this.isLoading = false;
-                this.error = err.error.message || 'Something went wrong. Please try again later.'
+                this.store.dispatch(authActions.add_message({typeMsg: 'error', text: err.error.message || 'Something went wrong, Please try again later.'}));
             }
         })
 
     }
-
-    onCloseNot(): void {
-        this.error = '';
-    }
-
 
 
 }

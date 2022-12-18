@@ -5,8 +5,6 @@
     <div class="content-wrap">
         <app-page-title [pageTitle]="pageTitle"></app-page-title>
 
-        <app-notification (notDestroy)="onCloseNot()" *ngIf="error.length !== 0" [message]="error"></app-notification>
-
         <app-loader *ngIf="isLoading" size="medium"></app-loader>
 
         <div *ngIf="!isLoading" class="page-content-wrap">

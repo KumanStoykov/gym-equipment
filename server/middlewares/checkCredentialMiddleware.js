@@ -14,6 +14,7 @@ module.exports = () => async (req, res, next) => {
 
     } catch(err) {
         res.user = undefined;
+        res.clearCookie(COOKIE_TOKEN_NAME);
         next();
     }
 }

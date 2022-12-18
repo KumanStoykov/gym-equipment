@@ -87,8 +87,7 @@ export class DetailsPageHeaderComponent implements OnInit, OnDestroy {
 
     addToWishlistHandler(): void {
         this.store.dispatch(authActions.add_wishlist({ _id: this.product._id, productType: this.productType }));
-        this.typeMsg = 'successful';
-        this.message = 'Successful added to wishlist.'
+        this.store.dispatch(authActions.add_message({typeMsg: 'successful', text: 'Successful added to wishlist.'}));
     }
 
     removeFromWishlistHandler(product: IProduct): void {
@@ -96,8 +95,8 @@ export class DetailsPageHeaderComponent implements OnInit, OnDestroy {
     }
     addToCartHandler(): void {
         this.store.dispatch(authActions.add_cart({ _id: this.product._id, productType: this.productType, quantity: 1 }));
-        this.typeMsg = 'successful';
-        this.message = 'Successful added to cart.'
+        this.store.dispatch(authActions.add_message({typeMsg: 'successful', text: 'Successful added to cart'}));
+
     }
 
     hoverHandle(over: boolean): void {
@@ -113,11 +112,7 @@ export class DetailsPageHeaderComponent implements OnInit, OnDestroy {
             _id: this.product._id
         }));
     }
-    onCloseNot(): void {
-        this.message = '';
-
-    }
-
+ 
     ngOnDestroy(): void {
         this.wishlistSub.unsubscribe();
         this.cartSub.unsubscribe();

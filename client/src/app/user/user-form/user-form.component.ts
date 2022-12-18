@@ -22,7 +22,6 @@ export class UserFormComponent implements OnInit {
 
     user: IUser | undefined;
     userForm!: FormGroup;
-    error: string = '';
     isLoading: boolean = false;
 
     constructor(
@@ -74,8 +73,19 @@ export class UserFormComponent implements OnInit {
                     this.isLoading = false;
                 }
             })
-
-
+        } else {
+            this.isLoading = true;
+            this.userService.loadProfile().subscribe({
+                next: user => {
+                    this.user = user;
+                    this.isLoading = false
+                },
+                error: err => {
+                    this.isEdit = false;
+                    this.isLoading = false;
+                    this.store.dispatch(authActions.add_message({typeMsg: 'error', text: err.error.message || 'Something went wrong, Please try again later.'}));
+                }
+            })
         }
     }
 
@@ -102,11 +112,12 @@ export class UserFormComponent implements OnInit {
                     this.isLoading = false;
                     this.userForm.reset();
                     this.cancelEdit.emit(true);
+                    this.store.dispatch(authActions.add_message({typeMsg: 'successful', text: 'Changes edit successful.'}))
 
                 },
                 error: (err) => {
                     this.isLoading = false;
-                    this.error = err.error.message;
+                    this.store.dispatch(authActions.add_message({typeMsg: 'error', text: err.error.message || 'Something went wrong, Please try again later.'}));
                 }
             })
         } else {
@@ -116,6 +127,7 @@ export class UserFormComponent implements OnInit {
                 next: data => {
                     this.isLoading = false;
                     this.store.dispatch(authActions.empty_cart());
+                    this.store.dispatch(authActions.add_message({typeMsg: 'successful', text: 'Order successful.'}))
 
                     if(this.user) {
                         this.router.navigateByUrl(`user/${this.user._id}/orders`)
@@ -126,7 +138,7 @@ export class UserFormComponent implements OnInit {
                 },
                 error: err => {
                     this.isLoading = false;
-                    this.error = err.error.message;
+                    this.store.dispatch(authActions.add_message({typeMsg: 'error', text: err.error.message || 'Something went wrong, Please try again later.'}));
                 }
             })
         }
@@ -136,9 +148,4 @@ export class UserFormComponent implements OnInit {
     cancelHandler(): void {
         this.cancelEdit.emit(true);
     }
-
-    onCloseNot(): void {
-        this.error = '';
-    }
-
 }

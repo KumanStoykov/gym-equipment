@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+
 import { IOrder } from 'src/app/shared/interfaces';
 import { UserService } from '../user.service';
-
+import * as authActions from '../../+store/actions';
+import { IAuthState } from 'src/app/+store/reducers';
 @Component({
     selector: 'app-user-order',
     templateUrl: './user-order.component.html',
@@ -15,16 +18,17 @@ export class UserOrderComponent implements OnInit {
     page: number = 1;
     count: number = 0;
     isLoading: boolean = false;
-    error: string = '';
 
     constructor(
         private userService: UserService,
-        private router: Router
+        private router: Router,
+        private store: Store<IAuthState>,
+
     ) { }
 
     ngOnInit(): void {
         const userId = this.router.url.split('/')[2]
-        
+
         this.isLoading = true;
         this.userService.getUserOrders(userId).subscribe({
             next: data => {
@@ -33,14 +37,10 @@ export class UserOrderComponent implements OnInit {
                 this.count = data.ordersCount;
             },
             error: err => {
-                this.error = err.error.message;
+                this.store.dispatch(authActions.add_message({typeMsg: 'error', text: err.error.message || 'Something went wrong, Please try again later.'}));
                 this.isLoading = false;
             }
         })
 
-    }
-
-    onCloseNot(): void {
-        this.error = '';
     }
 }

@@ -53,6 +53,7 @@ export class AuthService {
 
                 error: () => {
                    this.store.dispatch(AuthActions.auth_fail());
+                   this.store.dispatch(AuthActions.clear_message());
                 }
             })
     }

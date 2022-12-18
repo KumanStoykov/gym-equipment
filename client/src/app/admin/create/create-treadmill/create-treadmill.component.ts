@@ -1,8 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { IAuthState } from 'src/app/+store/reducers';
+
 import { ITreadmill } from 'src/app/shared/interfaces';
 import { TreadmillService } from 'src/app/treadmill/treadmill.service';
+import * as authActions from '../../../+store/actions';
 
 @Component({
     selector: 'app-create-treadmill',
@@ -16,7 +20,6 @@ export class CreateTreadmillComponent implements OnInit {
     fileIsChose: boolean = false;
 
     treadmill: ITreadmill | undefined;
-    error: string = '';
     isLoading: boolean = false;
     filesCount: number | undefined;
     isEdit: boolean = false;
@@ -24,7 +27,8 @@ export class CreateTreadmillComponent implements OnInit {
     constructor(
         private treadmillService: TreadmillService,
         private activateRoute: ActivatedRoute,
-        private router: Router
+        private router: Router,
+        private store: Store<IAuthState>
     ) { }
 
     ngOnInit(): void {
@@ -42,6 +46,7 @@ export class CreateTreadmillComponent implements OnInit {
                 error: err => {
                     this.isEdit = false;
                     this.isLoading = false;
+                    this.store.dispatch(authActions.add_message({typeMsg: 'error', text: err.error.message}));
                 }
             })
         }
@@ -81,7 +86,7 @@ export class CreateTreadmillComponent implements OnInit {
                     this.isLoading = false;
                 },
                 error: err => {
-                    this.error = err.error.message;
+                    this.store.dispatch(authActions.add_message({typeMsg: 'error', text: err.error.message}));
                     this.isLoading = false;
                 }
             });
@@ -95,7 +100,7 @@ export class CreateTreadmillComponent implements OnInit {
 
                 },
                 error: err => {
-                    this.error = err.error.message;
+                    this.store.dispatch(authActions.add_message({typeMsg: 'error', text: err.error.message}));
                     this.isLoading = false;
                 }
             });
@@ -103,11 +108,4 @@ export class CreateTreadmillComponent implements OnInit {
 
 
     }
-    onCloseNot(): void {
-        this.error = '';
-        if (this.error.includes('Something went wrong')) {
-            this.router.navigate(['/'])
-        }
-    }
-
 }

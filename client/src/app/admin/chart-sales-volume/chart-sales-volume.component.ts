@@ -1,6 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Chart } from 'chart.js/auto';
+
+import { IAuthState } from 'src/app/+store/reducers';
 import { AdminService } from '../admin.service';
+import * as authActions from '../../+store/actions';
 
 @Component({
     selector: 'app-sales-volume',
@@ -13,10 +17,11 @@ export class ChartSalesVolumeComponent implements OnInit {
     newChart: Chart | any;
 
     isLoading: boolean = false;
-    error: string = '';
 
     constructor(
-        private adminService: AdminService
+        private adminService: AdminService,
+        private store: Store<IAuthState>
+
     ) { }
 
     ngOnInit(): void {
@@ -73,14 +78,9 @@ export class ChartSalesVolumeComponent implements OnInit {
             },
             error: err => {
                 this.isLoading = false;
-                this.error = err.error.message;
+                this.store.dispatch(authActions.add_message({typeMsg: 'error', text: err.error.message}));
             }
         })
 
     }
-
-    onCloseNot(): void {
-        this.error = '';
-    }
-
 }

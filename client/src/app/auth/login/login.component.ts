@@ -6,6 +6,8 @@ import { Store } from '@ngrx/store';
 import { auth_success } from 'src/app/+store/actions';
 import { emailValidator, minLengthValidator } from 'src/app/shared/validators';
 import { AuthService } from '../auth.service';
+import * as authActions from '../../+store/actions';
+
 
 @Component({
     selector: 'app-login',
@@ -18,7 +20,6 @@ export class LoginComponent {
     pageTitle: string = 'LOGIN';
 
     loginForm!: FormGroup;
-    error: string = '';
     isLoading: boolean = false;
     notIsOpen: boolean = false;
 
@@ -61,13 +62,9 @@ export class LoginComponent {
             error: err => {
                 this.loginForm.get('password')?.reset();
                 this.isLoading = false;
-                this.error = err.error.message;
+                this.store.dispatch(authActions.add_message({typeMsg: 'error', text: err.error.message}));
+
             }
         })
     }
-
-    onCloseNot(): void {
-        this.error = '';
-    }
-
 }

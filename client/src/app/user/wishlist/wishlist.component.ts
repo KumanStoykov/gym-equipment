@@ -28,7 +28,6 @@ export class WishlistComponent implements OnInit, OnDestroy {
     page: number = 1;
     count: number = 0;
     isLoading: boolean = false;
-    error: string = '';
 
     wishlistSub: Subscription = new Subscription();
 
@@ -54,7 +53,7 @@ export class WishlistComponent implements OnInit, OnDestroy {
             },
             error: err => {
                 this.isLoading = false;
-                this.error = err.error;
+                this.store.dispatch(authActions.add_message({typeMsg: 'error', text: err.error.message || 'Something went wrong, Please try again later.'}));
             }
         })
     }
@@ -78,7 +77,7 @@ export class WishlistComponent implements OnInit, OnDestroy {
                         fetchedWishlist.push(wishlistData);
                     },
                     error: err => {
-                        this.error = err.error.message;
+                        this.store.dispatch(authActions.add_message({typeMsg: 'error', text: err.error.message || 'Something went wrong, Please try again later.'}));
                         this.isLoading = false;
                     }
                 });
@@ -91,7 +90,7 @@ export class WishlistComponent implements OnInit, OnDestroy {
                         fetchedWishlist.push(wishlistData);
                     },
                     error: err => {
-                        this.error = err.error.message;
+                        this.store.dispatch(authActions.add_message({typeMsg: 'error', text: err.error.message || 'Something went wrong, Please try again later.'}));
                         this.isLoading = false;
                     }
                 });
@@ -103,7 +102,7 @@ export class WishlistComponent implements OnInit, OnDestroy {
                         fetchedWishlist.push(wishlistData);
                     },
                     error: err => {
-                        this.error = err.error.message;
+                        this.store.dispatch(authActions.add_message({typeMsg: 'error', text: err.error.message || 'Something went wrong, Please try again later.'}));
                         this.isLoading = false;
                     }
                 });
@@ -115,7 +114,7 @@ export class WishlistComponent implements OnInit, OnDestroy {
                         fetchedWishlist.push(wishlistData);
                     },
                     error: err => {
-                        this.error = err.error.message;
+                        this.store.dispatch(authActions.add_message({typeMsg: 'error', text: err.error.message || 'Something went wrong, Please try again later.'}));
                         this.isLoading = false;
                     }
                 });
@@ -127,7 +126,7 @@ export class WishlistComponent implements OnInit, OnDestroy {
                         fetchedWishlist.push(wishlistData);
                     },
                     error: err => {
-                        this.error = err.error.message;
+                        this.store.dispatch(authActions.add_message({typeMsg: 'error', text: err.error.message || 'Something went wrong, Please try again later.'}));
                         this.isLoading = false;
                     }
                 });
@@ -155,10 +154,6 @@ export class WishlistComponent implements OnInit, OnDestroy {
             const index = this.products.indexOf(isProductIn);
             this.products.splice(index, 1);
         }
-    }
-
-    onCloseNot(): void {
-        this.error = '';
     }
 
     ngOnDestroy(): void {

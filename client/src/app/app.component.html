@@ -1,6 +1,9 @@
 <div *ngIf="(message$ | async)?.typeMsg === 'delete'" class="modal">
     <app-confirm></app-confirm>
 </div>
+<div *ngIf="(message$ | async)?.typeMsg === 'error' || (message$ | async)?.typeMsg === 'successful'">
+    <app-notification  [typeMsg]="(message$ | async)?.typeMsg" [message]="(message$ | async)?.text" ></app-notification>
+</div>
 
 <app-header></app-header>
 

@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs';
+
 import { IBike } from 'src/app/shared/interfaces';
 import { BikeService } from '../bike.service';
-
+import * as authActions from '../../+store/actions';
+import { IAuthState } from 'src/app/+store/reducers';
+import { Store } from '@ngrx/store';
 @Component({
     selector: 'app-bike-list',
     templateUrl: './bike-list.component.html',
@@ -18,11 +21,11 @@ export class BikeListComponent implements OnInit {
     page: number = 1;
     count: number = 0;
     isLoading: boolean = false;
-    error: string = '';
 
     constructor(
         private bikeService: BikeService,
-        private activationRouter: ActivatedRoute
+        private activationRouter: ActivatedRoute,
+        private store: Store<IAuthState>,
     ) { }
 
     ngOnInit(): void {
@@ -46,13 +49,8 @@ export class BikeListComponent implements OnInit {
             },
             error: err => {
                 this.isLoading = false;
-                this.error = err.error.message || 'Something went wrong, Please try again later.';
+                this.store.dispatch(authActions.add_message({typeMsg: 'error', text: err.error.message || 'Something went wrong, Please try again later.'}));
             }
         })
     }
-
-    onCloseNot(): void {
-        this.error = '';
-    }
-
 }

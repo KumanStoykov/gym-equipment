@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+
 import { add_comment } from 'src/app/+store/actions';
 import { ITreadmill } from 'src/app/shared/interfaces';
 import { TreadmillService } from '../treadmill.service';
-
+import * as authActions from '../../+store/actions';
+import { IAuthState } from 'src/app/+store/reducers';
 
 @Component({
     selector: 'app-treadmill-details',
@@ -17,16 +19,13 @@ export class TreadmillDetailsComponent implements OnInit {
 
     treadmill!: ITreadmill;
     isLoading: boolean = false;
-    error: string = '';
 
     productId = this.router.url.split('/')[2];
-
-
 
     constructor(
         private treadmillService: TreadmillService,
         private router: Router,
-        private store: Store,
+        private store: Store<IAuthState>,
     ) { }
 
     ngOnInit(): void {
@@ -41,16 +40,8 @@ export class TreadmillDetailsComponent implements OnInit {
             },
             error: err => {
                 this.isLoading = false;
-                this.error = err.error.message || 'Something went wrong, Please try again later.'
+                this.store.dispatch(authActions.add_message({typeMsg: 'error', text: err.error.message || 'Something went wrong, Please try again later.'}));
             }
         })
     }
-
-    onCloseNot(): void {
-        this.error = '';
-        if (this.error.includes('Something went wrong')) {
-            this.router.navigate(['/'])
-        }
-    }
-
 }

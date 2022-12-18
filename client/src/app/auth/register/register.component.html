@@ -1,7 +1,5 @@
 <app-page-hero [heroPageTitle]="heroTitle"></app-page-hero>
 
-<app-notification (notDestroy)="onCloseNot()" *ngIf="error?.length !== 0" [message]="error"></app-notification>
-
 <section class="register container">
     <div class="form-wrap">
         <app-page-title [pageTitle]="pageTitle"></app-page-title>

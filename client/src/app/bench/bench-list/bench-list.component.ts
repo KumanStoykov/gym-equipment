@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs';
+
 import { IBench } from 'src/app/shared/interfaces';
 import { BenchService } from '../bench.service';
+import { IAuthState } from 'src/app/+store/reducers';
+import * as authActions from '../../+store/actions';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-bench-list',
@@ -18,11 +22,11 @@ export class BenchListComponent implements OnInit {
     page: number = 1;
     count: number = 0;
     isLoading: boolean = false;
-    error: string = '';
 
     constructor(
         private benchService: BenchService,
-        private activationRouter: ActivatedRoute
+        private activationRouter: ActivatedRoute,
+        private store: Store<IAuthState>,
     ) { }
 
     ngOnInit(): void {
@@ -46,13 +50,9 @@ export class BenchListComponent implements OnInit {
             },
             error: err => {
                 this.isLoading = false;
-                this.error = err.error.message || 'Something went wrong, Please try again later.';
+                this.store.dispatch(authActions.add_message({typeMsg: 'error', text: err.error.message || 'Something went wrong, Please try again later.'}));
+
             }
         })
     }
-
-    onCloseNot(): void {
-        this.error = '';
-    }
-
 }

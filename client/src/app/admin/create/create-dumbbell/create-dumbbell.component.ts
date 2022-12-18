@@ -1,8 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { IAuthState } from 'src/app/+store/reducers';
 import { DumbbellService } from 'src/app/dumbbell/dumbbell.service';
 import { IDumbbell } from 'src/app/shared/interfaces';
+import * as authActions from '../../../+store/actions';
 
 @Component({
     selector: 'app-create-dumbbell',
@@ -16,7 +19,6 @@ export class CreateDumbbellComponent implements OnInit {
     fileIsChose: boolean = false;
 
     dumbbell: IDumbbell | undefined;
-    error: string = '';
     isLoading: boolean = false;
     filesCount: number | undefined;
     isEdit: boolean = false;
@@ -24,13 +26,14 @@ export class CreateDumbbellComponent implements OnInit {
     constructor(
         private dumbbellService: DumbbellService,
         private activateRoute: ActivatedRoute,
-        private router: Router
+        private router: Router,
+        private store: Store<IAuthState>
     ) { }
 
     ngOnInit(): void {
         const urlIsEdit = this.activateRoute.snapshot.url[0] && this.activateRoute.snapshot.url[0].path === 'edit';
 
-        if(urlIsEdit) {
+        if (urlIsEdit) {
             this.isLoading = true;
 
             this.dumbbellService.getOne(this.activateRoute.snapshot.url[2].path).subscribe({
@@ -42,6 +45,7 @@ export class CreateDumbbellComponent implements OnInit {
                 error: err => {
                     this.isEdit = false;
                     this.isLoading = false;
+                    this.store.dispatch(authActions.add_message({ typeMsg: 'error', text: err.error.message }));
                 }
             })
         }
@@ -74,7 +78,7 @@ export class CreateDumbbellComponent implements OnInit {
 
         this.isLoading = true;
 
-        if(this.isEdit) {
+        if (this.isEdit) {
             const id = this.activateRoute.snapshot.url[2].path;
             this.dumbbellService.edit(formData, id).subscribe({
                 next: data => {
@@ -82,7 +86,7 @@ export class CreateDumbbellComponent implements OnInit {
                     this.isLoading = false;
                 },
                 error: err => {
-                    this.error = err.error.message;
+                    this.store.dispatch(authActions.add_message({ typeMsg: 'error', text: err.error.message }));
                     this.isLoading = false;
                 }
             });
@@ -95,20 +99,11 @@ export class CreateDumbbellComponent implements OnInit {
 
                 },
                 error: err => {
-                    this.error = err.error.message;
                     this.isLoading = false;
-                    console.log(err.error)
+                    this.store.dispatch(authActions.add_message({ typeMsg: 'error', text: err.error.message }));
+
                 }
             });
         }
     }
-
-    onCloseNot(): void {
-        this.error = '';
-        if(this.error.includes('Something went wrong')) {
-            console.log('')
-            this.router.navigate(['/'])
-        }
-    }
-
 }

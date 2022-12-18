@@ -1,8 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { switchMap } from 'rxjs';
+import { IAuthState } from 'src/app/+store/reducers';
+
 import { PromotionService } from 'src/app/promotion/promotion.service';
 import { IPromotion } from 'src/app/shared/interfaces/promotion';
+import * as authActions from '../../+store/actions';
 
 @Component({
     selector: 'app-admin-promotion',
@@ -14,11 +18,12 @@ export class AdminPromotionComponent implements OnInit {
     page: number = 1;
     count: number = 0;
     isLoading: boolean = false;
-    error: string = '';
 
     constructor(
         private promotionService: PromotionService,
-        private activatedRoute: ActivatedRoute
+        private activatedRoute: ActivatedRoute,
+        private store: Store<IAuthState>
+
     ) { }
 
     ngOnInit(): void {
@@ -42,13 +47,8 @@ export class AdminPromotionComponent implements OnInit {
             },
             error: err => {
                 this.isLoading = false;
-                this.error = err.error.message || 'Something went wrong, Please try again later.';
+                this.store.dispatch(authActions.add_message({typeMsg: 'error', text: err.error.message}));
             }
         })
     }
-
-    onCloseNot(): void {
-        this.error = '';
-    }
-
 }

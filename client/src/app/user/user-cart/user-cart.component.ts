@@ -7,6 +7,7 @@ import * as authSelectors from '../../+store/selectors';
 import * as authActions from '../../+store/actions';
 import { IAuthState } from 'src/app/+store/reducers';
 import { first, Observable, Subscription } from 'rxjs';
+
 import { BenchService } from 'src/app/bench/bench.service';
 import { BikeService } from 'src/app/bike/bike.service';
 import { DumbbellService } from 'src/app/dumbbell/dumbbell.service';
@@ -27,7 +28,6 @@ export class UserCartComponent implements OnInit, OnDestroy {
     pageTitle: string = 'CHECKOUT';
 
     isLoading: boolean = false;
-    error: string = '';
     products: IProduct[] = [];
     delivery: number = 0;
     totalPrice: number = 0;
@@ -56,7 +56,7 @@ export class UserCartComponent implements OnInit, OnDestroy {
             },
             error: err => {
                 this.isLoading = false;
-                this.error = err.error.message;
+                this.store.dispatch(authActions.add_message({typeMsg: 'error', text: err.error.message || 'Something went wrong, Please try again later.'}));
             }
         })
     }
@@ -83,7 +83,7 @@ export class UserCartComponent implements OnInit, OnDestroy {
                         this.delivery = this.totalPrice > 200 ? 0 : 30;
                     },
                     error: err => {
-                        this.error = err.error.message;
+                        this.store.dispatch(authActions.add_message({typeMsg: 'error', text: err.error.message || 'Something went wrong, Please try again later.'}));
                         this.isLoading = false;
                     }
                 });
@@ -99,7 +99,7 @@ export class UserCartComponent implements OnInit, OnDestroy {
                         this.delivery = this.totalPrice > 200 ? 0 : 30;
                     },
                     error: err => {
-                        this.error = err.error.message;
+                        this.store.dispatch(authActions.add_message({typeMsg: 'error', text: err.error.message || 'Something went wrong, Please try again later.'}));
                         this.isLoading = false;
                     }
                 });
@@ -114,7 +114,7 @@ export class UserCartComponent implements OnInit, OnDestroy {
                         this.delivery = this.totalPrice > 200 ? 0 : 30;
                     },
                     error: err => {
-                        this.error = err.error.message;
+                        this.store.dispatch(authActions.add_message({typeMsg: 'error', text: err.error.message || 'Something went wrong, Please try again later.'}));
                         this.isLoading = false;
                     }
                 });
@@ -129,7 +129,7 @@ export class UserCartComponent implements OnInit, OnDestroy {
                         this.delivery = this.totalPrice > 200 ? 0 : 30;
                     },
                     error: err => {
-                        this.error = err.error.message;
+                        this.store.dispatch(authActions.add_message({typeMsg: 'error', text: err.error.message || 'Something went wrong, Please try again later.'}));
                         this.isLoading = false;
                     }
                 });
@@ -144,7 +144,7 @@ export class UserCartComponent implements OnInit, OnDestroy {
                         this.delivery = this.totalPrice > 200 ? 0 : 30;
                     },
                     error: err => {
-                        this.error = err.error.message;
+                        this.store.dispatch(authActions.add_message({typeMsg: 'error', text: err.error.message || 'Something went wrong, Please try again later.'}));
                         this.isLoading = false;
                     }
                 });
@@ -188,10 +188,6 @@ export class UserCartComponent implements OnInit, OnDestroy {
         this.totalPrice = this.products.reduce((a, x) => x.promoPrice !== 0 ? a + (x.promoPrice * x.quantity!) : a + (x.price * x.quantity!), 0);
         this.delivery = this.totalPrice > 200 || this.totalPrice === 0 ? 0 : 30;
 
-    }
-
-    onCloseNot(): void {
-        this.error = '';
     }
 
     ngOnDestroy(): void {

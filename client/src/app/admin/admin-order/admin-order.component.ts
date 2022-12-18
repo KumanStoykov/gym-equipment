@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import { IAuthState } from 'src/app/+store/reducers';
 import { IOrder } from 'src/app/shared/interfaces';
 import { AdminService } from '../admin.service';
+import * as authActions from '../../+store/actions';
 
 @Component({
   selector: 'app-admin-order',
@@ -13,10 +17,10 @@ export class AdminOrderComponent implements OnInit {
     page: number = 1;
     count: number = 0;
     isLoading: boolean = false;
-    error: string = '';
 
     constructor(
         private adminService: AdminService,
+        private store: Store<IAuthState>
     ) { }
 
     ngOnInit(): void {
@@ -29,15 +33,11 @@ export class AdminOrderComponent implements OnInit {
                 console.log(data)
             },
             error: err => {
-                this.error = err.error.message;
                 this.isLoading = false;
+                this.store.dispatch(authActions.add_message({typeMsg: 'error', text: err.error.message}));
+
             }
         })
 
     }
-
-    onCloseNot(): void {
-        this.error = '';
-    }
-
 }

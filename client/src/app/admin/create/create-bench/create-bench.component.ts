@@ -1,8 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { IAuthState } from 'src/app/+store/reducers';
+
 import { BenchService } from 'src/app/bench/bench.service';
 import { IBench } from 'src/app/shared/interfaces';
+import * as authActions from '../../../+store/actions';
 
 @Component({
     selector: 'app-create-bench',
@@ -16,7 +20,6 @@ export class CreateBenchComponent implements OnInit {
     fileIsChose: boolean = false;
 
     bench: IBench | undefined;
-    error: string = '';
     isLoading: boolean = false;
     filesCount: number | undefined;
     isEdit: boolean = false;
@@ -24,7 +27,8 @@ export class CreateBenchComponent implements OnInit {
     constructor(
         private benchService: BenchService,
         private router: Router,
-        private activateRoute: ActivatedRoute
+        private activateRoute: ActivatedRoute,
+        private store: Store<IAuthState>
     ) { }
 
     ngOnInit(): void {
@@ -42,6 +46,8 @@ export class CreateBenchComponent implements OnInit {
                 error: err => {
                     this.isEdit = false;
                     this.isLoading = false;
+                    this.store.dispatch(authActions.add_message({typeMsg: 'error', text: err.error.message}));
+
                 }
             })
         }
@@ -83,7 +89,7 @@ export class CreateBenchComponent implements OnInit {
                     this.isLoading = false;
                 },
                 error: err => {
-                    this.error = err.error.message;
+                    this.store.dispatch(authActions.add_message({typeMsg: 'error', text: err.error.message}));
                     this.isLoading = false;
                 }
             })
@@ -95,20 +101,12 @@ export class CreateBenchComponent implements OnInit {
                     this.isLoading = false;
                 },
                 error: err => {
-                    this.error = err.error.message;
+                    this.store.dispatch(authActions.add_message({typeMsg: 'error', text: err.error.message}));
                     this.isLoading = false;
                 }
             })
         }
 
 
-    }
-
-    onCloseNot(): void {
-        this.error = '';
-        if (this.error.includes('Something went wrong')) {
-            console.log('')
-            this.router.navigate(['/'])
-        }
     }
 }
