@@ -14,7 +14,7 @@ import { IAuthState } from './+store/reducers';
 })
 export class AppComponent implements OnInit {
     message$: Observable<authActions.messageProps | null> = this.store.select(authSelectors.selectMessage);
-    title = 'GYM Equipment';
+    title: string = 'GYM Equipment';
 
 
     constructor(
