@@ -1,4 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { UserService } from '../user.service';
 
 import { UserOrderComponent } from './user-order.component';
 
@@ -8,7 +10,7 @@ describe('UserOrderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserOrderComponent ]
+      declarations: [ UserOrderComponent, HttpClientModule, UserService ]
     })
     .compileComponents();
 
