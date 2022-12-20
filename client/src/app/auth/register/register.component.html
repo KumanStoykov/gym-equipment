@@ -18,6 +18,7 @@
             <div class="input-row">
                 <input
                     placeholder="Email *"
+                    id="email"
                     type="text"
                     class="input-field"
                     formControlName="email"
@@ -51,6 +52,7 @@
             <div class="input-row">
                 <input
                     placeholder="Password *"
+                    id="password"
                     type="password"
                     class="input-field"
                     formControlName="password"
@@ -84,6 +86,7 @@
             <div class="input-row">
                 <input
                     placeholder="Re-password *"
+                    id="repeatPassword"
                     type="password"
                     class="input-field"
                     formControlName="repeatPassword"
@@ -121,7 +124,7 @@
                 </ng-container>
             </div>
 
-            <button *ngIf="!isLoading" type="submit" class="btn register-btn" [disabled]="registerForm.pending">
+            <button *ngIf="!isLoading" type="submit" class="btn register-btn" [disabled]="registerForm.invalid">
                 Register
             </button>
             <button *ngIf="isLoading" type="button" class="btn register-btn">
