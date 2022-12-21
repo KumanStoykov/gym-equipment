@@ -91,8 +91,6 @@ export class UserFormComponent implements OnInit {
 
     onSubmit(): void {
 
-        if (this.userForm.invalid || this.userForm.pending) { return; }
-
         const formValue = this.userForm.value;
 
         this.isLoading = true;
@@ -112,7 +110,7 @@ export class UserFormComponent implements OnInit {
                     this.isLoading = false;
                     this.userForm.reset();
                     this.cancelEdit.emit(true);
-                    this.store.dispatch(authActions.add_message({typeMsg: 'successful', text: 'Changes edit successful.'}))
+                    this.store.dispatch(authActions.add_message({typeMsg: 'successful', text: 'Edit profile successful.'}))
 
                 },
                 error: (err) => {
@@ -121,6 +119,9 @@ export class UserFormComponent implements OnInit {
                 }
             })
         } else {
+
+            if (this.userForm.invalid || this.userForm.pending) { return; }
+
             formValue.products = [...this.products];
 
             this.userService.createOrder(formValue).subscribe({
