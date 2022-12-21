@@ -97,6 +97,10 @@
 }
 
 @media all and (max-width: 1000px) {
+    .img-wrap {
+        width: 200px;
+        height: 200px;
+    }
     .checkout-card {
         flex-direction: column;
         gap: 1rem;

@@ -21,7 +21,7 @@
     width: 100px;
     height: 100px;
 
-    img{
+    img {
         min-width: 100%;
         min-height: 100%;
         object-fit: cover;
@@ -44,11 +44,10 @@
     }
 }
 
-
-
-@media all and (max-width: 1000px) {
-    .checkout-card {
+@media all and (max-width: 468px) {
+    .order-card {
         flex-direction: column;
+        align-items: center;
         gap: 1rem;
     }
 }
