@@ -34,14 +34,15 @@ exports.getAllSalesAdmin = async () => {
 }
 
 exports.volumeSales = () => {
-    const backTen = new Date(Date.now() - 864000000);
+    const dateReset = new Date() - new Date().setHours(0, 0, 0, 0);
+    const backTen = new Date(Date.now() - 864000000 - dateReset);
     const dateNow = new Date(Date.now());
 
     let boundaries = [backTen]
     while (boundaries.slice(-1)[0] <= dateNow) {
         boundaries.push(
             new Date(new Date(boundaries.slice(-1)[0]).getTime() + (1000 * 60 * 60 * 24))
-        )
+            )
     }
     return Order.aggregate([
         { $match: { "createdAt": { $gte: backTen } } },

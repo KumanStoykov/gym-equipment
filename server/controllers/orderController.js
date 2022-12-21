@@ -120,9 +120,9 @@ router.get('/admin', isAdmin(), async (req, res) => {
 router.get('/admin/products/sales', isAdmin(), async (req, res) => {
 
     try {
-        const {sales, totalSales} = await orderService.getAllSalesAdmin();   
+        const { sales, totalSales } = await orderService.getAllSalesAdmin();
 
-     
+
         res.status(200).send({ sales, totalSales });
     } catch (err) {
         res.status(400).send({ message: err.message });
@@ -135,15 +135,27 @@ router.get('/admin/products/volume', isAdmin(), async (req, res) => {
         const labels = [];
         const sales = [];
 
-        for(let i = 0; i < 10; i++) {
+        for (let i = 0; i < 10; i++) {
 
-            if(i < ordersReq.length){
-                const date = new Date(ordersReq[i].date);
-                labels.push(`Date: ${date.getDate()}/${date.getMonth() + 1} Products: ${ordersReq[i].countProducts}`);
-                sales.push(ordersReq[i].totalPrice);
+            if (ordersReq.length !== 0) {
+                let currentDate = new Date().getDate();
+                let orderData = ordersReq[0]?.date.split('T')[0].slice(-2)
+                let lastTenDays = currentDate - i;
+
+                if (Number(orderData) + 1 == lastTenDays) {
+                    const date = new Date(ordersReq[0].date);
+                    labels.push(`Date: ${date.getDate()}/${date.getMonth() + 1} Products: ${ordersReq[0].countProducts}`);
+                    sales.push(ordersReq[0].totalPrice);
+                    ordersReq.shift();
+                } else {
+                    const date = new Date();
+                    labels.push(`Date: ${date.getDate() - i}/${date.getMonth() + 1} Products: ${0}`);
+                    sales.push(0);
+                }
+
             } else {
-                const date = new Date(ordersReq[ordersReq.length - 1].date);
-                labels.push(`Date: ${date.getDate() - i }/${date.getMonth() + 1} Products: ${0}`);
+                const date = new Date();
+                labels.push(`Date: ${date.getDate() - i}/${date.getMonth() + 1} Products: ${0}`);
                 sales.push(0);
             }
         }
