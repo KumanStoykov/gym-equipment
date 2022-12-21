@@ -15,7 +15,7 @@ import { IAuthState } from 'src/app/+store/reducers';
 export class DumbbellListComponent implements OnInit {
 
     heroTitle: string = 'DUMBBELLS';
-    pageTitle: string = 'SUPREME RUNNING PERFORMANCE';
+    pageTitle: string = 'CREATED FOR STRENGTH';
 
     dumbbells: IDumbbell[] = [];
     page: number = 1;

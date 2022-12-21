@@ -15,7 +15,7 @@ import { Store } from '@ngrx/store';
 export class BikeListComponent implements OnInit {
 
     heroTitle: string = 'BIKES';
-    pageTitle: string = 'SUPREME BIKE PERFORMANCE';
+    pageTitle: string = 'AN ENCHANTING EXERCISE BIKE';
 
     bikes: IBike[] = [];
     page: number = 1;

@@ -16,7 +16,7 @@ import { Store } from '@ngrx/store';
 export class BenchListComponent implements OnInit {
 
     heroTitle: string = 'BENCHES';
-    pageTitle: string = 'SUPREME PERFORMANCE';
+    pageTitle: string = 'EXPAND YOUR WORKOUTS';
 
     benches: IBench[] = [];
     page: number = 1;

@@ -16,7 +16,7 @@ import { IAuthState } from 'src/app/+store/reducers';
 export class RackListComponent implements OnInit {
 
     heroTitle: string = 'RACKS';
-    pageTitle: string = 'SUPREME RUNNING PERFORMANCE';
+    pageTitle: string = 'TRAINING YOUR STRENGTH';
 
     racks: IRack[] = [];
     page: number = 1;
