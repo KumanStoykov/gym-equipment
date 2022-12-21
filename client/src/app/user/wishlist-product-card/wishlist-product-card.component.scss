@@ -10,9 +10,7 @@
     font-weight: 400;
     border-bottom: 2px solid $clr-font-desc;
 }
-.cell {
-    width: 25%;
-}
+
 .img-wrap {
     overflow: hidden;
     width: 100px;
@@ -69,15 +67,18 @@
 }
 
 @media all and (max-width: 1000px) {
-    .cell {
-        width: auto;
-    }
+
     .wishlist-card {
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
         gap: 1rem;
     }
 }
 @media all and (max-width: 768px) {
+    .price-wrap {
+        display: flex;
+    }
     .btn-wrap {
         button {
             display: flex;

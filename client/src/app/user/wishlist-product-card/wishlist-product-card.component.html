@@ -1,5 +1,5 @@
 <article class="wishlist-card">
-    <div class="img-wrap cell">
+    <div class="img-wrap">
         <a routerLink="/{{product.productType}}/{{product._id}}">
             <img
                 src="{{product.images[0].url}}"
@@ -7,12 +7,12 @@
             />
         </a>
     </div>
-    <p class="name cell">{{product.brand}}</p>
-    <div class="price-wrap cell">
+    <p class="name">{{product.brand}}</p>
+    <div class="price-wrap">
         <p [ngClass]="hasPromo ? 'price-old' : 'out-promo'">${{product.price}}</p>
         <p *ngIf="hasPromo" class="price-new">${{product.promoPrice}}</p>
     </div>
-    <div class="btn-wrap cell">
+    <div class="btn-wrap">
         <button (click)="onClickCart()" class="btn-wishlist">
             <fa-icon class="faCartArrowDown" [icon]="icons.faCartArrowDown"></fa-icon>
         </button>
