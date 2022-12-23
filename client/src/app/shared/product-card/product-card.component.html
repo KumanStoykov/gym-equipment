@@ -2,7 +2,7 @@
     <div class="card-img-wrap">
         <a routerLink="/{{cardType}}/{{product._id}}">
             <img
-                src="{{product.images[0].url}}"
+                src="{{product.images[0].url | mixedContent }}"
                 alt="image"
                 class="card-image"
             />

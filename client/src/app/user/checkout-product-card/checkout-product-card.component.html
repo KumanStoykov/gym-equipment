@@ -2,7 +2,7 @@
     <div class="img-wrap">
         <a routerLink="/treadmill/details">
             <img
-                src="{{product.images[0].url}}"
+                src="{{product.images[0].url | mixedContent }}"
                 alt="image"
             />
         </a>

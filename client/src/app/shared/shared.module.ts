@@ -23,6 +23,7 @@ import { CommentCreateComponent } from './comment-create/comment-create.componen
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterProductsComponent } from './filter-products/filter-products.component';
 import { ConfirmComponent } from './confirm/confirm.component';
+import { MixedContentPipe } from './pipes/mixed-content.pipe';
 
 
 
@@ -47,6 +48,7 @@ import { ConfirmComponent } from './confirm/confirm.component';
     CommentCreateComponent,
     FilterProductsComponent,
     ConfirmComponent,
+    MixedContentPipe,
   ],
   imports: [
     CommonModule,
@@ -69,7 +71,8 @@ import { ConfirmComponent } from './confirm/confirm.component';
     CommentListComponent,
     NotificationComponent,
     PaginationComponent,
-    ConfirmComponent
+    ConfirmComponent,
+    MixedContentPipe
   ]
 })
 export class SharedModule { }

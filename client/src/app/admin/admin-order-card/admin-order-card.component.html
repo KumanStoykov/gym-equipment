@@ -1,6 +1,6 @@
 <article class="order-card" *ngFor="let product of order?.products">
     <div class="img-wrap cell">
-        <img src="{{ product.product.images[0].url }}" alt="image" />
+        <img src="{{ product.product.images[0].url | mixedContent }}" alt="image" />
     </div>
     <div class="brand-wrap">
         <p class="name brand">{{ product.product.brand }}</p>
