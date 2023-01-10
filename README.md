@@ -1,7 +1,7 @@
 # Gym-Equipment
 
-<img alt="gym-equipment" src="https://res.cloudinary.com/dyexk2s2s/image/upload/v1670766384/Screenshot_2022-12-11_144105_bkia1k.png" />
-<img alt="gym-equipment" src="https://res.cloudinary.com/dyexk2s2s/image/upload/v1670766862/Screenshot_2022-12-11_144231_koumai.png" />
+<img alt="gym-equipment" src="https://res.cloudinary.com/dyexk2s2s/image/upload/v1673364873/Screenshot_2023-01-10_163019_nyb3d6.png" />
+<img alt="gym-equipment" src="https://res.cloudinary.com/dyexk2s2s/image/upload/v1673365159/Screenshot_2023-01-10_163756_eaftzj.png" />
 <img alt="gym-equipment" src="https://res.cloudinary.com/dyexk2s2s/image/upload/v1670766384/Screenshot_2022-12-11_144314_stfesx.png" />
 <br/>
 
