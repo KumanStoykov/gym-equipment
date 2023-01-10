@@ -13,6 +13,10 @@
     overflow: hidden;
 }
 
+.home-card-wrap {
+    height: 260px;
+}
+
 .card-image {
     height: 100%;
     object-fit: cover;
@@ -66,4 +70,16 @@
     color: #f55e5e;
     font-size: 1.25rem;
     font-weight: bold;
+}
+
+@media all and (max-width: 1200px) {
+    .home-card-wrap {
+        height: 250px;
+    }
+}
+
+@media all and (max-width: 768px) {
+    .home-card-wrap {
+        height: 210px;
+    }
 }

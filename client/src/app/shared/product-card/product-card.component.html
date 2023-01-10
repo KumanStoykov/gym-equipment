@@ -1,5 +1,5 @@
 <article class="card">
-    <div class="card-img-wrap">
+    <div class="card-img-wrap" [ngClass]="isHomeSale ? 'home-card-wrap' : null">
         <a routerLink="/{{cardType}}/{{product._id}}">
             <img
                 src="{{product.images[0].url | mixedContent }}"

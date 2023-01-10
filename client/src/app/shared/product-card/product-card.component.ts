@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ProductCardComponent implements OnInit {
     @Input() cardType!: string;
     @Input() product: any;
+    @Input() isHomeSale: boolean = false;
 
     hasPromo!: boolean
 

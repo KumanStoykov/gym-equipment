@@ -7,6 +7,7 @@
     <ul class="cards-wrap">
         <li *ngFor="let promo of promotions">
             <app-product-card
+                [isHomeSale]="true"
                 [cardType]="promo.productType"
                 [product]="promo.product"
             ></app-product-card>
