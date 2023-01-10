@@ -6,10 +6,16 @@
     gap: 0.5rem;
     margin: 2rem 0;
 
-    a{
+    a {
         display: flex;
         justify-content: center;
         align-items: center;
+        color: $clr-dark;
+        transition: all 0.3s ease-in-out;
+
+        &:hover:not(.active-page) {
+            color: $clr-orange-light;
+        }
     }
 }
 .btn-pag {
@@ -41,7 +47,6 @@
     &:hover:not(.active-page) {
         color: $clr-orange-light;
         border: 1px solid $clr-orange-light;
-        font-weight: bold;
     }
 }
 
@@ -49,7 +54,6 @@
     font-weight: bold;
     border: 2px solid $clr-dark;
 }
-
 
 @media all and (max-width: 768px) {
     .btn-wrap {
