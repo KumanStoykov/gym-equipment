@@ -7,6 +7,7 @@ import { IDumbbell } from 'src/app/shared/interfaces';
 import { DumbbellService } from '../dumbbell.service';
 import * as authActions from '../../+store/actions';
 import { IAuthState } from 'src/app/+store/reducers';
+
 @Component({
   selector: 'app-dumbbell-list',
   templateUrl: './dumbbell-list.component.html',

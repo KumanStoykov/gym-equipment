@@ -7,7 +7,8 @@ import { IUser } from '../interfaces';
 import { faTrashCan, faFilePen } from '@fortawesome/free-solid-svg-icons';
 import { IComment } from '../interfaces';
 import { SharedService } from '../shared.service';
-
+import * as authActions from '../../+store/actions';
+import { IAuthState } from 'src/app/+store/reducers';
 @Component({
     selector: 'app-comment',
     templateUrl: './comment.component.html',
@@ -31,7 +32,7 @@ export class CommentComponent implements OnInit {
     };
 
     constructor(
-        private store: Store,
+        private store: Store<IAuthState>,
         private sharedService: SharedService,
     ) { }
 
@@ -58,9 +59,11 @@ export class CommentComponent implements OnInit {
         this.sharedService.deletePost(this.comment._id).subscribe({
             next: comment => {
                 this.isLoading = false;
+                this.store.dispatch(authActions.add_message({ typeMsg: 'successful', text: 'Comment successful deleted!' }));
+
             },
             error: err => {
-                console.log(err)
+                this.store.dispatch(authActions.add_message({ typeMsg: 'error', text: err.error.message || 'Something went wrong, Please try again later.' }));
             }
         })
     }
