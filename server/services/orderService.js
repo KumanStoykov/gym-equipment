@@ -4,14 +4,14 @@ exports.create = (orderData) => Order.create(orderData);
 
 exports.getAllAdmin = (page, sort) => Order.find({})
     .sort({ createdAt: sort })
-    .skip(10 * page)
-    .limit(10)
+    .skip(6 * page)
+    .limit(6)
     .populate('products.product');
 
 exports.getByUserId = (userId, page, sort) => Order.find({ user: userId })
     .sort({ createdAt: sort })
-    .skip(10 * page)
-    .limit(10)
+    .skip(6 * page)
+    .limit(6)
     .populate('products.product');
 
 exports.getAllSalesAdmin = async () => {

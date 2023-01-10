@@ -3,8 +3,8 @@ const Promotion = require('../models/Promotion');
 
 exports.getAll = (page, sort, search) => Promotion.find({ ...search })
     .sort({ currentPrice: sort })
-    .skip(page * 9)
-    .limit(9)
+    .skip(page * 6)
+    .limit(6)
     .populate({
         path: 'product',
         populate: {
