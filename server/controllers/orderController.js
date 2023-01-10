@@ -39,7 +39,6 @@ router.get('/user/:id', loggedIn(), async (req, res) => {
 
 router.post('/create', checkCredential(), async (req, res) => {
 
-
     try {
         const mapped = [];
         const orderData = req.body;
@@ -53,11 +52,11 @@ router.post('/create', checkCredential(), async (req, res) => {
 
         if (!req.user) {
             currentUser = {
-                firstName: orderData.firstName,
-                lastName: orderData.lastName,
+                firstName: orderData.firstNameCheckout,
+                lastName: orderData.lastNameCheckout,
                 email: orderData.email,
-                phone: orderData.phone,
-                address: orderData.address,
+                phone: orderData.phoneCheckout,
+                address: orderData.addressCheckout,
             }
             orderData.guest = currentUser;
         } else {

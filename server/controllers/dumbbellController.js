@@ -103,7 +103,7 @@ router.post('/create', loggedIn(), isAdmin(), async (req, res) => {
 
         const dumbbell = await dumbbellService.create(dumbbellData);
 
-        if (dumbbellData.promoPrice > 0) {
+        if (dumbbellData.promoPrice > 0 && dumbbellData.promoPrice < dumbbellData.price) {
             await promotionService.create({ productType: 'Dumbbell', product: dumbbell._id });
         }
         res.status(200).send({ dumbbell });

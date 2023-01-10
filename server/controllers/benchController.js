@@ -98,7 +98,7 @@ router.post('/create', loggedIn(), isAdmin(), async (req, res) => {
 
         const bench = await benchService.create(benchData);
 
-        if (benchData.promoPrice > 0) {
+        if (benchData.promoPrice > 0 && benchData.promoPrice < benchData.price) {
             await promotionService.create({ productType: 'Bench', product: bench._id });
         }
 

@@ -102,7 +102,7 @@ router.post('/create', loggedIn(), isAdmin(), async (req, res) => {
 
         const bike = await bikeService.create(bikeData);
 
-        if (bikeData.promoPrice > 0) {
+        if (bikeData.promoPrice > 0 && bikeData.promoPrice < bikeData.price) {
             await promotionService.create({ productType: 'Bike', product: bike._id });
         }
 

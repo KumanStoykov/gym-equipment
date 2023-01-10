@@ -104,7 +104,7 @@ router.post('/create', async (req, res) => {
 
         const treadmill = await treadmillService.create(treadmillData);
 
-        if (treadmillData.promoPrice > 0) {
+        if (treadmillData.promoPrice > 0 && treadmillData.promoPrice < treadmillData.price) {
             await promotionService.create({ productType: 'Treadmill', product: treadmill._id });
         }
         res.status(200).send(treadmill);

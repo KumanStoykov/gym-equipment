@@ -100,7 +100,7 @@ router.post('/create', loggedIn(), isAdmin(), async (req, res) => {
 
         const rack = await rackService.create(rackData);
 
-        if (rackData.promoPrice > 0) {
+        if (rackData.promoPrice > 0 && rackData.promoPrice < rackData.price) {
             await promotionService.create({ productType: 'Rack', product: rack._id });
         }
         res.status(200).send({ rack });
