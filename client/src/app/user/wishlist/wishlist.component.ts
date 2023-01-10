@@ -139,6 +139,7 @@ export class WishlistComponent implements OnInit, OnDestroy {
     addToCartHandler(product: IProduct): void {
         this.store.dispatch(authActions.add_cart({ _id: product._id, productType: product.productType, quantity : 1 }));
         this.store.dispatch(authActions.remove_wishlist({ _id: product._id, productType: product.productType }));
+        this.store.dispatch(authActions.add_message({typeMsg: 'successful', text: 'Successful added to cart'}));
 
         const isProductIn = this.products.find(x => x._id === product._id);
         if(isProductIn) {
