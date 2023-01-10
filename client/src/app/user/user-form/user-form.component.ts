@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
     styleUrls: ['./user-form.component.scss']
 })
 export class UserFormComponent implements OnInit {
-    @Input() isEdit: boolean = false;
+    @Input() isEdit!: boolean;
     @Input() products: IProduct[] = [];
     @Output('cancelEdit') cancelEdit: EventEmitter<boolean> = new EventEmitter;
 
@@ -29,8 +29,12 @@ export class UserFormComponent implements OnInit {
         private userService: UserService,
         private store: Store<IAuthState>,
         private router: Router
-    ) {
+    ) { }
+
+    ngOnInit(): void {
+
         if (this.isEdit) {
+
             this.userForm = this.fb.group({
                 firstName: [''],
                 lastName: [''],
@@ -40,21 +44,6 @@ export class UserFormComponent implements OnInit {
 
             });
 
-        } else {
-            this.userForm = this.fb.group({
-                firstName: ['', [Validators.required]],
-                lastName: ['', [Validators.required]],
-                email: ['', [Validators.required], emailValidator()],
-                phone: ['', [Validators.required]],
-                address: ['', [Validators.required]]
-
-            });
-        }
-    }
-
-    ngOnInit(): void {
-
-        if (this.isEdit) {
             this.isLoading = true;
             this.userService.loadProfile().subscribe({
                 next: user => {
@@ -74,6 +63,16 @@ export class UserFormComponent implements OnInit {
                 }
             })
         } else {
+
+            this.userForm = this.fb.group({
+                firstNameCheckout: ['', [Validators.required]],
+                lastNameCheckout: ['', [Validators.required]],
+                email: ['', [Validators.required], emailValidator()],
+                phoneCheckout: ['', [Validators.required]],
+                addressCheckout: ['', [Validators.required]]
+
+            });
+
             this.isLoading = true;
             this.userService.loadProfile().subscribe({
                 next: user => {
@@ -83,7 +82,7 @@ export class UserFormComponent implements OnInit {
                 error: err => {
                     this.isEdit = false;
                     this.isLoading = false;
-                    this.store.dispatch(authActions.add_message({typeMsg: 'error', text: err.error.message || 'Something went wrong, Please try again later.'}));
+                    this.store.dispatch(authActions.add_message({ typeMsg: 'error', text: err.error.message || 'Something went wrong, Please try again later.' }));
                 }
             })
         }
@@ -110,12 +109,12 @@ export class UserFormComponent implements OnInit {
                     this.isLoading = false;
                     this.userForm.reset();
                     this.cancelEdit.emit(true);
-                    this.store.dispatch(authActions.add_message({typeMsg: 'successful', text: 'Edit profile successful.'}))
+                    this.store.dispatch(authActions.add_message({ typeMsg: 'successful', text: 'Edit profile successful.' }))
 
                 },
                 error: (err) => {
                     this.isLoading = false;
-                    this.store.dispatch(authActions.add_message({typeMsg: 'error', text: err.error.message || 'Something went wrong, Please try again later.'}));
+                    this.store.dispatch(authActions.add_message({ typeMsg: 'error', text: err.error.message || 'Something went wrong, Please try again later.' }));
                 }
             })
         } else {
@@ -128,9 +127,9 @@ export class UserFormComponent implements OnInit {
                 next: data => {
                     this.isLoading = false;
                     this.store.dispatch(authActions.empty_cart());
-                    this.store.dispatch(authActions.add_message({typeMsg: 'successful', text: 'Order successful.'}))
+                    this.store.dispatch(authActions.add_message({ typeMsg: 'successful', text: 'Order successful.' }))
 
-                    if(this.user) {
+                    if (this.user) {
                         this.router.navigateByUrl(`user/${this.user._id}/orders`)
                     } else {
                         this.router.navigateByUrl('/')
@@ -139,7 +138,7 @@ export class UserFormComponent implements OnInit {
                 },
                 error: err => {
                     this.isLoading = false;
-                    this.store.dispatch(authActions.add_message({typeMsg: 'error', text: err.error.message || 'Something went wrong, Please try again later.'}));
+                    this.store.dispatch(authActions.add_message({ typeMsg: 'error', text: err.error.message || 'Something went wrong, Please try again later.' }));
                 }
             })
         }

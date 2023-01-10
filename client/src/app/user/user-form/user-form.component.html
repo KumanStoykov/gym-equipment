@@ -10,11 +10,39 @@
 
         <div class="input-row">
             <input *ngIf="isEdit" class="input-field" formControlName="firstName" type="text" placeholder="First Name" />
-            <input *ngIf="!isEdit" class="input-field" formControlName="firstName" type="text" placeholder="First Name *" />
+            <input *ngIf="!isEdit" class="input-field" formControlName="firstNameCheckout" type="text" placeholder="First Name *" />
+            <ng-container
+                    *ngIf="
+                        userForm.get('firstNameCheckout')?.invalid &&
+                        userForm.get('firstNameCheckout')?.touched
+                    "
+                >
+                    <p
+                        class="error"
+                        *ngIf="userForm.get('firstNameCheckout')?.errors?.['required']"
+                    >
+                        First name is required!
+                    </p>
+
+            </ng-container>
         </div>
         <div class="input-row">
             <input *ngIf="isEdit" class="input-field" formControlName="lastName" type="text" placeholder="Last Name" />
-            <input *ngIf="!isEdit" class="input-field" formControlName="lastName" type="text" placeholder="Last Name *" />
+            <input *ngIf="!isEdit" class="input-field" formControlName="lastNameCheckout" type="text" placeholder="Last Name *" />
+            <ng-container
+                *ngIf="
+                    userForm.get('lastNameCheckout')?.invalid &&
+                    userForm.get('lastNameCheckout')?.touched
+                "
+            >
+                <p
+                    class="error"
+                    *ngIf="userForm.get('lastNameCheckout')?.errors?.['required']"
+                >
+                    Last name is required!
+                </p>
+
+            </ng-container>
         </div>
         <div class="input-row">
             <input class="input-field"
@@ -52,15 +80,43 @@
         </div>
         <div class="input-row">
             <input *ngIf="isEdit" class="input-field" formControlName="phone" type="text" placeholder="Phone number" />
-            <input *ngIf="!isEdit" class="input-field" formControlName="phone" type="text" placeholder="Phone number *" />
+            <input *ngIf="!isEdit" class="input-field" formControlName="phoneCheckout" type="text" placeholder="Phone number *" />
+            <ng-container
+                *ngIf="
+                    userForm.get('phoneCheckout')?.invalid &&
+                    userForm.get('phoneCheckout')?.touched
+                "
+            >
+                <p
+                    class="error"
+                    *ngIf="userForm.get('phoneCheckout')?.errors?.['required']"
+                >
+                    Phone is required!
+                </p>
+
+            </ng-container>
         </div>
         <div class="input-row">
             <input *ngIf="isEdit" class="input-field" formControlName="address" type="text" placeholder="Delivery address" />
-            <input *ngIf="!isEdit" class="input-field" formControlName="address" type="text" placeholder="Delivery address *" />
+            <input *ngIf="!isEdit" class="input-field" formControlName="addressCheckout" type="text" placeholder="Delivery address *" />
+            <ng-container
+                *ngIf="
+                    userForm.get('addressCheckout')?.invalid &&
+                    userForm.get('addressCheckout')?.touched
+                "
+            >
+                <p
+                    class="error"
+                    *ngIf="userForm.get('addressCheckout')?.errors?.['required']"
+                >
+                    Address is required!
+                </p>
+
+            </ng-container>
         </div>
 
         <div  *ngIf="!isEdit" class="btn-wrap">
-            <button type="submit"  class="btn btn-checkout">PURCHASE</button>
+            <button type="submit"  class="btn btn-checkout" [disabled]="userForm.invalid">PURCHASE</button>
         </div>
         <div *ngIf="isEdit" class="btn-wrap-edit">
             <button type="submit" class="btn-edit">EDIT</button>
