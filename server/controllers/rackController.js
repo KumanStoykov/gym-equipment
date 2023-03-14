@@ -194,7 +194,7 @@ router.put('/edit/:rackId', loggedIn(), isAdmin(), async (req, res) => {
 });
 
 router.delete('/delete/:rackId', loggedIn(), isAdmin(), async (req, res) => {
-    
+
     try {
         const rackId = req.params.rackId;
         const oldRack = await rackService.getById(rackId);
@@ -207,7 +207,7 @@ router.delete('/delete/:rackId', loggedIn(), isAdmin(), async (req, res) => {
 
         await promotionService.delete(promo._id);
         await commentService.deleteManyComments(rackId);
-        
+
 
         const rack = await rackService.deleteRack(rackId);
 

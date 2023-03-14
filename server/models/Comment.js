@@ -5,24 +5,24 @@ const enumProducts = ['Treadmill', 'Bike', 'Rack', 'Bench', 'Dumbbell'];
 const commentSchema = mongoose.Schema({
     name:{
         type: String,
-        require: true
+        required: true
     },
     comment: {
         type: String,
-        require: true
+        required: true
     },
     rating: {
         type: Number,
-        require: true
+        required: true
     },
     productName: {
         type: String,
-        require: true,
+        required: true,
         enum: enumProducts
     },  
     productId: {
         type: mongoose.SchemaTypes.ObjectId,
-        require: true,
+        required: true,
         refPath: 'enumProduct'
     },  
     creator: {

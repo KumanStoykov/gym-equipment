@@ -13,11 +13,11 @@ const orderSchema = mongoose.Schema({
         },
         email: {
             type: String,
-            require: true
+            required: true
         },
         password: {
             type: String,
-            require: true
+            required: true
         },
         phone: {
             type: String,
@@ -33,13 +33,13 @@ const orderSchema = mongoose.Schema({
     products: [{
         productType: {
             type: String,
-            require: true,
+            required: true,
             enum: enumProducts
         },
         product: {
             type: mongoose.Types.ObjectId,
             refPath: 'products.productType',
-            require: true
+            required: true
         },
         quantity: {
             type: Number,

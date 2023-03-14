@@ -5,63 +5,63 @@ const dumbbellSchema = mongoose.Schema({
 
     brand: {
         type: String,
-        require: true
+        required: true
     },
     productType: {
         type: String,
-        require: true
+        required: true
     },
     price: {
         type: Number,
-        require: true
+        required: true
     },
     promoPrice: {
         type: Number,
-        require: true
+        required: true
     },
     currentPrice: {
         type: Number,
-        require: true
+        required: true
     },
     madeIn: {
         type: String,
-        require: true
+        required: true
     },
     material: {
         type: String,
-        require: true
+        required: true
     },
     knurl: {
         type: String,
-        require: true
+        required: true
     },
     rangeOfAvailableWeightsFrom: {
         type: Number,
-        require: true
+        required: true
     },
     rangeOfAvailableWeightsTo: {
         type: Number,
-        require: true
+        required: true
     },
     rangeOfDumbbellLengthsFrom: {
         type: Number,
-        require: true
+        required: true
     },
     rangeOfDumbbellLengthsTo: {
         type: Number,
-        require: true
+        required: true
     },
     handleDiameterFrom: {
         type: Number,
-        require: true
+        required: true
     },
     handleDiameterTo: {
         type: Number,
-        require: true
+        required: true
     },
     description: {
         type: String,
-        require: true
+        required: true
     },
     images: [
         {

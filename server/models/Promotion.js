@@ -5,13 +5,13 @@ const enumProducts = ['Treadmill', 'Bike', 'Rack', 'Bench', 'Dumbbell'];
 const promotionSchema = mongoose.Schema({
     productType: {
         type: String,
-        require: true,
+        required: true,
         enum: enumProducts
     },
     product: {
         type: mongoose.Types.ObjectId,
         refPath: 'productType',
-        require: true
+        required: true
     }
 });
 

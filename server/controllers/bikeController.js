@@ -201,7 +201,7 @@ router.put('/edit/:bikeId', loggedIn(), isAdmin(), async (req, res) => {
 });
 
 router.delete('/delete/:bikeId', loggedIn(), isAdmin(), async (req, res) => {
-    
+
     try {
         const bikeId = req.params.bikeId;
         const oldBike = await bikeService.getById(bikeId);

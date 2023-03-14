@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
         const search = queryParamsSearch(req.query);
 
         const promotions = await promotionService.getAll(page, sort, search);
-        const promotionsCount = await promotionService.count(); 
+        const promotionsCount = await promotionService.count();
         res.status(200).send({ promotions, promotionsCount });
     } catch (err) {
         res.status(400).send({ message: err.message });
@@ -24,7 +24,7 @@ router.get('/threeLatest', async (req, res) => {
     try {
 
         const promotions = await promotionService.getThreeLatest();
-        
+
         res.status(200).send(promotions);
     } catch (err) {
         res.status(400).send({ message: err.message });

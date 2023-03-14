@@ -171,12 +171,12 @@ router.put('/edit/:benchId', loggedIn(), isAdmin(), async (req, res) => {
         if (promo.length == 0 && benchData.promoPrice > 0) {
             await promotionService.create({ productType: 'Bench', product: bench._id });
         }
-        
+
         if (promo.length != 0 && benchData.promoPrice == 0) {
-           await promotionService.delete(promo[0]._id);
+            await promotionService.delete(promo[0]._id);
         }
 
-        if (promo.length != 0  && benchData.promoPrice > 0 & benchData.promoPrice < benchData.price) {
+        if (promo.length != 0 && benchData.promoPrice > 0 & benchData.promoPrice < benchData.price) {
             await promotionService.edit(promo[0]._id, benchData);
         }
 
@@ -193,7 +193,7 @@ router.put('/edit/:benchId', loggedIn(), isAdmin(), async (req, res) => {
 
 router.delete('/delete/:benchId', loggedIn(), isAdmin(), async (req, res) => {
 
-    
+
     try {
         const benchId = req.params.benchId;
         const oldBench = await benchService.getById(benchId);
@@ -206,7 +206,7 @@ router.delete('/delete/:benchId', loggedIn(), isAdmin(), async (req, res) => {
 
         await promotionService.delete(promo._id);
         await commentService.deleteManyComments(benchId);
-        
+
         const bench = await benchService.deleteBench(benchId);
 
         res.status(200).send({ bench });

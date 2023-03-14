@@ -5,71 +5,71 @@ const bikeSchema = mongoose.Schema({
 
     brand: {
         type: String,
-        require: true
+        required: true
     },
     productType: {
         type: String,
-        require: true
+        required: true
     },
     price: {
         type: Number,
-        require: true
+        required: true
     },
     promoPrice: {
         type: Number,
-        require: true
+        required: true
     },
     currentPrice: {
         type: Number,
-        require: true
+        required: true
     },
     madeIn: {
         type: String,
-        require: true
+        required: true
     },
     material: {
         type: String,
-        require: true
+        required: true
     },
     lengthBike: {
         type: String,
-        require: true
+        required: true
     },
     equipmentWeight: {
         type: Number,
-        require: true
+        required: true
     },
     adjustableLevelingFeet: {
         type: Number,
-        require: true
+        required: true
     },
     resistanceSystem: {
         type: String,
-        require: true
+        required: true
     },
     transportWheels: {
         type: Number,
-        require: true
+        required: true
     },
     minUserLength: {
         type: Number,
-        require: true
+        required: true
     },
     maxUserLength: {
         type: Number,
-        require: true
+        required: true
     },
     display: {
         type: String,
-        require: true
+        required: true
     },
     availableLanguages: {
         type: String,
-        require: true
+        required: true
     },
     description: {
         type: String,
-        require: true
+        required: true
     },
     images: [
         {

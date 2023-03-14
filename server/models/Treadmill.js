@@ -5,71 +5,71 @@ const treadmillSchema = mongoose.Schema({
 
     brand: {
         type: String,
-        require: true
+        required: true
     },
     productType: {
         type: String,
-        require: true
+        required: true
     },
     price: {
         type: Number,
-        require: true
+        required: true
     },
     promoPrice: {
         type: Number,
-        require: true
+        required: true
     },
     currentPrice: {
         type: Number,
-        require: true
+        required: true
     },
     madeIn: {
         type: String,
-        require: true
+        required: true
     },
     material: {
         type: String,
-        require: true
+        required: true
     },
     dimensions: {
         type: String,
-        require: true
+        required: true
     },
     equipmentWeight: {
         type: Number,
-        require: true
+        required: true
     },
     motorPower: {
         type: String,
-        require: true
+        required: true
     },
     minSpeed: {
         type: Number,
-        require: true
+        required: true
     },
     maxSpeed: {
         type: Number,
-        require: true
+        required: true
     },
     inclineMin: {
         type: Number,
-        require: true
+        required: true
     },
     inclineMax: {
         type: Number,
-        require: true
+        required: true
     },
     availableLanguages: {
         type: String,
-        require: true
+        required: true
     },
     display: {
         type: String,
-        require: true
+        required: true
     },
     description: {
         type: String,
-        require: true
+        required: true
     },
     images: [
         {

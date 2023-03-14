@@ -201,7 +201,7 @@ router.put('/edit/:treadmillId', loggedIn(), isAdmin(), async (req, res) => {
 });
 
 router.delete('/delete/:treadmillId', loggedIn(), isAdmin(), async (req, res) => {
-    
+
     try {
         const treadmillId = req.params.treadmillId;
         const oldTreadmill = await treadmillService.getById(treadmillId);
@@ -214,7 +214,7 @@ router.delete('/delete/:treadmillId', loggedIn(), isAdmin(), async (req, res) =>
 
         await promotionService.delete(promo._id);
         await commentService.deleteManyComments(treadmillId);
-        
+
 
         const treadmill = await treadmillService.deleteTreadmill(treadmillId);
 

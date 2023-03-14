@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
     try {
         const page = Number(req?.query?.page) - 1 || 0;
         const productId = req?.query?.product;
-        
+
 
         const comments = await commentService.getComments(page, productId);
         const commentsCount = await commentService.getCount(productId);

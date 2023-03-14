@@ -9,11 +9,11 @@ const userSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        require: true
+        required: true
     },
     password: {
         type: String,
-        require: true
+        required: true
     },
     phone: {
         type: String,
@@ -23,12 +23,11 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        require: true
+        required: true
     },
     isAdmin: {
         type: Boolean,
-        default: false,
-        require: true
+        default: false
     },
 
 });

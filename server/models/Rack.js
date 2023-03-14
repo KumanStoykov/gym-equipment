@@ -5,55 +5,55 @@ const rackSchema = mongoose.Schema({
 
     brand: {
         type: String,
-        require: true
+        required: true
     },
     productType: {
         type: String,
-        require: true
+        required: true
     },
     price: {
         type: Number,
-        require: true
+        required: true
     },
     promoPrice: {
         type: Number,
-        require: true
+        required: true
     },
     currentPrice: {
         type: Number,
-        require: true
+        required: true
     },
     madeIn: {
         type: String,
-        require: true
+        required: true
     },
     material: {
         type: String,
-        require: true
+        required: true
     },
     maximumUserWeight: {
         type: Number,
-        require: true
+        required: true
     },
     maximumLoadUseable: {
         type: Number,
-        require: true
+        required: true
     },
     dimensions: {
         type: String,
-        require: true
+        required: true
     },
     transportWheels: {
         type: Number,
-        require: true
+        required: true
     },
     netWeight: {
         type: Number,
-        require: true
+        required: true
     },
     description: {
         type: String,
-        require: true
+        required: true
     },
     images: [
         {

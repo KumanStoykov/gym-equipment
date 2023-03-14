@@ -12,7 +12,7 @@ module.exports = () => async (req, res, next) => {
         req.user = user;
         next();
 
-    } catch(err) {
+    } catch (err) {
         res.user = undefined;
         res.clearCookie(COOKIE_TOKEN_NAME);
         next();

@@ -199,7 +199,7 @@ router.put('/edit/:dumbbellId', loggedIn(), isAdmin(), async (req, res) => {
 });
 
 router.delete('/delete/:dumbbellId', loggedIn(), isAdmin(), async (req, res) => {
-    
+
     try {
         const dumbbellId = req.params.dumbbellId;
         const oldDumbbell = await dumbbellService.getById(dumbbellId);
